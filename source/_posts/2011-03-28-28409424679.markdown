@@ -1,0 +1,20 @@
+---
+layout: post
+title: MacPorts から Homebrew への移行メモ
+comments: true
+---
+
+MacOSX向けのパッケージマネージャーといえば [MacPorts](http://www.macports.org/) が有名ですが、Mac に元々入っているプログラムもご丁寧に再コンパイルしてくれたりで、ビルドに時間がかかったりして、なかなか使い勝手が悪いです。ということで、Mac に元々入っているプログラムをそのまま活かせると巷で（？）評判のいい [Homebrew](http://mxcl.github.com/homebrew/) に移行してみることにしました。
+
+- [FinkでもMacPortsでもないパッケージ環境「Homebrew」](http://builder.japan.zdnet.com/os-admin/sp_snow-leopard-09/20411647/)
+- [MacPortsからHomebrewに移行しつつある](http://tech.portalshit.net/2010/08/31/macports-is-deprecated/)
+
+### Homebrewのインストール
+
+{% gist 4287665 install-homebrew.sh %}
+
+### 参考リンク
+
+- [Installation - GitHub](https://github.com/mxcl/homebrew/wiki/Installation)
+- [Macのパッケージ管理をMacPortsからhomebrewへ](http://d.hatena.ne.jp/yonchu/20110226/1298723822)
+- [Macで環境を整えるための環境-homebrewとrvmとrubygems-](http://d.hatena.ne.jp/kakkunpakkun/20100921/1285075762)

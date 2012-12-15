@@ -1,0 +1,88 @@
+---
+layout: post
+title: How to Set Up New Macbook Air
+---
+
+I love the Macbook Air. This is by far the best computer I've ever used. Recently, I got new Macbook Air and set up it for development. This is a memo I used for set up.
+
+### System Preferences
+
+Some default preferences are not useful. I hope that these preferences become default on the next MacOSX. You should change some of them. The followings are examples:
+
+- Keybord > Keyboard
+    - Check *"Use all F1, F2, etc..."*
+    - Modifier Keys -> Bind Caps Lock Key as Control Key
+- Security > Privacy
+    - Check *"Require password immediately after sleep or screen saver begins"*
+- Displays
+    - Check *"Show displays in menu bar"*
+- Dock
+    - Check *"Automatically hide and show the Dock"*
+- Date and Time
+    - Time Zone -> Check *"Set time zone automatically using current location"*
+    - Clock -> Check *"Show date"*
+- Sharing
+    - Edit *"Computer Name"* you like
+
+### Install Desktop Applications
+
+- AppStore
+    - Xcode
+    - YoruFukurou (Twitter Client)
+    - Day One (Personal Diary)
+    - Evernote
+    - Skitch
+    - Reeder (RSS Reader)
+    - Growl
+    - SourceTree
+- Others
+    - Command Line Tools for Xcode
+    - iTerm2
+    - Chrome
+    - Firefox
+    - LimeChat
+    - Skype<
+    - Dropbox
+    - KeePassX (Password Manager)
+    - Mendeley (Paper Management Tool)
+    - mi (Text Editor)
+    - smcFanControl (Fan Controller)
+
+### Install Terminal Applications
+
+Homebrew is a famous package manager for MacOSX. If you want to know it more, see [here](http://mxcl.github.com/homebrew/).
+
+```
+#!/bin/sh
+ 
+# Install Homebrew
+ruby -e "$(curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+brew install \
+         git \
+         tmux \
+         zsh \
+```
+
+### Install My Dotfiles
+
+A lot of dot files like .vimrc, .zshrc, and .tmux.conf are needed for a comfortable terminal environment. I manages these files with github and clones it as necessary.
+
+```
+#!/bin/sh
+ 
+chsh -s /bin/zsh
+ 
+# setup my dotfiles & oh-my-zsh
+git clone git://github.com/takus/dotfiles.git ~/.dotfiles
+~/.dotfiles/install/install.sh 
+ 
+# Install Vim Plugins with vundle
+~/.dotfiles/install/vim-bundle.sh 
+ 
+# Install Perlbrew
+~/.dotfiles/install/perlbrew.sh 
+```
+
+### Conclusion
+
+I introduced how to set up new Macbook Air for development. Any suggestions? Feel free to contact me :)
