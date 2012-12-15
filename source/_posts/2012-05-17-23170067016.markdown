@@ -5,7 +5,7 @@ title: How to Set Up New Macbook Air
 
 I love the Macbook Air. This is by far the best computer I've ever used. Recently, I got new Macbook Air and set up it for development. This is a memo I used for set up.
 
-### System Preferences
+## System Preferences
 
 Some default preferences are not useful. I hope that these preferences become default on the next MacOSX. You should change some of them. The followings are examples:
 
@@ -24,7 +24,7 @@ Some default preferences are not useful. I hope that these preferences become de
 - Sharing
     - Edit *"Computer Name"* you like
 
-### Install Desktop Applications
+## Install Desktop Applications
 
 - AppStore
     - Xcode
@@ -48,7 +48,7 @@ Some default preferences are not useful. I hope that these preferences become de
     - mi (Text Editor)
     - smcFanControl (Fan Controller)
 
-### Install Terminal Applications
+## Install Terminal Applications
 
 Homebrew is a famous package manager for MacOSX. If you want to know it more, see [here](http://mxcl.github.com/homebrew/).
 
@@ -63,7 +63,7 @@ brew install \
          zsh \
 ```
 
-### Install My Dotfiles
+## Install My Dotfiles
 
 A lot of dot files like .vimrc, .zshrc, and .tmux.conf are needed for a comfortable terminal environment. I manages these files with github and clones it as necessary.
 
@@ -83,6 +83,6 @@ git clone git://github.com/takus/dotfiles.git ~/.dotfiles
 ~/.dotfiles/install/perlbrew.sh 
 ```
 
-### Conclusion
+## Conclusion
 
 I introduced how to set up new Macbook Air for development. Any suggestions? Feel free to contact me :)

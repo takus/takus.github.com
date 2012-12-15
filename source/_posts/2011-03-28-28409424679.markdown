@@ -9,11 +9,11 @@ MacOSX向けのパッケージマネージャーといえば [MacPorts](http://w
 - [FinkでもMacPortsでもないパッケージ環境「Homebrew」](http://builder.japan.zdnet.com/os-admin/sp_snow-leopard-09/20411647/)
 - [MacPortsからHomebrewに移行しつつある](http://tech.portalshit.net/2010/08/31/macports-is-deprecated/)
 
-### Homebrewのインストール
+## Homebrewのインストール
 
 {% gist 4287665 install-homebrew.sh %}
 
-### 参考リンク
+## 参考リンク
 
 - [Installation - GitHub](https://github.com/mxcl/homebrew/wiki/Installation)
 - [Macのパッケージ管理をMacPortsからhomebrewへ](http://d.hatena.ne.jp/yonchu/20110226/1298723822)

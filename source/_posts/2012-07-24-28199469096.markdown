@@ -1,0 +1,6 @@
+---
+layout: post
+title: 会社のブログを書きました
+---
+
+[「Web若手エンジニアの会」を開催しました - Technology of DeNA](http://engineer.dena.jp/2012/07/web.html)
