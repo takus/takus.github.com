@@ -3,7 +3,7 @@
 # ----------------------- #
 
 url: http://blog.takus.me
-title: Always Available
+title: TAKUMI SAKAMOTO'S BLOG
 subtitle: A weblog about Web Operations, Programming, Football, Travel and Other My Interests.
 author: Takumi Sakamoto
 simple_search: http://google.com/search
@@ -61,7 +61,7 @@ default_asides: [custom/asides/about.html, asides/recent_posts.html, asides/gith
 github_user: takus
 github_repo_count: 5
 github_show_profile_link: true
-github_skip_forks: true
+github_skip_forks: false 
 
 # Twitter
 twitter_user: takus

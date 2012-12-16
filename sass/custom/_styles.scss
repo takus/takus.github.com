@@ -1,25 +1,35 @@
-#content article ul {
-    margin-left: 20px;
+/* ----- main layout ----- */
+
+body { 
+  font-size: 1.0em; 
 }
 
 /* ----- Content ----- */
 
 #content .blog-index article h1 {
-  font-size: 1.8em;
-}
-
-h1 { 
-  font-size: 1.8em;
-}
-
-article h2 {
-  background: none;
   font-size: 1.5em;
+}
+
+#content .entry-title article h1 {
+  font-size: 1.5em;
+}
+
+#content h1 { 
+  font-size: 1.5em;
+}
+
+#content article h2 {
+  background: none;
+  font-size: 1.2em;
   border-left: 4px solid #333333;  
   padding: .3em .4em 
 }
 
-article h3 {
+#content article h3 {
   font-size: 1.2em;
   font-weight: normal;
+}
+
+#content article ul {
+  margin-left: 20px;
 }
