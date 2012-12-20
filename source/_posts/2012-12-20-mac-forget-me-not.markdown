@@ -16,9 +16,14 @@ Macbook で外部ディスプレイを利用してる人なら「このウィン
 
 自分は forget-me-not で十分なのでほかのソフトは調べてませんが、他にも有料のより高機能なソフトがあったり、[@hirose31](https://twitter.com/hirose31) さんのように AppleScript で好みの配置に並べるという手もあるようなので、参考までに並べておきます。自分も興味あるので、使ってみた感想とかあれば教えていただけると嬉しいです。
 
+## 追記 2012/12/21
+
+モロ被りなタイミングで [@kenjiskywalker](https://twitter.com/kenjiskywalker) さんが [Stay](http://cordlessdog.com/stay/) の[紹介記事](http://d.hatena.ne.jp/kenjiskywalker/20121219/1355932932)を書いてらっしゃったので参考リンクに追加させていただきます。forget-me-not が環境によってはうまく動かなかったりすることもあるみたいなので、そんな方は Stay を試してみるといいかもしれません。買ってみようと思った方はぜひあちらのブログのリンクを踏んで買っていただければと思います！
+
 ## 参考リンク
 
 - [forget-me-not](http://www.n8gray.org/code/forget-me-not/)
+- [StayさえあればもうMBAをサブディスプレイに繋げるのは怖くない - kenjiskywalker no memo](http://d.hatena.ne.jp/kenjiskywalker/20121219/1355932932)
 - [ウィンドウをキッチリカッチリ配置したい - (ひ)メモ](http://d.hatena.ne.jp/hirose31/20101007/1286383903)
 - [breeze](http://www.autumnapps.com/breeze/)
 - [stay](http://cordlessdog.com/stay/)
