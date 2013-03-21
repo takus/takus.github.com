@@ -7,7 +7,7 @@ comments: true
 
 あけましておめでとうございます。年越し前に書こうと思っていましたが、あけおめ砲に備えて色々準備してるうちにいつの間にか年越ししてしまっていたので、今さらながら 2012 年を振り返ってみます。
 
-{% img http://pcdn.500px.net/9882539/0eb0c471c85fbacab2d06939b8079aff61de1641/4.jpg 640 480 'Dubrovnik Old City by Takumi Sakamoto (takus) on 500px.com' %}
+{% img http://pcdn.500px.net/9882539/0eb0c471c85fbacab2d06939b8079aff61de1641/4.jpg 640 480 'Dubrovnik Old City by Takumi Sakamoto (takus) on 500px.com' %}  
 [Dubrovnik: The best place I've been to last year](http://500px.com/photo/9882539)
 
 ## 卒業

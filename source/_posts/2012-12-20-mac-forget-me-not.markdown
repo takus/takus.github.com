@@ -5,7 +5,7 @@ date: 2012-12-20 02:00
 comments: true
 ---
 
-{% img http://farm6.staticflickr.com/5063/5556853286_09066cac50_z.jpg 640 427 %}
+{% img http://farm6.staticflickr.com/5063/5556853286_09066cac50_z.jpg 640 427 %}  
 By [Theis Kofoed Hjorth](http://www.flickr.com/photos/kofoed/3751360757/)
 
 Macbook で外部ディスプレイを利用してる人なら「このウィンドウはここに配置しておきたい！」みたいなのがあるかと思います。自分の場合は、MacbookAir のディスプレイにブラウザと Twitter、メインディスプレイに作業用のターミナル、サブディスプレイにサービスのダッシュボードやエラーログを tail するターミナルなんかを並べていて、各ウィンドウごとにポジションを決めて使っています。
