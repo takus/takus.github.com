@@ -6,7 +6,7 @@ comments: true
 category:  
 ---
 
-最近、社内 TechTalk で何か話せという依頼があり、ちょうど [Riak Serious Talk]() もあったので、[Riak](http://docs.basho.com/riak/latest/) について話そうと思って、色々調べつつひとまずインストールしてみました。ほとんど Riak のドキュメントに書いてある通りなので特に新しい情報はないと思います。
+最近、社内 TechTalk で何か話せという依頼があり、ちょうど [Riak Serious Talk](http://www.zusaar.com/event/563010) もあるので、[Riak](http://docs.basho.com/riak/latest/) についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。
 
 ## インストール
 
