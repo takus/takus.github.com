@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[TAKUMI SAKAMOTO'S BLOG]]></title>
-  <link href="http://takus.github.com/atom.xml" rel="self"/>
-  <link href="http://takus.github.com/"/>
-  <updated>2013-03-28T12:26:11+09:00</updated>
-  <id>http://takus.github.com/</id>
+  <link href="http://blog.takus.me/atom.xml" rel="self"/>
+  <link href="http://blog.takus.me/"/>
+  <updated>2013-03-28T12:27:08+09:00</updated>
+  <id>http://blog.takus.me/</id>
   <author>
     <name><![CDATA[Takumi Sakamoto]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[CentOS に Riak をインストール & Data::Riak::Fast で操作してみる]]></title>
-    <link href="http://takus.github.com/2013/03/28/riak-install/"/>
+    <link href="http://blog.takus.me/2013/03/28/riak-install/"/>
     <updated>2013-03-28T11:00:00+09:00</updated>
-    <id>http://takus.github.com/2013/03/28/riak-install</id>
+    <id>http://blog.takus.me/2013/03/28/riak-install</id>
     <content type="html"><![CDATA[<p>最近、社内 TechTalk で何か話せという依頼があり、ちょうど <a href="http://www.zusaar.com/event/563010">Riak Serious Talk</a> もあるので、<a href="http://docs.basho.com/riak/latest/">Riak</a> についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。</p>
 
 <h2>インストール</h2>
@@ -165,9 +165,9 @@
   
   <entry>
     <title type="html"><![CDATA[Test::Fake::HTTPD で Web API クライアントをテスト]]></title>
-    <link href="http://takus.github.com/2013/03/22/test-web-api-client/"/>
+    <link href="http://blog.takus.me/2013/03/22/test-web-api-client/"/>
     <updated>2013-03-22T03:00:00+09:00</updated>
-    <id>http://takus.github.com/2013/03/22/test-web-api-client</id>
+    <id>http://blog.takus.me/2013/03/22/test-web-api-client</id>
     <content type="html"><![CDATA[<p>ある社内向け Web API のクライアントのテスト書く時にどうすべきかなと小一時間調べてみて、<a href="https://metacpan.org/module/Test::Fake::HTTPD">Test::Fake::HTTPD</a> がよさそうなので使ってみたメモ。思うがままにレスポンス返せるし、実際に本番サーバ叩いたりしなくてもいいし、オフラインでもテストできて、だいぶテストが捗りそうです。</p>
 
 <figure class='code'><figcaption><span>Here&#8217;s an example of Test::Fake::HTTPD.  </span></figcaption>
@@ -301,9 +301,9 @@
   
   <entry>
     <title type="html"><![CDATA[2012 年を振り返って]]></title>
-    <link href="http://takus.github.com/2013/01/01/2012-to-2013/"/>
+    <link href="http://blog.takus.me/2013/01/01/2012-to-2013/"/>
     <updated>2013-01-01T03:22:00+09:00</updated>
-    <id>http://takus.github.com/2013/01/01/2012-to-2013</id>
+    <id>http://blog.takus.me/2013/01/01/2012-to-2013</id>
     <content type="html"><![CDATA[<p>あけましておめでとうございます。年越し前に書こうと思っていましたが、あけおめ砲に備えて色々準備してるうちにいつの間にか年越ししてしまっていたので、今さらながら 2012 年を振り返ってみます。</p>
 
 <p><img src="http://pcdn.500px.net/9882539/0eb0c471c85fbacab2d06939b8079aff61de1641/4.jpg" width="640" height="480" title="'Dubrovnik Old City by Takumi Sakamoto (takus) on 500px.com'" ><br/>
@@ -337,9 +337,9 @@
   
   <entry>
     <title type="html"><![CDATA[Macbook で外部ディスプレイ接続時にウィンドウをイイカンジに並べる]]></title>
-    <link href="http://takus.github.com/2012/12/20/mac-forget-me-not/"/>
+    <link href="http://blog.takus.me/2012/12/20/mac-forget-me-not/"/>
     <updated>2012-12-20T02:00:00+09:00</updated>
-    <id>http://takus.github.com/2012/12/20/mac-forget-me-not</id>
+    <id>http://blog.takus.me/2012/12/20/mac-forget-me-not</id>
     <content type="html"><![CDATA[<p><img src="http://farm6.staticflickr.com/5063/5556853286_09066cac50_z.jpg" width="640" height="427"><br/>
 By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth</a></p>
 
@@ -371,9 +371,9 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
   
   <entry>
     <title type="html"><![CDATA[YAPC::ASIA 2012 に行ってきた]]></title>
-    <link href="http://takus.github.com/2012/10/06/32974165602/"/>
+    <link href="http://blog.takus.me/2012/10/06/32974165602/"/>
     <updated>2012-10-06T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2012/10/06/32974165602</id>
+    <id>http://blog.takus.me/2012/10/06/32974165602</id>
     <content type="html"><![CDATA[<p>ブログを書くまでが YAPC ということで，遅ればせながらブログを書こうと思います．ブログが数ヶ月ぶりの更新ですね…orz</p>
 
 <h2>事実を積み上げて判断。古典的でも地道にやる</h2>
@@ -396,18 +396,18 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
   
   <entry>
     <title type="html"><![CDATA[会社のブログを書きました]]></title>
-    <link href="http://takus.github.com/2012/07/24/28199469096/"/>
+    <link href="http://blog.takus.me/2012/07/24/28199469096/"/>
     <updated>2012-07-24T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2012/07/24/28199469096</id>
+    <id>http://blog.takus.me/2012/07/24/28199469096</id>
     <content type="html"><![CDATA[<p><a href="http://engineer.dena.jp/2012/07/web.html">「Web若手エンジニアの会」を開催しました - Technology of DeNA</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Monitoring Casual Talk に行ってきた]]></title>
-    <link href="http://takus.github.com/2012/06/18/28199466903/"/>
+    <link href="http://blog.takus.me/2012/06/18/28199466903/"/>
     <updated>2012-06-18T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2012/06/18/28199466903</id>
+    <id>http://blog.takus.me/2012/06/18/28199466903</id>
     <content type="html"><![CDATA[<p>サーバ・リソース監視に関するお話をする <a href="http://atnd.org/events/29621">Monitoring Casual Talk #1</a> という勉強会に行って、ちょっとだけ喋らせてもらってきました。</p>
 
 <h2>自分の発表について</h2>
@@ -443,9 +443,9 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
   
   <entry>
     <title type="html"><![CDATA[How to Set Up New Macbook Air]]></title>
-    <link href="http://takus.github.com/2012/05/17/23170067016/"/>
+    <link href="http://blog.takus.me/2012/05/17/23170067016/"/>
     <updated>2012-05-17T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2012/05/17/23170067016</id>
+    <id>http://blog.takus.me/2012/05/17/23170067016</id>
     <content type="html"><![CDATA[<p>I love the Macbook Air. This is by far the best computer I&#8217;ve ever used. Recently, I got new Macbook Air and set up it for development. This is a memo I used for set up.</p>
 
 <h2>System Preferences</h2>
@@ -591,9 +591,9 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
   
   <entry>
     <title type="html"><![CDATA[クロアチア〜スロベニア〜イタリアに行ってきた]]></title>
-    <link href="http://takus.github.com/2012/03/24/28199464257/"/>
+    <link href="http://blog.takus.me/2012/03/24/28199464257/"/>
     <updated>2012-03-24T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2012/03/24/28199464257</id>
+    <id>http://blog.takus.me/2012/03/24/28199464257</id>
     <content type="html"><![CDATA[<p>1 人でクロアチア〜スロベニア〜イタリアあたりに約 10 日間滞在してきた記録のまとめ。旅の準備、現地での生活、撮影した写真、かかったお金など。誰かの参考になればと思ってまとめてみました。</p>
 
 <p><img src="http://pcdn.500px.net/9882539/0eb0c471c85fbacab2d06939b8079aff61de1641/4.jpg" width="640" height="480" title="'Dubrovnik Old City by Takumi Sakamoto (takus) on 500px.com'" ></p>
@@ -760,9 +760,9 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
   
   <entry>
     <title type="html"><![CDATA[2011 年の振り返りと 2012 年の目標]]></title>
-    <link href="http://takus.github.com/2012/01/06/28199462010/"/>
+    <link href="http://blog.takus.me/2012/01/06/28199462010/"/>
     <updated>2012-01-06T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2012/01/06/28199462010</id>
+    <id>http://blog.takus.me/2012/01/06/28199462010</id>
     <content type="html"><![CDATA[<p>2012 年もすでに何日か経ってしまいましたが、2011 年を振り返りつつ、2012 年の目標でも書いておこうかと思います。やっぱり 1 年を振り返って、次の目標を立てるのは大事ですよね。(宣言すると努力せざるを得ないという点でも&#8230;)</p>
 
 <h2>2011 年の出来事</h2>
@@ -831,9 +831,9 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
   
   <entry>
     <title type="html"><![CDATA[s3fs を使って Amazon S3 を Linux にマウントする]]></title>
-    <link href="http://takus.github.com/2011/11/19/28199459336/"/>
+    <link href="http://blog.takus.me/2011/11/19/28199459336/"/>
     <updated>2011-11-19T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2011/11/19/28199459336</id>
+    <id>http://blog.takus.me/2011/11/19/28199459336</id>
     <content type="html"><![CDATA[<p>最近，<a href="http://my365.in">My365</a> という iPhone アプリのサーバサイドを担当することになり，全然使ったことのなかった <a href="http://aws.amazon.com/jp/">Amazon Web Service</a> をほげほげしてるので，その辺のネタの一部を紹介. さくら VPS から Amazon EC2 への移行話もそのうちまとめたいと思います.</p>
 
 <h2>s3fs とは？</h2>
@@ -895,9 +895,9 @@ mkdir $MOUNT_POINT
   
   <entry>
     <title type="html"><![CDATA[YAPC::ASIA 2011 に行ってきた]]></title>
-    <link href="http://takus.github.com/2011/10/17/28199456070/"/>
+    <link href="http://blog.takus.me/2011/10/17/28199456070/"/>
     <updated>2011-10-17T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2011/10/17/28199456070</id>
+    <id>http://blog.takus.me/2011/10/17/28199456070</id>
     <content type="html"><![CDATA[<p>年に 1 度の perl の祭典、<a href="http://yapcasia.org/2011/">YAPC::ASIA 2011</a> に行ってきました。「家に帰ってブログを書くまでが YAPC です」とアナウンスされていたので書いてみました。</p>
 
 
@@ -1054,9 +1054,9 @@ mkdir $MOUNT_POINT
   
   <entry>
     <title type="html"><![CDATA[MacPorts から Homebrew への移行メモ]]></title>
-    <link href="http://takus.github.com/2011/03/28/28409424679/"/>
+    <link href="http://blog.takus.me/2011/03/28/28409424679/"/>
     <updated>2011-03-28T00:00:00+09:00</updated>
-    <id>http://takus.github.com/2011/03/28/28409424679</id>
+    <id>http://blog.takus.me/2011/03/28/28409424679</id>
     <content type="html"><![CDATA[<p>MacOSX向けのパッケージマネージャーといえば <a href="http://www.macports.org/">MacPorts</a> が有名ですが、Mac に元々入っているプログラムもご丁寧に再コンパイルしてくれたりで、ビルドに時間がかかったりして、なかなか使い勝手が悪いです。ということで、Mac に元々入っているプログラムをそのまま活かせると巷で（？）評判のいい <a href="http://mxcl.github.com/homebrew/">Homebrew</a> に移行してみることにしました。</p>
 
 <ul>
