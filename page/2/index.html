@@ -1,0 +1,588 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>TAKUMI SAKAMOTO'S BLOG</title>
+  <meta name="author" content="Takumi Sakamoto">
+
+  
+  <meta name="description" content="最近，My365 という iPhone アプリのサーバサイドを担当することになり，全然使ったことのなかった Amazon Web Service をほげほげしてるので，その辺のネタの一部を紹介. さくら VPS から Amazon EC2 への移行話もそのうちまとめたいと思います. s3fs とは &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.takus.me/page/2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2841066-12']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">TAKUMI SAKAMOTO'S BLOG</a></h1>
+  
+    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.takus.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/11/19/28199459336/">S3fs を使って Amazon S3 を Linux にマウントする</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-19T00:00:00+09:00" pubdate data-updated="true">Nov 19<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近，<a href="http://my365.in">My365</a> という iPhone アプリのサーバサイドを担当することになり，全然使ったことのなかった <a href="http://aws.amazon.com/jp/">Amazon Web Service</a> をほげほげしてるので，その辺のネタの一部を紹介. さくら VPS から Amazon EC2 への移行話もそのうちまとめたいと思います.</p>
+
+<h2>s3fs とは？</h2>
+
+<blockquote><p>FUSE-based file system backed by Amazon S3. Mount a bucket as a local file system read/write. Store files/folders natively and transparently. ―<a href="http://code.google.com/p/s3fs/">s3fs</a></p></blockquote>
+
+<p>というわけで，S3 の bucket をファイルシステムとしてマウントできてしまう便利なツールです. EC2 のインスタンスをターミネートすると基本的に全てのデータが失われてしまうので，全てのサーバが起動時に S3 の bucket をマウントしておくようにし，アプリケーションのログなどは日次で S3 に mv しておき，ターミネートする前にログを S3 に待避するようにしておくと幸せになれます. ((他にいいログ管理ソリューションがあれば教えてください))</p>
+
+<h2>インストール</h2>
+
+<p>こんな感じのスクリプトを使ってあげれば，サクッとインストールできるんじゃないかと思います. エラーチェック等はしてないですのであしからず. インストール後に書き込みを行うと，S3 へファイルが作成されていることが確認できます.</p>
+
+<div><script src='https://gist.github.com/3217044.js?file=install-s3fs.sh'></script>
+<noscript><pre><code>#!/bin/sh
+
+## Description:
+##  install script of s3fs
+##
+## Usage: 
+##  install-s3fs.sh [mountpoint] [bucketName] [accessKeyId] [secretAccessKey]
+
+MOUNT_POINT=$1
+BUCKET_NAME=$2
+ACCESS_KEY=$3
+SECRET_KEY=$4
+
+# install dependent libraries
+yum install -y fuse-devel libcurl-devel libxml2-devel
+
+# install in /usr/local/bin
+cd /usr/local/src
+wget http://s3fs.googlecode.com/files/s3fs-1.61.tar.gz
+tar xvzf s3fs-1.61.tar.gz
+cd s3fs-1.61
+./configure &amp;&amp; make &amp;&amp; make install
+
+# setup secretkey
+echo &quot;$BUCKET_NAME:$ACCESS_KEY:$SECRET_KEY&quot; &gt; /etc/passwd-s3fs
+chmod 600 /etc/passwd-s3fs
+
+# mount s3
+modprobe fuse
+mkdir $MOUNT_POINT 
+/usr/local/bin/s3fs $BUCKET_NAME $MOUNT_POINT -o default_acl=public-read</code></pre></noscript></div>
+
+
+<p>ほかにも，<a href="http://code.google.com/p/s3fs/wiki/FuseOverAmazon">ローカルキャッシュを使って転送量を減らすこと</a>もできるみたいですね．</p>
+
+<h2>s3fs まとめ</h2>
+
+<ul>
+<li>s3fs を使えば，Linux 上に S3 の bucket をマウントできる</li>
+<li>インストールが簡単</li>
+<li>ローカルキャッシュみたいな便利な機能も実装されてる</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/10/17/28199456070/">YAPC::ASIA 2011 に行ってきた</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-17T00:00:00+09:00" pubdate data-updated="true">Oct 17<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>年に 1 度の perl の祭典、<a href="http://yapcasia.org/2011/">YAPC::ASIA 2011</a> に行ってきました。「家に帰ってブログを書くまでが YAPC です」とアナウンスされていたので書いてみました。</p>
+
+
+
+
+<h3>はじめてのYAPC::ASIA 2011</h3>
+
+
+
+
+<p>今回が初めての YAPC 参加。perl は書き始めて半年くらいで知識も浅い状態でしたが、perl という言語自体の話だけでなく、「perl を使って hogehoge した」みたいなトークが多く、perl 初心者でも充分に楽しめました。</p>
+
+
+
+
+<h3>印象に残ったセッション</h3>
+
+
+
+
+<ul><li>Carton: CPAN dependencies manager by @miyagawa さん</li>
+
+<ul><li>Carton という Ruby における Bundler のようなモジュールのお話</li>
+
+<li>プレゼンテーションの流れが非常にロジカルで分かりやすい。参考にしたい。</li>
+
+<li>デモもお洒落でカッコよかった。これも真似したい。</li>
+
+</ul></ul>
+
+
+<ul><li>Perlで構築された中規模サイトのDC引っ越し記録 by @fujiwara さん</li>
+
+<ul><li>KAYACが運営している こえ部 を別の DC に引っ越したというお話</li>
+
+<li>とにかく話にリアリティがあって面白かった</li>
+
+<li>コンポーネント毎に検証しながら少しづつ移行、すごく丁寧</li>
+
+<li>ベストスピーカー賞も納得（もちろん自分も投票しました）</li>
+
+</ul></ul>
+
+
+<ul><li>運用しやすいWebアプリケーションの構築方法 by @kazeburo さん</li>
+
+<ul><li>Log、DB、Cache、Metrics に使える各種モジュールの紹介</li>
+
+<li>単にモジュールの機能の紹介だけでなく、なぜそのような機能が必要なのかまで深掘りして説明していた</li>
+
+<li>説明が丁寧なため、すごくそのモジュールを使ってみたい気分にさせる</li>
+
+</ul></ul>
+
+
+<ul><li>Managing A Band Of Hackers by @higek さん</li>
+
+<ul><li>マネジメントについてすごく真面目ないいお話</li>
+
+<li>その一方で、@hidek さんをいじる TL が横で流れていて面白かった</li>
+
+<li>「1+1が2なら、マネージャーをやる意味はないんです」という言葉が印象的</li>
+
+<li>Being Geek をオススメしてたので読んでみようと思います</li>
+
+</ul></ul>
+
+
+<h3>感想など</h3>
+
+
+
+
+<p>以下、感想です。</p>
+
+
+
+
+<h4>学生無料のありがたさ</h4>
+
+
+
+
+<p>ほんとに助かりました。学生料金を負担していただいたスポンサーの方々本当にありがとうございます。来年は今年の分のお返しができるようにがんばって稼ぎたいと思います（笑）</p>
+
+
+
+
+<h4>有名人たくさん</h4>
+
+
+
+
+<p>今まで TL 上でしか見たことなかった方々を直接見ることができたり、ちょっとだけお話できたりというのは大きな刺激になりました。</p>
+
+
+
+
+<h4>リアリティのある話はおもしろい</h4>
+
+
+
+
+<p>DC 移行話など実務上での苦労やそこでの創意工夫などが盛り込まれたお話っていうのはものすごく面白いと思いました。この辺は、苦労した実装の話が1行で終わるような研究に慣れていた反動なのかもしれませんが。</p>
+
+
+
+
+<h4>知らないこと多すぎ</h4>
+
+
+
+
+<p>あまり使ったことない機能やアプリの話は置いてかれがちなのでとにかく少しでも触っておくべきだと思います。perl コミュニティについても知らないこと多く、自分の無知さを知ったので、日頃からもっとキャッチアップして議論に加わって、前のめりに過ごしていきたいと思います。</p>
+
+
+
+
+<h4>来年に向けてネタ仕込み</h4>
+
+
+
+
+<p>やっぱり聞いてるだけじゃなく、何か発表できたらもっと楽しいんだろうなと思ったので来年（やるのかな？）に向けてネタを仕込んでいく予定。色々話を聞けてアイデアはいくつか生まれたので、思いついたモノはとにかく形にしていく方針で。下手な鉄砲も数打ちゃ当たることでしょう（笑）</p>
+
+
+
+
+<h3>謝辞</h3>
+
+
+
+
+<p>というわけで、本当に楽しい 3 日間でした。素晴らしいカンファレンスの開催を支えてくれた、運営の方々、ボランティアの方々、スピーカーの方々、そして参加者の皆様に感謝です。ありがとうございました。</p>
+
+
+
+
+<h3>参考リンク</h3>
+
+
+
+
+<ul><li><a href="http://gihyo.jp/news/report/01/yapcasia2011">レポート：YAPC::Asia Tokyo 2011 スペシャルレポート｜gihyo.jp … 技術評論社</a></li>
+
+<li><a href="http://togetter.com/li/200639">YAPC::Asia 2011 Tokyo 1日目まとめ - Togetter</a></li>
+
+<li><a href="http://togetter.com/li/200728">YAPC::Asia 2011 Tokyo 2日目まとめ #yapcasia - Togetter</a></li>
+
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/03/28/28409424679/">MacPorts から Homebrew への移行メモ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-28T00:00:00+09:00" pubdate data-updated="true">Mar 28<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>MacOSX向けのパッケージマネージャーといえば <a href="http://www.macports.org/">MacPorts</a> が有名ですが、Mac に元々入っているプログラムもご丁寧に再コンパイルしてくれたりで、ビルドに時間がかかったりして、なかなか使い勝手が悪いです。ということで、Mac に元々入っているプログラムをそのまま活かせると巷で（？）評判のいい <a href="http://mxcl.github.com/homebrew/">Homebrew</a> に移行してみることにしました。</p>
+
+<ul>
+<li><a href="http://builder.japan.zdnet.com/os-admin/sp_snow-leopard-09/20411647/">FinkでもMacPortsでもないパッケージ環境「Homebrew」</a></li>
+<li><a href="http://tech.portalshit.net/2010/08/31/macports-is-deprecated/">MacPortsからHomebrewに移行しつつある</a></li>
+</ul>
+
+
+<h2>Homebrewのインストール</h2>
+
+<div><script src='https://gist.github.com/4287665.js?file=install-homebrew.sh'></script>
+<noscript><pre><code>#!/bin/sh
+ 
+#### UNINSTALL MacPorts
+ 
+# save installed package by MacPorts before uninstall
+sudo port installed &gt; ~/myports.log
+ 
+# Uninstall MacPorts
+# You should also remove /opt/local/bin &amp; /opt/local/sbin in your PATH
+sudo port -f uninstall installed
+sudo rm -rf /opt/local/
+ 
+#### INSTALL HOMEBREW
+ 
+# Install Homebrew
+ruby -e &quot;$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)&quot;
+ 
+# Install git by brew for updating Homebrew itself
+brew install git
+ 
+# Update Homebrew
+brew update
+ 
+#### UPDATE YOUR PATH
+echo 'export PATH=/usr/local/bin:$PATH' &gt;&gt; ~/.bash_profile
+ 
+#### INSTALL MYSQL BY HOMEBREW
+brew install mysql</code></pre></noscript></div>
+
+
+<h2>参考リンク</h2>
+
+<ul>
+<li><a href="https://github.com/mxcl/homebrew/wiki/Installation">Installation - GitHub</a></li>
+<li><a href="http://d.hatena.ne.jp/yonchu/20110226/1298723822">Macのパッケージ管理をMacPortsからhomebrewへ</a></li>
+<li><a href="http://d.hatena.ne.jp/kakkunpakkun/20100921/1285075762">Macで環境を整えるための環境-homebrewとrvmとrubygems-</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <div style="margin-top:10px">
+    Takumi Sakamoto<br />
+    Operation Enginner - DeNA Co., Ltd.<br />
+  </div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/03/28/riak-install/">CentOS に Riak をインストール & Data::Riak::Fast で操作してみる</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/22/test-web-api-client/">Test::Fake::HTTPD で Web API クライアントをテスト</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/01/2012-to-2013/">2012 年を振り返って</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/mac-forget-me-not/">Macbook で外部ディスプレイ接続時にウィンドウをイイカンジに並べる</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/06/32974165602/">YAPC::ASIA 2012 に行ってきた</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/takus">@takus</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'takus',
+            count: 5,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("takus", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
+  
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Takumi Sakamoto -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'takus';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
