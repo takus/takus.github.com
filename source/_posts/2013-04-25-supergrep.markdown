@@ -38,7 +38,7 @@ http://hostname:3000 にブラウザからアクセスするとログが見れ�
 
 ## 設定
 
-デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config もありましたが今回は必要してないので調べてません。
+デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config 等もありましたが、今回は必要としてないので調べてません。
 
 {% codeblock localConfig.js lang:javascript %}
     files: [
