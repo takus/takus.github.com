@@ -4,7 +4,7 @@
   <title><![CDATA[TAKUMI SAKAMOTO'S BLOG]]></title>
   <link href="http://blog.takus.me/atom.xml" rel="self"/>
   <link href="http://blog.takus.me/"/>
-  <updated>2013-04-25T01:32:37+09:00</updated>
+  <updated>2013-04-25T01:44:00+09:00</updated>
   <id>http://blog.takus.me/</id>
   <author>
     <name><![CDATA[Takumi Sakamoto]]></name>
@@ -66,7 +66,7 @@
 
 <h2>設定</h2>
 
-<p>デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config もありましたが今回は必要してないので調べてません。</p>
+<p>デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config 等もありましたが、今回は必要としてないので調べてません。</p>
 
 <figure class='code'><figcaption><span>localConfig.js  </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -146,7 +146,7 @@
 
 <p>今回は非エンジニアにログを見せるという案件のために使ってみましたが、インストール簡単でそれなりに機能が豊富なので色々と使い道は多そうなツールになっていて、スマホからも見れるので休日のアラート対応などでちょっと Mac 開けないみたいな場合の状況確認なんかにも使えそうです。</p>
 
-<p>同じようなツールに riywo さんが紹介していた [webtail] (http://tech.riywo.com/blog/2013/04/23/webtail-plus-ncat-equals-simple-log-monitoring-slash/) みたいなものもあるみたいで、こちらは標準入力からログを受け取れるあたりがカジュアルでよさそうに思いました。</p>
+<p>同じようなツールに riywo さんが紹介していた <a href="http://tech.riywo.com/blog/2013/04/23/webtail-plus-ncat-equals-simple-log-monitoring-slash/">webtail</a> みたいなものもあるみたいで、こちらは標準入力からログを受け取れるあたりがカジュアルでよさそうに思いました。</p>
 
 <p>関係ない話ですが octopress で勝手に capitalize されるのがウザい場合、_config.yml で titlecase: false すると幸せになれるみたいです。</p>
 ]]></content>
