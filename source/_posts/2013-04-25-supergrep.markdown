@@ -89,6 +89,6 @@ http://hostname:3000 にブラウザからアクセスするとログが見れ�
 
 今回は非エンジニアにログを見せるという案件のために使ってみましたが、インストール簡単でそれなりに機能が豊富なので色々と使い道は多そうなツールになっていて、スマホからも見れるので休日のアラート対応などでちょっと Mac 開けないみたいな場合の状況確認なんかにも使えそうです。
 
-同じようなツールに riywo さんが紹介していた [webtail] (http://tech.riywo.com/blog/2013/04/23/webtail-plus-ncat-equals-simple-log-monitoring-slash/) みたいなものもあるみたいで、こちらは標準入力からログを受け取れるあたりがカジュアルでよさそうに思いました。
+同じようなツールに riywo さんが紹介していた [webtail](http://tech.riywo.com/blog/2013/04/23/webtail-plus-ncat-equals-simple-log-monitoring-slash/) みたいなものもあるみたいで、こちらは標準入力からログを受け取れるあたりがカジュアルでよさそうに思いました。
 
 関係ない話ですが octopress で勝手に capitalize されるのがウザい場合、_config.yml で titlecase: false すると幸せになれるみたいです。
