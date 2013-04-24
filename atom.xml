@@ -4,7 +4,7 @@
   <title><![CDATA[TAKUMI SAKAMOTO'S BLOG]]></title>
   <link href="http://blog.takus.me/atom.xml" rel="self"/>
   <link href="http://blog.takus.me/"/>
-  <updated>2013-04-25T01:18:34+09:00</updated>
+  <updated>2013-04-25T01:32:37+09:00</updated>
   <id>http://blog.takus.me/</id>
   <author>
     <name><![CDATA[Takumi Sakamoto]]></name>
@@ -125,18 +125,16 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;logsource-options&quot;</span> <span class="na">class=</span><span class="s">&quot;display-option-group&quot;</span><span class="nt">&gt;</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;logsource-options&quot;</span> <span class="na">class=</span><span class="s">&quot;display-option-group&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;display-option&quot;</span> <span class="na">for=</span><span class="s">&quot;log-web&quot;</span><span class="nt">&gt;</span>Web: <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;log-web&quot;</span> <span class="na">class=</span><span class="s">&quot;log-option&quot;</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-log=</span><span class="s">&quot;web&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;120&quot;</span> <span class="na">checked</span><span class="nt">&gt;&lt;/label&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;display-option&quot;</span> <span class="na">for=</span><span class="s">&quot;log-app&quot;</span><span class="nt">&gt;</span>App: <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;log-app&quot;</span> <span class="na">class=</span><span class="s">&quot;log-option&quot;</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-log=</span><span class="s">&quot;app&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;120&quot;</span> <span class="na">checked</span><span class="nt">&gt;&lt;/label&gt;</span>
 </span><span class='line'><span class="nt">&lt;/div&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>お目当ての tail -f log | grep keyword</h2>
+<h2>tail -f log | grep keyword</h2>
 
-<p>こんな感じでフィルタリングできます。チェック押せば grep -v もできます。</p>
+<p>見にくいですが、キーワード指定してフィルタリングできます。チェック押せば grep -v もできます。</p>
 
 <p><img src="http://farm9.staticflickr.com/8399/8678666106_1e7cb86c29_z.jpg" width="800" height="250"></p>
 
@@ -148,7 +146,9 @@
 
 <p>今回は非エンジニアにログを見せるという案件のために使ってみましたが、インストール簡単でそれなりに機能が豊富なので色々と使い道は多そうなツールになっていて、スマホからも見れるので休日のアラート対応などでちょっと Mac 開けないみたいな場合の状況確認なんかにも使えそうです。</p>
 
-<p>同じようなツールに riywo さんが紹介していた [webtail] (http://tech.riywo.com/blog/2013/04/23/webtail-plus-ncat-equals-simple-log-monitoring-slash/) みたいなものもあるみたいで、こちらは標準入力からログを受け取れるあたりがカジュアルでよさそうではないかと思いました。</p>
+<p>同じようなツールに riywo さんが紹介していた [webtail] (http://tech.riywo.com/blog/2013/04/23/webtail-plus-ncat-equals-simple-log-monitoring-slash/) みたいなものもあるみたいで、こちらは標準入力からログを受け取れるあたりがカジュアルでよさそうに思いました。</p>
+
+<p>関係ない話ですが octopress で勝手に capitalize されるのがウザい場合、_config.yml で titlecase: false すると幸せになれるみたいです。</p>
 ]]></content>
   </entry>
   
