@@ -9,7 +9,7 @@
   <meta name="author" content="Takumi Sakamoto">
 
   
-  <meta name="description" content="最近、社内 TechTalk で何か話せという依頼があり、ちょうど Riak Serious Talk もあるので、Riak についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。 インストール Vagrantbox.es &hellip;">
+  <meta name="description" content="エンジニアならサーバにログインしてコマンド打てば済む話ですが、世の中には非エンジニアでも tail -f log | grep keyword みたいにログを見れるようにしたいという案件がたまにあるみたいです。自分で書いてもよかったのですが、supergrep &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,172 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/04/25/supergrep/">ブラウザから Tail -f Log | Grep Keyword できるツール Supergrep</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-25T00:00:00+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>エンジニアならサーバにログインしてコマンド打てば済む話ですが、世の中には非エンジニアでも tail -f log | grep keyword みたいにログを見れるようにしたいという案件がたまにあるみたいです。自分で書いてもよかったのですが、supergrep というツールがあったので使ってみました。</p>
+
+<ul>
+<li><a href="http://codeascraft.etsy.com/2012/06/28/is-it-a-bird-is-it-a-plane-no-its-supergrep/">Is It A Bird? Is It A Plane? No, It’s Supergrep!</a></li>
+<li><a href="https://github.com/etsy/supergrep">esty/supergrep</a></li>
+</ul>
+
+
+<h2>インストール</h2>
+
+<p>supergrep は node.js で書かれているので、node のインストールから。node の作法はよく知らないので適当です。</p>
+
+<figure class='code'><figcaption><span>install supergrep  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>git clone https://github.com/creationix/nvm.git ~/nvm
+</span><span class='line'><span class="nv">$ </span>. ~/nvm/nvm.sh
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>nvm install v0.10.5
+</span><span class='line'><span class="nv">$ </span>nvm <span class="nb">alias </span>default v0.10.5
+</span><span class='line'><span class="nv">$ </span>node -v
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>続いて supergrep をインストールして起動します。これだけ。起動時に &#8216;Warning: express.createServer() is deprecated, express&#8217; が出るのはご愛敬。</p>
+
+<figure class='code'><figcaption><span>install supergrep  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>git clone https://github.com/etsy/supergrep.git
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>supergrep
+</span><span class='line'><span class="nv">$ </span>npm install
+</span><span class='line'><span class="nv">$ </span>./runlocal
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>http://hostname:3000 にブラウザからアクセスするとログが見れる状態になりました。</p>
+
+<p><img src="http://farm9.staticflickr.com/8402/8677559587_e5abefa49e_z.jpg" width="800" height="250"></p>
+
+<h2>設定</h2>
+
+<p>デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config もありましたが今回は必要してないので調べてません。</p>
+
+<figure class='code'><figcaption><span>localConfig.js  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="nx">files</span><span class="o">:</span> <span class="p">[</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;web&#39;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">path</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;/var/log/httpd/info.log&#39;</span><span class="p">,</span> <span class="s1">&#39;/var/log/httpd/php.log&#39;</span><span class="p">]</span>
+</span><span class='line'>            <span class="c1">// you can also do this</span>
+</span><span class='line'>            <span class="c1">//            filter: function (line, config) {</span>
+</span><span class='line'>            <span class="c1">//                if (! line.match(config.noisyErrors)) {</span>
+</span><span class='line'>            <span class="c1">//                    return line;</span>
+</span><span class='line'>            <span class="c1">//                } else {</span>
+</span><span class='line'>            <span class="c1">//                    return;</span>
+</span><span class='line'>            <span class="c1">//               }</span>
+</span><span class='line'>            <span class="c1">//            }</span>
+</span><span class='line'>            <span class="c1">//</span>
+</span><span class='line'>            <span class="c1">//  make sure to define below (in the config namespace):</span>
+</span><span class='line'>            <span class="c1">//    noisyErrors: new RegExp (/(something to ignore)/),</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>        <span class="c1">// add more files entries here if you want</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">maxLines</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/data/oreno/app.log&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">],</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このままだとダッシュボードで操作できなかったので下記の設定を static/index.html に追加したり。</p>
+
+<figure class='code'><figcaption><span>static/index.html  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;logsource-options&quot;</span> <span class="na">class=</span><span class="s">&quot;display-option-group&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;display-option&quot;</span> <span class="na">for=</span><span class="s">&quot;log-web&quot;</span><span class="nt">&gt;</span>Web: <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;log-web&quot;</span> <span class="na">class=</span><span class="s">&quot;log-option&quot;</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-log=</span><span class="s">&quot;web&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;120&quot;</span> <span class="na">checked</span><span class="nt">&gt;&lt;/label&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;display-option&quot;</span> <span class="na">for=</span><span class="s">&quot;log-app&quot;</span><span class="nt">&gt;</span>App: <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;log-app&quot;</span> <span class="na">class=</span><span class="s">&quot;log-option&quot;</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-log=</span><span class="s">&quot;app&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;120&quot;</span> <span class="na">checked</span><span class="nt">&gt;&lt;/label&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>お目当ての tail -f log | grep keyword</h2>
+
+<p>こんな感じでフィルタリングできます。チェック押せば grep -v もできます。</p>
+
+<p><img src="http://farm9.staticflickr.com/8399/8678666106_1e7cb86c29_z.jpg" width="800" height="250"></p>
+
+<p>ハイライトもできるので、CRITICAL や、特定のホスト名だけ目立たせてもよさそうです。</p>
+
+<p><img src="http://farm9.staticflickr.com/8265/8678666130_803c58ee4b_z.jpg" width="800" height="250"></p>
+
+<h2>まとめ</h2>
+
+<p>今回は非エンジニアにログを見せるという案件のために使ってみましたが、インストール簡単でそれなりに機能が豊富なので色々と使い道は多そうなツールになっていて、スマホからも見れるので休日のアラート対応などでちょっと Mac 開けないみたいな場合の状況確認なんかにも使えそうです。</p>
+
+<p>同じようなツールに riywo さんが紹介していた [webtail] (http://tech.riywo.com/blog/2013/04/23/webtail-plus-ncat-equals-simple-log-monitoring-slash/) みたいなものもあるみたいで、こちらは標準入力からログを受け取れるあたりがカジュアルでよさそうではないかと思いました。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1065,104 +1231,6 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/01/06/28199462010/">2011 年の振り返りと 2012 年の目標</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-06T00:00:00+09:00" pubdate data-updated="true">Jan 6<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>2012 年もすでに何日か経ってしまいましたが、2011 年を振り返りつつ、2012 年の目標でも書いておこうかと思います。やっぱり 1 年を振り返って、次の目標を立てるのは大事ですよね。(宣言すると努力せざるを得ないという点でも&#8230;)</p>
-
-<h2>2011 年の出来事</h2>
-
-<h3>3 月 震災の日</h3>
-
-<p>ちょうど内定先の面接を受け終わって、オフィスを出た直後に被災しました。電車は止まってどうしようもないので、新宿から横浜の自宅まで徒歩で帰宅。あの状況の中で、一人で長時間歩いて帰るのは正直辛かったですが、twitter で色んな人が励ましてくれて、非常に助かりました。そんな中で思ったことがこんなことでした。</p>
-
-<blockquote><p>昨日は新宿から家に着くまでずっと一人で不安だったわけだけど、ネットワークが生きていてtwitterで情報が得られたことはすごく心強かった。落ちないネットワーク、落ちないサービスを作ることがこんなに意味があることなんだと初めて実感した。これは自分にとって貴重な財産になると思う。</p><footer><strong>@takus</strong> <cite><a href='https://twitter.com/takus/status/46600382788542465'>twitter.com/takus/status/&hellip;</a></cite></footer></blockquote>
-
-
-<p>この時に、<em>「落ちないサービスを作る」</em>ということの重要さを実感して、自分の方向性をそっちにシフトしていきました。あとから振り返ると、この経験が、この後の内定承諾や <a href="http://my365.in/">My365</a> チームへのジョインにつながっていったんじゃないかと思います。</p>
-
-<h3>4 月 内定承諾</h3>
-
-<p>色々と悩むところもありましたが、3 月の終わり頃に就職先を決めました。自分のやりたいことって何だろうと考えたときに、一番それができそうだと思ったのが就職先の会社でした。あとは中で働いてる人の優秀さで決めました。</p>
-
-<h3>6 月 内定先でインターン</h3>
-
-<p>働いてる人で内定先を選んでほんとに正解だったと思いました。いきなり MySQLでおなじみの松信さんがいきなりメンターになっていただいたり、その後も HandlerSocket を開発した樋口さんがメンターとしてお世話してくれたり、会社設立時からインフラエンジニアとして働いてる方々から色々な苦労話を聞くことができたり、非常に貴重な経験ができました。</p>
-
-<h3>8 月 松田直樹の死</h3>
-
-<p>スティーブ・ジョブズの訃報と同じくらい、松田直樹の訃報にもショックを受けました。</p>
-
-<blockquote><p>土曜に松本山雅の試合見に行ったのに松田は出場停止でチームも敗戦。今度こそ山雅の松田のプレイを生でみたいねなんて話をしていた矢先の訃報。今度やればいい、いつかやろうみたいなことを思うときがあるけど、今やらなきゃできないかもしれないって意識は常に持っていなければと思った。</p><footer><strong>@takus</strong> <cite><a href='https://twitter.com/takus/status/99339050040827904'>twitter.com/takus/status/&hellip;</a></cite></footer></blockquote>
-
-
-<p>ジョブズもスタンフォードでのスピーチで <em>If today were the last day of my life, would I want to do what I am about to do today?</em> と言っていました。今やってることはほんとに心から自分が取り組みたいことなのか今まで以上に真剣に考えて生きなければいけないと、二人の偉大な人物の死から学びました。</p>
-
-<h3>10 月 YAPC::ASIA に参加</h3>
-
-<p>年に一度の Perl の祭典、YAPC::ASIA に参加してきました。初参加で Perl コミュニティの空気に若干戸惑いましたが、ほんとに勉強になることが多くて、参加してよかったと思いました。来年は LT でもいいから発表に持ち込めたらとネタを考えています。</p>
-
-<h3>11 月 My365 チームとの出会い</h3>
-
-<p>元々、<a href="http://my365.in/">My365</a> を作ったエンジニアの @katty0324 と知り合いだったということもあり、開発段階から色々な苦労話を聞かされていたのですが、思いのほかユーザが増えてヤバイので手伝って欲しいというオファーをもらい、面白そうだなという直感が働き My365 チームにジョインすることにしました。ジョインして数日後にすべてのサーバを AWS に移行するというタスクが降ってきて、移行にあたってはほんとに準備不足＆力不足で苦労しましたが、その後のユーザの増加を考えると、あのタイミングで AWS に移行してよかったんじゃないかと心から思っています。</p>
-
-<p>ジョインしたころに比べると、サービスの監視体制の強化、サービスの冗長化、パフォーマンス、あらゆる面でちょっとずつ前進していますが、まだまだ実力不足で歯がゆい思いをすることも多いので、今後もユーザの皆様に快適に使っていただけるように努力していきます。コンセプトが素晴らしい、デザインが素晴らしいなどと同様に、技術的にも素晴らしいと言ってもらえるようにしたいです。乞う、ご期待。</p>
-
-<p>また、昨日発表された SIROK の設立メンバーである、飯塚（@yuta_iizuka)、石山（@t_ishiyama）、片岡（@katty0324）、向山（@yutomukoyama）たちや、後からジョインした朝日（@daiki1003）のような優秀な仲間と一緒に働くことができて、とても恵まれているなと思ってます。</p>
-
-<h2>それぞれの点が線でつながった年</h2>
-
-<p>そんな感じであとは、横浜から東京に引っ越したり、銀座久兵衛に連れて行ってもらったり、学会で行った京都が楽しすぎたりと他にも色々なことがあった 1 年でした。</p>
-
-<p>また、技術的なことで新しく取り組むことができたのは、Perl、Titanium、AWS でした。Perl は便利スクリプト書いたり、CPAN 使ってほげほげみたいな部分は押さえられたので、次は CPAN モジュールとか書いていきたいです。Titanium もそれなりにいじれるようになったので、iOS モジュールとか作って、もっと自在に操れるとちょっとしたアイデアをすぐ形にできて面白いのかなと思ってます。AWS は、なかなか個人で使う機会ってないのでゼロから AWS 上にシステムを作り、運用していくというのはとてもよい経験になりました。</p>
-
-<p>2011 年のはじめは、エンジニアとしてキャリアを積んでいきたいなと思いつつも、アルバイトでアプリを書きつつも研究はシステムソフトウェアの分野だったり、どういうエンジニアになりたいというイメージはあまりない状態でした。そこで震災が契機になって、<em>「落ちないサービスを作る」</em>ということが自分の中での大きなテーマになり、内定先もその基準で選び、インターンや YAPC::ASIA を通じて、自分の理想のエンジニア像というのも見えてきて、My365 にオペレーションエンジニアとして自分のやりたいことができる環境に身を置くことができ、後から 1 年を振り返ってみると、それぞれの点を線でつなぐことができた、自分の人生にとって大きな 1 年だったんじゃないかと思います。</p>
-
-<h2>2012 年の目標</h2>
-
-<h3>専門領域の確立</h3>
-
-<p>まだ、どこに配属されるか正確には分からないですが、まずは与えられた環境で結果を残す。これに尽きると思います。社内にすごい人はたくさんいるけど、そうした人と対等に働くという自覚を持って努力していきたいです。そして、自分がこれだけは任せてくださいと社内で言えるような専門領域をできるだけ早く作ることが大切なんじゃないかと思います。といことで、社内でその領域については相談してもらえるようになることが第一の目標です。</p>
-
-<h3>外で発表する</h3>
-
-<p>これも学生の間はあまり取り組めていなかったので、発表する機会があれば若気の至りで首を突っ込んでいきたいと思います。ということで、勉強会等で 4 回発表する（３ヶ月に 1 回ペース？)が第二の目標。</p>
-
-<h3>英語を話す</h3>
-
-<p>自覚を持って取り組めば少しづつ話せるようになるという手応えは掴めたので、継続して取り組みます。ただ、スピーキングのレベルは計測しにくいのでTOEIC (TOEFLはよく知らないので) で 900 点を目標に。 ということで、一応、来年を振り返ったときに目標が達成できたか明確になるように目標設定してみました。 今年も色んな方にお世話になるかと思いますが、よろしくお願いします！ 引き続き、My365 もよろしくお願いしますね！</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2/">&larr; Older</a>
@@ -1185,6 +1253,10 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/04/25/supergrep/">ブラウザから tail -f log | grep keyword できるツール supergrep</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/03/28/riak-install/">CentOS に Riak をインストール & Data::Riak::Fast で操作してみる</a>
       </li>
     
@@ -1198,10 +1270,6 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
     
       <li class="post">
         <a href="/2012/12/20/mac-forget-me-not/">Macbook で外部ディスプレイ接続時にウィンドウをイイカンジに並べる</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/06/32974165602/">YAPC::ASIA 2012 に行ってきた</a>
       </li>
     
   </ul>

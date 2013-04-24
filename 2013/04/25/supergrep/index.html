@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ブラウザから tail -f log | grep keyword できるツール supergrep - TAKUMI SAKAMOTO'S BLOG</title>
+  <meta name="author" content="Takumi Sakamoto">
+
+  
+  <meta name="description" content="エンジニアならサーバにログインしてコマンド打てば済む話ですが、世の中には非エンジニアでも tail -f log | grep keyword みたいにログを見れるようにしたいという案件がたまにあるみたいです。自分で書いてもよかったのですが、supergrep &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.takus.me/2013/04/25/supergrep/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2841066-12']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">TAKUMI SAKAMOTO'S BLOG</a></h1>
+  
+    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.takus.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ブラウザから Tail -f Log | Grep Keyword できるツール Supergrep</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-25T00:00:00+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>エンジニアならサーバにログインしてコマンド打てば済む話ですが、世の中には非エンジニアでも tail -f log | grep keyword みたいにログを見れるようにしたいという案件がたまにあるみたいです。自分で書いてもよかったのですが、supergrep というツールがあったので使ってみました。</p>
+
+<ul>
+<li><a href="http://codeascraft.etsy.com/2012/06/28/is-it-a-bird-is-it-a-plane-no-its-supergrep/">Is It A Bird? Is It A Plane? No, It’s Supergrep!</a></li>
+<li><a href="https://github.com/etsy/supergrep">esty/supergrep</a></li>
+</ul>
+
+
+<h2>インストール</h2>
+
+<p>supergrep は node.js で書かれているので、node のインストールから。node の作法はよく知らないので適当です。</p>
+
+<figure class='code'><figcaption><span>install supergrep  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>git clone https://github.com/creationix/nvm.git ~/nvm
+</span><span class='line'><span class="nv">$ </span>. ~/nvm/nvm.sh
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>nvm install v0.10.5
+</span><span class='line'><span class="nv">$ </span>nvm <span class="nb">alias </span>default v0.10.5
+</span><span class='line'><span class="nv">$ </span>node -v
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>続いて supergrep をインストールして起動します。これだけ。起動時に &#8216;Warning: express.createServer() is deprecated, express&#8217; が出るのはご愛敬。</p>
+
+<figure class='code'><figcaption><span>install supergrep  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>git clone https://github.com/etsy/supergrep.git
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>supergrep
+</span><span class='line'><span class="nv">$ </span>npm install
+</span><span class='line'><span class="nv">$ </span>./runlocal
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>http://hostname:3000 にブラウザからアクセスするとログが見れる状態になりました。</p>
+
+<p><img src="http://farm9.staticflickr.com/8402/8677559587_e5abefa49e_z.jpg" width="800" height="250"></p>
+
+<h2>設定</h2>
+
+<p>デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config もありましたが今回は必要してないので調べてません。</p>
+
+<figure class='code'><figcaption><span>localConfig.js  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'>    <span class="nx">files</span><span class="o">:</span> <span class="p">[</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;web&#39;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">path</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;/var/log/httpd/info.log&#39;</span><span class="p">,</span> <span class="s1">&#39;/var/log/httpd/php.log&#39;</span><span class="p">]</span>
+</span><span class='line'>            <span class="c1">// you can also do this</span>
+</span><span class='line'>            <span class="c1">//            filter: function (line, config) {</span>
+</span><span class='line'>            <span class="c1">//                if (! line.match(config.noisyErrors)) {</span>
+</span><span class='line'>            <span class="c1">//                    return line;</span>
+</span><span class='line'>            <span class="c1">//                } else {</span>
+</span><span class='line'>            <span class="c1">//                    return;</span>
+</span><span class='line'>            <span class="c1">//               }</span>
+</span><span class='line'>            <span class="c1">//            }</span>
+</span><span class='line'>            <span class="c1">//</span>
+</span><span class='line'>            <span class="c1">//  make sure to define below (in the config namespace):</span>
+</span><span class='line'>            <span class="c1">//    noisyErrors: new RegExp (/(something to ignore)/),</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>        <span class="c1">// add more files entries here if you want</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;app&#39;</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">maxLines</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+</span><span class='line'>            <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/data/oreno/app.log&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">],</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>このままだとダッシュボードで操作できなかったので下記の設定を static/index.html に追加したり。</p>
+
+<figure class='code'><figcaption><span>static/index.html  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;logsource-options&quot;</span> <span class="na">class=</span><span class="s">&quot;display-option-group&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;display-option&quot;</span> <span class="na">for=</span><span class="s">&quot;log-web&quot;</span><span class="nt">&gt;</span>Web: <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;log-web&quot;</span> <span class="na">class=</span><span class="s">&quot;log-option&quot;</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-log=</span><span class="s">&quot;web&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;120&quot;</span> <span class="na">checked</span><span class="nt">&gt;&lt;/label&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;display-option&quot;</span> <span class="na">for=</span><span class="s">&quot;log-app&quot;</span><span class="nt">&gt;</span>App: <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;log-app&quot;</span> <span class="na">class=</span><span class="s">&quot;log-option&quot;</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">data-log=</span><span class="s">&quot;app&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;120&quot;</span> <span class="na">checked</span><span class="nt">&gt;&lt;/label&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>お目当ての tail -f log | grep keyword</h2>
+
+<p>こんな感じでフィルタリングできます。チェック押せば grep -v もできます。</p>
+
+<p><img src="http://farm9.staticflickr.com/8399/8678666106_1e7cb86c29_z.jpg" width="800" height="250"></p>
+
+<p>ハイライトもできるので、CRITICAL や、特定のホスト名だけ目立たせてもよさそうです。</p>
+
+<p><img src="http://farm9.staticflickr.com/8265/8678666130_803c58ee4b_z.jpg" width="800" height="250"></p>
+
+<h2>まとめ</h2>
+
+<p>今回は非エンジニアにログを見せるという案件のために使ってみましたが、インストール簡単でそれなりに機能が豊富なので色々と使い道は多そうなツールになっていて、スマホからも見れるので休日のアラート対応などでちょっと Mac 開けないみたいな場合の状況確認なんかにも使えそうです。</p>
+
+<p>同じようなツールに riywo さんが紹介していた [webtail] (http://tech.riywo.com/blog/2013/04/23/webtail-plus-ncat-equals-simple-log-monitoring-slash/) みたいなものもあるみたいで、こちらは標準入力からログを受け取れるあたりがカジュアルでよさそうではないかと思いました。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Takumi Sakamoto</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-25T00:00:00+09:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2013/04/25/supergrep/" data-via="takus" data-counturl="http://blog.takus.me/2013/04/25/supergrep/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/03/28/riak-install/" title="Previous Post: CentOS に Riak をインストール & Data::Riak::Fast で操作してみる">&laquo; CentOS に Riak をインストール & Data::Riak::Fast で操作してみる</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <div style="margin-top:10px">
+    Takumi Sakamoto<br />
+    Operation Enginner - DeNA Co., Ltd.<br />
+  </div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/04/25/supergrep/">ブラウザから tail -f log | grep keyword できるツール supergrep</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/28/riak-install/">CentOS に Riak をインストール & Data::Riak::Fast で操作してみる</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/03/22/test-web-api-client/">Test::Fake::HTTPD で Web API クライアントをテスト</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/01/2012-to-2013/">2012 年を振り返って</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/20/mac-forget-me-not/">Macbook で外部ディスプレイ接続時にウィンドウをイイカンジに並べる</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/takus">@takus</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'takus',
+            count: 5,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("takus", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Takumi Sakamoto -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'takus';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.takus.me/2013/04/25/supergrep/';
+        var disqus_url = 'http://blog.takus.me/2013/04/25/supergrep/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
