@@ -60,10 +60,6 @@ Velocity ではほんとに色んな人に優しくしてもらいました。�
 
 性能が劣化するようなら merge させないといった仕組みなので、性能向上はあっても性能劣化は起きないような仕組みが自動で回るようになっている点がスバラシイですね。
 
-{% blockquote @takus https://twitter.com/takus/status/348146632770072577 %} 
-@marcelduran Thank you for your awesome talk at #velocityconf. I was deeply impressed to know how you fight against performance regression.
-{% endblockquote %}
-
 {% blockquote @marcelduran https://twitter.com/marcelduran/status/348150304862240768 %}
 @takus thanks! it's a matter of either fight against perf regression in an automated fashion or chase whoever causes that and point finger
 {% endblockquote %}
