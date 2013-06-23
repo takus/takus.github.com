@@ -34,6 +34,8 @@ LT は [3 Pupular Ops Tool in Japan](https://speakerdeck.com/takus/3-popular-ops
 @takus did great and lots of great information, we'll be using severspec as soon as I ... feel better from the Anchor Steam  #velocityconf
 {% endblockquote %}
 
+[{% img http://farm3.staticflickr.com/2856/9089460246_e0477f5467_z.jpg 640 428 %}](http://www.flickr.com/photos/oreillyconf/9089460246/)
+
 そして、色々と声かけてもらった中でも、["Web Operations"](http://www.amazon.co.jp/exec/obidos/ASIN/4873114934/takus-22/ref=nosim) の著者で、Velocity の Program Chair でもある @allspaw が自分のこと覚えててくれて、excellent って言ってくれたのには痺れました(お世辞だと分かっててもw)
 
 {% blockquote @takus https://twitter.com/takus/status/347527386927083520 %}
