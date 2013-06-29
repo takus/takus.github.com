@@ -50,15 +50,13 @@ Velocity ではほんとに色んな人に優しくしてもらいました。�
 
 ## Awesome Talks
 
-[{% img http://farm6.staticflickr.com/5527/9087254909_301923410e_z.jpg 640 427 %}](http://www.flickr.com/photos/oreillyconf/9087254909/)
-
 素晴らしいトークがたくさんありましたが、全部紹介しきれないので印象深いものだけ簡単にまとめておきます。もうちょっと踏み込んだものはまた後日...。
+
+[{% img http://farm6.staticflickr.com/5527/9087254909_301923410e_z.jpg 640 427 %}](http://www.flickr.com/photos/oreillyconf/9087254909/)
 
 ### [Avoiding Performance Regression at Twitter](http://cdn.oreillystatic.com/en/assets/1/event/94/Avoiding%20Performance%20Regression%20at%20Twitter%20Presentation.pdf)
 
-機能追加やバグフィックスを反映するたびに性能劣化が起きてしまうのをどのように防ぐかといった内容で、[WebPageTest](http://webpagetest.org)、[PhantomJS](http://phantomjs.org)、[ShowSlow](http://showslow.com) といったツールを使って、branch 毎の TTFT (最初のツイートが表示されるまでの時間) を Jenkins でテストしているそうです。
-
-性能が劣化するようなら merge させないといった仕組みなので、性能向上はあっても性能劣化は起きないような仕組みが自動で回るようになっている点がスバラシイですね。
+機能追加やバグフィックスを反映するたびに性能劣化が起きてしまうのをどのように防ぐかといった内容で、[WebPageTest](http://webpagetest.org)、[PhantomJS](http://phantomjs.org)、[ShowSlow](http://showslow.com) といったツールを使って、branch 毎の TTFT (最初のツイートが表示されるまでの時間) を Jenkins でテストしているそうです。性能が劣化するようなら merge させないといった仕組みなので、性能向上はあっても性能劣化は起きないような仕組みが自動で回るようになっている点がスバラシイですね。
 
 {% blockquote @marcelduran https://twitter.com/marcelduran/status/348150304862240768 %}
 @takus thanks! it's a matter of either fight against perf regression in an automated fashion or chase whoever causes that and point finger
@@ -68,15 +66,9 @@ Velocity ではほんとに色んな人に優しくしてもらいました。�
 
 ### [Bring the Noise: Making Effective Use of a Quarter Million Metrics](https://speakerdeck.com/astanway/bring-the-noise-continuously-deploying-under-a-hailstorm-of-metrics)
 
-Etsy といえば、*"Graph everything"* とか *"If it moves, graph it"* に代表されるようにとにかく何でもグラフにしてることでお馴染みですが、"たとえグラフの波形が乱れても、誰も見てなかったらそれはスパイクと言えるんだろうか？" というところから、リアルタイム異常検知とそれに似たグラフを自動で見つける [Kale](http://codeascraft.com/2013/06/11/introducing-kale/) の話でした。
+Etsy といえば、*"Graph everything"* とか *"If it moves, graph it"* に代表されるようにとにかく何でもグラフにしてることでお馴染みですが、"たとえグラフの波形が乱れても、誰も見てなかったらそれはスパイクと言えるんだろうか？" というところから、リアルタイム異常検知とそれに似たグラフを自動で見つける [Kale](http://codeascraft.com/2013/06/11/introducing-kale/) の話でした。トークの中で出てきた[このツイート](https://twitter.com/DEVOPS_BORAT/status/281242898165538818)でも言ってるように、不味そうな兆候って後で致命的な問題を招くわけで、先ほどの Twitter の話と同じく、問題が小さいうちに対処できるようにしていく部分に Velocity のカルチャーを感じました。
 
-{% blockquote @DEVOPS_BORAT https://twitter.com/DEVOPS_BORAT/status/281242898165538818 %}
-Law of Murphy for devops: if thing can able go wrong, is mean is already wrong but you not have Nagios alert of it yet.
-{% endblockquote %}
-
-トークの中で出てきたこのツイートでも言ってるように、不味そうな兆候って後で致命的な問題を招くわけで、先ほどの Twitter の話と同じく、問題が小さいうちに対処できるようにしていく部分に Velocity のカルチャーを感じました。
-
-### Configuration Management Anti-patterns
+### [Configuration Management Anti-patterns](https://speakerdeck.com/skottler/configuration-management-anti-patterns)
 
 *"Stop putting upstream modules and cookbooks into your repos"* という berkshelf とか librarian-chef とか使って使いたいバージョン固定すれば、勝手にバージョンアップされてりしても安心だよねって話が印象に残りました。DeNA のように大規模に色々なシステムが動くような環境で DRY に則って共通化すると、ある環境のために加えた変更が、他の環境に影響を及ぼしてしまうことがたびたびありますが、使う環境毎にきちんとバージョン固定しておけば、そういう苦しみから解放されて、共通化を進めやすくなり、みんなハッピーになれそうだと思いました。
 
