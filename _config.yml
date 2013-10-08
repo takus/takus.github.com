@@ -66,23 +66,23 @@ default_asides: [custom/asides/about.html, asides/recent_posts.html, asides/gith
 github_user: takus
 github_repo_count: 5
 github_show_profile_link: true
-github_skip_forks: false 
+github_skip_forks: false
 
 # Twitter
-twitter_user: takus
+twitter_user:
 twitter_tweet_count: 5
 twitter_show_replies: false
 twitter_follow_button: true
-twitter_show_follower_count: true 
+twitter_show_follower_count: true
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: false 
+google_plus_one: false
 google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user: 
+googleplus_user:
 googleplus_hidden: false
 
 # Disqus Comments
@@ -93,7 +93,4 @@ disqus_show_comment_count: false
 google_analytics_tracking_id: UA-2841066-12
 
 # Facebook Like
-facebook_like: true 
-
-# Coderwall badges
-coderwall_user: takus
+facebook_like: true
