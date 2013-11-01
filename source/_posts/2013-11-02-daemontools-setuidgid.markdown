@@ -5,7 +5,7 @@ date: 2013-11-02 01:40
 comments: true
 ---
 
-『[daemontools の setuidgid](http://cr.yp.to/daemontools/setuidgid.html)』や 『[補助グループ権限もつけてくれるsetuidgidのようなもの](http://d.hatena.ne.jp/hirose31/20130808/1375965331)』のところに書いてある話なんですが、`daemontools` の `setuidgid` は supplementary groups 権限をつけてくれません。
+『[daemontools の setuidgid](http://cr.yp.to/daemontools/setuidgid.html)』や 『[補助グループ権限もつけてくれるsetuidgidのようなもの](http://d.hatena.ne.jp/hirose31/20130808/1375965331)』のところに書いてある話なんですが、`daemontools` の `setuidgid` は 補助グループ権限をつけてくれません。
 
 どういうことかというと、`sysadmin` グループに属する `admin` ユーザがいて、下記のような設定になってるときに、
 
@@ -25,7 +25,7 @@ exec 2>&1
 exec setuidgid admin /path/to/oreno_daemon
 ```
 
-一見すると、`admin` ユーザは `sysadmin` ユーザに含まれているため権限は問題ないように思えて、実際にコンソールから実行すると読むことができるのですが、前述の通り `setuidgid` は supplementary groups の権限をつけてくれないため、`setuidgid` で指定した `admin` ユーザは下記のようなユーザとみなされ、password.pl を読むことができないというオチでした。
+一見すると、`admin` ユーザは `sysadmin` ユーザに含まれているため権限は問題ないように思えて、実際にコンソールから実行すると読むことができるのですが、前述の通り `setuidgid` は補助グループ権限をつけてくれないため、`setuidgid` で指定した `admin` ユーザは下記のようなユーザとみなされ、password.pl を読むことができないというオチでした。
 
 ```bash
 $ id admin
