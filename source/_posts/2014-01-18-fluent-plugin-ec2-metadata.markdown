@@ -7,7 +7,7 @@ comments: true
 
 [takus/fluent-plugin-ec2-metadata](https://github.com/takus/fluent-plugin-ec2-metadata)
 
-前々から fluentd のプラグインを書いてみようと思っていたので、ec2 の metadata をレコードに追加するようなプラグインを書いてみました。プラグインの書き方は @tagomoris 先生の ["fluentdのためのプラグインをイチから書く手順(bundler版)"](http://d.hatena.ne.jp/tagomoris/20120221/1329815126) が大変参考になったので、プラグインを書いてみたい人は見るとよさそうです。あとは、@sonots 先生の [fluent-plugin-record-reformer](https://github.com/sonots/fluent-plugin-record-reformer) をかなり参考にさせていただいたのと、Ruby 初心者なので"[パーフェクトRuby](http://www.amazon.co.jp/exec/obidos/ASIN/4774158798/takus-22/ref=nosim)"にもお世話になりました。
+前々から fluentd のプラグインを書いてみようと思っていたので、ec2 の metadata をレコードに追加するようなプラグインを書いてみました。プラグインの書き方は @tagomoris 先生の ["fluentdのためのプラグインをイチから書く手順(bundler版)"](http://d.hatena.ne.jp/tagomoris/20120221/1329815126) が大変参考になったので、プラグインを書いてみたい人は見るとよさそうです。あとは、@sonots 先生の [fluent-plugin-record-reformer](https://github.com/sonots/fluent-plugin-record-reformer) をかなり参考にさせていただいたのと、Ruby 初心者なので["パーフェクトRuby"](http://www.amazon.co.jp/exec/obidos/ASIN/4774158798/takus-22/ref=nosim)にもお世話になりました。
 
 ## なにをするプラグインか？
 
