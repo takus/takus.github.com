@@ -74,6 +74,8 @@ Github Enterprise の場合は GITHUB_DOMAIN / https://GITHUB_DOMAIN/api/v3 の�
 
 これで万事解決と思いきや、今度は `git@` で clone してるにも関わらず、git clone に失敗する現象に遭遇しました。Drone のログをみてるとコンテナの初期化する際にリポジトリ毎の秘密鍵をおいているようで、Settings の Key Pairs にある公開鍵を Github リポジトリのデプロイキーに登録してあげたところ、無事に Clone できるようになりました。
 
+{% img http://farm6.staticflickr.com/5475/12768591305_b2c6f232ee_z.jpg 640 310 'Drone by Takumi Sakamoto (takus) on flickr.com' %}
+
 ## まとめ
 
 ということで、無事に Drone 使えるようになったので、あとは各バージョンの perlbrew とか rbenv とか nodebrew を持ったイメージを作っておいて、それ毎にバージョン跨ぐテストしていくような感じにしていけばよさそうな雰囲気です。ざっと設定画面とコードを眺めたところ、Jenkins の Master/Slave みたいな仕組みがないので、数が増えていったらある程度 Drone を分けるしかなさそうですが、とりあえずはチーム毎とかそういう単位で Drone を用意してあげればいいのかなと思ってます。 Enjoy your test with Drone :D
