@@ -20,4 +20,4 @@ comments: true
 
 とのことで、AWS のサポートに調査対象ボリュームのスナップショットを共有すると、マウントできない制限を解除してくれるようです。
 
-[CentOS は公式の AMI が Marketplace で提供されてる](https://aws.amazon.com/marketplace/seller-profile/ref=dtl_pcp_sold_by?ie=UTF8&id=16cb8b03-256e-4dde-8f34-1b0f377efe89)のでついつい選んでしまいがちですが、問題が起きた時のトラブルシューティングに一手間かかってしまうので、気軽に選らんでしまうと面倒なことになるよという話でした。
+[CentOS は公式の AMI が Marketplace で提供されてる](https://aws.amazon.com/marketplace/seller-profile/ref=dtl_pcp_sold_by?ie=UTF8&id=16cb8b03-256e-4dde-8f34-1b0f377efe89)のでついつい選んでしまいがちですが、問題が起きた時のトラブルシューティングに一手間かかってしまうので、気軽な気持ちで選んでしまうと面倒なことになるよという話でした。
