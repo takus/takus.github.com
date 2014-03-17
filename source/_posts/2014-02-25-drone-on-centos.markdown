@@ -37,7 +37,7 @@ source ~/.bash_profile
 yum -y install git hg bzr
 yum -y groupinstall "Development Tools"
 
-git clone http://github.com/drone/drone.git && cd drone
+git clone https://github.com/drone/drone.git && cd drone
 make deps
 make && make test && make install
 droned
