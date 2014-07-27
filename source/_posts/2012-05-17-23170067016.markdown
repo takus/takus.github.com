@@ -12,6 +12,8 @@ Some default preferences are not useful. I hope that these preferences become de
 - Keybord > Keyboard
     - Check *"Use all F1, F2, etc..."*
     - Modifier Keys -> Bind Caps Lock Key as Control Key
+- Keyboard > User Dictionary
+    - Uncheck smart quotes
 - Security > Privacy
     - Check *"Require password immediately after sleep or screen saver begins"*
 - Displays
