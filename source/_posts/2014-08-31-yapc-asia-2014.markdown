@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "YAPC::Asia 2014 が例年以上に楽しかった #yapcasia"
+title: "YAPC::Asia 2014 にいってきた #yapcasia"
 date: 2014-08-31 21:00:00 +0900
 comments: true
 ---
