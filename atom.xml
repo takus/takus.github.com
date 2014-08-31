@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[TAKUMI SAKAMOTO'S BLOG]]></title>
+  <link href="http://blog.takus.me/atom.xml" rel="self"/>
+  <link href="http://blog.takus.me/"/>
+  <updated>2014-08-31T23:51:06+09:00</updated>
+  <id>http://blog.takus.me/</id>
+  <author>
+    <name><![CDATA[Takumi Sakamoto]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[YAPC::Asia 2014 が例年以上に楽しかった #yapcasia]]></title>
+    <link href="http://blog.takus.me/2014/08/31/yapc-asia-2014/"/>
+    <updated>2014-08-31T21:00:00+09:00</updated>
+    <id>http://blog.takus.me/2014/08/31/yapc-asia-2014</id>
+    <content type="html"><![CDATA[<p>ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。今年で 4 回目の参加で、初めて<a href="http://yapcasia.org/2014/individual_sponsors/">個人スポンサー</a>として参加させていただきましたが、10000 円という価格は 2 日間 HUB が貸し切りとか考えたらかなりリーズナブルなんじゃないかという印象です。(HUB は個人スポンサーじゃなくても入れますが&hellip;)</p>
+
+<p>セッションの中で印象に残ったのは @yanbe さんの &ldquo;<a href="http://yapcasia.org/2014/talk/show/2718b8f2-0331-11e4-9357-07b16aeab6a4">最近のウェブサービスの検索機能やその先の話</a>&rdquo; と @tagomoris さんの &ldquo;<a href="http://yapcasia.org/2014/talk/show/d5049940-ebb2-11e3-bd6d-c7a06aeab6a4">そんなにビッグでもないデータ処理手法の話</a>&rdquo; と @typester さんの&#8221;<a href="http://yapcasia.org/2014/member/show/02387faa-ebb1-11e3-bd6d-c7a06aeab6a4">キーノート</a>&ldquo; あたりなんですが、今回はトーク以上に懇親会とか会場で色んな人と喋ってるのがとても楽しくて刺激になって、いつも以上に楽しめました。</p>
+
+<p>後は、前職を辞めてから初めての YAPC だったわけですが、会場で会ったときに「いつ戻ってくるの？」、「あれ？スマートなんとかの人だw」みたいなハートフル (?) な絡みをしてくれる人が多くてよかったです(笑)</p>
+
+<p>運営の皆様、関係者の皆様、本当にありがとうございました。来年はどうなるか分からない感じだったけど、また開催されたらいいなと思ってるので、もし開催されるなら何らかの形で貢献できたらなと思ってます！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[スマートニュースにジョインしました]]></title>
+    <link href="http://blog.takus.me/2014/08/01/join-smartnews/"/>
+    <updated>2014-08-01T17:00:00+09:00</updated>
+    <id>http://blog.takus.me/2014/08/01/join-smartnews</id>
+    <content type="html"><![CDATA[<p><a href="http://www.smartnews.be/"><img src="https://s3-ap-northeast-1.amazonaws.com/smartnews.be/img/devices.png" width="320" height="123"></a></p>
+
+<p>様々な大物な方々の人事ニュースが飛び交う中で恐縮ですが、スマートニュース株式会社にジョインしたことをこの場を借りて報告させていただきます。</p>
+
+<p>会社は、同じタイミングで入社することになった <code>@komiya_atsushi</code> さんの<a href="http://life.k11i.biz/post/93450605375">入社エントリ</a>や <a href="http://blog.kushii.net/archives/1869405.html">941::blog の行ってきたシリーズ</a>で詳しく紹介されていますが、働くメンバー、オフィス環境、福利厚生のどれも素晴らしく、よいプロダクトを作ることに集中できる素晴らしい環境が整っている一方で、<a href="https://www.youtube.com/watch?v=b2ukMvyDlRQ">すもうとにゅーす</a> の CM が 8/1 から始まったり、<a href="https://www.youtube.com/watch?v=b2ukMvyDlRQ">北米版のリリース</a>が控えていたり、会社としても非常に面白いフェーズで、今のタイミングでジョインして色々なことに携わっていくことに大きな魅力を感じたことが入社理由の 1 つです。</p>
+
+<p>まだスマートニュースのアプリをダウンロードしていない方がいましたらぜひこの機会に<a href="http://www.smartnews.be/">ダウンロード</a>していただけたら嬉しいです。アプリへの要望・不満なども気軽にお問い合わせください！</p>
+
+<blockquote><p>Smartnews，最近TV CMするくらい勢いもあるし，そろそろSmartnews現状確認会とか必要では…</p><footer><strong>@repeatedly</strong> <cite><a href='https://twitter.com/repeatedly/status/495059564790697986'>twitter.com/repeatedly/status/&hellip;</a></cite></footer></blockquote>
+
+
+<p>また、そろそろ現状確認がしたい方もいるようですので、ぜひ気軽にオフィスに遊びに来て頂ければと思います。今後ともよろしくお願いいたします！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[結婚しました & DeNA を退職します]]></title>
+    <link href="http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"/>
+    <updated>2014-07-31T03:00:00+09:00</updated>
+    <id>http://blog.takus.me/2014/07/31/got-married-and-leave-dena</id>
+    <content type="html"><![CDATA[<p>一部の方には既に報告させていただいてますが 7/22 に入籍しました。ちなみに 7/22 は 天赦日 (てんしゃび) といって、日本の暦の上で最上の吉日とされているそうです (<a href="https://www.richerie.jp/blog/best-marriage-day-2014/">参考</a>)。嫁さんとは高校時代から 8 年以上の付き合いで、すでに何年も一緒に住んでる上に、挙式もこれからのため、あまり実感が湧いてきてない状態ではありますが、よい家庭を築けるように二人でがんばっていきたいと思います。</p>
+
+<p>さらに、こちらも社内の方や社外の一部の方にしか話をしていませんでしたが、7/31 をもって DeNA を退職します。かなり悩んで、色んな人に相談にのってもらったりしましたが、新たな場所で新たなチャレンジをしたいという思いが強かったため、退職を決めました。</p>
+
+<p>2 年前に新卒として入社して、希望通りにインフラの部署に配属してもらい、<a href="http://mbga.jp/">mobage</a> や <a href="https://co-mm.com/">comm</a> といった数百万〜数千万ユーザ規模のサービスの運用を中心に、海外向けのソーシャルゲームでは AWS の運用に携わったり、海外の子会社や協力会社の方々への技術コンサルをさせていただいたり、短い在籍期間ながら実に様々な経験をすることができました。</p>
+
+<p>また、上記のような仕事に加えて、国際学会派遣制度で Velocity Conference に参加させていただいたり (<a href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity 2013 に参加 &amp; LT してきました！！</a>)、JAWS DAYS 2014 で話をする機会をいただいたり (<a href="http://blog.takus.me/2014/03/17/jawsdays-2014/">#jawsdays の #最強のAWS で「ぜんぶ AWS でやらないワケ」という話をしてきた</a>)、若手エンジニア交流会をやりたいとお願いしたらお寿司を提供してくれたり(<a href="http://engineer.dena.jp/2012/07/web.html">「Web若手エンジニアの会」を開催しました</a>)、課外活動でも様々な機会を与えてくださった DeNA という会社やお世話になった皆様にはただただ感謝するばかりです。</p>
+
+<p>じゃあ、なんで辞めるのかというと、今これをやりたいと思うことに会社の外で出会ったことが大きいです。ある人に「もっと経験を積んでからでも遅くない」といった内容のアドバイスをいただいたときに、DeNA という素晴らしい環境の中で得られる経験は間違いなく自分のキャリアにとってプラスになることは間違いないとは思ったものの、そういう機会を逸してでもやってみたいという気持ちが抑えきれず、<a href="http://anond.hatelabo.jp/20110128031409">やらないことで後悔する</a>という最悪な選択をしてしまうのがどうしても嫌だったので、こういう決断に至りました。(たぶんこれは昔の経験が大きく影響してるんですが、長々と自分語りしてもアレなので割愛します)</p>
+
+<p>人間としてもエンジニアとしてもまだまだ未熟なことは重々承知ですが、この決断がよいものであったと周りの人に思ってもらえるように努力していきたいと思うので、どうぞ温かい目で見守っていただけますと幸いです。今まで本当に本当にありがとうございました。そして、今後ともどうぞよろしくお願いいたします。</p>
+
+<p>P.S. せっかくの機会なので恒例の<a href="http://www.amazon.co.jp/gp/registry/wishlist/2D5WTNTDJ7K4A/ref=cm_wl_huc_view">ウィッシュリスト</a>も貼らせていただきます。もしお祝いしてあげてもいいよという神様みたいな方がいましたらよろしくお願いいたします:D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Barcelona にいってきた]]></title>
+    <link href="http://blog.takus.me/2014/05/16/travel-to-barcelona/"/>
+    <updated>2014-05-16T02:19:00+09:00</updated>
+    <id>http://blog.takus.me/2014/05/16/travel-to-barcelona</id>
+    <content type="html"><![CDATA[<p>去年の「<a href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">Los Angeles に行ってきた</a>」「<a href="http://blog.takus.me/2013/05/12/travel-to-new-york/">New York に行ってきた</a>」に引き続き、今年は Barcelona にいってきましたが、かなりいい場所だったのでカンタンにまとめです。</p>
+
+<h2>バルセロナがオススメな理由</h2>
+
+<ul>
+<li>カンプノウやサグラダ・ファミリアなど見所が満載</li>
+<li>魚介を中心として料理がメチャクチャ美味しい</li>
+<li>比較的どこでも英語が通じて治安も悪くない</li>
+</ul>
+
+
+<h2>見所満載のバルセロナ</h2>
+
+<h3>Camp Nou</h3>
+
+<p>バルセロナに行く一番の目的といえば、サクラダファミリアかカンプノウの 2 つは外せないでしょう。ということで、ちょうどリーガエスパニョーラのヘタフェ戦がやっていたので見に行きました。チケットはクラシコのようなビッグマッチでない限り、<a href="http://www.fcbarcelona.com/">FC バルセロナのオフィシャルサイト</a> の Tickets から辿っていけば好きな席を買えます。今回は 2F の最前列の席を取ったために 2 枚で 240 ユーロとかなりお高い感じでしたが、UEFA も認めるスタジアムだけあって、試合観戦のしやすさには衝撃をうけました。日本のスタジアムと比べて 2F の席であんなに選手が近くに感じられるスタジアムはないんじゃないかなという印象です。観戦チップスとしては、2F がせり出してる分、1F の最後列はかなり見づらそうな雰囲気だったので避けた方がいいのと、デイゲームでバックスタンド側にいると直射日光がハンパないので、お金のある人はメインスタンドのがベターなんじゃないかと思います。</p>
+
+<p><img src="https://farm6.staticflickr.com/5481/14193032595_2d08bc2919_z.jpg" width="640" height="374" title="'Camp Nou by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<p><img src="https://farm6.staticflickr.com/5506/14193105695_9885011f88_z.jpg" width="640" height="374" title="'Messi by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<h3>La Sagrada Família</h3>
+
+<p>いつまでも完成しなくて、作ってる間にもメンテナンスが必要なところが Web サービスっぽいことでお馴染みサグラダ・ファミリア教会。<a href="http://www.sagradafamilia.cat/">公式サイト</a>で予約して指定時間に行けばすぐに入れるので予約をオススメします。夜にいくのもだいぶオススメで 23:00 頃に行きましたがそれなりに人もいて、全く危険な気配はない雰囲気でした。それまでにカサ・バトリョやカサ・ミラ、グエル公園などに行って(建築素人から見ても)ガウディの建築物はすごいなと思ってましたが、こいつは別格ですね。今のところ 2026 年くらいに完成予定？みたいなので、完成したらもう一度行きたいなって思ってます。</p>
+
+<p><img src="https://farm3.staticflickr.com/2919/14170054646_b549c68842_z.jpg" width="640" height="374" title="'La Sagrada Família by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<p><img src="https://farm8.staticflickr.com/7373/14006576829_731498804e_z.jpg" width="640" height="374" title="'La Sagrada Família by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<h2>Museu Nacional d&#8217;Art de Catalunya</h2>
+
+<p>カンプノウとサグラダ・ファミリアは別格として、もう一個オススメするならカタルーニャ美術館です。19:00 くらいからはじまる噴水ショーはもちろん、下から見上げる美術館が偉大なのと、上から見る眺めもステキで、新婚旅行でいくとロマンチックな雰囲気を楽しめるんじゃないでしょうかね。</p>
+
+<p><img src="https://farm8.staticflickr.com/7423/14006634478_a8f819be2a_z.jpg" width="640" height="374" title="'Museu Nacional d'Art de Catalunya by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<p><img src="https://farm8.staticflickr.com/7451/14193308825_1865eccee3_z.jpg" width="640" height="374" title="'Museu Nacional d'Art de Catalunya by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<p><img src="https://farm8.staticflickr.com/7337/14006652870_94f6ed898f_z.jpg" width="640" height="374" title="'Museu Nacional d'Art de Catalunya by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<h2>メシについて</h2>
+
+<p>どこに行ってもかなり美味しくて大変満足度が高かったです。サングリアも 4 ユーロくらいで大量に飲めたりして、普段あまりお酒飲まないタイプですが、ついつい連日飲んでしまった感じでした。とはいえ、レストランいくと 1 食で 10 ~ 15 ユーロかかって、1 ユーロ 145 円くらいだったのでなかなかお金はかかりました。印象深かったのは <a href="https://www.facebook.com/ObsessionsDelRaval">Obsessions del Raval</a> というこじんまりしたお店で、Trip Adviser みたらレートがよさそうだったので入ってみたら、バケットにリコッタチーズと生ハムが載った料理が激ウマだったので、かなりオススメです。おそらく地元の人しか来ないようなお店のためかメニューがスペイン語とカタルーニャ語しかないですが、店のおばちゃんが全メニュー英語で説明してくれたので空いてる時に行けばなんとかなるんじゃないかと思います。</p>
+
+<p><img src="https://farm6.staticflickr.com/5593/14190085591_2beb81d2c2_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
+<img src="https://farm3.staticflickr.com/2922/14190822342_4fa1835ca0_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
+<img src="https://farm8.staticflickr.com/7450/14190085401_7c3e597797_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
+<img src="https://farm6.staticflickr.com/5475/14006706039_ffa4c9ffb7_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
+<img src="https://farm8.staticflickr.com/7340/14190822002_4c41068bdb_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
+<img src="https://farm8.staticflickr.com/7368/14193318744_4e8ec0dbae_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<h2>英語と治安について</h2>
+
+<p>さすがにオリンピックもやるような国際都市は違うなという感じで、あと数年で東京がこのレベルに達するのかというと、なかなか厳しそうだなという印象でしたが、日本人として日本にいると気づかないだけで、観光名所やその周辺の飯処は英語が通じたりするんでしょうかね？</p>
+
+<p>またスペインってかなり失業率が高いと聞いていて、治安が悪い印象があったんですが、ほとんど危険を感じるようなことなありませんでした。日が沈むのが遅いので、20:00 くらいまでは明るいのに加え、23:00 くらいになっても子連れで歩く家族がいたり、お子様を連れて行くのも比較的難易度が低いのではないかなと思います。</p>
+
+<h2>そのほか</h2>
+
+<p>モバイル事情もそんなに悪くなく、「<a href="http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a>」で紹介したように現地でプリペイド SIM を買ってネットしていましたが、下りで 6Mbps くらいは出ていて、地下鉄でも比較的電波が入るところが多く、不便を感じることはありませんでした。ただ、そういうインフラがある割に、電車の中でスマホ弄ってる人は圧倒的に少なくて、自分がチラチラみる限りは WhatsApp してるか Candy Crush Saga やってるかみたいな雰囲気でした。</p>
+
+<p>あと、今回かかった旅費ですが、2 人で 7 泊 9 日の日程で 48 万くらいかかってしまいました。航空券が 24 万で、宿泊費が 8 万くらいなので、現地でもかなりお金を使ってしまった印象ですが、一人旅じゃないので仕方なしといったところでしょうか。</p>
+
+<h2>まとめ</h2>
+
+<p>今回、紹介した場所はもちろん、その他にもバルセロナ市街を一望できるモンジュイックや、ピカソやミロを中心とした美術館、地中海をクルージングできるバルセロナ港など、とにかく見所満載でオススメな場所なので、夏休みに行ってみるのはいかがでしょうか？ということで終わりです。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[バルセロナでプリペイド SIM カードを購入する]]></title>
+    <link href="http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"/>
+    <updated>2014-05-05T09:51:06+09:00</updated>
+    <id>http://blog.takus.me/2014/05/05/barcelona-prepaid-sim</id>
+    <content type="html"><![CDATA[<p>休暇でバルセロナに来てるわけですが、今回は現地でプリペイド SIM カードを買ってみたので買い方などをまとめておきます。</p>
+
+<p><a href="https://www.flickr.com/photos/esperto/13922739997"><img src="https://farm8.staticflickr.com/7329/13922739997_155d5662b8_z.jpg" width="640" height="427"></a></p>
+
+<h2>購入方法</h2>
+
+<p>エル・プラット国際空港のターミナル 1 の出口あたりで Lebara というキャリアの SIM が売っていて、他に買えそうな場所がなかったのでそこで買いました。購入の流れとしては、店員さんにプリペイド SIM カードをくださいと伝えるとパスポート見せろと言われるのでそれを見せれば SIM カードと簡易なマニュアルが貰えるので、マニュアルに従って APN の設定等を済ませるだけです。今回の場合は、店員さんが丁寧に APN の設定等までやってくれる感じだったので、あらかじめ言語設定を英語にしておくとスムーズに設定してもらえるんじゃないかと思います。</p>
+
+<h2>料金</h2>
+
+<p>契約した Lebara というキャリアの話になってしまいますが、€10 で 1GB のデータ通信がついてきて、足りない場合は €3 で 100MB づつ買い足していけるようです。今回はバルセロナに 8 日間ほど滞在していましたが、2 人でテザリングして 1GB 程度だったので、普通に使うのであれば €10 のプランで問題ないのではないかと思います。(あとは €25 で 3GB のプランもありました)</p>
+
+<h2>チャージ</h2>
+
+<p>最初に購入した分を使い切ってしまったらチャージする必要がありますが、街中で Lebara のステッカーが貼ってあるお店を見つけて、電話番号を伝えてお金を払うとチャージできますが、単にチャージするだけではダメで、<a href="http://www.lebara.es/passes/internet?isoCode=en_GB">22233 に SMS で D100 というメッセージを送る必要があるようです</a>。ちなみに <a href="http://www.lebara.es/">Lebara のサイト</a> からクレジットカードでもチャージできるみたいですが、何度やっても上手くいかなかったので諦めました。</p>
+
+<h2>まとめ</h2>
+
+<p>購入に少し手間はかかりますが、海外ローミングやモバイルルータを使うと 1 日 1000 円くらいかかるモバイル回線が、プリペイドの SIM を買うことで 100~200 円レベルになるのでバルセロナ (スペイン) に行く人がいれば検討するとよいと思います。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[『グーグル ネット覇者の真実』を読んだ]]></title>
+    <link href="http://blog.takus.me/2014/04/16/google-in-the-plex/"/>
+    <updated>2014-04-16T00:42:00+09:00</updated>
+    <id>http://blog.takus.me/2014/04/16/google-in-the-plex</id>
+    <content type="html"><![CDATA[<p>ある人にオススメされたので『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B009LFBL4Y/takus-22/ref=nosim">グーグル ネット覇者の真実</a>』を読んでみたらかなり面白い本でした。検索連動型広告という金脈を見つけて急成長していく序盤のワクワクする感じから、上場して今のような大企業になるにつれていわゆる大企業病が蔓延して色々と悩みが増えてくる様子などがかなり生々しく書かれていて、色々と考えさせられる内容が多かったです。その中でもいくつか印象に残ったことなどをメモっておきます。</p>
+
+<h2>徹底したコストへの意識</h2>
+
+<blockquote><p>「検索リクエストをひとつ処理するたびにお金がかかる。広告収入が得られるようになるのはまだ先のことだった。そこでペイジとプリンとヘルツルは、可能な限り安くインフラを構築する方法を考えたんだ。」</p></blockquote>
+
+<p>(ビジネスがうまくいってる限りは) 極端にインフラのコストを下げる必要はないのかなと思ってましたが、考えを改めさせられました。たとえばグーグルのように収益得られるようになるまでいいプロダクトを作ることにフォーカスできる体力を残せるという価値もあるし、ユーザ視点で考えると、コストがかかって今までは有料じゃなければできなかったことが、無料 (広告) のみで提供できるようになるみたいな価値の生み方もあるなと。ということで、1 クエリの処理にいくらかかるのかを即答できるレベルでコストと向き合っていくべきだなと感じてます。</p>
+
+<h2>低レイテンシーの追求</h2>
+
+<blockquote><p>「彼 (ラリー・ペイジ) は常にあらゆることを測っている」</p>
+
+<p>検索結果の戻りが遅いと「ユーザは検索し直すことを無意識に嫌がるようになる」とヘルツルは言う。「あるいは検索リクエストを別の表現で入力し直すより、全く別の情報を探そうとするかもしれない。ユーザに直接聞いても、そうだとは決して答えないだろうが、全体のデータを見れば一目瞭然だ。」</p>
+
+<p>スライドショーが 3 倍速く動くようにすると、改善策について発表があったわけでもないのに、実施当日の「ピカサ」サイトのトラフィックは 40% 増加した。</p></blockquote>
+
+<p>これもコストの話と同じで、もっと低レイテンシーを追求していかなきゃいかんと考えさせられることが色々書いてあり、意識が高まりました。</p>
+
+<h2>大企業になると&hellip;</h2>
+
+<blockquote><p>(上場後) つまり、グーグラーたちは裕福になるにつれて保守化していったのだ。</p>
+
+<p>グーグルとユーチューブの社内で交わされていたメールやプレゼン資料を比較すると、両者は著しく対照的な企業であることがわかる。グーグルビデオ・チームは上層部から承認とアドバイスを得るために膨大な時間を費やしていた。&hellip;ユーチューブでは、上司のために大量のスライド資料を何度も書き直す必要はなかった。彼らは自分が正しいと感じたことをやるだけでよかった。</p>
+
+<p>この問題で直面した状況は、グーグルを苦しめてる問題の縮図だった。小さな企業がテクノロジーと頭脳の力を駆使して、既存のビジネスモデルは文化的伝統をかき乱せば、その企業は魅力的で刺激的だと賞賛され、かたやライバル企業は既得権にしがみつく守旧派のいじめっ子というレッテルを貼られる。しかし、資金力の豊富な巨大企業が市場をかき乱すと、その企業がいじめっ子と見なされ、ライバル企業は（たとえ、よこしまな意図で行動していても）同情を集められる。</p></blockquote>
+
+<p>上場するような規模になってくると、それまでとは違う色々な問題が出てきて、Google も例外でないんだなと実感させられました。</p>
+
+<h2>そのほか</h2>
+
+<blockquote><p>「グーグルは当時 1 万 ~ 1 万 5000 台のサーバを保有していたので、2000 台くらいは自由に使わせてもらうことができた」</p></blockquote>
+
+<p>これはさすが Google 先生という内容&hellip;。</p>
+
+<blockquote><p>「サーバの反応が遅すぎる場合、あなたならどのように診断しますか？」</p></blockquote>
+
+<p>ある社員が面接で聞かれたらしいですが、シンプルであるにも関わらず本質を理解してないと答えられない良問だと思いました。</p>
+
+<blockquote><p>「問題を突き詰めるとこうこうことになる」とマカフリーは後に語った。「限られた予算を技術開発やインフラや本当に優秀な社員の雇用に注ぎ込みたいのか？それとも効果を測定することすらできないマーケティングに使って台無しにしたいのか？」</p></blockquote>
+
+<p>マーケティングって成功のためには大切な要素の一つではあると思いますが、プロダクトの質を高めるのにお金使う方がより健全だし、ユーザに与える価値も大きくなるんじゃないかなという印象をうけました。</p>
+
+<h2>まとめ</h2>
+
+<p>全体的にかなり面白くて意識も高まる内容だったので『ソーシャルネットワーク』みたいに映画化してくれないかなって思いました。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[『アルゴリズムが世界を支配する』を読んだ]]></title>
+    <link href="http://blog.takus.me/2014/04/05/automate-this/"/>
+    <updated>2014-04-05T12:35:00+09:00</updated>
+    <id>http://blog.takus.me/2014/04/05/automate-this</id>
+    <content type="html"><![CDATA[<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00FMI2XIW/takus-22/ref=nosim">アルゴリズムが世界を支配する</a>』を読んでみました。</p>
+
+<blockquote><p>アルゴリズムとは無数の二者択一からなる巨大なデシジョン・ツリーだととらえることができる。私たちのやることなすことほぼすべてが—車の運転から株の売買から配偶者選びにいたるまで—二者択一の無数の要素にまで分解することができる (本文より)</p></blockquote>
+
+<p>Amazon の &ldquo;この商品を買った人はこんな商品も買っています&rdquo; のような、いかにもコンピュータが得意そうなものだけでなく、今までは人がやることしか考えられなかったような仕事までもどんどんアルゴリズムで置き換えられていきますよ？ って具体例がたくさん載っていて興味深い内容でした。</p>
+
+<p>例えば、コールセンター業務では、アルゴリズムによって会話内容から顧客のパーソナリティを分類してパーソナリティが近い人に対応させることで、通話時間と問題の解決率を 50% も改善できる可能性があるらしく、企業からみれば今までの半分の人数でコールセンター業務を回せることになるので大きな価値がある一方で、コールセンターで働いてる人の仕事の半分はアルゴリズムで置き換えられてしまうことになります。</p>
+
+<p>自分が普段やってるような仕事でも、例えば @mirakui さんの『<a href="http://blog.mirakui.com/entry/2013/02/20/003401">全自動パラメータチューニングさん</a> 』のようなものがもっともっと発達してしまうと、仕事の大半はアルゴリズムによって自動化されて失職なんてこともあるかもしれません。</p>
+
+<p>じゃあ、世の中の仕事は全てアルゴリズムで置き換えていけるかっていうとそういうわけでもなくて、過去の膨大なデータから未来の傾向を予測するようなことは得意な一方で、今までにない新しい概念や新しい仕組みを作るような行為はアルゴリズムで置き換えるのは難しい部分になってくると思います。本に載ってた例が聞いたことない音楽の例だったので自分なりに解釈すると、全盛期のモー娘。の身体的な特徴とヒット曲の分析をいくらしても、AKB は生まれてこないってのがしっくりくるかなってとこです。</p>
+
+<p>というわけで、既存の延長で仕事してないでもっと新しいことやっていかないとなって思ってます。おわり。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Think Simple は学びが多い本でした]]></title>
+    <link href="http://blog.takus.me/2014/03/29/think-simple/"/>
+    <updated>2014-03-29T19:15:00+09:00</updated>
+    <id>http://blog.takus.me/2014/03/29/think-simple</id>
+    <content type="html"><![CDATA[<p>Macbook や iPhone のデザインはシンプルでクールで最高だろ、みたいな本かと思って敬遠してましたが、<a href="http://blog.kenjiskywalker.org/blog/2013/11/16/think-simple/">@kenjiskywalker さんのブログ</a> みて面白そうだったので、&#8221;<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B008YOHMCS/takus-22/ref=nosim">Think Simple &ndash; アップルを生みだす熱狂的哲学</a>&ldquo; 読んでみたら、予想以上に学びが多くて、イイ本でした。</p>
+
+<h2>コミュニケーションについて</h2>
+
+<blockquote><p>相手が敵でも友人でも、真実は真実で変わりないし、自分の意見は自分の意見で変わらなかった。相手を好きか嫌いか、その働きを評価しているかどうかは関係なかったし、部屋の空気も関係なかった。</p></blockquote>
+
+<p>仕事上のコミュニケーションってどうしてもシンプルにするのが難しい部分があって、たとえば外の会社と一緒に開発するような案件で、明らかに外部の会社の人がおかしなこと言っていたとしても、人間関係とか考えると、話させるのをやめたり、厳しく批判するのを躊躇ったりしがちですが、もっとシンプルにコミュニケーションすべきじゃないかと思いました。</p>
+
+<blockquote><p>自分のチームに最高の結果をもたらすために、ただ言うべきことを言うことなのだ。</p></blockquote>
+
+<p>これも上に書いてあることと同じですね。</p>
+
+<blockquote><p>人を不快にさせたり、陰で悪口を言われたりすることがあっても、もっとよくできることがわかっているときは、これでいいかと自分を納得させてはならない。</p></blockquote>
+
+<p>他の人が進めてるプロジェクトなんかでありがちな気がするんですが、自分が見た時にはすでに議論や作業がある程度進んでいるんだけど、説明を聞くとイマイチいけてないみたいな状況で、面倒だからスルーしちゃうみたいなのやめた方がよさそうです。</p>
+
+<h2>仕事の進め方について</h2>
+
+<blockquote><p>部屋にいる者は全員がそこにいるべき理由を持っていること。「情けで招待する」ようなことはあってはならない。</p></blockquote>
+
+<p>Wiki にまとめた資料を読むだけの会議とかほんと無駄なので、読んでおいてくださいで終わらせたい。</p>
+
+<blockquote><p>スティーブの頭にはレポートカードを作ったり、それに対応したりして、貴重な時間を費やすことなどまったく思い浮かばなかっただろう。彼はリアルタイムの正直さを好んだ。何か気にかかることがあれば、その場で告げた。それが私たちのレポートカードだった。</p></blockquote>
+
+<p>会議のための資料作りって、自分の思考を整理できるという面においてはいいんですが、見た目とかに凝り出しちゃうと本質見失ってる感じですね。</p>
+
+<blockquote><p>つまりこういうことだ。プロセスが王様のときに、アイデアはけっして王様になれない。プロセスの段階を増やせば増やすほど、完成品の質が悪くなることは、&lt;常識> を働かせればわかるだろう。</p></blockquote>
+
+<p>もっと承認とか減らしてやった方がうまく行くんだろうなって思うことは色々ありますね。もちろん失敗することもあるんじゃないかと思いますが、スピード感持ってやれば、その分だけ挑戦する回数も多くなって、結果的に成功が増えるってイメージです。</p>
+
+<blockquote><p>シンプルさはせっかちだ。いきなり本題に入って、大事なことに集中したがる。</p></blockquote>
+
+<p>なんでもシンプルにやることで、本質にフォーカスして、もっとバリュー出したいです。</p>
+
+<h2>まとめ</h2>
+
+<p>ということで、日頃、なんか仕事しにくいなとか思いながら働いてる人は読んでみるといいんじゃないかと思いました。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[#jawsdays の #最強のAWS で「ぜんぶ AWS でやらないワケ」という話をしてきた]]></title>
+    <link href="http://blog.takus.me/2014/03/17/jawsdays-2014/"/>
+    <updated>2014-03-17T09:41:00+09:00</updated>
+    <id>http://blog.takus.me/2014/03/17/jawsdays-2014</id>
+    <content type="html"><![CDATA[<p><a href="https://twitter.com/hirose31">@hirose31</a> さん経由で <a href="https://twitter.com/con_mame">@con_mame</a> さんからお話をいただき、<a href="http://jawsdays2014.jaws-ug.jp/">JAWSDAYS 2014</a> の「<a href="http://jawsdays2014.jaws-ug.jp/sessions/track7/">これで最強AWSに</a>」というセッションで話をしてきました。</p>
+
+<p>内容としては、オンプレも AWS も運用してる立場から両者を比較してみてどうなのといった感じのお話です。<a href="http://togetter.com/li/639957">2014/03/15 JAWS DAYS 2014 &ndash; 『これで最強のAWSに』セッション #jawsdays #最強のAWS</a> にツイートまとめがあるので、資料と一緒にご覧いただければと思います。</p>
+
+<script async class="speakerdeck-embed" data-id="e47ff2c08e49013146041a945ae20cc0" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>こんな話も出ていましたが、</p>
+
+<blockquote><p>DeNAの悩みはクックパッドと一緒 #jawsdays #最強のAWS</p><footer><strong>@rada_bashishi</strong> <cite><a href='https://twitter.com/rada_bashishi/status/444737901440409600'>twitter.com/rada_bashishi/&hellip;</a></cite></footer></blockquote>
+
+
+<p>AWS は必ずしも銀の弾丸ってわけではなく、どこの会社も悩ましい部分を抱えながら運用しているわけで、<a href="https://twitter.com/sgwr_dts">@sgwr_dts</a> さんの <a href="https://bitbucket.org/winebarrel/roadworker">Roadworker</a> のようにユーザ側でイケてる仕組みにするようなアプローチもありますが、このような機会を利用して AWS の中の人に直接フィードバックできたという意味で、いいセッションになったのではないかと思っています。</p>
+
+<p>関係者のみなさま、ありがとうございました！</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[EC2 に SSH できない時の対処法、あるいは Marketplace の AMI を気軽に選ぶべきでない理由]]></title>
+    <link href="http://blog.takus.me/2014/03/04/ec2-ssh/"/>
+    <updated>2014-03-04T00:00:00+09:00</updated>
+    <id>http://blog.takus.me/2014/03/04/ec2-ssh</id>
+    <content type="html"><![CDATA[<p>前半の部分をまとめようと思ったら、大切なことは全て<a href="https://gist.github.com/j3tm0t0/5560892"> @j3tm0t0 さんの gist </a>に書いてあったので、SSH でログインできなくなった時はまず上記の gist に書いてあることを確認するといいと思います。</p>
+
+<p>で、今回の話は、snapshot を取得して 新たに volume を作成して、他のインスタンスにアタッチ＆マウントしてエラーが出ていないかを確認しようとした時に下記のエラーでマウントできなかった件に関するお話です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>'vol-xxxxxxx' with Marketplace codes may not be attached as as secondary device.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ググったら <a href="http://www.quora.com/Amazon-EC2/Is-it-possible-to-rescue-an-EBS-volume-which-has-marketplace-codes">&ldquo;Is it possible to rescue an EBS volume which has marketplace codes?&rdquo;</a> や <a href="http://techblog.willshouse.com/2013/08/21/marketplace-codes-may-not-be-attached-as-a-secondary-device/">&ldquo;Marketplace codes may not be attached as a secondary device&rdquo;</a> といった記事を見つけて、まとめると、</p>
+
+<ul>
+<li>Marketplace で提供される AMI はルートボリューム以外にマウントできない</li>
+<li>AWS のサポートに連絡するとマウントできない制限を解除してくれる</li>
+</ul>
+
+
+<p>とのことで、AWS のサポートに調査対象ボリュームのスナップショットを共有すると、マウントできない制限を解除してくれるようです。</p>
+
+<p><a href="https://aws.amazon.com/marketplace/seller-profile/ref=dtl_pcp_sold_by?ie=UTF8&amp;id=16cb8b03-256e-4dde-8f34-1b0f377efe89">CentOS は公式の AMI が Marketplace で提供されてる</a>のでついつい選んでしまいがちですが、問題が起きた時のトラブルシューティングに一手間かかってしまうので、気軽な気持ちで選んでしまうと面倒なことになるよという話でした。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress で はてなブックマーク数 を表示する]]></title>
+    <link href="http://blog.takus.me/2014/03/01/octopress-hatena-bookmark/"/>
+    <updated>2014-03-01T18:06:00+09:00</updated>
+    <id>http://blog.takus.me/2014/03/01/octopress-hatena-bookmark</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/takus/takus.github.com/commit/0cf6d223e4f2512c63652b8bc0147956b9d77722">https://github.com/takus/takus.github.com/commit/0cf6d223e4f2512c63652b8bc0147956b9d77722</a></p>
+
+<p>こちらからは以上です。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Docker/Drone を CentOS 6.5 で動かして Github Enterprise のリポジトリをテストする]]></title>
+    <link href="http://blog.takus.me/2014/02/25/drone-on-centos/"/>
+    <updated>2014-02-25T20:03:00+09:00</updated>
+    <id>http://blog.takus.me/2014/02/25/drone-on-centos</id>
+    <content type="html"><![CDATA[<p><img src="http://farm6.staticflickr.com/5530/12768732363_934e22c97b_z.jpg" width="640" height="374" title="'Drone by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<p>&ldquo;Docker 使うなら Ubuntu だろ jk&rdquo; とか言われそうですが CentOS 6.5 で使いたかったので試してみました。<a href="https://www.docker.io/gettingstarted/">Docker の公式サイトには &ldquo;Our recommended installation path is for Ubuntu linux, because we develop Docker on Ubuntu and our installation package will do most of the work for you.&rdquo; と書いてあったり</a>、<a href="https://github.com/drone/drone">Drone は Ubuntu 用のパッケージしかなかったり</a>するので、深淵な理由がなければ Ubuntu 使うのがいいんじゃないかと思います。</p>
+
+<h2>Docker のインストール</h2>
+
+<p>CentOS 6.5 なら簡単にインストールできるので特にハマりどころはありませんでした。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+</span><span class='line'>yum -y install docker-io
+</span><span class='line'>chkconfig docker on
+</span><span class='line'>service docker start
+</span><span class='line'>
+</span><span class='line'>docker run centos /bin/echo "Hello World"
+</span><span class='line'>Hello World</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Drone のビルド</h2>
+
+<p>Makefile がリポジトリに入ってるので、Makefile でビルドしてあげます。<code>make deps</code> でこける場合は適宜、依存を解決してあげれば OK です。
+golang 素人すぎて適当にやってしまいましたが、こうすべきみたいのがあれば優しく教えていただけると助かります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yum -y install golang
+</span><span class='line'>echo 'export GOPATH=$HOME/go' &gt;&gt; ~/.bash_profile
+</span><span class='line'>echo 'export PATH=$PATH:$GOPATH/bin' &gt;&gt; ~/.bash_profile
+</span><span class='line'>source ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'>yum -y install git hg bzr
+</span><span class='line'>yum -y groupinstall "Development Tools"
+</span><span class='line'>
+</span><span class='line'>git clone https://github.com/drone/drone.git && cd drone
+</span><span class='line'>make deps
+</span><span class='line'>make && make test && make install
+</span><span class='line'>droned</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Drone で Github Enterprise のリポジトリをテストする</h2>
+
+<p>後は <a href="http://yosssi.hatenablog.com/entry/2014/02/08/161500">Droneのオープンソース版を試してみました。</a> に従ってセットアップしていけばいいのですが、Github Enterprise のリポジトリを CI する場合はちょっとだけ対応が必要でした。</p>
+
+<h3>1. Github API の URL 変更</h3>
+
+<p><a href="http://DRONE_HOST/account/admin/settings">http://DRONE_HOST/account/admin/settings</a> の &ldquo;GitHub Settings&rdquo; で API の URL の変更します。
+Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/api/v3">https://GITHUB_DOMAIN/api/v3</a> のように修正すればよさそうです。</p>
+
+<h3>2. リポジトリの clone 方法の変更</h3>
+
+<p><a href="https://github.com/drone/drone/issues/91">GitHub Enterprise &amp; Private Mode #91</a> にあるように、GitHub Enterprise を private mode で運用してる場合、<code>git://</code> プロトコルが使えないので、リポジトリの clone に失敗してしまっていました。Issue にあがってるくらいなのでそのうち解決されるかと思いますが、ワークアラウンドとして下記のようにソースを修正してビルドし直して使ってます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gd">--- a/pkg/model/repo.go</span>
+</span><span class='line'><span class="gi">+++ b/pkg/model/repo.go</span>
+</span><span class='line'><span class="gu">@@ -24,7 +24,7 @@ const (</span>
+</span><span class='line'> )
+</span><span class='line'>
+</span><span class='line'> const (
+</span><span class='line'><span class="gd">-       githubRepoPattern           = &quot;git://%s/%s/%s.git&quot;</span>
+</span><span class='line'><span class="gi">+       githubRepoPattern           = &quot;git@%s:%s/%s.git&quot;</span>
+</span><span class='line'>        githubRepoPatternPrivate    = &quot;git@%s:%s/%s.git&quot;
+</span><span class='line'>        bitbucketRepoPattern        = &quot;https://bitbucket.org/%s/%s.git&quot;
+</span><span class='line'>        bitbucketRepoPatternPrivate = &quot;git@bitbucket.org:%s/%s.git&quot;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>3. Github リポジトリにデプロイキーを登録</h3>
+
+<p>これで万事解決と思いきや、今度は <code>git@</code> で clone してるにも関わらず、git clone に失敗する現象に遭遇しました。Drone のログをみてるとコンテナの初期化する際にリポジトリ毎の秘密鍵をおいているようで、Settings の Key Pairs にある公開鍵を Github リポジトリのデプロイキーに登録してあげたところ、無事に Clone できるようになりました。</p>
+
+<p><img src="http://farm6.staticflickr.com/5475/12768591305_b2c6f232ee_z.jpg" width="640" height="310" title="'Drone by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<h2>まとめ</h2>
+
+<p>ということで、無事に Drone 使えるようになったので、あとは各バージョンの perlbrew とか rbenv とか nodebrew を持ったイメージを作っておいて、それ毎にバージョン跨ぐテストしていくような感じにしていけばよさそうな雰囲気です。ざっと設定画面とコードを眺めたところ、Jenkins の Master/Slave みたいな仕組みがないので、数が増えていったらある程度 Drone を分けるしかなさそうですが、とりあえずはチーム毎とかそういう単位で Drone を用意してあげればいいのかなと思ってます。 Enjoy your test with Drone :D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[自分が撮影した写真をドイツの出版社に買ってもらった話]]></title>
+    <link href="http://blog.takus.me/2014/02/25/money/"/>
+    <updated>2014-02-25T02:04:00+09:00</updated>
+    <id>http://blog.takus.me/2014/02/25/money</id>
+    <content type="html"><![CDATA[<p>ある日、ドイツの出版社から Flickr で共有した御柱の写真を買いたいというオファーがあり、色々調べながら無事に取引できたので、取引の流れをまとめておきます。</p>
+
+<h2>Flickr でのオファー</h2>
+
+<blockquote><p>&hellip;. Through my research in Flickr I came across your profile and found an image we would like to use for our publication. &hellip;.</p></blockquote>
+
+<p>Flickr メールにきたオファーはこんな感じの内容でした。雑誌名なども書いてあったのでググったら、どうやらちゃんとした会社のようだったので承諾。(ウソ書かれてても判断できないですが)</p>
+
+<blockquote><p>&hellip;.. And you don´t have to give it for free. I can offer you 180Euro. How do you think?</p></blockquote>
+
+<p>で、話を進めていくと、驚くことに 180 Euro でどう？って言われ、&#8221;銀行にお金振り込むから、RAW と一緒に請求書送ってね&#8221; とか言われたので、請求書をどうすればいいのかとか、ユーロってどう受け取るんだろうとか色々調べてみました。</p>
+
+<h2>請求書の作成</h2>
+
+<p>請求書は <a href="https://drive.google.com/templates#">Google Drive の請求書テンプレ</a> から適当に invoice を探して必要事項を記入し、PDF で出力するだけで OK でした。今回はシンプルな<a href="https://drive.google.com/previewtemplate?id=1twPZKGOMGQoisxCR2GIK2C1kCKxRazX-D10h5ucavUs&amp;mode=public">コチラ</a>を使わせていただきました。</p>
+
+<h2>代金の受け取り</h2>
+
+<p>ユーロで受け取るなら外貨建ての口座開かないといけないのかと思って萎えてたんですが、三菱東京 UFJ 銀行であれば円建てで受け取れます。具体的には下記の情報を請求書に書くだけでよく、日本円同士の振り込みとほとんど変わりませんでした。SWIFT というのは銀行機関識別コードらしく、銀行によって違うので UFJ 以外を利用する場合は適宜確認してください。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Payment Information:
+</span><span class='line'>  Name of depositor: YOUR NAME
+</span><span class='line'>  Name of bank: THE BANK OF TOKYO-MITSUBISHI UFJ, LTD. (XXXXX Branch)
+</span><span class='line'>  Address: X-X-X XXXX XXXX Tokyo Japan
+</span><span class='line'>  SWIFT: BOTKJPJT
+</span><span class='line'>  IBAN: XXX-XXXXXXX (SAVING ACCOUNT)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ちなみに入金されると、銀行から &ldquo;外国送金・本支店間外貨送金計算書&rdquo; なる封書が送られてきて、換算レートと手数料を確認できるのですが、手数料が 1500 円も取られていました&hellip;。(高い！)</p>
+
+<h2>まとめ</h2>
+
+<p>誰かに買ってもらうことを期待して写真撮ってるわけじゃないですが、いざ外国の雑誌で使って貰えるようなオファーが来るのはなかなか嬉しい体験なもので、最近、一眼レフ持ち歩くのダルくなりはじめてましたが、もうちょっとがんばってみようかなって気になってます (笑)</p>
+
+<p>参考までに、お買い上げいただいた写真も貼っておきます。御柱みたいなちょっとマイナーな写真だと同じような写真が少なくて買ってもらいやすそうですね :D</p>
+
+<p><img src="https://farm5.staticflickr.com/4044/4591557180_8d3dbdd778_z.jpg" width="340" height="512" title="'Ki Otoshi by Takumi Sakamoto (takus) on fickr.com'" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Immutable Infrastructure Hackathon :D で docker をさわってみた]]></title>
+    <link href="http://blog.takus.me/2014/02/23/docker/"/>
+    <updated>2014-02-23T21:42:00+09:00</updated>
+    <id>http://blog.takus.me/2014/02/23/docker</id>
+    <content type="html"><![CDATA[<p>Immutable Infrastructure Hackathon :D で <a href="https://www.docker.io/">Docker</a> を触ってみただけという、ゆるふわなメモです。@muddydixon さんや @yosuke_furukawa さんが <a href="http://blog.drone.io/">drone</a> を触ってたのに比べてだいぶ素人丸出しな感じですが、Docker 童貞からは脱却できたので、次は &ldquo;<a href="http://blog.tmtk.net/2013/09/28/docker-jenkins-serverspec-puppet.ja.html">Docker + Jenkins + serverspecでpuppetのmanifestをCIする</a>&rdquo; あたりに取り組んでみたいと思いました。</p>
+
+<h2>公式チュートリアル</h2>
+
+<p>まず、<a href="https://www.docker.io/gettingstarted/">公式サイトのチュートリアル</a>で一通り使い方を学びました。</p>
+
+<h2>Docker on DigitalOcean</h2>
+
+<p>DigitalOcean は 1GB メモリのサーバが 1 時間 $0.015 で使える格安の VPS サーバで、手元で VM 動かしたくなかったので使ってみました。Docker は &ldquo;<a href="http://blog.glidenote.com/blog/2013/12/20/vagrant-docker-digitalocean/">MacからVagrantコマンド一発でSSDなVPS(DigitalOcean)上にCentOS6.5+Docker環境を構築する</a>&rdquo; を参考に入れます。</p>
+
+<p>最初は CentOS 6.4 に Docker をインストールして docker build していましたが、メモリ枯渇して OOMKiller 発動したり不安定だったので、公式サポートされてるという CentOS 6.5 にしました。ちなみに IPv6 が有効になってると <code>docker run -p</code> したときに IPv4 のアドレスを bind してくれなかったので無効にしてます。</p>
+
+<h2>Ukigumo-Server on Docker</h2>
+
+<p>Docker が動くようになったので、@kazeburo 先生の &ldquo;<a href="http://blog.nomadscafe.jp/2013/12/centos-65dockergrowthforecast.html">CentOS 6.5にDockerいれてGrowthForecastを動かしてみた</a>&rdquo; を参考に Ukigumo-Server の image を作ってみました。</p>
+
+<h3>Dockerfile</h3>
+
+<p>元の Dockerfile では <code>EXEC</code> してましたが、 <code>EXEC</code> 使うより <code>ENTRYPOINT</code> で引数渡せるようにした方が <code>docker run</code> するときに引数指定できて便利そうだったのでそうしてます。Dockerfile のコマンドについては、<a href="http://docs.docker.io/en/latest/reference/builder/">公式ドキュメント</a> が参考になりました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>FROM centos
+</span><span class='line'>MAINTAINER Takumi Sakamoto, takus
+</span><span class='line'>RUN yum -y groupinstall "Development Tools"
+</span><span class='line'>RUN git clone https://github.com/tagomoris/xbuild.git
+</span><span class='line'>RUN xbuild/perl-install 5.18.1 /opt/perl-5.18
+</span><span class='line'>RUN echo 'export PATH=/opt/perl-5.18/bin:$PATH' &gt; /etc/profile.d/xbuild-perl.sh
+</span><span class='line'>RUN /opt/perl-5.18/bin/cpanm -n Ukigumo::Server
+</span><span class='line'>EXPOSE 2828
+</span><span class='line'>ENTRYPOINT ["/opt/perl-5.18/bin/ukigumo-server"]</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>image を build して docker repository に push</h3>
+
+<p>image を作って push してみました。push した image は<a href="https://index.docker.io/u/takus/ukigumo-server/">コチラ</a>にあります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ docker login
+</span><span class='line'>Username: xxxx
+</span><span class='line'>Password:
+</span><span class='line'>Email: xxxx
+</span><span class='line'>Login Succeeded
+</span><span class='line'>
+</span><span class='line'>$ docker build -t takus/ukigumo-server .
+</span><span class='line'>Successfully built 14b737e414c6
+</span><span class='line'>
+</span><span class='line'>$ docker images
+</span><span class='line'>REPOSITORY             TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
+</span><span class='line'>takus/ukigumo-server   latest              14b737e414c6        About a minute ago   1.33 GB
+</span><span class='line'>
+</span><span class='line'>$ docker run -p 2828:2828 takus/ukigumo-server
+</span><span class='line'>d3b31b2f8603344636435d18138a74ff365cc5797f10fe900cc16d05b0451fe0
+</span><span class='line'>
+</span><span class='line'>$ docker push takus/ukigumo-server
+</span><span class='line'>d4fc918d1e82: Image successfully pushed
+</span><span class='line'>Pushing tag for rev [d4fc918d1e82] on {https://registry-1.docker.io/v1/repositories/takus/ukigumo-server/tags/latest}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>他の人が作った image をもってきてみる</h3>
+
+<p>試しに @sonots さんの growthforecast の image をもってきて動かしてみました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ docker search growthforecast
+</span><span class='line'>NAME                            DESCRIPTION   STARS     OFFICIAL   TRUSTED
+</span><span class='line'>futoase/docker-growthforecast                 0                    [OK]
+</span><span class='line'>sonots/growthforecast                         0
+</span><span class='line'>
+</span><span class='line'>$ docker pull sonots/growthforecast
+</span><span class='line'>1c7f181e78b9: Download complete
+</span><span class='line'>
+</span><span class='line'>$ docker run -p 5125:5125 sonots/growthforecast
+</span><span class='line'>d3b31b2f8603344636435d18138a74ff365cc5797f10fe900cc16d05b0451fe0</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こんな感じで雰囲気は分かったのでもう少し触ってみたいと思います。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nagios のアラートに CloudForecast へのリンクをつける]]></title>
+    <link href="http://blog.takus.me/2014/01/28/nagios-resource-graph/"/>
+    <updated>2014-01-28T23:36:00+09:00</updated>
+    <id>http://blog.takus.me/2014/01/28/nagios-resource-graph</id>
+    <content type="html"><![CDATA[<p>といっても、単に <code>Graph: http://cf.example.com/server?address=$HOSTADDRESS$\n</code> みたいな記述を <code>command.cfg</code> に追加してあげるだけの話です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>define command {
+</span><span class='line'>  command_name  notify-service-by-email
+</span><span class='line'>  command_line  /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\n\nService: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nGraph: http://cf.example.com/server?address=$HOSTADDRESS$ \nState: $SERVICESTATE$\n\nDate/Time: $LONGDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$\n" | @MAIL_PROG@ -s "** $NOTIFICATIONTYPE$ Service Alert: $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$ **" $CONTACTEMAIL$
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>アラートメールは下記のようになるので、メールからすぐにリソースグラフにアクセスできて捗るようになりました。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>***** Nagios *****
+</span><span class='line'>
+</span><span class='line'>Notification Type: PROBLEM
+</span><span class='line'>
+</span><span class='line'>Service: MEMORY
+</span><span class='line'>Host: host0001
+</span><span class='line'>Address: 10.0.1.11
+</span><span class='line'>Graph: http://cf.example.com/server?address=10.0.1.11
+</span><span class='line'>State: CRITICAL
+</span><span class='line'>
+</span><span class='line'>Date/Time: Tue Jan 28 20:08:40 JST 2014
+</span><span class='line'>
+</span><span class='line'>Additional Info:
+</span><span class='line'>
+</span><span class='line'>Ram : 96%, Swap : 0% :  93, 10 : CRITICAL</span></code></pre></td></tr></table></div></figure>
+
+
+<p>他にも <code>http://gf.example.com/list/Host/$HOSTALIAS$?t=sh</code> みたいにして、ホスト名ごとに出力している GrowthForecast へのリンクをつけるみたいにしても便利そうな気がします。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた]]></title>
+    <link href="http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/"/>
+    <updated>2014-01-18T13:31:00+09:00</updated>
+    <id>http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/takus/fluent-plugin-ec2-metadata">takus/fluent-plugin-ec2-metadata</a></p>
+
+<p>前々から fluentd のプラグインを書いてみようと思っていたので、ec2 の metadata をレコードに追加するようなプラグインを書いてみました。プラグインの書き方は @tagomoris 先生の <a href="http://d.hatena.ne.jp/tagomoris/20120221/1329815126">&ldquo;fluentdのためのプラグインをイチから書く手順(bundler版)&rdquo;</a> が大変参考になったので、プラグインを書いてみたい人は見るとよさそうです。あとは、@sonots 先生の <a href="https://github.com/sonots/fluent-plugin-record-reformer">fluent-plugin-record-reformer</a> をかなり参考にさせていただいたのと、Ruby 初心者なので<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774158798/takus-22/ref=nosim">&ldquo;パーフェクトRuby&rdquo;</a>にもお世話になりました。</p>
+
+<h2>なにをするプラグインか？</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="err">###</span> <span class="nx">Input</span>
+</span><span class='line'><span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="s2">&quot;hello ec2!&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="err">###</span> <span class="nx">Output</span>
+</span><span class='line'><span class="nx">web</span><span class="p">.</span><span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span> <span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;role_tag&quot;</span>      <span class="o">:</span> <span class="s2">&quot;web&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;instance_id&quot;</span>   <span class="o">:</span> <span class="s2">&quot;i-28b5ee77&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;instance_type&quot;</span> <span class="o">:</span> <span class="s2">&quot;m1.large&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;az&quot;</span>            <span class="o">:</span> <span class="s2">&quot;us-west-1b&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;vpc_id&quot;</span>        <span class="o">:</span> <span class="s2">&quot;vpc-25dab194&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;message&quot;</span>       <span class="o">:</span> <span class="s2">&quot;hello ec2!&quot;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>たとえばこんな感じにレコードを出力してくれます。先週の月曜日に <a href="http://blog.livedoor.jp/sonots/archives/35635267.html">Immutable Infrastructure Hackathon at :D</a> というイベントをやっていたときに、EC2 で Immutable Infrastructure 前提ならホスト名ベースででなく EC2 のタグに入れた Role ベースで集計するのがいいのではないか思ったのがきっかけで、それっぽいプラグインがなかったので作ってみた感じです。</p>
+
+<blockquote><p>サーバに名前をつけるという行為はもはや古い慣習であり、クラウドネイティブな思考を妨げる足かせになります。</p><p>クラウドでは、サーバはソフトウェアのように扱われます。いつでも必要に応じて立ち上げ、不要になれば簡単に削除することができます。そのような状況で、サーバ1台1台に手動でユニークな名前をつけていくことは、オートスケールをはじめとするクラウドの恩恵を失うことになります。ではどのようにサーバを管理するべきかというと、DNS で名前をつけるのではなく、 EC2 のタギング機能を使ってサーバの属性を記述し、識別するべきである、と述べられています。</p><footer><strong>@mirakui</strong> <cite><a href='http://blog.mirakui.com/entry/2013/11/21/reinvent-immutable-infrastructure'>AWS re:Invent と Immutable Infrastructure</a></cite></footer></blockquote>
+
+
+
+
+<blockquote><p>また、ホストがどんどん新しくなるので、負荷観測の連続性をどのように確保するか、などメトリクス情報の保存や可視化に関する課題もあります。</p><footer><strong>@stanaka</strong> <cite><a href='http://blog.stanaka.org/entry/2013/12/01/092642'>2014年のウェブシステムアーキテクチャ</a></cite></footer></blockquote>
+
+
+<p>@mirakui さんのブログや @stanaka さんのブログにも上記のような内容が書いてあり、AWS 上で fluentd を使っていて EC2 のタグ毎に集計したい場合は役に立つプラグインなのではないかと思っています。</p>
+
+<h2>設定ファイル</h2>
+
+<p>設定ファイルは下記のような感じで、<a href="http://y-ken.hatenablog.com/entry/fluentd-how-to-use-tag_parts-placeholder">タグの書き換えに便利な tag_parts</a> もサポートしております。EC2 のタグのプレースホルダー名は若干悩んだところですが、aws-sdk で返ってくるフィールド名に合わせて <code>tagset_xxx</code> にしました。</p>
+
+<pre><code>&lt;match foo.**&gt;
+  type ec2_metadata
+
+  aws_key_id  YOUR_AWS_KEY_ID
+  aws_sec_key YOUR_AWS_SECRET/KEY
+
+  output_tag ${instance_id}.${tag_parts[0]}
+  &lt;record&gt;
+    tag           ${tagset_name}
+    instance_id   ${instance_id}
+    instance_type ${instance_type}
+    az            ${availability_zone}
+    vpc_id        ${vpc_id}
+  &lt;/record&gt;
+&lt;/match&gt;
+</code></pre>
+
+<h2>今後について</h2>
+
+<p>テストコードが EC2 に依存していて TravisCI ではテストできないので、どうしようか考え中です。CircleCI だと<a href="http://d.hatena.ne.jp/naoya/20131215/1387090668">こんなカンジ</a>で EC2 にインスタンス立ち上げてよしなにテストしてくれるようなことができそうなので、その辺りを調べてみようかと思っていますが、これ使ってテストすればいいのではというアイデアがありましたら、教えていただけると大変助かります！</p>
+
+<p>あとは必要最低限のプレースホルダーは用意しましたが、これも使いたいみたいなのがあればお知らせください。もちろんそのほかのバグ報告や PR もウェルカムです:D</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[サイドバックの生存戦略]]></title>
+    <link href="http://blog.takus.me/2014/01/05/survival-strategy/"/>
+    <updated>2014-01-05T00:14:00+09:00</updated>
+    <id>http://blog.takus.me/2014/01/05/survival-strategy</id>
+    <content type="html"><![CDATA[<p>単純にサッカーが好きなこともあるが、サッカー選手が書いている本を昔からよく読んでいる方だと思う。サッカー選手とは置かれてる状況が全然違うものの、時には共感することや実践したいと思うようなことに巡り会うことがある。</p>
+
+<p>で、正月に Amazon を徘徊してたら、内田篤人の「<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00E3OZRIO/takus-22/ref=nosim">僕は自分が見たことしか信じない</a>」が期間限定セールで 299 円になってたので読んでみたところ、引っかかったことがあったので書いてみる。</p>
+
+<blockquote><p>(南アW杯で試合に出れなかったことをうけて、どうしたら常に試合に出られるのかを一番意識するようになったという文脈で)そこで、目指すのはチーム全体に好影響を与えられる選手。内田がいれば、なぜか攻守がうまく回り、なぜかチームが勝つ。見る人がそんな風に感じてくれら嬉しい。</p></blockquote>
+
+
+<p>長谷部誠も「<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00977H3NO/takus-22/ref=nosim">心を整える</a>」で同じようなことを言っていた気もするが、ボランチやサイドバックは周りから見たら評価しにくい選手で、メッシやクリロナのように試合を決める選手に比べると貢献がみえにくい。</p>
+
+<p>これは自分の仕事とかなり似ている気がしている。例えば、アプリ開発してる人はそのアプリが売れれば結果を出してることが明確で分かりやすいけど、それに比べるとシステム運用の仕事って評価しにくいのではないかと思うことがある。</p>
+
+<p>そんな状況で、エンジニアとしてどうやって生き残っていくべきか、評価して貰えるようになるかって考えてたことがあって、そのとき行き着いたのは、結局、「なんとなくアイツに任せておくとイイカンジにしてくれる」とか「アイツとやると、なんかいいカンジにプロジェクトが回る気がする」みたいなことで、この本を読んでサイドバックの生存戦略と自分の生存戦略は似ていると感じた。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[さよなら 2013 年]]></title>
+    <link href="http://blog.takus.me/2013/12/31/2013-to-2014/"/>
+    <updated>2013-12-31T16:05:00+09:00</updated>
+    <id>http://blog.takus.me/2013/12/31/2013-to-2014</id>
+    <content type="html"><![CDATA[<p>年の瀬ということで今年を振り返ってみます。</p>
+
+<h2>仕事のこと</h2>
+
+<p>一言でいうならすごく仕事の守備範囲が広がった一年だった印象です。サッカーで例えると今まで FW 1 本でやってきた選手が、MF もやるようになってプレーの幅が広がったような感じでしょうか(適当)。運用に関わる範囲が増えただけでなく、オペミスしたら甚大な被害が出そうな作業も「任せておけばイイカンジになりますか？」と上司に振られるようになったり、新しい仕組みの導入なども積極的にやらせてもらえる (勝手にやってるともいえるが&hellip;) ようになったり、色々とやらせてもらえるようになった結果としてエンジニアとしての幅が広がったのではないかと思います！</p>
+
+<p>また、海外拠点の人とやり取りする機会が増えた結果、最近はメールや IRC も半分くらいは英語で書くような生活をするようになったり、日によっては 1 日中英語喋ってるようなときもあり、コミュニケーションという面でも出来ることの幅は広がっていった一年でした。</p>
+
+<p>一方で、人に教えるようになるにつれて<a href="http://shibats.tumblr.com/post/62197134380">「自分でやった方が早い病」</a> みたいに思うことがあったり、人に教えるとかマネジメントするとか難しいなとか思いながら、その辺はモヤモヤしながら試行錯誤してた気がします。</p>
+
+<h2>プライベートなこと</h2>
+
+<h3>アメリカ初上陸 &amp; 海外カンファレンス初参戦</h3>
+
+<p>5 月にロサンゼルスとニューヨーク、6 月にサンフランシスコと、はじめてアメリカに行きました。特に 6 月のサンフランシスコでは、<a href="http://velocityconf.com/">Velocity Conference</a> という Web operation や Web performance に関するカンファレンスに参加できたのはすごく印象深い思い出です。初めての海外カンファレンスなのに一人で参加したこともあり、最初はぼっち感がハンパなかったですが、初日に LT したことも助けになり、最終的には色んな人と喋れたので、とてもいい経験になりました。</p>
+
+<p><a href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity 2013 に参加 &amp; LT してきました！！</a></p>
+
+<h3>若手 Web エンジニア交流会</h3>
+
+<p>今年は@<a href="http://www.zusaar.com/event/521003">クックパッド</a>、@<a href="http://www.zusaar.com/event/733053">mixi</a>、@<a href="http://www.zusaar.com/event/1063003">Google</a> と 3 回も開催させていだだきました。いつもオフィスを貸していただいたり、準備を手伝ってくれてる皆様、本当にありがとうございます。募集ページに &ldquo;基本的に新卒 3 年目前後のウェブエンジニアを対象としています&rdquo; って書いてあり、そろそろ若手も名乗れなくなってくるので、今後の方向性については模索している段階です(笑</p>
+
+<script async class="speakerdeck-embed" data-id="2eb68c500dac013190b426a0f1d35487" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>↑第 6 回のときに LT したスライド</p>
+
+<h3>(個人的) 電子書籍元年</h3>
+
+<p>Kindle が上陸したのは 去年な気がしますが、今年になってからすごく読む機会が増えました。都会の家は狭くてたくさん本が置けるような本棚も置けないので物理的な本を買うのはすごく億劫なのと、そもそもいつも Mac やガジェット持ち歩いているために本を入れるスペースがないこともあって、読みたい本があってもスルーする機会が多かったですが、Kindle ストアや O&#8217;Reilly のオンラインストアで気軽に本を買って読めるようになったのは自分にとっては非常に大きかったです。例えば &ldquo;<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873116384/takus-22/ref=nosim">実践ハイパフォーマンスMySQL</a>&rdquo; という MySQL の名著は 864 ページもあって、人を殺せるくらい分厚い本ですが、電子書籍なら物理的なスペースゼロなので、気軽に買って読むことができました。紙に比べて不便な部分もないわけではないですが、自分にとってはそれ以上のメリットがあるので、来年も電子書籍にはお世話になっていくことでしょう。</p>
+
+<p>価格面でも、5000 円くらいする &ldquo;<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873116384/takus-22/ref=nosim">実践ハイパフォーマンスMySQL</a>&rdquo; が、オライリーのセール時に買うとわずか $19.99 で買えたり、お財布にも優しいのが嬉しいところです。<a href="http://zentoo.hatenablog.com/entry/2013/11/10/010121">情報系学生向けの読書術・2013年度版</a> にも書いてある通り、特に学生さんにはオススメです。</p>
+
+<h3>よいお年を</h3>
+
+<p>今年はこんなイケテルもの作ったぜヒャッハー！みたいな内容にならないのが大変残念な感じなので、来年こそはその辺りをがんばっていこうと思っております。ということで、今年お世話になった方々、色々とありがとうございました。来年もよろしくお願いいたします。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[innodb_stats_on_metadata に要注意]]></title>
+    <link href="http://blog.takus.me/2013/12/21/innodb-stats-on-metadata/"/>
+    <updated>2013-12-21T18:25:00+09:00</updated>
+    <id>http://blog.takus.me/2013/12/21/innodb-stats-on-metadata</id>
+    <content type="html"><![CDATA[<p>一日に数回 MySQL が詰まるような現象があったので原因を調べたところ、そのサーバだけ <code>innodb_stats_on_metadata=1</code> になっていたのが原因だったという話デス。</p>
+
+<p><code>innodb_stats_on_metadata</code> は、テーブルのメタデータにアクセスしたときに InnoDB の統計情報を更新するかどうかのフラグで、今回問題が起こっていたサーバのようにデータ量が多いサーバなどでは無効にしておく必要があります。例えば、<a href="http://dev.mysql.com/doc/refman/5.1-olh/ja/innodb-parameters.html#sysvar_innodb_stats_on_metadata">公式ドキュメント</a> の <code>innodb_stats_on_metadata</code> の部分にはこのように書いてあります。</p>
+
+<blockquote><p>この変数が有効 (この変数が作成される前からのデフォルト) な場合、<code>SHOW TABLE STATUS</code> や <code>SHOW INDEX</code> などのメタデータステートメントの実行時や、<code>INFORMATION_SCHEMA</code> テーブル <code>TABLES</code> または <code>STATISTICS</code> へのアクセス時に、InnoDB は統計情報を更新します。(これらの更新は、<code>ANALYZE TABLE</code> で行われるものに似ている。) 無効な場合、InnoDB はそれらの処理中に統計情報を更新しません。この変数を無効にすると、テーブルやインデックスを多数含むスキーマへのアクセス速度が改善される可能性があります。またその場合、InnoDB テーブルが関係するクエリーの実行計画の安定性も高まる可能性があります。</p></blockquote>
+
+<p>他にも MySQL Performance Blog の <a href="http://www.mysqlperformanceblog.com/2011/12/23/solving-information_schema-slowness/">Solving INFORMATION_SCHEMA slowness</a> という記事や、High Performance MySQL 3rd Edition の 5 章にもこのオプションに関する言及がありました。</p>
+
+<p>性能に影響与えるようなオプションであればデフォルトで無効にしておいてくれればいいのにと思っていたら、<a href="https://blogs.oracle.com/supportingmysql/entry/server_defaults_changes_in_mysql">MySQL 5.6 からデフォルトで無効</a>になるようです。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Roadworker - The Best Way to Manage Your Amazon Route53 Records]]></title>
+    <link href="http://blog.takus.me/2013/11/10/roadworker/"/>
+    <updated>2013-11-10T15:43:00+09:00</updated>
+    <id>http://blog.takus.me/2013/11/10/roadworker</id>
+    <content type="html"><![CDATA[<h2>What is Roadworker?</h2>
+
+<p>According to <a href="https://twitter.com/sgwr_dts">@sgwr_dts</a> (the author of roadworker), <a href="https://bitbucket.org/winebarrel/roadworker">Roadworker</a> is a tool to manage <a href="http://aws.amazon.com/en/route53/">Amazon Route53</a>. It defines the state of Route53 using DSL, and updates Route53 according to DSL.</p>
+
+<h2>Why we should avoid using Route53&rsquo;s web console?</h2>
+
+<p>Definitely, Amazon Route53 is one of the best DNS hosting service.</p>
+
+<ul>
+<li>Highly Available
+
+<ul>
+<li>SLA 100%!!</li>
+</ul>
+</li>
+<li>Cost-Effective
+
+<ul>
+<li>basically $0.50 per hosted zone / $0.500 per million queries</li>
+</ul>
+</li>
+<li>Simple
+
+<ul>
+<li>You can start to use within minutes</li>
+</ul>
+</li>
+</ul>
+
+
+<p>But Managing Route53 via its web console is slightly painful.</p>
+
+<ul>
+<li>Not resilient to human error
+
+<ul>
+<li>Just a single click may delete a important record</li>
+<li>Difficult to review before applying</li>
+</ul>
+</li>
+<li>No changing histories at all
+
+<ul>
+<li>After updating many records, it is difficult to revert the original state</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Roadworker resolves these issues by defining DNS records as DSL. I&rsquo;ll show how Roadworker can help you in this article.</p>
+
+<h2>Getting Started with Roadworker</h2>
+
+<p>Getting started with Roadworker is easy! Open a terminal window and run this command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem install roadworker
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After installing Roadworker, set <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> for requesting Route53&rsquo;s APIs.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At first, export current records like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork -e -o Routefile
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is a exported <code>Routefile</code>. Easy to manage with git or other VCSs, isn&rsquo;t it?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">hosted_zone</span> <span class="s2">&quot;takus.me.&quot;</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
+</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;219.94.233.169&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
+</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;10 mail.takus.me&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;mail.takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
+</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;219.94.233.169&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;blog.takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;CNAME&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
+</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;takus.github.com&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As I mentioned above, updating DNS records causes a disaster like deleting unexpected records.
+But you can update them safely with <code>--dry-run</code> option.
+In the case below, I can notice the mistake (deleting the record for this blog) before updating actually.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork --apply --dry-run
+</span><span class='line'>Apply <span class="sb">`</span>Routefile<span class="sb">`</span> to Route53 <span class="o">(</span>dry-run<span class="o">)</span>
+</span><span class='line'>Delete ResourceRecordSet: blog.takus.me. CNAME <span class="o">(</span>dry-run<span class="o">)</span>
+</span><span class='line'>No change
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After updating records, you may want to test whether all records are correct state. Roadworker provides <code>-t</code> option for comparing the results of a query to the DNS and DSL.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork -t
+</span><span class='line'>.......
+</span><span class='line'>7 examples, 0 failure
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Conclusion</h2>
+
+<p>You should use Roadworker for managing Amazon Route53 records instead of its web console. Roadworker enables us to manage DNS records safely with recording all update histories.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://rubygems.org/gems/roadworker">http://rubygems.org/gems/roadworker</a></li>
+<li><a href="https://bitbucket.org/winebarrel/roadworker">https://bitbucket.org/winebarrel/roadworker</a></li>
+<li><a href="http://aws.amazon.com/en/route53/">http://aws.amazon.com/en/route53/</a></li>
+<li><a href="http://dev.classmethod.jp/cloud/aws/route53-as-code-roadworker/">http://dev.classmethod.jp/cloud/aws/route53-as-code-roadworker/</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

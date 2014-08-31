@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Docker/Drone を CentOS 6.5 で動かして Github Enterprise のリポジトリをテストする - TAKUMI SAKAMOTO&#8217;S BLOG</title>
+  <meta name="author" content="Takumi Sakamoto">
+
+  
+  <meta name="description" content="&ldquo;Docker 使うなら Ubuntu だろ jk&rdquo; とか言われそうですが CentOS 6.5 で使いたかったので試してみました。Docker の公式サイトには &ldquo;Our recommended installation path is for Ubuntu &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.takus.me/2014/02/25/drone-on-centos">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2841066-12']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">TAKUMI SAKAMOTO&#8217;S BLOG</a></h1>
+  
+    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.takus.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://about.me/takus">AboutMe</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Docker/Drone を CentOS 6.5 で動かして Github Enterprise のリポジトリをテストする<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/02/25/drone-on-centos/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/02/25/drone-on-centos/"></a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-25T20:03:00+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="http://farm6.staticflickr.com/5530/12768732363_934e22c97b_z.jpg" width="640" height="374" title="'Drone by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<p>&ldquo;Docker 使うなら Ubuntu だろ jk&rdquo; とか言われそうですが CentOS 6.5 で使いたかったので試してみました。<a href="https://www.docker.io/gettingstarted/">Docker の公式サイトには &ldquo;Our recommended installation path is for Ubuntu linux, because we develop Docker on Ubuntu and our installation package will do most of the work for you.&rdquo; と書いてあったり</a>、<a href="https://github.com/drone/drone">Drone は Ubuntu 用のパッケージしかなかったり</a>するので、深淵な理由がなければ Ubuntu 使うのがいいんじゃないかと思います。</p>
+
+<h2>Docker のインストール</h2>
+
+<p>CentOS 6.5 なら簡単にインストールできるので特にハマりどころはありませんでした。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+</span><span class='line'>yum -y install docker-io
+</span><span class='line'>chkconfig docker on
+</span><span class='line'>service docker start
+</span><span class='line'>
+</span><span class='line'>docker run centos /bin/echo "Hello World"
+</span><span class='line'>Hello World</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Drone のビルド</h2>
+
+<p>Makefile がリポジトリに入ってるので、Makefile でビルドしてあげます。<code>make deps</code> でこける場合は適宜、依存を解決してあげれば OK です。
+golang 素人すぎて適当にやってしまいましたが、こうすべきみたいのがあれば優しく教えていただけると助かります。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yum -y install golang
+</span><span class='line'>echo 'export GOPATH=$HOME/go' &gt;&gt; ~/.bash_profile
+</span><span class='line'>echo 'export PATH=$PATH:$GOPATH/bin' &gt;&gt; ~/.bash_profile
+</span><span class='line'>source ~/.bash_profile
+</span><span class='line'>
+</span><span class='line'>yum -y install git hg bzr
+</span><span class='line'>yum -y groupinstall "Development Tools"
+</span><span class='line'>
+</span><span class='line'>git clone https://github.com/drone/drone.git && cd drone
+</span><span class='line'>make deps
+</span><span class='line'>make && make test && make install
+</span><span class='line'>droned</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Drone で Github Enterprise のリポジトリをテストする</h2>
+
+<p>後は <a href="http://yosssi.hatenablog.com/entry/2014/02/08/161500">Droneのオープンソース版を試してみました。</a> に従ってセットアップしていけばいいのですが、Github Enterprise のリポジトリを CI する場合はちょっとだけ対応が必要でした。</p>
+
+<h3>1. Github API の URL 変更</h3>
+
+<p><a href="http://DRONE_HOST/account/admin/settings">http://DRONE_HOST/account/admin/settings</a> の &ldquo;GitHub Settings&rdquo; で API の URL の変更します。
+Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/api/v3">https://GITHUB_DOMAIN/api/v3</a> のように修正すればよさそうです。</p>
+
+<h3>2. リポジトリの clone 方法の変更</h3>
+
+<p><a href="https://github.com/drone/drone/issues/91">GitHub Enterprise &amp; Private Mode #91</a> にあるように、GitHub Enterprise を private mode で運用してる場合、<code>git://</code> プロトコルが使えないので、リポジトリの clone に失敗してしまっていました。Issue にあがってるくらいなのでそのうち解決されるかと思いますが、ワークアラウンドとして下記のようにソースを修正してビルドし直して使ってます。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'><span class="gd">--- a/pkg/model/repo.go</span>
+</span><span class='line'><span class="gi">+++ b/pkg/model/repo.go</span>
+</span><span class='line'><span class="gu">@@ -24,7 +24,7 @@ const (</span>
+</span><span class='line'> )
+</span><span class='line'>
+</span><span class='line'> const (
+</span><span class='line'><span class="gd">-       githubRepoPattern           = &quot;git://%s/%s/%s.git&quot;</span>
+</span><span class='line'><span class="gi">+       githubRepoPattern           = &quot;git@%s:%s/%s.git&quot;</span>
+</span><span class='line'>        githubRepoPatternPrivate    = &quot;git@%s:%s/%s.git&quot;
+</span><span class='line'>        bitbucketRepoPattern        = &quot;https://bitbucket.org/%s/%s.git&quot;
+</span><span class='line'>        bitbucketRepoPatternPrivate = &quot;git@bitbucket.org:%s/%s.git&quot;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>3. Github リポジトリにデプロイキーを登録</h3>
+
+<p>これで万事解決と思いきや、今度は <code>git@</code> で clone してるにも関わらず、git clone に失敗する現象に遭遇しました。Drone のログをみてるとコンテナの初期化する際にリポジトリ毎の秘密鍵をおいているようで、Settings の Key Pairs にある公開鍵を Github リポジトリのデプロイキーに登録してあげたところ、無事に Clone できるようになりました。</p>
+
+<p><img src="http://farm6.staticflickr.com/5475/12768591305_b2c6f232ee_z.jpg" width="640" height="310" title="'Drone by Takumi Sakamoto (takus) on flickr.com'" ></p>
+
+<h2>まとめ</h2>
+
+<p>ということで、無事に Drone 使えるようになったので、あとは各バージョンの perlbrew とか rbenv とか nodebrew を持ったイメージを作っておいて、それ毎にバージョン跨ぐテストしていくような感じにしていけばよさそうな雰囲気です。ざっと設定画面とコードを眺めたところ、Jenkins の Master/Slave みたいな仕組みがないので、数が増えていったらある程度 Drone を分けるしかなさそうですが、とりあえずはチーム毎とかそういう単位で Drone を用意してあげればいいのかなと思ってます。 Enjoy your test with Drone :D</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Takumi Sakamoto</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-02-25T20:03:00+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2014/02/25/drone-on-centos/" data-via="" data-counturl="http://blog.takus.me/2014/02/25/drone-on-centos/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2014/02/25/money/" title="Previous Post: 自分が撮影した写真をドイツの出版社に買ってもらった話">&laquo; 自分が撮影した写真をドイツの出版社に買ってもらった話</a>
+      
+      
+        <a class="basic-alignment right" href="/2014/03/01/octopress-hatena-bookmark/" title="Next Post: Octopress で はてなブックマーク数 を表示する">Octopress で はてなブックマーク数 を表示する &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <div style="margin-top:10px">
+    <img src="http://farm8.staticflickr.com/7293/11929418323_e084604fe5_q.jpg" alt="me"><br />
+    Takumi Sakamoto<br />
+    Software Engineer@SmartNews, Inc.<br />
+  </div>
+  <div style="margin-top:10px">
+    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
+  </div>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 が例年以上に楽しかった #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & DeNA を退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/16/travel-to-barcelona/">Barcelona にいってきた</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/16/travel-to-barcelona/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/16/travel-to-barcelona/"></a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/05/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"></a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/takus">@takus</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'takus',
+            count: 5,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Takumi Sakamoto -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'takus';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.takus.me/2014/02/25/drone-on-centos/';
+        var disqus_url = 'http://blog.takus.me/2014/02/25/drone-on-centos/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
