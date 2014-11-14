@@ -9,8 +9,7 @@
   <meta name="author" content="Takumi Sakamoto">
 
   
-  <meta name="description" content="https://github.com/takus/takus.github.com/commit/0cf6d223e4f2512c63652b8bc0147956b9d77722 こちらからは以上です。
-">
+  <meta name="description" content="前半の部分をまとめようと思ったら、大切なことは全て @j3tm0t0 さんの gist に書いてあったので、SSH でログインできなくなった時はまず上記の gist に書いてあることを確認するといいと思います。 で、今回の話は、snapshot を取得して 新たに volume を作成して、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +84,53 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2014/03/04/ec2-ssh/">EC2 に SSH できない時の対処法、あるいは Marketplace の AMI を気軽に選ぶべきでない理由</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/03/04/ec2-ssh/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/03/04/ec2-ssh/"></a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-03-04T00:00:00-08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>前半の部分をまとめようと思ったら、大切なことは全て<a href="https://gist.github.com/j3tm0t0/5560892"> @j3tm0t0 さんの gist </a>に書いてあったので、SSH でログインできなくなった時はまず上記の gist に書いてあることを確認するといいと思います。</p>
+
+<p>で、今回の話は、snapshot を取得して 新たに volume を作成して、他のインスタンスにアタッチ＆マウントしてエラーが出ていないかを確認しようとした時に下記のエラーでマウントできなかった件に関するお話です。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>'vol-xxxxxxx' with Marketplace codes may not be attached as as secondary device.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ググったら <a href="http://www.quora.com/Amazon-EC2/Is-it-possible-to-rescue-an-EBS-volume-which-has-marketplace-codes">&ldquo;Is it possible to rescue an EBS volume which has marketplace codes?&rdquo;</a> や <a href="http://techblog.willshouse.com/2013/08/21/marketplace-codes-may-not-be-attached-as-a-secondary-device/">&ldquo;Marketplace codes may not be attached as a secondary device&rdquo;</a> といった記事を見つけて、まとめると、</p>
+
+<ul>
+<li>Marketplace で提供される AMI はルートボリューム以外にマウントできない</li>
+<li>AWS のサポートに連絡するとマウントできない制限を解除してくれる</li>
+</ul>
+
+
+<p>とのことで、AWS のサポートに調査対象ボリュームのスナップショットを共有すると、マウントできない制限を解除してくれるようです。</p>
+
+<p><a href="https://aws.amazon.com/marketplace/seller-profile/ref=dtl_pcp_sold_by?ie=UTF8&amp;id=16cb8b03-256e-4dde-8f34-1b0f377efe89">CentOS は公式の AMI が Marketplace で提供されてる</a>のでついつい選んでしまいがちですが、問題が起きた時のトラブルシューティングに一手間かかってしまうので、気軽な気持ちで選んでしまうと面倒なことになるよという話でした。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2014/03/01/octopress-hatena-bookmark/">Octopress で はてなブックマーク数 を表示する</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/03/01/octopress-hatena-bookmark/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/03/01/octopress-hatena-bookmark/"></a></h1>
     
     
@@ -94,7 +140,7 @@
 
 
 
-<time class='entry-date' datetime='2014-03-01T18:06:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>6:06 pm</span></time>
+<time class='entry-date' datetime='2014-03-01T18:06:00-08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>6:06 pm</span></time>
         
       </p>
     
@@ -125,7 +171,7 @@
 
 
 
-<time class='entry-date' datetime='2014-02-25T20:03:00+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
+<time class='entry-date' datetime='2014-02-25T20:03:00-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:03 pm</span></time>
         
       </p>
     
@@ -255,7 +301,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 
 
 
-<time class='entry-date' datetime='2014-02-25T02:04:00+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:04 am</span></time>
+<time class='entry-date' datetime='2014-02-25T02:04:00-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:04 am</span></time>
         
       </p>
     
@@ -326,7 +372,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 
 
 
-<time class='entry-date' datetime='2014-02-23T21:42:00+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:42 pm</span></time>
+<time class='entry-date' datetime='2014-02-23T21:42:00-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:42 pm</span></time>
         
       </p>
     
@@ -466,7 +512,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 
 
 
-<time class='entry-date' datetime='2014-01-28T23:36:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:36 pm</span></time>
+<time class='entry-date' datetime='2014-01-28T23:36:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:36 pm</span></time>
         
       </p>
     
@@ -541,7 +587,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 
 
 
-<time class='entry-date' datetime='2014-01-18T13:31:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:31 pm</span></time>
+<time class='entry-date' datetime='2014-01-18T13:31:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:31 pm</span></time>
         
       </p>
     
@@ -643,7 +689,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 
 
 
-<time class='entry-date' datetime='2014-01-05T00:14:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:14 am</span></time>
+<time class='entry-date' datetime='2014-01-05T00:14:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:14 am</span></time>
         
       </p>
     
@@ -683,7 +729,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 
 
 
-<time class='entry-date' datetime='2013-12-31T16:05:00+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>4:05 pm</span></time>
+<time class='entry-date' datetime='2013-12-31T16:05:00-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>4:05 pm</span></time>
         
       </p>
     
@@ -747,7 +793,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 
 
 
-<time class='entry-date' datetime='2013-12-21T18:25:00+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>6:25 pm</span></time>
+<time class='entry-date' datetime='2013-12-21T18:25:00-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>6:25 pm</span></time>
         
       </p>
     
@@ -763,216 +809,6 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 <p>他にも MySQL Performance Blog の <a href="http://www.mysqlperformanceblog.com/2011/12/23/solving-information_schema-slowness/">Solving INFORMATION_SCHEMA slowness</a> という記事や、High Performance MySQL 3rd Edition の 5 章にもこのオプションに関する言及がありました。</p>
 
 <p>性能に影響与えるようなオプションであればデフォルトで無効にしておいてくれればいいのにと思っていたら、<a href="https://blogs.oracle.com/supportingmysql/entry/server_defaults_changes_in_mysql">MySQL 5.6 からデフォルトで無効</a>になるようです。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/11/10/roadworker/">Roadworker - The Best Way to Manage Your Amazon Route53 Records</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/11/10/roadworker/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/11/10/roadworker/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-11-10T15:43:00+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:43 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>What is Roadworker?</h2>
-
-<p>According to <a href="https://twitter.com/sgwr_dts">@sgwr_dts</a> (the author of roadworker), <a href="https://bitbucket.org/winebarrel/roadworker">Roadworker</a> is a tool to manage <a href="http://aws.amazon.com/en/route53/">Amazon Route53</a>. It defines the state of Route53 using DSL, and updates Route53 according to DSL.</p>
-
-<h2>Why we should avoid using Route53&rsquo;s web console?</h2>
-
-<p>Definitely, Amazon Route53 is one of the best DNS hosting service.</p>
-
-<ul>
-<li>Highly Available
-
-<ul>
-<li>SLA 100%!!</li>
-</ul>
-</li>
-<li>Cost-Effective
-
-<ul>
-<li>basically $0.50 per hosted zone / $0.500 per million queries</li>
-</ul>
-</li>
-<li>Simple
-
-<ul>
-<li>You can start to use within minutes</li>
-</ul>
-</li>
-</ul>
-
-
-<p>But Managing Route53 via its web console is slightly painful.</p>
-
-<ul>
-<li>Not resilient to human error
-
-<ul>
-<li>Just a single click may delete a important record</li>
-<li>Difficult to review before applying</li>
-</ul>
-</li>
-<li>No changing histories at all
-
-<ul>
-<li>After updating many records, it is difficult to revert the original state</li>
-</ul>
-</li>
-</ul>
-
-
-<p>Roadworker resolves these issues by defining DNS records as DSL. I&rsquo;ll show how Roadworker can help you in this article.</p>
-
-<h2>Getting Started with Roadworker</h2>
-
-<p>Getting started with Roadworker is easy! Open a terminal window and run this command:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem install roadworker
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>After installing Roadworker, set <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> for requesting Route53&rsquo;s APIs.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
-</span><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>At first, export current records like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork -e -o Routefile
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This is a exported <code>Routefile</code>. Easy to manage with git or other VCSs, isn&rsquo;t it?</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">hosted_zone</span> <span class="s2">&quot;takus.me.&quot;</span> <span class="k">do</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
-</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
-</span><span class='line'>      <span class="s2">&quot;219.94.233.169&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
-</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
-</span><span class='line'>      <span class="s2">&quot;10 mail.takus.me&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;mail.takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
-</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
-</span><span class='line'>      <span class="s2">&quot;219.94.233.169&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;blog.takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;CNAME&quot;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
-</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
-</span><span class='line'>      <span class="s2">&quot;takus.github.com&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>As I mentioned above, updating DNS records causes a disaster like deleting unexpected records.
-But you can update them safely with <code>--dry-run</code> option.
-In the case below, I can notice the mistake (deleting the record for this blog) before updating actually.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork --apply --dry-run
-</span><span class='line'>Apply <span class="sb">`</span>Routefile<span class="sb">`</span> to Route53 <span class="o">(</span>dry-run<span class="o">)</span>
-</span><span class='line'>Delete ResourceRecordSet: blog.takus.me. CNAME <span class="o">(</span>dry-run<span class="o">)</span>
-</span><span class='line'>No change
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>After updating records, you may want to test whether all records are correct state. Roadworker provides <code>-t</code> option for comparing the results of a query to the DNS and DSL.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork -t
-</span><span class='line'>.......
-</span><span class='line'>7 examples, 0 failure
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Conclusion</h2>
-
-<p>You should use Roadworker for managing Amazon Route53 records instead of its web console. Roadworker enables us to manage DNS records safely with recording all update histories.</p>
-
-<h2>References</h2>
-
-<ul>
-<li><a href="http://rubygems.org/gems/roadworker">http://rubygems.org/gems/roadworker</a></li>
-<li><a href="https://bitbucket.org/winebarrel/roadworker">https://bitbucket.org/winebarrel/roadworker</a></li>
-<li><a href="http://aws.amazon.com/en/route53/">http://aws.amazon.com/en/route53/</a></li>
-<li><a href="http://dev.classmethod.jp/cloud/aws/route53-as-code-roadworker/">http://dev.classmethod.jp/cloud/aws/route53-as-code-roadworker/</a></li>
-</ul>
-
 </div>
   
   
@@ -1008,6 +844,10 @@ In the case below, I can notice the mistake (deleting the record for this blog) 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/12/reinvent-2014-day1/">AWS re:Invent 2014 day1 #reinvent</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"></a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
       </li>
     
@@ -1021,10 +861,6 @@ In the case below, I can notice the mistake (deleting the record for this blog) 
     
       <li class="post">
         <a href="/2014/05/16/travel-to-barcelona/">Barcelona にいってきた</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/16/travel-to-barcelona/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/16/travel-to-barcelona/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/05/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"></a>
       </li>
     
   </ul>

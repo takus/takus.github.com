@@ -9,7 +9,7 @@
   <meta name="author" content="Takumi Sakamoto">
 
   
-  <meta name="description" content="ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。今年で 4 回目の参加で、初めて個人スポンサーとして参加させていただきましたが、10000 円という価格は 2 日間 HUB が貸し切りとか考えたらかなりリーズナブルなんじゃないかという印象です。(HUB &hellip;">
+  <meta name="description" content="AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。@suzu_v 先生がメモ書きをしていたので、自分も簡単ながらメモを残しておこうと思います。 Keynote Amazon Aurora は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,77 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2014/11/12/reinvent-2014-day1/">AWS re:Invent 2014 day1 #reinvent</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"></a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-12T22:21:48-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:21 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。<code>@suzu_v</code> 先生が<a href="http://suzuken.hatenablog.jp/entry/2014/11/13/112730">メモ書き</a>をしていたので、自分も簡単ながらメモを残しておこうと思います。</p>
+
+<h2>Keynote</h2>
+
+<p><a href="http://aws.typepad.com/aws_japan/2014/11/highly-scalable-mysql-compat-rds-db-engine.html">Amazon Aurora</a> は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、やっぱり既存のものをクラウドに持ってくだけじゃ不十分ってことで、クラウドだからできることは何かを真剣に考えていくことでこういうものが生まれてくるのでしょう。</p>
+
+<p><a href="http://aws.typepad.com/aws_japan/2014/11/new-aws-tools-for-code-management-and-deployment.html">AWS CodeDeploy, AWS CodeCommit, AWS CodePipeline</a> あたりは、ちょうどこの辺を整備しようかと思っていたので最高のタイミングで登場してくれて、若干手間がかかるところやってくれるのは非常にありがたいと思います。</p>
+
+<p><a href="http://aws.typepad.com/aws_japan/2014/11/track-aws-with-config.html">AWS Config</a> は、簡単に説明すると AWS のリソース変更履歴を残してくれるもので、ウワサに聞くと任意のタイミングにロールバックなどもできる（ようになる？）だとかで、Route53 あたりも対応してくれるとかなり助かる感じなのではないかと。</p>
+
+<h2>How Dropbox Scales Massive Workloads Using Amazon SQS</h2>
+
+<p>ファイルの更新をフックに、そのファイルに関する様々な処理を行うフレームワークについて紹介するセッション。Livefill と呼ばれる非同期処理パイプラインをマネージするフレームワークを SQS を利用して実装していて、開発者は YAML で input/output するキューと処理を記述するだけで非同期処理を追加していけるようになっていてクール。当たり前ですが、パイプラインの可視化がかなり重要で、コードのバグや書き込み先の詰まりなどで容易にパイプラインが詰まることがあるので、この手のものには、可視化することで早期に発見して対策していける仕組みが不可欠ですね。</p>
+
+<h2>Infrastructure as Code</h2>
+
+<p>CloudFormation の話な感じだったが、やっぱりJSON はツラい気がした。<a href="https://www.simple.com/">Simple</a> の事例では Python のスクリプトで JSON 生成してるようだったが、もし使うならなんらかのラッパーが必要そうだなという印象。</p>
+
+<h2>Netflix&rsquo;s Next Generation Big Data Platform</h2>
+
+<p>Netflix がいわゆるビッグデータ周りをどのように運用しているかについて、利用しているツール、それを選んだ理由、既存手法とのベンチマーク比較、導入する上での OSS への貢献などについて話をしていました。やはり 2000 台の EMR クラスタみたいな話があったり、規模感が相変わらずすごいです。</p>
+
+<p>最近は社内でも <a href="http://prestodb.io/docs/current/connector/mysql.html">Presto の MySQL connector</a> を利用して、S3 に置いてあるログと RDS にあるマスタを JOIN できるような環境が整いつつありますが、Presto や Parquet FF の話は大変参考になりました。(<a href="http://techblog.netflix.com/2014/10/using-presto-in-our-big-data-platform.html">関連ブログ</a>)</p>
+
+<p>話を聞いていて、アプリケーションとストレージをできるだけ分離しておくことはかなり大切で、例えば Netflix のように基本的にデータを S3 に置くような運用していると、Hadoop v1 と v2 を並行稼働みたいなことが実現できて、バージョンアップ対応とか再起動祭りへの対応負荷がかなり下がりそうなので、この辺りは心がけていきたいですね。</p>
+
+<h2>AWS re:Invent Central</h2>
+
+<p>スポンサー企業がブースを出展していて、普段使ってるサービスの開発者やサポートの人と直接会えたり、色々な企業のノベルティ貰えたりととても楽しい場所でした。</p>
+
+<h3>Datadog</h3>
+
+<p>1 年半前に <a href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity Conference に参加したとき</a>は、会場の隅に小さいブースを持ってるだけだったのですが、この 1 年半で大きく成長したようで、入り口近くにかなり大きなブースを構えるようになっていて、3 年くらい前から密かに Datadog ファンをしていた自分としては嬉しかったです。また、ブースで話をしていたら、&#8221;Are you Takumi? Coincidence!!&ldquo; みたいなノリでいつもメールでサポート対応してくれてる人と出会えて話ができたのもとても有意義でした。</p>
+
+<p>せっかくなので色々とディスカッションしてましたが、エージェントがメモリ使いすぎ問題について聞いたら、Golang でエージェント書いてるみたいな答えが返ってくるなど、こちらの課題感と同じ感覚をちゃんと持ってくれていて、この辺りが 1 年間ですごく成長してる理由の 1 つなのかなと勝手に思ってました。</p>
+
+<h3>Chef</h3>
+
+<p>「昔、Chef のベストプラクティスで、コミュニティクックブックをラップしろみたいなのがあったけど、あれは本気か」って聞いてみたところ、コミュニティクックブックはテンプレートとして使うのがいいよと中の人が言っていたので、スッキリしました。</p>
+
+<h2>おわり</h2>
+
+<p>ということで、2 日目がそろそろ終わるタイミングでの 1 日目のメモでした。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a></h1>
     
     
@@ -93,7 +164,7 @@
 
 
 
-<time class='entry-date' datetime='2014-08-31T21:00:00+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:00 pm</span></time>
+<time class='entry-date' datetime='2014-08-31T05:00:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:00 am</span></time>
         
       </p>
     
@@ -128,7 +199,7 @@
 
 
 
-<time class='entry-date' datetime='2014-08-01T17:00:00+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:00 pm</span></time>
+<time class='entry-date' datetime='2014-08-01T17:00:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:00 pm</span></time>
         
       </p>
     
@@ -168,7 +239,7 @@
 
 
 
-<time class='entry-date' datetime='2014-07-31T03:00:00+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>3:00 am</span></time>
+<time class='entry-date' datetime='2014-07-31T03:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>3:00 am</span></time>
         
       </p>
     
@@ -209,7 +280,7 @@
 
 
 
-<time class='entry-date' datetime='2014-05-16T02:19:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:19 am</span></time>
+<time class='entry-date' datetime='2014-05-16T02:19:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:19 am</span></time>
         
       </p>
     
@@ -293,7 +364,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2014/05/05/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"></a></h1>
+      <h1 class="entry-title"><a href="/2014/05/04/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/04/barcelona-prepaid-sim/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/04/barcelona-prepaid-sim/"></a></h1>
     
     
       <p class="meta">
@@ -302,7 +373,7 @@
 
 
 
-<time class='entry-date' datetime='2014-05-05T09:51:06+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:51 am</span></time>
+<time class='entry-date' datetime='2014-05-04T17:51:06-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:51 pm</span></time>
         
       </p>
     
@@ -349,7 +420,7 @@
 
 
 
-<time class='entry-date' datetime='2014-04-16T00:42:00+09:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:42 am</span></time>
+<time class='entry-date' datetime='2014-04-16T00:42:00-07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:42 am</span></time>
         
       </p>
     
@@ -422,7 +493,7 @@
 
 
 
-<time class='entry-date' datetime='2014-04-05T12:35:00+09:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:35 pm</span></time>
+<time class='entry-date' datetime='2014-04-05T12:35:00-07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:35 pm</span></time>
         
       </p>
     
@@ -463,7 +534,7 @@
 
 
 
-<time class='entry-date' datetime='2014-03-29T19:15:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:15 pm</span></time>
+<time class='entry-date' datetime='2014-03-29T19:15:00-07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:15 pm</span></time>
         
       </p>
     
@@ -528,7 +599,7 @@
 
 
 
-<time class='entry-date' datetime='2014-03-17T09:41:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:41 am</span></time>
+<time class='entry-date' datetime='2014-03-17T09:41:00-07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:41 am</span></time>
         
       </p>
     
@@ -550,53 +621,6 @@
 <p>AWS は必ずしも銀の弾丸ってわけではなく、どこの会社も悩ましい部分を抱えながら運用しているわけで、<a href="https://twitter.com/sgwr_dts">@sgwr_dts</a> さんの <a href="https://bitbucket.org/winebarrel/roadworker">Roadworker</a> のようにユーザ側でイケてる仕組みにするようなアプローチもありますが、このような機会を利用して AWS の中の人に直接フィードバックできたという意味で、いいセッションになったのではないかと思っています。</p>
 
 <p>関係者のみなさま、ありがとうございました！</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/03/04/ec2-ssh/">EC2 に SSH できない時の対処法、あるいは Marketplace の AMI を気軽に選ぶべきでない理由</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/03/04/ec2-ssh/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/03/04/ec2-ssh/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-03-04T00:00:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>前半の部分をまとめようと思ったら、大切なことは全て<a href="https://gist.github.com/j3tm0t0/5560892"> @j3tm0t0 さんの gist </a>に書いてあったので、SSH でログインできなくなった時はまず上記の gist に書いてあることを確認するといいと思います。</p>
-
-<p>で、今回の話は、snapshot を取得して 新たに volume を作成して、他のインスタンスにアタッチ＆マウントしてエラーが出ていないかを確認しようとした時に下記のエラーでマウントできなかった件に関するお話です。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>'vol-xxxxxxx' with Marketplace codes may not be attached as as secondary device.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ググったら <a href="http://www.quora.com/Amazon-EC2/Is-it-possible-to-rescue-an-EBS-volume-which-has-marketplace-codes">&ldquo;Is it possible to rescue an EBS volume which has marketplace codes?&rdquo;</a> や <a href="http://techblog.willshouse.com/2013/08/21/marketplace-codes-may-not-be-attached-as-a-secondary-device/">&ldquo;Marketplace codes may not be attached as a secondary device&rdquo;</a> といった記事を見つけて、まとめると、</p>
-
-<ul>
-<li>Marketplace で提供される AMI はルートボリューム以外にマウントできない</li>
-<li>AWS のサポートに連絡するとマウントできない制限を解除してくれる</li>
-</ul>
-
-
-<p>とのことで、AWS のサポートに調査対象ボリュームのスナップショットを共有すると、マウントできない制限を解除してくれるようです。</p>
-
-<p><a href="https://aws.amazon.com/marketplace/seller-profile/ref=dtl_pcp_sold_by?ie=UTF8&amp;id=16cb8b03-256e-4dde-8f34-1b0f377efe89">CentOS は公式の AMI が Marketplace で提供されてる</a>のでついつい選んでしまいがちですが、問題が起きた時のトラブルシューティングに一手間かかってしまうので、気軽な気持ちで選んでしまうと面倒なことになるよという話でした。</p>
 </div>
   
   
@@ -630,6 +654,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/12/reinvent-2014-day1/">AWS re:Invent 2014 day1 #reinvent</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"></a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
       </li>
     
@@ -643,10 +671,6 @@
     
       <li class="post">
         <a href="/2014/05/16/travel-to-barcelona/">Barcelona にいってきた</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/16/travel-to-barcelona/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/16/travel-to-barcelona/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/05/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"></a>
       </li>
     
   </ul>

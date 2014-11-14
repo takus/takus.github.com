@@ -9,7 +9,7 @@
   <meta name="author" content="Takumi Sakamoto">
 
   
-  <meta name="description" content="『daemontools の setuidgid』や 『補助グループ権限もつけてくれるsetuidgidのようなもの』のところに書いてある話なんですが、daemontools の setuidgid は 補助グループ権限をつけてくれません。 どういうことかというと、sysadmin &hellip;">
+  <meta name="description" content="What is Roadworker? According to @sgwr_dts (the author of roadworker), Roadworker is a tool to manage Amazon Route53. It defines the state of Route53 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,216 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/11/10/roadworker/">Roadworker - The Best Way to Manage Your Amazon Route53 Records</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/11/10/roadworker/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/11/10/roadworker/"></a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-11-10T15:43:00-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:43 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>What is Roadworker?</h2>
+
+<p>According to <a href="https://twitter.com/sgwr_dts">@sgwr_dts</a> (the author of roadworker), <a href="https://bitbucket.org/winebarrel/roadworker">Roadworker</a> is a tool to manage <a href="http://aws.amazon.com/en/route53/">Amazon Route53</a>. It defines the state of Route53 using DSL, and updates Route53 according to DSL.</p>
+
+<h2>Why we should avoid using Route53&rsquo;s web console?</h2>
+
+<p>Definitely, Amazon Route53 is one of the best DNS hosting service.</p>
+
+<ul>
+<li>Highly Available
+
+<ul>
+<li>SLA 100%!!</li>
+</ul>
+</li>
+<li>Cost-Effective
+
+<ul>
+<li>basically $0.50 per hosted zone / $0.500 per million queries</li>
+</ul>
+</li>
+<li>Simple
+
+<ul>
+<li>You can start to use within minutes</li>
+</ul>
+</li>
+</ul>
+
+
+<p>But Managing Route53 via its web console is slightly painful.</p>
+
+<ul>
+<li>Not resilient to human error
+
+<ul>
+<li>Just a single click may delete a important record</li>
+<li>Difficult to review before applying</li>
+</ul>
+</li>
+<li>No changing histories at all
+
+<ul>
+<li>After updating many records, it is difficult to revert the original state</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Roadworker resolves these issues by defining DNS records as DSL. I&rsquo;ll show how Roadworker can help you in this article.</p>
+
+<h2>Getting Started with Roadworker</h2>
+
+<p>Getting started with Roadworker is easy! Open a terminal window and run this command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem install roadworker
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After installing Roadworker, set <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> for requesting Route53&rsquo;s APIs.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At first, export current records like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork -e -o Routefile
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is a exported <code>Routefile</code>. Easy to manage with git or other VCSs, isn&rsquo;t it?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">hosted_zone</span> <span class="s2">&quot;takus.me.&quot;</span> <span class="k">do</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
+</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;219.94.233.169&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
+</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;10 mail.takus.me&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;mail.takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
+</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;219.94.233.169&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">rrset</span> <span class="s2">&quot;blog.takus.me.&quot;</span><span class="p">,</span> <span class="s2">&quot;CNAME&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">ttl</span> <span class="mi">3600</span>
+</span><span class='line'>    <span class="n">resource_records</span><span class="p">(</span>
+</span><span class='line'>      <span class="s2">&quot;takus.github.com&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As I mentioned above, updating DNS records causes a disaster like deleting unexpected records.
+But you can update them safely with <code>--dry-run</code> option.
+In the case below, I can notice the mistake (deleting the record for this blog) before updating actually.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork --apply --dry-run
+</span><span class='line'>Apply <span class="sb">`</span>Routefile<span class="sb">`</span> to Route53 <span class="o">(</span>dry-run<span class="o">)</span>
+</span><span class='line'>Delete ResourceRecordSet: blog.takus.me. CNAME <span class="o">(</span>dry-run<span class="o">)</span>
+</span><span class='line'>No change
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After updating records, you may want to test whether all records are correct state. Roadworker provides <code>-t</code> option for comparing the results of a query to the DNS and DSL.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>roadwork -t
+</span><span class='line'>.......
+</span><span class='line'>7 examples, 0 failure
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Conclusion</h2>
+
+<p>You should use Roadworker for managing Amazon Route53 records instead of its web console. Roadworker enables us to manage DNS records safely with recording all update histories.</p>
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://rubygems.org/gems/roadworker">http://rubygems.org/gems/roadworker</a></li>
+<li><a href="https://bitbucket.org/winebarrel/roadworker">https://bitbucket.org/winebarrel/roadworker</a></li>
+<li><a href="http://aws.amazon.com/en/route53/">http://aws.amazon.com/en/route53/</a></li>
+<li><a href="http://dev.classmethod.jp/cloud/aws/route53-as-code-roadworker/">http://dev.classmethod.jp/cloud/aws/route53-as-code-roadworker/</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/11/02/daemontools-setuidgid/">daemontools の setuidgid が supplementary groups 権限をつけてくれない件</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/11/02/daemontools-setuidgid/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/11/02/daemontools-setuidgid/"></a></h1>
     
     
@@ -93,7 +303,7 @@
 
 
 
-<time class='entry-date' datetime='2013-11-02T01:40:00+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>1:40 am</span></time>
+<time class='entry-date' datetime='2013-11-02T01:40:00-07:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>1:40 am</span></time>
         
       </p>
     
@@ -159,7 +369,7 @@
 
 
 
-<time class='entry-date' datetime='2013-10-18T04:05:00+09:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:05 am</span></time>
+<time class='entry-date' datetime='2013-10-18T04:05:00-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:05 am</span></time>
         
       </p>
     
@@ -225,7 +435,7 @@
 
 
 
-<time class='entry-date' datetime='2013-08-11T11:06:00+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:06 am</span></time>
+<time class='entry-date' datetime='2013-08-11T11:06:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:06 am</span></time>
         
       </p>
     
@@ -298,7 +508,7 @@
 
 
 
-<time class='entry-date' datetime='2013-08-06T10:46:00+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:46 am</span></time>
+<time class='entry-date' datetime='2013-08-06T10:46:00-07:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:46 am</span></time>
         
       </p>
     
@@ -654,7 +864,7 @@
 
 
 
-<time class='entry-date' datetime='2013-06-21T00:00:00+09:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2013-06-21T00:00:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -755,7 +965,7 @@
 
 
 
-<time class='entry-date' datetime='2013-06-06T01:26:00+09:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:26 am</span></time>
+<time class='entry-date' datetime='2013-06-06T01:26:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:26 am</span></time>
         
       </p>
     
@@ -799,7 +1009,7 @@
 
 
 
-<time class='entry-date' datetime='2013-06-03T01:29:00+09:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>1:29 am</span></time>
+<time class='entry-date' datetime='2013-06-03T01:29:00-07:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>1:29 am</span></time>
         
       </p>
     
@@ -885,7 +1095,7 @@
 
 
 
-<time class='entry-date' datetime='2013-05-23T02:36:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 am</span></time>
+<time class='entry-date' datetime='2013-05-23T02:36:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 am</span></time>
         
       </p>
     
@@ -948,7 +1158,7 @@
 
 
 
-<time class='entry-date' datetime='2013-05-12T04:18:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:18 am</span></time>
+<time class='entry-date' datetime='2013-05-12T04:18:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:18 am</span></time>
         
       </p>
     
@@ -998,83 +1208,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/05/12/travel-to-new-york/">New York に行ってきた</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/05/12/travel-to-new-york/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/05/12/travel-to-new-york/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-05-12T02:16:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:16 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>前回の&#8221;<a href="/2013/05/11/travel-to-los-angeles/">Los Angeles に行ってきた</a>&ldquo;の続きです。New York 編。</p>
-
-<p><figure class="flickr-thumbnail" style="display: inline-block;"><a href="http://farm8.staticflickr.com/7342/8724104724_11f346d201_b.jpg" class="fancybox" data-title-id="flickr-photo-8724104724" data-media="photo"><img src="http://farm8.staticflickr.com/7342/8724104724_11f346d201_z.jpg" title="Manhattan" style=""/></a><figcaption id="flickr-photo-8724104724"><h1><a class="flickr-link" href="http://www.flickr.com/photos/38933684@N07/8724104724">Manhattan</a> by takus</h1><div class="description"></div></figcaption></figure></p>
-
-<h2>Tips</h2>
-
-<p><a href="http://mta.info/metrocard/mcgtreng.htm#unlimited">Unlimited Ride MetroCard</a></p>
-
-<p>市内であれば、ほとんどの場所に地下鉄で行けるので地下鉄の乗り放題パスを買うと捗ります。7 日間乗り放題で $30 と無駄に期間が長くて使い切れないですが、すぐに元取れます。</p>
-
-<p><a href="http://www.citypass.com/new-york">NEW YORK CityPASS</a></p>
-
-<p>とりあえず初めて NY 行く人はこれを買っておくといいと思います。エンパイアステートビル展望台、メトロポリタン美術館、アメリカ自然史博物館、トップオブザロック展望台、近代美術館、自由の女神周辺のフェリー観光ができて、$106 は個別にチケットを買うよりはかなりお得です。旅行行く前にオンラインで支払って、バーコード入りのチケットを印刷して持って行けば OK です。</p>
-
-<h2>Statue of Liverty</h2>
-
-<p>フェリーで自由の女神からブルックリン橋まで Manhattan 島の南部を全体的に回ってくれてだいぶ満足できるツアーになってます。</p>
-
-<p><figure class="flickr-thumbnail" style="display: inline-block;"><a href="http://farm8.staticflickr.com/7352/8720660765_813eac478e_b.jpg" class="fancybox" data-title-id="flickr-photo-8720660765" data-media="photo"><img src="http://farm8.staticflickr.com/7352/8720660765_813eac478e_z.jpg" title="Statue of Liberty" style=""/></a><figcaption id="flickr-photo-8720660765"><h1><a class="flickr-link" href="http://www.flickr.com/photos/38933684@N07/8720660765">Statue of Liberty</a> by takus</h1><div class="description"></div></figcaption></figure></p>
-
-<h2>911 Memorial</h2>
-
-<p>すでに One World Trade Center と呼ばれる新しいビルが天空高くそびえ立っていましたが、こんなビルが跡形もなく崩れ去るなんてとても想像できないわけで、自分の中での 9/11 に対する見方が変わって、遠い国の出来事から急にすごくリアルな出来事に思えるようになりました。</p>
-
-<p><figure class="flickr-thumbnail" style="display: inline-block;"><a href="http://farm8.staticflickr.com/7389/8722983477_a8f1c7f366_b.jpg" class="fancybox" data-title-id="flickr-photo-8722983477" data-media="photo"><img src="http://farm8.staticflickr.com/7389/8722983477_a8f1c7f366_z.jpg" title="One World Trade Center" style=""/></a><figcaption id="flickr-photo-8722983477"><h1><a class="flickr-link" href="http://www.flickr.com/photos/38933684@N07/8722983477">One World Trade Center</a> by takus</h1><div class="description"></div></figcaption></figure></p>
-
-<h2>Brooklyn Bridge</h2>
-
-<p>全長 2km くらいなので歩いて渡ると楽しめます。Manhattan 側から歩いていき、Brooklyn 側の公園でアイスを食べながら一休みして地下鉄で帰りました。</p>
-
-<p><figure class="flickr-thumbnail" style="width: 425px;"><a href="http://farm8.staticflickr.com/7415/8720841273_26a67d351a_b.jpg" class="fancybox" data-title-id="flickr-photo-8720841273" data-media="photo"><img src="http://farm8.staticflickr.com/7415/8720841273_26a67d351a_z.jpg" title="Load to ..." style="width: 425px; height: 640px;"/></a><figcaption id="flickr-photo-8720841273"><h1><a class="flickr-link" href="http://www.flickr.com/photos/38933684@N07/8720841273">Load to &hellip;</a> by takus</h1><div class="description"></div></figcaption></figure></p>
-
-<h2>Yankee Stadium</h2>
-
-<p>せっかくなのでメジャーリーグも見てきました。オンラインでチケット買ってくこともできますが、人気カードでない限り当日スタジアム行って買えば問題ないです。$50 くらいのチケット買いましたが、球場内の移動が割と自由で写真のように内野席の後ろとか入れて立ち見できるので、一番安いチケット買って歩き回るのがベストなんじゃないかと思います。</p>
-
-<p><figure class="flickr-thumbnail" style="display: inline-block;"><a href="http://farm8.staticflickr.com/7292/8722117732_46ae34ba9b_b.jpg" class="fancybox" data-title-id="flickr-photo-8722117732" data-media="photo"><img src="http://farm8.staticflickr.com/7292/8722117732_46ae34ba9b_z.jpg" title="Yankee Stadium" style=""/></a><figcaption id="flickr-photo-8722117732"><h1><a class="flickr-link" href="http://www.flickr.com/photos/38933684@N07/8722117732">Yankee Stadium</a> by takus</h1><div class="description"></div></figcaption></figure></p>
-
-<h2>Top of The Rock &amp; Empire State Buinding</h2>
-
-<p>New York の町を一望できる場所として、この 2 箇所がありますが、夜景を楽しむなら Empire State Building のライトアップを見れる Top of The Rock に行くのが正解です。</p>
-
-<p><figure class="flickr-thumbnail" style="display: inline-block;"><a href="http://farm8.staticflickr.com/7328/8724103864_a80b3ba6d5_b.jpg" class="fancybox" data-title-id="flickr-photo-8724103864" data-media="photo"><img src="http://farm8.staticflickr.com/7328/8724103864_a80b3ba6d5_z.jpg" title="From Top of The Rock" style=""/></a><figcaption id="flickr-photo-8724103864"><h1><a class="flickr-link" href="http://www.flickr.com/photos/38933684@N07/8724103864">From Top of The Rock</a> by takus</h1><div class="description"></div></figcaption></figure></p>
-
-<p><figure class="flickr-thumbnail" style="display: inline-block;"><a href="http://farm8.staticflickr.com/7346/8722151228_15496964e4_b.jpg" class="fancybox" data-title-id="flickr-photo-8722151228" data-media="photo"><img src="http://farm8.staticflickr.com/7346/8722151228_15496964e4_z.jpg" title="From Empire State Building" style=""/></a><figcaption id="flickr-photo-8722151228"><h1><a class="flickr-link" href="http://www.flickr.com/photos/38933684@N07/8722151228">From Empire State Building</a> by takus</h1><div class="description"></div></figcaption></figure></p>
-
-<h2>I Love New York</h2>
-
-<p>ほかにもアメリカ自然史博物館で子供の頃から見たかった恐竜を見たり、セントラルパーク散歩したり、色々と楽しい思い出ばかりで、I Love NY の T シャツを着てる人の気持ちが理解できた気がします。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page4">&larr; Older</a>
@@ -1103,6 +1236,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/12/reinvent-2014-day1/">AWS re:Invent 2014 day1 #reinvent</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"></a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
       </li>
     
@@ -1116,10 +1253,6 @@
     
       <li class="post">
         <a href="/2014/05/16/travel-to-barcelona/">Barcelona にいってきた</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/16/travel-to-barcelona/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/16/travel-to-barcelona/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/05/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"></a>
       </li>
     
   </ul>

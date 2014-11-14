@@ -5,15 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Nagios のアラートに CloudForecast へのリンクをつける - TAKUMI SAKAMOTO&#8217;S BLOG</title>
+  <title>AWS re:Invent 2014 day1 #reinvent - TAKUMI SAKAMOTO&#8217;S BLOG</title>
   <meta name="author" content="Takumi Sakamoto">
 
   
-  <meta name="description" content="といっても、単に Graph: http://cf.example.com/server?address=$HOSTADDRESS$\n みたいな記述を command.cfg に追加してあげるだけの話です。 1
-2
-3
-4
-define command { command_name notify &hellip;">
+  <meta name="description" content="AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。@suzu_v 先生がメモ書きをしていたので、自分も簡単ながらメモを残しておこうと思います。 Keynote Amazon Aurora は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +18,7 @@ define command { command_name notify &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.takus.me/2014/01/28/nagios-resource-graph">
+  <link rel="canonical" href="http://blog.takus.me/2014/11/12/reinvent-2014-day1">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
@@ -85,7 +81,7 @@ define command { command_name notify &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Nagios のアラートに CloudForecast へのリンクをつける<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/01/28/nagios-resource-graph/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/01/28/nagios-resource-graph/"></a></h1>
+      <h1 class="entry-title">AWS re:Invent 2014 day1 #reinvent<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"></a></h1>
     
     
       <p class="meta">
@@ -94,60 +90,56 @@ define command { command_name notify &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-01-28T23:36:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:36 pm</span></time>
+<time class='entry-date' datetime='2014-11-12T22:21:48-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:21 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>といっても、単に <code>Graph: http://cf.example.com/server?address=$HOSTADDRESS$\n</code> みたいな記述を <code>command.cfg</code> に追加してあげるだけの話です。</p>
+<div class="entry-content"><p>AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。<code>@suzu_v</code> 先生が<a href="http://suzuken.hatenablog.jp/entry/2014/11/13/112730">メモ書き</a>をしていたので、自分も簡単ながらメモを残しておこうと思います。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>define command {
-</span><span class='line'>  command_name  notify-service-by-email
-</span><span class='line'>  command_line  /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\n\nService: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nGraph: http://cf.example.com/server?address=$HOSTADDRESS$ \nState: $SERVICESTATE$\n\nDate/Time: $LONGDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$\n" | @MAIL_PROG@ -s "** $NOTIFICATIONTYPE$ Service Alert: $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$ **" $CONTACTEMAIL$
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<h2>Keynote</h2>
 
+<p><a href="http://aws.typepad.com/aws_japan/2014/11/highly-scalable-mysql-compat-rds-db-engine.html">Amazon Aurora</a> は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、やっぱり既存のものをクラウドに持ってくだけじゃ不十分ってことで、クラウドだからできることは何かを真剣に考えていくことでこういうものが生まれてくるのでしょう。</p>
 
-<p>アラートメールは下記のようになるので、メールからすぐにリソースグラフにアクセスできて捗るようになりました。</p>
+<p><a href="http://aws.typepad.com/aws_japan/2014/11/new-aws-tools-for-code-management-and-deployment.html">AWS CodeDeploy, AWS CodeCommit, AWS CodePipeline</a> あたりは、ちょうどこの辺を整備しようかと思っていたので最高のタイミングで登場してくれて、若干手間がかかるところやってくれるのは非常にありがたいと思います。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>***** Nagios *****
-</span><span class='line'>
-</span><span class='line'>Notification Type: PROBLEM
-</span><span class='line'>
-</span><span class='line'>Service: MEMORY
-</span><span class='line'>Host: host0001
-</span><span class='line'>Address: 10.0.1.11
-</span><span class='line'>Graph: http://cf.example.com/server?address=10.0.1.11
-</span><span class='line'>State: CRITICAL
-</span><span class='line'>
-</span><span class='line'>Date/Time: Tue Jan 28 20:08:40 JST 2014
-</span><span class='line'>
-</span><span class='line'>Additional Info:
-</span><span class='line'>
-</span><span class='line'>Ram : 96%, Swap : 0% :  93, 10 : CRITICAL</span></code></pre></td></tr></table></div></figure>
+<p><a href="http://aws.typepad.com/aws_japan/2014/11/track-aws-with-config.html">AWS Config</a> は、簡単に説明すると AWS のリソース変更履歴を残してくれるもので、ウワサに聞くと任意のタイミングにロールバックなどもできる（ようになる？）だとかで、Route53 あたりも対応してくれるとかなり助かる感じなのではないかと。</p>
 
+<h2>How Dropbox Scales Massive Workloads Using Amazon SQS</h2>
 
-<p>他にも <code>http://gf.example.com/list/Host/$HOSTALIAS$?t=sh</code> みたいにして、ホスト名ごとに出力している GrowthForecast へのリンクをつけるみたいにしても便利そうな気がします。</p>
+<p>ファイルの更新をフックに、そのファイルに関する様々な処理を行うフレームワークについて紹介するセッション。Livefill と呼ばれる非同期処理パイプラインをマネージするフレームワークを SQS を利用して実装していて、開発者は YAML で input/output するキューと処理を記述するだけで非同期処理を追加していけるようになっていてクール。当たり前ですが、パイプラインの可視化がかなり重要で、コードのバグや書き込み先の詰まりなどで容易にパイプラインが詰まることがあるので、この手のものには、可視化することで早期に発見して対策していける仕組みが不可欠ですね。</p>
+
+<h2>Infrastructure as Code</h2>
+
+<p>CloudFormation の話な感じだったが、やっぱりJSON はツラい気がした。<a href="https://www.simple.com/">Simple</a> の事例では Python のスクリプトで JSON 生成してるようだったが、もし使うならなんらかのラッパーが必要そうだなという印象。</p>
+
+<h2>Netflix&rsquo;s Next Generation Big Data Platform</h2>
+
+<p>Netflix がいわゆるビッグデータ周りをどのように運用しているかについて、利用しているツール、それを選んだ理由、既存手法とのベンチマーク比較、導入する上での OSS への貢献などについて話をしていました。やはり 2000 台の EMR クラスタみたいな話があったり、規模感が相変わらずすごいです。</p>
+
+<p>最近は社内でも <a href="http://prestodb.io/docs/current/connector/mysql.html">Presto の MySQL connector</a> を利用して、S3 に置いてあるログと RDS にあるマスタを JOIN できるような環境が整いつつありますが、Presto や Parquet FF の話は大変参考になりました。(<a href="http://techblog.netflix.com/2014/10/using-presto-in-our-big-data-platform.html">関連ブログ</a>)</p>
+
+<p>話を聞いていて、アプリケーションとストレージをできるだけ分離しておくことはかなり大切で、例えば Netflix のように基本的にデータを S3 に置くような運用していると、Hadoop v1 と v2 を並行稼働みたいなことが実現できて、バージョンアップ対応とか再起動祭りへの対応負荷がかなり下がりそうなので、この辺りは心がけていきたいですね。</p>
+
+<h2>AWS re:Invent Central</h2>
+
+<p>スポンサー企業がブースを出展していて、普段使ってるサービスの開発者やサポートの人と直接会えたり、色々な企業のノベルティ貰えたりととても楽しい場所でした。</p>
+
+<h3>Datadog</h3>
+
+<p>1 年半前に <a href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity Conference に参加したとき</a>は、会場の隅に小さいブースを持ってるだけだったのですが、この 1 年半で大きく成長したようで、入り口近くにかなり大きなブースを構えるようになっていて、3 年くらい前から密かに Datadog ファンをしていた自分としては嬉しかったです。また、ブースで話をしていたら、&#8221;Are you Takumi? Coincidence!!&ldquo; みたいなノリでいつもメールでサポート対応してくれてる人と出会えて話ができたのもとても有意義でした。</p>
+
+<p>せっかくなので色々とディスカッションしてましたが、エージェントがメモリ使いすぎ問題について聞いたら、Golang でエージェント書いてるみたいな答えが返ってくるなど、こちらの課題感と同じ感覚をちゃんと持ってくれていて、この辺りが 1 年間ですごく成長してる理由の 1 つなのかなと勝手に思ってました。</p>
+
+<h3>Chef</h3>
+
+<p>「昔、Chef のベストプラクティスで、コミュニティクックブックをラップしろみたいなのがあったけど、あれは本気か」って聞いてみたところ、コミュニティクックブックはテンプレートとして使うのがいいよと中の人が言っていたので、スッキリしました。</p>
+
+<h2>おわり</h2>
+
+<p>ということで、2 日目がそろそろ終わるタイミングでの 1 日目のメモでした。</p>
 </div>
 
 
@@ -163,7 +155,7 @@ define command { command_name notify &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-01-28T23:36:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:36 pm</span></time>
+<time class='entry-date' datetime='2014-11-12T22:21:48-08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:21 pm</span></time>
       
 
 
@@ -171,7 +163,7 @@ define command { command_name notify &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2014/01/28/nagios-resource-graph/" data-via="" data-counturl="http://blog.takus.me/2014/01/28/nagios-resource-graph/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2014/11/12/reinvent-2014-day1/" data-via="" data-counturl="http://blog.takus.me/2014/11/12/reinvent-2014-day1/" >Tweet</a>
   
   
   
@@ -182,10 +174,8 @@ define command { command_name notify &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/2014/01/18/fluent-plugin-ec2-metadata/" title="Previous Post: fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた">&laquo; fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた</a>
+        <a class="basic-alignment left" href="/2014/08/31/yapc-asia-2014/" title="Previous Post: YAPC::Asia 2014 にいってきた #yapcasia">&laquo; YAPC::Asia 2014 にいってきた #yapcasia</a>
       
-      
-        <a class="basic-alignment right" href="/2014/02/23/docker/" title="Next Post: Immutable Infrastructure Hackathon :D で docker をさわってみた">Immutable Infrastructure Hackathon :D で docker をさわってみた &raquo;</a>
       
     </p>
   </footer>
@@ -290,8 +280,8 @@ define command { command_name notify &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.takus.me/2014/01/28/nagios-resource-graph/';
-        var disqus_url = 'http://blog.takus.me/2014/01/28/nagios-resource-graph/';
+        var disqus_identifier = 'http://blog.takus.me/2014/11/12/reinvent-2014-day1/';
+        var disqus_url = 'http://blog.takus.me/2014/11/12/reinvent-2014-day1/';
         var disqus_script = 'embed.js';
       
     (function () {
