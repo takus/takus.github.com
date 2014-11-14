@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "結婚しました & DeNA を退職します"
+title: "結婚しました & 退職します"
 date: 2014-07-31 03:00
 comments: true
 ---
