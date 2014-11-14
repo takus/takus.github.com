@@ -5,6 +5,8 @@ date: 2014-11-12 22:21:48 -0800
 comments: true
 ---
 
+{% img https://farm8.staticflickr.com/7545/15782079551_8690d5ac80_z.jpg 640 480 %}
+
 AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。`@suzu_v` 先生が[メモ書き](http://suzuken.hatenablog.jp/entry/2014/11/13/112730)をしていたので、自分も簡単ながらメモを残しておこうと思います。
 
 ## Keynote
