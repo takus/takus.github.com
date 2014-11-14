@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AWS re:Invent 2014 day1 #reinvent"
+title: "AWS re:Invent 2014 day1"
 date: 2014-11-12 22:21:48 -0800
 comments: true
 ---
