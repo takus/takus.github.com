@@ -4,7 +4,7 @@
   <title><![CDATA[TAKUMI SAKAMOTO'S BLOG]]></title>
   <link href="http://blog.takus.me/atom.xml" rel="self"/>
   <link href="http://blog.takus.me/"/>
-  <updated>2014-11-13T17:42:14-08:00</updated>
+  <updated>2015-02-27T14:41:57+09:00</updated>
   <id>http://blog.takus.me/</id>
   <author>
     <name><![CDATA[Takumi Sakamoto]]></name>
@@ -14,10 +14,58 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Datadog ユーザの集い #dd_sushi を開催しました]]></title>
+    <link href="http://blog.takus.me/2015/02/26/dd-sushi/"/>
+    <updated>2015-02-26T12:00:00+09:00</updated>
+    <id>http://blog.takus.me/2015/02/26/dd-sushi</id>
+    <content type="html"><![CDATA[<p><img src="https://farm9.staticflickr.com/8679/16032002853_cc339f1ba5_z.jpg" width="640" height="374" title="'flickr.com'" ></p>
+
+<p>こんにちは。スマートニュースの <a href="https://twitter.com/takus">@takus</a> です。2/24 に Datadog ユーザの集まり <a href="https://twitter.com/search?q=%23dd_sushi">#dd_sushi</a> というイベントを開催しましたので、この場を借りて簡単にレポートさせていただきます。</p>
+
+<p>このイベントは <a href="http://eventdots.jp/event/276987">Presto Meetup</a> で Treasure Data の <a href="https://twitter.com/repeatedly">@repeatedly</a> さんと話をしているときに 「スマートニュースの新オフィスに遊びに行きたい！」という話が出て、Treasure Data も最近 Datadog を使い始めたというところから、せっかくなので Datadog について話をするイベントにしてみようという経緯で、開催に至ったわけですが、Datadog を代表して <a href="https://twitter.com/jhotta">@jhotta</a> さんに 2015 年のロードマップについて話をしていただいたり、Datadog を利用している様々な会社から導入経緯、利用方法、便利ツールなどの発表をしていただき、とても有意義な時間になりました。</p>
+
+<h2>発表資料(発表順)</h2>
+
+<script async class="speakerdeck-embed" data-id="af1e6ad4f24148c89d5886a3be4b0cc0" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+
+
+<script async class="speakerdeck-embed" data-id="cb1435fedb304357b9f1526f1b9839b0" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+
+
+<script async class="speakerdeck-embed" data-id="d6dc9de74fa6411f9cf7e7bd5884bf71" src="//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>パブリックなイベントではなかったので公開されてない方もいますが、ひとまず公開されてる資料だけまとめておきます。</p>
+
+<h2>当日の様子</h2>
+
+<p>弊社の <a href="https://twitter.com/just_do_neet">@just_do_neet</a> さんが <a href="http://togetter.com/li/787532">togetter のまとめ</a> を作ってくれたので雰囲気は togetter を見て感じ取ってくださればと思います。</p>
+
+<p><img src="https://farm9.staticflickr.com/8573/16464500850_f826114d3b_z.jpg" width="640" height="374" title="'flickr.com'" ></p>
+
+<p><img src="https://farm9.staticflickr.com/8628/16625959386_4513e6f105_z.jpg" width="640" height="374" title="'flickr.com'" ></p>
+
+<p><img src="https://farm9.staticflickr.com/8566/16625959426_1e640c61c1_z.jpg" width="640" height="374" title="'flickr.com'" ></p>
+
+<h2>まとめ</h2>
+
+<p>ここ 1 年くらいの動向として、海外では <a href="https://www.datadoghq.com/2015/02/datadog-acquires-mortar-data/">Datadog が Mortar Data を買収したり</a>、<a href="http://techcrunch.com/2014/05/07/google-acquires-cloud-monitoring-service-stackdriver/">Google が Stackdriver を買収したり</a> と盛り上がってる一方で、日本でも <a href="https://mackerel.io">Mackerel</a> が流行ってきていて、Monitoring as a Service も注目すべき分野になりつつあるように感じるので、個人的には Monitoring as a Service 現状確認会みたいなイベントもゆくゆくはできたらいいなと思っています。</p>
+
+<h2>各種イベントへの会場提供について</h2>
+
+<p>最後は告知になりますが、スマートニュースは各種イベントへの会場提供を積極的に行っております。2/21 (土) に開催された <a href="http://nulab-inc.com/ja/blog/nulab/jissenscala/">実戦での Scala 〜 6つの事例から知る Scala の勘所〜</a> や、3/6 (金) に行われる <a href="http://www.zusaar.com/event/12857005">第9回若手Webエンジニア交流会</a> のような 100~200 名程度の大きめの会場から、~10 名規模の会場まで、様々な規模の勉強会への会場提供をお手伝いいたします。ご入用の際はお気軽に <a href="https://twitter.com/takus">@takus</a>、または他の弊社メンバーまで連絡くださいませ。(※ 会場の空き状況やイベントの内容などによって利用可否の判断がございますので、その点はご了承いただければ幸いです。)</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[AWS re:Invent 2014 day1]]></title>
-    <link href="http://blog.takus.me/2014/11/12/reinvent-2014-day1/"/>
-    <updated>2014-11-12T22:21:48-08:00</updated>
-    <id>http://blog.takus.me/2014/11/12/reinvent-2014-day1</id>
+    <link href="http://blog.takus.me/2014/11/13/reinvent-2014-day1/"/>
+    <updated>2014-11-13T15:21:48+09:00</updated>
+    <id>http://blog.takus.me/2014/11/13/reinvent-2014-day1</id>
     <content type="html"><![CDATA[<p><img src="https://farm8.staticflickr.com/7545/15782079551_8690d5ac80_z.jpg" width="640" height="480"></p>
 
 <p>AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。<code>@suzu_v</code> 先生が<a href="http://suzuken.hatenablog.jp/entry/2014/11/13/112730">メモ書き</a>をしていたので、自分も簡単ながらメモを残しておこうと思います。</p>
@@ -69,7 +117,7 @@
   <entry>
     <title type="html"><![CDATA[YAPC::Asia 2014 にいってきた #yapcasia]]></title>
     <link href="http://blog.takus.me/2014/08/31/yapc-asia-2014/"/>
-    <updated>2014-08-31T05:00:00-07:00</updated>
+    <updated>2014-08-31T21:00:00+09:00</updated>
     <id>http://blog.takus.me/2014/08/31/yapc-asia-2014</id>
     <content type="html"><![CDATA[<p>ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。今年で 4 回目の参加で、初めて<a href="http://yapcasia.org/2014/individual_sponsors/">個人スポンサー</a>として参加させていただきましたが、10000 円という価格は 2 日間 HUB が貸し切りとか考えたらかなりリーズナブルなんじゃないかという印象です。(HUB は個人スポンサーじゃなくても入れますが&hellip;)</p>
 
@@ -84,7 +132,7 @@
   <entry>
     <title type="html"><![CDATA[スマートニュースにジョインしました]]></title>
     <link href="http://blog.takus.me/2014/08/01/join-smartnews/"/>
-    <updated>2014-08-01T17:00:00-07:00</updated>
+    <updated>2014-08-01T17:00:00+09:00</updated>
     <id>http://blog.takus.me/2014/08/01/join-smartnews</id>
     <content type="html"><![CDATA[<p><a href="http://www.smartnews.be/"><img src="https://s3-ap-northeast-1.amazonaws.com/smartnews.be/img/devices.png" width="320" height="123"></a></p>
 
@@ -104,7 +152,7 @@
   <entry>
     <title type="html"><![CDATA[結婚しました & 退職します]]></title>
     <link href="http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"/>
-    <updated>2014-07-31T03:00:00-07:00</updated>
+    <updated>2014-07-31T03:00:00+09:00</updated>
     <id>http://blog.takus.me/2014/07/31/got-married-and-leave-dena</id>
     <content type="html"><![CDATA[<p>一部の方には既に報告させていただいてますが 7/22 に入籍しました。ちなみに 7/22 は 天赦日 (てんしゃび) といって、日本の暦の上で最上の吉日とされているそうです (<a href="https://www.richerie.jp/blog/best-marriage-day-2014/">参考</a>)。嫁さんとは高校時代から 8 年以上の付き合いで、すでに何年も一緒に住んでる上に、挙式もこれからのため、あまり実感が湧いてきてない状態ではありますが、よい家庭を築けるように二人でがんばっていきたいと思います。</p>
 
@@ -125,7 +173,7 @@
   <entry>
     <title type="html"><![CDATA[Barcelona にいってきた]]></title>
     <link href="http://blog.takus.me/2014/05/16/travel-to-barcelona/"/>
-    <updated>2014-05-16T02:19:00-07:00</updated>
+    <updated>2014-05-16T02:19:00+09:00</updated>
     <id>http://blog.takus.me/2014/05/16/travel-to-barcelona</id>
     <content type="html"><![CDATA[<p>去年の「<a href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">Los Angeles に行ってきた</a>」「<a href="http://blog.takus.me/2013/05/12/travel-to-new-york/">New York に行ってきた</a>」に引き続き、今年は Barcelona にいってきましたが、かなりいい場所だったのでカンタンにまとめです。</p>
 
@@ -197,9 +245,9 @@
   
   <entry>
     <title type="html"><![CDATA[バルセロナでプリペイド SIM カードを購入する]]></title>
-    <link href="http://blog.takus.me/2014/05/04/barcelona-prepaid-sim/"/>
-    <updated>2014-05-04T17:51:06-07:00</updated>
-    <id>http://blog.takus.me/2014/05/04/barcelona-prepaid-sim</id>
+    <link href="http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"/>
+    <updated>2014-05-05T09:51:06+09:00</updated>
+    <id>http://blog.takus.me/2014/05/05/barcelona-prepaid-sim</id>
     <content type="html"><![CDATA[<p>休暇でバルセロナに来てるわけですが、今回は現地でプリペイド SIM カードを買ってみたので買い方などをまとめておきます。</p>
 
 <p><a href="https://www.flickr.com/photos/esperto/13922739997"><img src="https://farm8.staticflickr.com/7329/13922739997_155d5662b8_z.jpg" width="640" height="427"></a></p>
@@ -225,7 +273,7 @@
   <entry>
     <title type="html"><![CDATA[『グーグル ネット覇者の真実』を読んだ]]></title>
     <link href="http://blog.takus.me/2014/04/16/google-in-the-plex/"/>
-    <updated>2014-04-16T00:42:00-07:00</updated>
+    <updated>2014-04-16T00:42:00+09:00</updated>
     <id>http://blog.takus.me/2014/04/16/google-in-the-plex</id>
     <content type="html"><![CDATA[<p>ある人にオススメされたので『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B009LFBL4Y/takus-22/ref=nosim">グーグル ネット覇者の真実</a>』を読んでみたらかなり面白い本でした。検索連動型広告という金脈を見つけて急成長していく序盤のワクワクする感じから、上場して今のような大企業になるにつれていわゆる大企業病が蔓延して色々と悩みが増えてくる様子などがかなり生々しく書かれていて、色々と考えさせられる内容が多かったです。その中でもいくつか印象に残ったことなどをメモっておきます。</p>
 
@@ -278,7 +326,7 @@
   <entry>
     <title type="html"><![CDATA[『アルゴリズムが世界を支配する』を読んだ]]></title>
     <link href="http://blog.takus.me/2014/04/05/automate-this/"/>
-    <updated>2014-04-05T12:35:00-07:00</updated>
+    <updated>2014-04-05T12:35:00+09:00</updated>
     <id>http://blog.takus.me/2014/04/05/automate-this</id>
     <content type="html"><![CDATA[<p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00FMI2XIW/takus-22/ref=nosim">アルゴリズムが世界を支配する</a>』を読んでみました。</p>
 
@@ -299,7 +347,7 @@
   <entry>
     <title type="html"><![CDATA[Think Simple は学びが多い本でした]]></title>
     <link href="http://blog.takus.me/2014/03/29/think-simple/"/>
-    <updated>2014-03-29T19:15:00-07:00</updated>
+    <updated>2014-03-29T19:15:00+09:00</updated>
     <id>http://blog.takus.me/2014/03/29/think-simple</id>
     <content type="html"><![CDATA[<p>Macbook や iPhone のデザインはシンプルでクールで最高だろ、みたいな本かと思って敬遠してましたが、<a href="http://blog.kenjiskywalker.org/blog/2013/11/16/think-simple/">@kenjiskywalker さんのブログ</a> みて面白そうだったので、&#8221;<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B008YOHMCS/takus-22/ref=nosim">Think Simple &ndash; アップルを生みだす熱狂的哲学</a>&ldquo; 読んでみたら、予想以上に学びが多くて、イイ本でした。</p>
 
@@ -344,7 +392,7 @@
   <entry>
     <title type="html"><![CDATA[#jawsdays の #最強のAWS で「ぜんぶ AWS でやらないワケ」という話をしてきた]]></title>
     <link href="http://blog.takus.me/2014/03/17/jawsdays-2014/"/>
-    <updated>2014-03-17T09:41:00-07:00</updated>
+    <updated>2014-03-17T09:41:00+09:00</updated>
     <id>http://blog.takus.me/2014/03/17/jawsdays-2014</id>
     <content type="html"><![CDATA[<p><a href="https://twitter.com/hirose31">@hirose31</a> さん経由で <a href="https://twitter.com/con_mame">@con_mame</a> さんからお話をいただき、<a href="http://jawsdays2014.jaws-ug.jp/">JAWSDAYS 2014</a> の「<a href="http://jawsdays2014.jaws-ug.jp/sessions/track7/">これで最強AWSに</a>」というセッションで話をしてきました。</p>
 
@@ -367,7 +415,7 @@
   <entry>
     <title type="html"><![CDATA[EC2 に SSH できない時の対処法、あるいは Marketplace の AMI を気軽に選ぶべきでない理由]]></title>
     <link href="http://blog.takus.me/2014/03/04/ec2-ssh/"/>
-    <updated>2014-03-04T00:00:00-08:00</updated>
+    <updated>2014-03-04T00:00:00+09:00</updated>
     <id>http://blog.takus.me/2014/03/04/ec2-ssh</id>
     <content type="html"><![CDATA[<p>前半の部分をまとめようと思ったら、大切なことは全て<a href="https://gist.github.com/j3tm0t0/5560892"> @j3tm0t0 さんの gist </a>に書いてあったので、SSH でログインできなくなった時はまず上記の gist に書いてあることを確認するといいと思います。</p>
 
@@ -394,7 +442,7 @@
   <entry>
     <title type="html"><![CDATA[Octopress で はてなブックマーク数 を表示する]]></title>
     <link href="http://blog.takus.me/2014/03/01/octopress-hatena-bookmark/"/>
-    <updated>2014-03-01T18:06:00-08:00</updated>
+    <updated>2014-03-01T18:06:00+09:00</updated>
     <id>http://blog.takus.me/2014/03/01/octopress-hatena-bookmark</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/takus/takus.github.com/commit/0cf6d223e4f2512c63652b8bc0147956b9d77722">https://github.com/takus/takus.github.com/commit/0cf6d223e4f2512c63652b8bc0147956b9d77722</a></p>
 
@@ -405,7 +453,7 @@
   <entry>
     <title type="html"><![CDATA[Docker/Drone を CentOS 6.5 で動かして Github Enterprise のリポジトリをテストする]]></title>
     <link href="http://blog.takus.me/2014/02/25/drone-on-centos/"/>
-    <updated>2014-02-25T20:03:00-08:00</updated>
+    <updated>2014-02-25T20:03:00+09:00</updated>
     <id>http://blog.takus.me/2014/02/25/drone-on-centos</id>
     <content type="html"><![CDATA[<p><img src="http://farm6.staticflickr.com/5530/12768732363_934e22c97b_z.jpg" width="640" height="374" title="'Drone by Takumi Sakamoto (takus) on flickr.com'" ></p>
 
@@ -515,7 +563,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
   <entry>
     <title type="html"><![CDATA[自分が撮影した写真をドイツの出版社に買ってもらった話]]></title>
     <link href="http://blog.takus.me/2014/02/25/money/"/>
-    <updated>2014-02-25T02:04:00-08:00</updated>
+    <updated>2014-02-25T02:04:00+09:00</updated>
     <id>http://blog.takus.me/2014/02/25/money</id>
     <content type="html"><![CDATA[<p>ある日、ドイツの出版社から Flickr で共有した御柱の写真を買いたいというオファーがあり、色々調べながら無事に取引できたので、取引の流れをまとめておきます。</p>
 
@@ -566,7 +614,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
   <entry>
     <title type="html"><![CDATA[Immutable Infrastructure Hackathon :D で docker をさわってみた]]></title>
     <link href="http://blog.takus.me/2014/02/23/docker/"/>
-    <updated>2014-02-23T21:42:00-08:00</updated>
+    <updated>2014-02-23T21:42:00+09:00</updated>
     <id>http://blog.takus.me/2014/02/23/docker</id>
     <content type="html"><![CDATA[<p>Immutable Infrastructure Hackathon :D で <a href="https://www.docker.io/">Docker</a> を触ってみただけという、ゆるふわなメモです。@muddydixon さんや @yosuke_furukawa さんが <a href="http://blog.drone.io/">drone</a> を触ってたのに比べてだいぶ素人丸出しな感じですが、Docker 童貞からは脱却できたので、次は &ldquo;<a href="http://blog.tmtk.net/2013/09/28/docker-jenkins-serverspec-puppet.ja.html">Docker + Jenkins + serverspecでpuppetのmanifestをCIする</a>&rdquo; あたりに取り組んでみたいと思いました。</p>
 
@@ -686,7 +734,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
   <entry>
     <title type="html"><![CDATA[Nagios のアラートに CloudForecast へのリンクをつける]]></title>
     <link href="http://blog.takus.me/2014/01/28/nagios-resource-graph/"/>
-    <updated>2014-01-28T23:36:00-08:00</updated>
+    <updated>2014-01-28T23:36:00+09:00</updated>
     <id>http://blog.takus.me/2014/01/28/nagios-resource-graph</id>
     <content type="html"><![CDATA[<p>といっても、単に <code>Graph: http://cf.example.com/server?address=$HOSTADDRESS$\n</code> みたいな記述を <code>command.cfg</code> に追加してあげるだけの話です。</p>
 
@@ -741,7 +789,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
   <entry>
     <title type="html"><![CDATA[fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた]]></title>
     <link href="http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/"/>
-    <updated>2014-01-18T13:31:00-08:00</updated>
+    <updated>2014-01-18T13:31:00+09:00</updated>
     <id>http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/takus/fluent-plugin-ec2-metadata">takus/fluent-plugin-ec2-metadata</a></p>
 
@@ -823,7 +871,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
   <entry>
     <title type="html"><![CDATA[サイドバックの生存戦略]]></title>
     <link href="http://blog.takus.me/2014/01/05/survival-strategy/"/>
-    <updated>2014-01-05T00:14:00-08:00</updated>
+    <updated>2014-01-05T00:14:00+09:00</updated>
     <id>http://blog.takus.me/2014/01/05/survival-strategy</id>
     <content type="html"><![CDATA[<p>単純にサッカーが好きなこともあるが、サッカー選手が書いている本を昔からよく読んでいる方だと思う。サッカー選手とは置かれてる状況が全然違うものの、時には共感することや実践したいと思うようなことに巡り会うことがある。</p>
 
@@ -843,7 +891,7 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
   <entry>
     <title type="html"><![CDATA[さよなら 2013 年]]></title>
     <link href="http://blog.takus.me/2013/12/31/2013-to-2014/"/>
-    <updated>2013-12-31T16:05:00-08:00</updated>
+    <updated>2013-12-31T16:05:00+09:00</updated>
     <id>http://blog.takus.me/2013/12/31/2013-to-2014</id>
     <content type="html"><![CDATA[<p>年の瀬ということで今年を振り返ってみます。</p>
 
@@ -881,23 +929,6 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 <h3>よいお年を</h3>
 
 <p>今年はこんなイケテルもの作ったぜヒャッハー！みたいな内容にならないのが大変残念な感じなので、来年こそはその辺りをがんばっていこうと思っております。ということで、今年お世話になった方々、色々とありがとうございました。来年もよろしくお願いいたします。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[innodb_stats_on_metadata に要注意]]></title>
-    <link href="http://blog.takus.me/2013/12/21/innodb-stats-on-metadata/"/>
-    <updated>2013-12-21T18:25:00-08:00</updated>
-    <id>http://blog.takus.me/2013/12/21/innodb-stats-on-metadata</id>
-    <content type="html"><![CDATA[<p>一日に数回 MySQL が詰まるような現象があったので原因を調べたところ、そのサーバだけ <code>innodb_stats_on_metadata=1</code> になっていたのが原因だったという話デス。</p>
-
-<p><code>innodb_stats_on_metadata</code> は、テーブルのメタデータにアクセスしたときに InnoDB の統計情報を更新するかどうかのフラグで、今回問題が起こっていたサーバのようにデータ量が多いサーバなどでは無効にしておく必要があります。例えば、<a href="http://dev.mysql.com/doc/refman/5.1-olh/ja/innodb-parameters.html#sysvar_innodb_stats_on_metadata">公式ドキュメント</a> の <code>innodb_stats_on_metadata</code> の部分にはこのように書いてあります。</p>
-
-<blockquote><p>この変数が有効 (この変数が作成される前からのデフォルト) な場合、<code>SHOW TABLE STATUS</code> や <code>SHOW INDEX</code> などのメタデータステートメントの実行時や、<code>INFORMATION_SCHEMA</code> テーブル <code>TABLES</code> または <code>STATISTICS</code> へのアクセス時に、InnoDB は統計情報を更新します。(これらの更新は、<code>ANALYZE TABLE</code> で行われるものに似ている。) 無効な場合、InnoDB はそれらの処理中に統計情報を更新しません。この変数を無効にすると、テーブルやインデックスを多数含むスキーマへのアクセス速度が改善される可能性があります。またその場合、InnoDB テーブルが関係するクエリーの実行計画の安定性も高まる可能性があります。</p></blockquote>
-
-<p>他にも MySQL Performance Blog の <a href="http://www.mysqlperformanceblog.com/2011/12/23/solving-information_schema-slowness/">Solving INFORMATION_SCHEMA slowness</a> という記事や、High Performance MySQL 3rd Edition の 5 章にもこのオプションに関する言及がありました。</p>
-
-<p>性能に影響与えるようなオプションであればデフォルトで無効にしておいてくれればいいのにと思っていたら、<a href="https://blogs.oracle.com/supportingmysql/entry/server_defaults_changes_in_mysql">MySQL 5.6 からデフォルトで無効</a>になるようです。</p>
 ]]></content>
   </entry>
   

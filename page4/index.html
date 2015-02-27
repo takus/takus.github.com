@@ -9,7 +9,7 @@
   <meta name="author" content="Takumi Sakamoto">
 
   
-  <meta name="description" content="前回の"Los Angeles に行ってきた&ldquo;の続きです。New York 編。 Manhattan by takus Tips Unlimited Ride MetroCard 市内であれば、ほとんどの場所に地下鉄で行けるので地下鉄の乗り放題パスを買うと捗ります。7 日間乗り放題で &hellip;">
+  <meta name="description" content="金曜日にヒカリエで開催された Provisioning Frameworks Casual Talks vol.1 に参加 &amp; 少しだけお手伝いしてきたのでまとめ。@zabbiozabbio さんと一緒に 27F のエレベーターホールで待ち受けていたのが自分です。 serverspec &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,70 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2013/05/12/provisioning-frameworks-casual-talks-001/">Provisioning Frameworks Casual Talks vol.1 に行ってきた #pfcasual</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/"></a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-05-12T04:18:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:18 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>金曜日にヒカリエで開催された <a href="https://gist.github.com/studio3104/5417631">Provisioning Frameworks Casual Talks vol.1</a> に参加 &amp; 少しだけお手伝いしてきたのでまとめ。@zabbiozabbio さんと一緒に 27F のエレベーターホールで待ち受けていたのが自分です。</p>
+
+<h2>serverspec の話</h2>
+
+<p>chef + puppet の話というよりも chef 使うにしても、puppet 使うにしても、(Touryo 使うにしても)、serverspec 使って構成管理ツールとは別にサーバの構成をテストすべきだよねという話が印象に残っていて、どの構成管理ツール使うか検討している間に、まずは serverspec でテストするようにしておくのがよさそうかなと思いました。</p>
+
+<blockquote><p>利用してるフレームワークに依存したテストだと、そのフレームワークから少しでも外れたことをやると、それが正しいのか正しくないのか検知できなくなる。それがイヤなので、serverspec のような独立したものをつくった。 #pfcasual</p><footer><strong>@gosukenator</strong> <cite><a href='https://twitter.com/gosukenator/status/332845805079785472'>twitter.com/gosukenator/status/&hellip;</a></cite></footer></blockquote>
+
+
+<h2>で、attribute(config) の管理方法の話</h2>
+
+<blockquote><p>serverspec 見てて、attribute + template で設定ファイルの差分確認するような機能あればいいと思ったけど、それやると構成管理ツールのリソース参照しなきゃいけなくて割とフクザツな仕組みになりそうだな&#8230;。</p><footer><strong>@takus</strong> <cite><a href='https://twitter.com/takus/status/325125339460296704'>twitter.com/takus/status/&hellip;</a></cite></footer></blockquote>
+
+
+<p>serverspec 自体は出たときからよさそうだなとは思っていたものの、attribute に入れた内容が設定ファイルに反映されているかみたいなテストをしようとすると上記のような疑問にぶち当たって、serverspec が構成管理ツールに依存するのイケてないなーとか思っていましたが、家に帰って twitter 眺めてたら @riywo 先生がボソっといいことつぶやいてました。</p>
+
+<blockquote><p>@sonots あとconfigのみを管理するコンポーネント(サーバ毎に変化する値のAPIサーバ)ができて、provisionとtestが両方それを参照するようにするといい感じの疎結合なんすよね。</p><footer><strong>@riywo</strong> <cite><a href='https://twitter.com/riywo/status/332926378683006977'>twitter.com/riywo/status/&hellip;</a></cite></footer></blockquote>
+
+
+<p>弊社でいえば、たとえば admintool 的なツールが attribute 持っていて、provision と test の両方から参照できるみたいになっていれば、なんとなく上記の問題も解決できそうで、chef-solo -j URL で URL 指定して json 取ってこれると言ってた気がするので、なんかこの辺りうまくやれるツールがあるとよさそうですね:D</p>
+
+<h3>2013/05/12 23:34 追記</h3>
+
+<p><a href="http://mizzy.org/blog/2013/05/12/2/">serverspec でホスト固有の属性値を扱う方法</a> で参考になりそうな仕組みが提案されてたので参考にしたいところです。</p>
+
+<h2>自動更新の話</h2>
+
+<p><a href="http://blog.livedoor.jp/sonots/archives/26810152.html">@sonots さんのブログ</a> にまとまってる話。自分は自動更新は怖い派ですが、実現できないか考える余地は色々とありそうだと思いました。話に出ていた staging はもちろん @sethvargo 先生がお話していた、environments を使えば production の一部のサーバだけ更新するみたいなこともできそうで、staging → production の一部 →production 全部 (or ブルー・グルーン・デプロイで新しいクラスタにだけ) といったように反映しつつテスト回せば、取り返しがつかなくなる前に気づくことも可能なのかもしれないとか思いました。(話聞いた印象なだけで裏取ったりはしてないですが&hellip;）</p>
+
+<h2>大規模(数百〜10,000台)なら chef-server 一択？</h2>
+
+<p>こちらも <a href="http://blog.livedoor.jp/sonots/archives/26810152.html">@sonots さんのブログ</a> の話ですが、admintool あるので、弊社では chef-solo で十分じゃないかと思ってます。現状でも admintool + touryo で数百~千台くらいのサーバ構成管理はある程度実現できていて、それが admintool + chef-solo + serverspec になってもそれで十分機能するんじゃないかと思います。(あくまで個人的な見解です)</p>
+
+<h2>まとめ</h2>
+
+<p>弊社は今のところ Touryo 使っていますが、chef や puppet も着実に進化しているので、そうったツールと比較検討した上で使い続けるなり、乗り換えるなりをする必要はあって、そういう意味では色々と構成管理ツールについて考えるいい機会になりました。主催者及び発表者のみなさま、ありがとうございました。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/05/12/travel-to-new-york/">New York に行ってきた</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/05/12/travel-to-new-york/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/05/12/travel-to-new-york/"></a></h1>
     
     
@@ -93,7 +157,7 @@
 
 
 
-<time class='entry-date' datetime='2013-05-12T02:16:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:16 am</span></time>
+<time class='entry-date' datetime='2013-05-12T02:16:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:16 am</span></time>
         
       </p>
     
@@ -170,7 +234,7 @@
 
 
 
-<time class='entry-date' datetime='2013-05-11T22:38:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:38 pm</span></time>
+<time class='entry-date' datetime='2013-05-11T22:38:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:38 pm</span></time>
         
       </p>
     
@@ -250,7 +314,7 @@
 
 
 
-<time class='entry-date' datetime='2013-05-01T09:55:00-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>9:55 am</span></time>
+<time class='entry-date' datetime='2013-05-01T09:55:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>9:55 am</span></time>
         
       </p>
     
@@ -293,7 +357,7 @@
 
 
 
-<time class='entry-date' datetime='2013-04-25T00:00:00-07:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2013-04-25T00:00:00+09:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -452,7 +516,7 @@
 
 
 
-<time class='entry-date' datetime='2013-03-28T11:00:00-07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:00 am</span></time>
+<time class='entry-date' datetime='2013-03-28T11:00:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:00 am</span></time>
         
       </p>
     
@@ -622,7 +686,7 @@
 
 
 
-<time class='entry-date' datetime='2013-03-22T03:00:00-07:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>3:00 am</span></time>
+<time class='entry-date' datetime='2013-03-22T03:00:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>3:00 am</span></time>
         
       </p>
     
@@ -778,7 +842,7 @@
 
 
 
-<time class='entry-date' datetime='2013-01-01T03:22:00-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>3:22 am</span></time>
+<time class='entry-date' datetime='2013-01-01T03:22:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>3:22 am</span></time>
         
       </p>
     
@@ -834,7 +898,7 @@
 
 
 
-<time class='entry-date' datetime='2012-12-20T02:00:00-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>2:00 am</span></time>
+<time class='entry-date' datetime='2012-12-20T02:00:00+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>2:00 am</span></time>
         
       </p>
     
@@ -888,7 +952,7 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
 
 
 
-<time class='entry-date' datetime='2012-10-06T00:00:00-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2012-10-06T00:00:00+09:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
         
       </p>
     
@@ -912,35 +976,6 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
 <h2>まとめ</h2>
 
 <p>というわけで，スタッフのみなさん，スピーカーのみなさん，参加者のみなさんお疲れ様でした．また来年もよろしくお願いいたします．</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/07/24/28199469096/">会社のブログを書きました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2012/07/24/28199469096/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2012/07/24/28199469096/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-07-24T00:00:00-07:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>12:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://engineer.dena.jp/2012/07/web.html">「Web若手エンジニアの会」を開催しました &ndash; Technology of DeNA</a></p>
 </div>
   
   
@@ -976,7 +1011,11 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/2014/11/12/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/12/reinvent-2014-day1/"></a>
+        <a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a>
       </li>
     
       <li class="post">
@@ -989,10 +1028,6 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
     
       <li class="post">
         <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/16/travel-to-barcelona/">Barcelona にいってきた</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/16/travel-to-barcelona/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/16/travel-to-barcelona/"></a>
       </li>
     
   </ul>
@@ -1036,7 +1071,7 @@ By <a href="http://www.flickr.com/photos/kofoed/3751360757/">Theis Kofoed Hjorth
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Takumi Sakamoto -
+  Copyright &copy; 2015 - Takumi Sakamoto -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

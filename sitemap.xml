@@ -3,298 +3,304 @@
   
   
   <url>
-    <loc>http://blog.takus.me/2014/11/12/reinvent-2014-day1/</loc>
-    <lastmod>2014-11-12T22:21:48-08:00</lastmod>
+    <loc>http://blog.takus.me/2015/02/26/dd-sushi/</loc>
+    <lastmod>2015-02-26T12:00:00+09:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.takus.me/2014/11/13/reinvent-2014-day1/</loc>
+    <lastmod>2014-11-13T15:21:48+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/08/31/yapc-asia-2014/</loc>
-    <lastmod>2014-08-31T05:00:00-07:00</lastmod>
+    <lastmod>2014-08-31T21:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/08/01/join-smartnews/</loc>
-    <lastmod>2014-08-01T17:00:00-07:00</lastmod>
+    <lastmod>2014-08-01T17:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/07/31/got-married-and-leave-dena/</loc>
-    <lastmod>2014-07-31T03:00:00-07:00</lastmod>
+    <lastmod>2014-07-31T03:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/05/16/travel-to-barcelona/</loc>
-    <lastmod>2014-05-16T02:19:00-07:00</lastmod>
+    <lastmod>2014-05-16T02:19:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>http://blog.takus.me/2014/05/04/barcelona-prepaid-sim/</loc>
-    <lastmod>2014-05-04T17:51:06-07:00</lastmod>
+    <loc>http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/</loc>
+    <lastmod>2014-05-05T09:51:06+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/04/16/google-in-the-plex/</loc>
-    <lastmod>2014-04-16T00:42:00-07:00</lastmod>
+    <lastmod>2014-04-16T00:42:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/04/05/automate-this/</loc>
-    <lastmod>2014-04-05T12:35:00-07:00</lastmod>
+    <lastmod>2014-04-05T12:35:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/03/29/think-simple/</loc>
-    <lastmod>2014-03-29T19:15:00-07:00</lastmod>
+    <lastmod>2014-03-29T19:15:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/03/17/jawsdays-2014/</loc>
-    <lastmod>2014-03-17T09:41:00-07:00</lastmod>
+    <lastmod>2014-03-17T09:41:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/03/04/ec2-ssh/</loc>
-    <lastmod>2014-03-04T00:00:00-08:00</lastmod>
+    <lastmod>2014-03-04T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/03/01/octopress-hatena-bookmark/</loc>
-    <lastmod>2014-03-01T18:06:00-08:00</lastmod>
+    <lastmod>2014-03-01T18:06:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/02/25/drone-on-centos/</loc>
-    <lastmod>2014-02-25T20:03:00-08:00</lastmod>
+    <lastmod>2014-02-25T20:03:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/02/25/money/</loc>
-    <lastmod>2014-02-25T02:04:00-08:00</lastmod>
+    <lastmod>2014-02-25T02:04:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/02/23/docker/</loc>
-    <lastmod>2014-02-23T21:42:00-08:00</lastmod>
+    <lastmod>2014-02-23T21:42:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/01/28/nagios-resource-graph/</loc>
-    <lastmod>2014-01-28T23:36:00-08:00</lastmod>
+    <lastmod>2014-01-28T23:36:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/</loc>
-    <lastmod>2014-01-18T13:31:00-08:00</lastmod>
+    <lastmod>2014-01-18T13:31:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2014/01/05/survival-strategy/</loc>
-    <lastmod>2014-01-05T00:14:00-08:00</lastmod>
+    <lastmod>2014-01-05T00:14:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/12/31/2013-to-2014/</loc>
-    <lastmod>2013-12-31T16:05:00-08:00</lastmod>
+    <lastmod>2013-12-31T16:05:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/12/21/innodb-stats-on-metadata/</loc>
-    <lastmod>2013-12-21T18:25:00-08:00</lastmod>
+    <lastmod>2013-12-21T18:25:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/11/10/roadworker/</loc>
-    <lastmod>2013-11-10T15:43:00-08:00</lastmod>
+    <lastmod>2013-11-10T15:43:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/11/02/daemontools-setuidgid/</loc>
-    <lastmod>2013-11-02T01:40:00-07:00</lastmod>
+    <lastmod>2013-11-02T01:40:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/10/18/yapc-devopsday-wakateweb/</loc>
-    <lastmod>2013-10-18T04:05:00-07:00</lastmod>
+    <lastmod>2013-10-18T04:05:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/08/11/mysql_secure_installation/</loc>
-    <lastmod>2013-08-11T11:06:00-07:00</lastmod>
+    <lastmod>2013-08-11T11:06:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/08/06/nagira-nagios-restful-api/</loc>
-    <lastmod>2013-08-06T10:46:00-07:00</lastmod>
+    <lastmod>2013-08-06T10:46:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/</loc>
-    <lastmod>2013-06-21T00:00:00-07:00</lastmod>
+    <lastmod>2013-06-21T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/06/06/code-simplicity/</loc>
-    <lastmod>2013-06-06T01:26:00-07:00</lastmod>
+    <lastmod>2013-06-06T01:26:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/06/03/rsync-ssh-maxstartups/</loc>
-    <lastmod>2013-06-03T01:29:00-07:00</lastmod>
+    <lastmod>2013-06-03T01:29:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj/</loc>
-    <lastmod>2013-05-23T02:36:00-07:00</lastmod>
+    <lastmod>2013-05-23T02:36:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/</loc>
-    <lastmod>2013-05-12T04:18:00-07:00</lastmod>
+    <lastmod>2013-05-12T04:18:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/05/12/travel-to-new-york/</loc>
-    <lastmod>2013-05-12T02:16:00-07:00</lastmod>
+    <lastmod>2013-05-12T02:16:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/05/11/travel-to-los-angeles/</loc>
-    <lastmod>2013-05-11T22:38:00-07:00</lastmod>
+    <lastmod>2013-05-11T22:38:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/05/01/crontab-date/</loc>
-    <lastmod>2013-05-01T09:55:00-07:00</lastmod>
+    <lastmod>2013-05-01T09:55:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/04/25/supergrep/</loc>
-    <lastmod>2013-04-25T00:00:00-07:00</lastmod>
+    <lastmod>2013-04-25T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/03/28/riak-install/</loc>
-    <lastmod>2013-03-28T11:00:00-07:00</lastmod>
+    <lastmod>2013-03-28T11:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/03/22/test-web-api-client/</loc>
-    <lastmod>2013-03-22T03:00:00-07:00</lastmod>
+    <lastmod>2013-03-22T03:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2013/01/01/2012-to-2013/</loc>
-    <lastmod>2013-01-01T03:22:00-08:00</lastmod>
+    <lastmod>2013-01-01T03:22:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2012/12/20/mac-forget-me-not/</loc>
-    <lastmod>2012-12-20T02:00:00-08:00</lastmod>
+    <lastmod>2012-12-20T02:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2012/10/06/32974165602/</loc>
-    <lastmod>2012-10-06T00:00:00-07:00</lastmod>
+    <lastmod>2012-10-06T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2012/07/24/28199469096/</loc>
-    <lastmod>2012-07-24T00:00:00-07:00</lastmod>
+    <lastmod>2012-07-24T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2012/06/18/28199466903/</loc>
-    <lastmod>2012-06-18T00:00:00-07:00</lastmod>
+    <lastmod>2012-06-18T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2012/05/17/23170067016/</loc>
-    <lastmod>2012-05-17T00:00:00-07:00</lastmod>
+    <lastmod>2012-05-17T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2012/03/24/28199464257/</loc>
-    <lastmod>2012-03-24T00:00:00-07:00</lastmod>
+    <lastmod>2012-03-24T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2012/01/06/28199462010/</loc>
-    <lastmod>2012-01-06T00:00:00-08:00</lastmod>
+    <lastmod>2012-01-06T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2011/11/19/28199459336/</loc>
-    <lastmod>2011-11-19T00:00:00-08:00</lastmod>
+    <lastmod>2011-11-19T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2011/10/17/28199456070/</loc>
-    <lastmod>2011-10-17T00:00:00-07:00</lastmod>
+    <lastmod>2011-10-17T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/2011/03/28/28409424679/</loc>
-    <lastmod>2011-03-28T00:00:00-07:00</lastmod>
+    <lastmod>2011-03-28T00:00:00+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   
   
   <url>
     <loc>http://blog.takus.me/blog/archives/</loc>
-    <lastmod>2014-11-13T17:42:14-08:00</lastmod>
+    <lastmod>2015-02-27T14:41:57+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://blog.takus.me/</loc>
-    <lastmod>2014-11-13T17:42:14-08:00</lastmod>
+    <lastmod>2015-02-27T14:41:57+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
