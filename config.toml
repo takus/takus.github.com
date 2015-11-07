@@ -1,0 +1,30 @@
+BaseUrl= "http://blog.takus.me"
+Title= "takus's blog"
+LanguageCode= "ja-jp"
+Copyright = "Copyright (C) 2011- Takumi Sakamoto All Right Reserved."
+
+theme = "casper"
+
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+
+paginate = 10
+canonifyurls = true
+DisqusShortname = "takus"
+
+[permalinks]
+  post = "/:year/:month/:day/:filename/"
+
+[params]
+  logo = "favicon.ico"
+  cover = "images/cover.jpg"
+  author = "Takumi Sakamoto"
+  authorlocation = "Tokyo, Japan"
+  authorwebsite = "http://about.me/takus"
+  bio= "Software Engineer at SmartNews"
+  googleAnalyticsUserID = "UA-2841066-12"
+  githubName = "takus"
+  twitterName = "takus"
+  hideHUGOSupport = false
+  customHeaderPartial = "highlight"
