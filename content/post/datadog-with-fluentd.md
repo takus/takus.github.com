@@ -5,8 +5,10 @@ date: 2015-10-10
 comments: true
 ---
 
-[Datadog](https://datadoghq.com) というシステム監視 SaaS のネタです。先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
+[Datadog](https://datadoghq.com) というシステム監視 SaaS のネタです。
+先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
 自分が知ってる **Dogstatsd** を使う方法をシェアします。
+
 <!--more-->
 
 <img src="/images/datadog_http_graph.jpg">
@@ -20,7 +22,7 @@ Fluentd 経由で Datadog にカスタムメトリクスとして送って可視
 - 左下: Fluentd の タグ毎の流量
 - 右下: Fluentd の ホスト毎の流量
 
-といったグラフになっています。このポストではこんなグラフを作る方法を説明してみます。
+といったグラフになっています。このポストではこんなグラフを作る方法を説明します。
 
 ## Dogstatsd とは？
 
