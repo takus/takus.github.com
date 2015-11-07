@@ -1,321 +1,246 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="ja-jp">
 <head>
-  <meta charset="utf-8">
-  <title>daemontools の setuidgid が supplementary groups 権限をつけてくれない件 - TAKUMI SAKAMOTO&#8217;S BLOG</title>
-  <meta name="author" content="Takumi Sakamoto">
 
-  
-  <meta name="description" content="『daemontools の setuidgid』や 『補助グループ権限もつけてくれるsetuidgidのようなもの』のところに書いてある話なんですが、daemontools の setuidgid は 補助グループ権限をつけてくれません。 どういうことかというと、sysadmin &hellip;">
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta property="og:title" content=" daemontools の setuidgid が supplementary groups 権限をつけてくれない件 &middot;  takus&#39;s blog" />
+  	<meta property="og:site_name" content="takus&#39;s blog" />
+  	<meta property="og:url" content="http://blog.takus.me/2013/11/02/daemontools-setuidgid/" />
 
-  
-  <link rel="canonical" href="http://blog.takus.me/2013/11/02/daemontools-setuidgid/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    
+  	<meta property="og:type" content="article" />
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-2841066-12']);
-    _gaq.push(['_trackPageview']);
+    <meta property="og:article:published_time" content="2013-11-02T00:00:00Z" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    
+    
+
+  <title>
+     daemontools の setuidgid が supplementary groups 権限をつけてくれない件 &middot;  takus&#39;s blog
+  </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.takus.meimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.takus.meimages/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
+    
+      
+          <link href="http://blog.takus.meindex.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://blog.takus.me/2013/11/02/daemontools-setuidgid/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2841066-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+        <link rel="stylesheet" href="http://blog.takus.me/styles/solarized_dark.css">
+<script src="http://blog.takus.me/js/highlight.pack.js"></script>
+<script>
+    hljs.configure({ tabReplace: "  " });
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
 </head>
+<body class="nav-closed">
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">TAKUMI SAKAMOTO&#8217;S BLOG</a></h1>
-  
-    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
-  
-</hgroup>
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://blog.takus.meindex.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
 
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.takus.me"><img src="http://blog.takus.mefavicon.ico" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.takus.meindex.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.takus.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="http://about.me/takus">AboutMe</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">daemontools の setuidgid が supplementary groups 権限をつけてくれない件<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/11/02/daemontools-setuidgid/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/11/02/daemontools-setuidgid/"></a></h1>
-    
-    
-      <p class="meta">
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">daemontools の setuidgid が supplementary groups 権限をつけてくれない件</h1>
+        <small></small>
+
+        <section class="post-meta">
         
-
-
-
-
-<time class='entry-date' datetime='2013-11-02T01:40:00+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>1:40 am</span></time>
+          <time class="post-date" datetime="2013-11-02T00:00:00Z">
+            Nov 2, 2013
+          </time>
         
-      </p>
-    
-  </header>
+         
+        </section>
+    </header>
 
-
-<div class="entry-content"><p>『<a href="http://cr.yp.to/daemontools/setuidgid.html">daemontools の setuidgid</a>』や 『<a href="http://d.hatena.ne.jp/hirose31/20130808/1375965331">補助グループ権限もつけてくれるsetuidgidのようなもの</a>』のところに書いてある話なんですが、<code>daemontools</code> の <code>setuidgid</code> は 補助グループ権限をつけてくれません。</p>
+    <section class="post-content">
+      <p>『<a href="http://cr.yp.to/daemontools/setuidgid.html">daemontools の setuidgid</a>』や 『<a href="http://d.hatena.ne.jp/hirose31/20130808/1375965331">補助グループ権限もつけてくれるsetuidgidのようなもの</a>』のところに書いてある話なんですが、<code>daemontools</code> の <code>setuidgid</code> は 補助グループ権限をつけてくれません。</p>
 
 <p>どういうことかというと、<code>sysadmin</code> グループに属する <code>admin</code> ユーザがいて、下記のような設定になってるときに、</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>id admin
-</span><span class='line'><span class="nv">uid</span><span class="o">=</span>2500<span class="o">(</span>admin<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>2500<span class="o">(</span>admin<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>2500<span class="o">(</span>admin<span class="o">)</span>,2501<span class="o">(</span>sysadmin<span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ </span>ls -l /home/admin/password.pl
-</span><span class='line'>-rw-r----- 1 root sysadmin 584 Jul 24 22:47 /home/admin/password.pl
-</span></code></pre></td></tr></table></div></figure>
+<pre><code class="language-bash">$ id admin
+uid=2500(admin) gid=2500(admin) groups=2500(admin),2501(sysadmin)
 
+$ ls -l /home/admin/password.pl
+-rw-r----- 1 root sysadmin 584 Jul 24 22:47 /home/admin/password.pl
+</code></pre>
 
 <p>下記のような run ファイルで daemon を起動したところ、password.pl が読めないというエラーが出ました。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
-</span><span class='line'><span class="nb">exec </span>2&gt;&amp;1
-</span><span class='line'><span class="nb">exec </span>setuidgid admin /path/to/oreno_daemon
-</span></code></pre></td></tr></table></div></figure>
-
+<pre><code class="language-bash">#!/bin/sh
+exec 2&gt;&amp;1
+exec setuidgid admin /path/to/oreno_daemon
+</code></pre>
 
 <p>一見すると、<code>admin</code> ユーザは <code>sysadmin</code> ユーザに含まれているため権限は問題ないように思えて、実際にコンソールから実行すると読むことができるのですが、前述の通り <code>setuidgid</code> は補助グループ権限をつけてくれないため、<code>setuidgid</code> で指定した <code>admin</code> ユーザは下記のようなユーザとみなされ、password.pl を読むことができないというオチでした。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>id admin
-</span><span class='line'><span class="nv">uid</span><span class="o">=</span>2500<span class="o">(</span>admin<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>2500<span class="o">(</span>admin<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>2500<span class="o">(</span>admin<span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<pre><code class="language-bash">$ id admin
+uid=2500(admin) gid=2500(admin) groups=2500(admin)
+</code></pre>
 
 <p>解決策は、『<a href="http://d.hatena.ne.jp/hirose31/20130808/1375965331">補助グループ権限もつけてくれるsetuidgidのようなもの</a>』にまとまってますが、<a href="https://gist.github.com/kazuho/6181648">この辺り</a>を使うのがいいのではないかと思ってる次第です。</p>
-</div>
+
+    </section>
 
 
-  <footer>
-    <p class="meta">
-      
-  
+  <footer class="post-footer">
 
-<span class="byline author vcard">Posted by <span class="fn">Takumi Sakamoto</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2013-11-02T01:40:00+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2013</span></span> <span class='time'>1:40 am</span></time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2013/11/02/daemontools-setuidgid/" data-via="" data-counturl="http://blog.takus.me/2013/11/02/daemontools-setuidgid/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
 
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/2013/10/18/yapc-devopsday-wakateweb/" title="Previous Post: #yapcasia と #devopsday と #wakateweb の話">&laquo; #yapcasia と #devopsday と #wakateweb の話</a>
-      
-      
-        <a class="basic-alignment right" href="/2013/11/10/roadworker/" title="Next Post: Roadworker - The Best Way to Manage Your Amazon Route53 Records">Roadworker - The Best Way to Manage Your Amazon Route53 Records &raquo;</a>
-      
-    </p>
+    <figure class="author-image">
+        <a class="img" href="http://blog.takus.me" style="background-image: url(http://blog.takus.mefavicon.ico)"><span class="hidden">Takumi Sakamoto's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://blog.takus.me">Takumi Sakamoto</a></h4>
+  
+  <p>Software Engineer at SmartNews</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Tokyo, Japan</span>
+    <span class="author-link icon-link"><a href="http://about.me/takus">http://about.me/takus</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=daemontools%20%e3%81%ae%20setuidgid%20%e3%81%8c%20supplementary%20groups%20%e6%a8%a9%e9%99%90%e3%82%92%e3%81%a4%e3%81%91%e3%81%a6%e3%81%8f%e3%82%8c%e3%81%aa%e3%81%84%e4%bb%b6&amp;url=http%3a%2f%2fblog.takus.me%2f2013%2f11%2f02%2fdaemontools-setuidgid%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.takus.me%2f2013%2f11%2f02%2fdaemontools-setuidgid%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.takus.me%2f2013%2f11%2f02%2fdaemontools-setuidgid%2f&amp;description=daemontools%20%e3%81%ae%20setuidgid%20%e3%81%8c%20supplementary%20groups%20%e6%a8%a9%e9%99%90%e3%82%92%e3%81%a4%e3%81%91%e3%81%a6%e3%81%8f%e3%82%8c%e3%81%aa%e3%81%84%e4%bb%b6"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.takus.me%2f2013%2f11%2f02%2fdaemontools-setuidgid%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'takus';
+  var disqus_url = 'http:\/\/blog.takus.me\/2013\/11\/02\/daemontools-setuidgid\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
   </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Me</h1>
-  <div style="margin-top:10px">
-    <img src="http://farm8.staticflickr.com/7293/11929418323_e084604fe5_q.jpg" alt="me"><br />
-    Takumi Sakamoto<br />
-    Software Engineer@SmartNews, Inc.<br />
-  </div>
-  <div style="margin-top:10px">
-    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
-  </div>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/takus">@takus</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'takus',
-            count: 5,
-            skip_forks: false,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Takumi Sakamoto -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'takus';
-      
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">takus&#39;s blog</a> Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</section>
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.takus.me/2013/11/02/daemontools-setuidgid/';
-        var disqus_url = 'http://blog.takus.me/2013/11/02/daemontools-setuidgid/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/index.js"></script>
+    
 </body>
 </html>
+

@@ -1,425 +1,296 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="ja-jp">
 <head>
-  <meta charset="utf-8">
-  <title>YAPC::ASIA 2011 に行ってきた - TAKUMI SAKAMOTO&#8217;S BLOG</title>
-  <meta name="author" content="Takumi Sakamoto">
 
-  
-  <meta name="description" content="年に 1 度の perl の祭典、YAPC::ASIA 2011 に行ってきました。「家に帰ってブログを書くまでが YAPC です」とアナウンスされていたので書いてみました。 はじめてのYAPC::ASIA 2011 今回が初めての YAPC 参加。perl &hellip;">
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta property="og:title" content=" YAPC::ASIA 2011 に行ってきた &middot;  takus&#39;s blog" />
+  	<meta property="og:site_name" content="takus&#39;s blog" />
+  	<meta property="og:url" content="http://blog.takus.me/2011/10/17/28199456070/" />
 
-  
-  <link rel="canonical" href="http://blog.takus.me/2011/10/17/28199456070/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    
+  	<meta property="og:type" content="article" />
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-2841066-12']);
-    _gaq.push(['_trackPageview']);
+    <meta property="og:article:published_time" content="2011-10-17T00:00:00Z" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    
+    
+
+  <title>
+     YAPC::ASIA 2011 に行ってきた &middot;  takus&#39;s blog
+  </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.takus.meimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.takus.meimages/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
+    
+      
+          <link href="http://blog.takus.meindex.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://blog.takus.me/2011/10/17/28199456070/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2841066-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+        <link rel="stylesheet" href="http://blog.takus.me/styles/solarized_dark.css">
+<script src="http://blog.takus.me/js/highlight.pack.js"></script>
+<script>
+    hljs.configure({ tabReplace: "  " });
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
 </head>
+<body class="nav-closed">
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">TAKUMI SAKAMOTO&#8217;S BLOG</a></h1>
-  
-    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
-  
-</hgroup>
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://blog.takus.meindex.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
 
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.takus.me"><img src="http://blog.takus.mefavicon.ico" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.takus.meindex.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.takus.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="http://about.me/takus">AboutMe</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">YAPC::ASIA 2011 に行ってきた<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2011/10/17/28199456070/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2011/10/17/28199456070/"></a></h1>
-    
-    
-      <p class="meta">
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">YAPC::ASIA 2011 に行ってきた</h1>
+        <small></small>
+
+        <section class="post-meta">
         
-
-
-
-
-<time class='entry-date' datetime='2011-10-17T00:00:00+09:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
+          <time class="post-date" datetime="2011-10-17T00:00:00Z">
+            Oct 17, 2011
+          </time>
         
-      </p>
-    
-  </header>
+         
+        </section>
+    </header>
 
+    <section class="post-content">
+      
 
-<div class="entry-content"><p>年に 1 度の perl の祭典、<a href="http://yapcasia.org/2011/">YAPC::ASIA 2011</a> に行ってきました。「家に帰ってブログを書くまでが YAPC です」とアナウンスされていたので書いてみました。</p>
+<p>年に 1 度の perl の祭典、<a href="http://yapcasia.org/2011/">YAPC::ASIA 2011</a> に行ってきました。「家に帰ってブログを書くまでが YAPC です」とアナウンスされていたので書いてみました。</p>
 
-
-
-
-<h3>はじめてのYAPC::ASIA 2011</h3>
-
-
-
+<h2 id="はじめてのyapc-asia-2011:d8350522b312070da50016ceeb115322">はじめてのYAPC::ASIA 2011</h2>
 
 <p>今回が初めての YAPC 参加。perl は書き始めて半年くらいで知識も浅い状態でしたが、perl という言語自体の話だけでなく、「perl を使って hogehoge した」みたいなトークが多く、perl 初心者でも充分に楽しめました。</p>
 
+<h2 id="印象に残ったセッション:d8350522b312070da50016ceeb115322">印象に残ったセッション</h2>
 
+<ul>
+<li>Carton: CPAN dependencies manager by @miyagawa さん
 
-
-<h3>印象に残ったセッション</h3>
-
-
-
-
-<ul><li>Carton: CPAN dependencies manager by @miyagawa さん</li>
-
-<ul><li>Carton という Ruby における Bundler のようなモジュールのお話</li>
-
+<ul>
+<li>Carton という Ruby における Bundler のようなモジュールのお話</li>
 <li>プレゼンテーションの流れが非常にロジカルで分かりやすい。参考にしたい。</li>
-
 <li>デモもお洒落でカッコよかった。これも真似したい。</li>
+</ul></li>
+<li>Perlで構築された中規模サイトのDC引っ越し記録 by @fujiwara さん
 
-</ul></ul>
-
-
-<ul><li>Perlで構築された中規模サイトのDC引っ越し記録 by @fujiwara さん</li>
-
-<ul><li>KAYACが運営している こえ部 を別の DC に引っ越したというお話</li>
-
+<ul>
+<li>KAYACが運営している こえ部 を別の DC に引っ越したというお話</li>
 <li>とにかく話にリアリティがあって面白かった</li>
-
 <li>コンポーネント毎に検証しながら少しづつ移行、すごく丁寧</li>
-
 <li>ベストスピーカー賞も納得（もちろん自分も投票しました）</li>
+</ul></li>
+<li>運用しやすいWebアプリケーションの構築方法 by @kazeburo さん
 
-</ul></ul>
-
-
-<ul><li>運用しやすいWebアプリケーションの構築方法 by @kazeburo さん</li>
-
-<ul><li>Log、DB、Cache、Metrics に使える各種モジュールの紹介</li>
-
+<ul>
+<li>Log、DB、Cache、Metrics に使える各種モジュールの紹介</li>
 <li>単にモジュールの機能の紹介だけでなく、なぜそのような機能が必要なのかまで深掘りして説明していた</li>
-
 <li>説明が丁寧なため、すごくそのモジュールを使ってみたい気分にさせる</li>
+</ul></li>
+<li>Managing A Band Of Hackers by @higek さん
 
-</ul></ul>
-
-
-<ul><li>Managing A Band Of Hackers by @higek さん</li>
-
-<ul><li>マネジメントについてすごく真面目ないいお話</li>
-
+<ul>
+<li>マネジメントについてすごく真面目ないいお話</li>
 <li>その一方で、@hidek さんをいじる TL が横で流れていて面白かった</li>
-
-<li>「1+1が2なら、マネージャーをやる意味はないんです」という言葉が印象的</li>
-
+<li>「1+1 が 2 なら、マネージャーをやる意味はないんです」という言葉が印象的</li>
 <li>Being Geek をオススメしてたので読んでみようと思います</li>
+</ul></li>
+</ul>
 
-</ul></ul>
+<h2 id="感想など:d8350522b312070da50016ceeb115322">感想など</h2>
 
+<h3 id="学生無料のありがたさ:d8350522b312070da50016ceeb115322">学生無料のありがたさ</h3>
 
-<h3>感想など</h3>
+<p>ほんとに助かりました。学生料金を負担していただいたスポンサーの方々本当にありがとうございます。
+来年は今年の分のお返しができるようにがんばって稼ぎたいと思います（笑）</p>
 
-
-
-
-<p>以下、感想です。</p>
-
-
-
-
-<h4>学生無料のありがたさ</h4>
-
-
-
-
-<p>ほんとに助かりました。学生料金を負担していただいたスポンサーの方々本当にありがとうございます。来年は今年の分のお返しができるようにがんばって稼ぎたいと思います（笑）</p>
-
-
-
-
-<h4>有名人たくさん</h4>
-
-
-
+<h3 id="有名人たくさん:d8350522b312070da50016ceeb115322">有名人たくさん</h3>
 
 <p>今まで TL 上でしか見たことなかった方々を直接見ることができたり、ちょっとだけお話できたりというのは大きな刺激になりました。</p>
 
+<h3 id="リアリティのある話はおもしろい-h4:d8350522b312070da50016ceeb115322">リアリティのある話はおもしろい</h4></h3>
+
+<p>データセンタ移行話など実務上での苦労やそこでの創意工夫などが盛り込まれたお話っていうのはものすごく面白いと思いました。
+この辺は、苦労した実装の話が1行で終わるような研究に慣れていた反動なのかもしれませんが。</p>
+
+<h3 id="知らないこと多すぎ:d8350522b312070da50016ceeb115322">知らないこと多すぎ</h3>
+
+<p>あまり使ったことない機能やアプリの話は置いてかれがちなのでとにかく少しでも触っておくべきだと思います。
+Perl コミュニティについても知らないこと多く、自分の無知さを知ったので、
+日頃からもっとキャッチアップして議論に加わって、前のめりに過ごしていきたいと思います。</p>
+
+<h3 id="来年に向けてネタ仕込み:d8350522b312070da50016ceeb115322">来年に向けてネタ仕込み</h3>
+
+<p>やっぱり聞いてるだけじゃなく、何か発表できたらもっと楽しいんだろうなと思ったので来年（やるのかな？）に向けてネタを仕込んでいく予定。
+色々話を聞けてアイデアはいくつか生まれたので、思いついたモノはとにかく形にしていく方針で。下手な鉄砲も数打ちゃ当たることでしょう（笑）</p>
+
+<h2 id="謝辞:d8350522b312070da50016ceeb115322">謝辞</h2>
+
+<p>というわけで、本当に楽しい 3 日間でした。
+素晴らしいカンファレンスの開催を支えてくれた、運営の方々、ボランティアの方々、スピーカーの方々、そして参加者の皆様に感謝です。
+ありがとうございました。</p>
+
+    </section>
 
 
+  <footer class="post-footer">
 
-<h4>リアリティのある話はおもしろい</h4>
-
-
-
-
-<p>DC 移行話など実務上での苦労やそこでの創意工夫などが盛り込まれたお話っていうのはものすごく面白いと思いました。この辺は、苦労した実装の話が1行で終わるような研究に慣れていた反動なのかもしれませんが。</p>
-
-
-
-
-<h4>知らないこと多すぎ</h4>
-
-
-
-
-<p>あまり使ったことない機能やアプリの話は置いてかれがちなのでとにかく少しでも触っておくべきだと思います。perl コミュニティについても知らないこと多く、自分の無知さを知ったので、日頃からもっとキャッチアップして議論に加わって、前のめりに過ごしていきたいと思います。</p>
-
-
-
-
-<h4>来年に向けてネタ仕込み</h4>
-
-
-
-
-<p>やっぱり聞いてるだけじゃなく、何か発表できたらもっと楽しいんだろうなと思ったので来年（やるのかな？）に向けてネタを仕込んでいく予定。色々話を聞けてアイデアはいくつか生まれたので、思いついたモノはとにかく形にしていく方針で。下手な鉄砲も数打ちゃ当たることでしょう（笑）</p>
-
-
-
-
-<h3>謝辞</h3>
-
-
-
-
-<p>というわけで、本当に楽しい 3 日間でした。素晴らしいカンファレンスの開催を支えてくれた、運営の方々、ボランティアの方々、スピーカーの方々、そして参加者の皆様に感謝です。ありがとうございました。</p>
-
-
-
-
-<h3>参考リンク</h3>
-
-
-
-
-<ul><li><a href="http://gihyo.jp/news/report/01/yapcasia2011">レポート：YAPC::Asia Tokyo 2011 スペシャルレポート｜gihyo.jp … 技術評論社</a></li>
-
-<li><a href="http://togetter.com/li/200639">YAPC::Asia 2011 Tokyo 1日目まとめ - Togetter</a></li>
-
-<li><a href="http://togetter.com/li/200728">YAPC::Asia 2011 Tokyo 2日目まとめ #yapcasia - Togetter</a></li>
-
-</ul>
-
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Takumi Sakamoto</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2011-10-17T00:00:00+09:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2011</span></span> <span class='time'>12:00 am</span></time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2011/10/17/28199456070/" data-via="" data-counturl="http://blog.takus.me/2011/10/17/28199456070/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
 
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/2011/03/28/28409424679/" title="Previous Post: MacPorts から Homebrew への移行メモ">&laquo; MacPorts から Homebrew への移行メモ</a>
-      
-      
-        <a class="basic-alignment right" href="/2011/11/19/28199459336/" title="Next Post: s3fs を使って Amazon S3 を Linux にマウントする">s3fs を使って Amazon S3 を Linux にマウントする &raquo;</a>
-      
-    </p>
+    <figure class="author-image">
+        <a class="img" href="http://blog.takus.me" style="background-image: url(http://blog.takus.mefavicon.ico)"><span class="hidden">Takumi Sakamoto's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://blog.takus.me">Takumi Sakamoto</a></h4>
+  
+  <p>Software Engineer at SmartNews</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Tokyo, Japan</span>
+    <span class="author-link icon-link"><a href="http://about.me/takus">http://about.me/takus</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=YAPC%3a%3aASIA%202011%20%e3%81%ab%e8%a1%8c%e3%81%a3%e3%81%a6%e3%81%8d%e3%81%9f&amp;url=http%3a%2f%2fblog.takus.me%2f2011%2f10%2f17%2f28199456070%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.takus.me%2f2011%2f10%2f17%2f28199456070%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.takus.me%2f2011%2f10%2f17%2f28199456070%2f&amp;description=YAPC%3a%3aASIA%202011%20%e3%81%ab%e8%a1%8c%e3%81%a3%e3%81%a6%e3%81%8d%e3%81%9f"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.takus.me%2f2011%2f10%2f17%2f28199456070%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'takus';
+  var disqus_url = 'http:\/\/blog.takus.me\/2011\/10\/17\/28199456070\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
   </footer>
 </article>
 
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Me</h1>
-  <div style="margin-top:10px">
-    <img src="http://farm8.staticflickr.com/7293/11929418323_e084604fe5_q.jpg" alt="me"><br />
-    Takumi Sakamoto<br />
-    Software Engineer@SmartNews, Inc.<br />
-  </div>
-  <div style="margin-top:10px">
-    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
-  </div>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/takus">@takus</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'takus',
-            count: 5,
-            skip_forks: false,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Takumi Sakamoto -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'takus';
-      
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">takus&#39;s blog</a> Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</section>
         
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/index.js"></script>
+    
 </body>
 </html>
+

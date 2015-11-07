@@ -1,425 +1,313 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="ja-jp">
 <head>
-  <meta charset="utf-8">
-  <title>CentOS に Riak をインストール & Data::Riak::Fast で操作してみる - TAKUMI SAKAMOTO&#8217;S BLOG</title>
-  <meta name="author" content="Takumi Sakamoto">
 
-  
-  <meta name="description" content="最近、社内 TechTalk で何か話せという依頼があり、ちょうど Riak Serious Talk もあるので、Riak についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。 インストール Vagrantbox.es &hellip;">
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta property="og:title" content=" CentOS に Riak をインストール &amp; Data::Riak::Fast で操作してみる &middot;  takus&#39;s blog" />
+  	<meta property="og:site_name" content="takus&#39;s blog" />
+  	<meta property="og:url" content="http://blog.takus.me/2013/03/28/riak-install/" />
 
-  
-  <link rel="canonical" href="http://blog.takus.me/2013/03/28/riak-install/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    
+  	<meta property="og:type" content="article" />
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-2841066-12']);
-    _gaq.push(['_trackPageview']);
+    <meta property="og:article:published_time" content="2013-03-28T00:00:00Z" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    
+    
+
+  <title>
+     CentOS に Riak をインストール &amp; Data::Riak::Fast で操作してみる &middot;  takus&#39;s blog
+  </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.takus.meimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.takus.meimages/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
+    
+      
+          <link href="http://blog.takus.meindex.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://blog.takus.me/2013/03/28/riak-install/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2841066-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+        <link rel="stylesheet" href="http://blog.takus.me/styles/solarized_dark.css">
+<script src="http://blog.takus.me/js/highlight.pack.js"></script>
+<script>
+    hljs.configure({ tabReplace: "  " });
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
 </head>
+<body class="nav-closed">
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">TAKUMI SAKAMOTO&#8217;S BLOG</a></h1>
-  
-    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
-  
-</hgroup>
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://blog.takus.meindex.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
 
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.takus.me"><img src="http://blog.takus.mefavicon.ico" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.takus.meindex.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.takus.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="http://about.me/takus">AboutMe</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">CentOS に Riak をインストール & Data::Riak::Fast で操作してみる<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/03/28/riak-install/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/03/28/riak-install/"></a></h1>
-    
-    
-      <p class="meta">
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">CentOS に Riak をインストール &amp; Data::Riak::Fast で操作してみる</h1>
+        <small></small>
+
+        <section class="post-meta">
         
-
-
-
-
-<time class='entry-date' datetime='2013-03-28T11:00:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:00 am</span></time>
+          <time class="post-date" datetime="2013-03-28T00:00:00Z">
+            Mar 28, 2013
+          </time>
         
-      </p>
-    
-  </header>
+         
+        </section>
+    </header>
 
+    <section class="post-content">
+      
 
-<div class="entry-content"><p>最近、社内 TechTalk で何か話せという依頼があり、ちょうど <a href="http://www.zusaar.com/event/563010">Riak Serious Talk</a> もあるので、<a href="http://docs.basho.com/riak/latest/">Riak</a> についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。</p>
+<p>最近、社内 TechTalk で何か話せという依頼があり、ちょうど <a href="http://www.zusaar.com/event/563010">Riak Serious Talk</a> もあるので、<a href="http://docs.basho.com/riak/latest/">Riak</a> についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。</p>
 
-<h2>インストール</h2>
+<h2 id="インストール:3da2e91d05a6f28e6fc0216287013b9b">インストール</h2>
 
 <p><a href="http://www.vagrantbox.es/">Vagrantbox.es</a> から <a href="http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130309.box">CentOS 6.4 x86_64 Minimal</a> を持ってきてテストサーバを用意。起動後にひとまず iptables だけ停止。Vagrant の操作などは割愛します。</p>
 
-<h3>依存パッケージ導入</h3>
+<h3 id="依存パッケージ導入:3da2e91d05a6f28e6fc0216287013b9b">依存パッケージ導入</h3>
 
 <p>Erlang をインストールするのに必要なパッケージをインストールします。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo yum groupinstall “Development tools”
-</span><span class='line'>sudo yum install git
-</span><span class='line'>sudo yum install libwx unixODBC.x86_64 unixODBC-devel.x86_6 wxBase.x86_64 wxGTK.x86_64 wxGTK-gl
-</span><span class='line'>
-</span><span class='line'>wget https://elearning.erlang-solutions.com/couchdb//rbingen_adapter//package_R15B01_centos664_1333462308/esl-erlang-R15B01-1.x86_64.rpm
-</span><span class='line'>sudo rpm -ivh esl-erlang-R15B01-1.x86_64.rpm
-</span></code></pre></td></tr></table></div></figure>
+<pre><code class="language-bash">sudo yum groupinstall “Development tools”
+sudo yum install git
+sudo yum install libwx unixODBC.x86_64 unixODBC-devel.x86_6 wxBase.x86_64 wxGTK.x86_64 wxGTK-gl
 
+wget https://elearning.erlang-solutions.com/couchdb//rbingen_adapter//package_R15B01_centos664_1333462308/esl-erlang-R15B01-1.x86_64.rpm
+sudo rpm -ivh esl-erlang-R15B01-1.x86_64.rpm
+</code></pre>
 
-<h3>Riak をインストール</h3>
+<h3 id="riak-をインストール:3da2e91d05a6f28e6fc0216287013b9b">Riak をインストール</h3>
 
 <p>とりあえず make まで。ソースは <a href="http://docs.basho.com/riak/latest/downloads/">Basho のサイト</a>から入手できます。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>wget http://downloads.basho.com.s3-website-us-east-1.amazonaws.com/riak/1.3/1.3.0/riak-1.3.0.tar.gz
-</span><span class='line'>tar zxvf riak-1.3.0.tar.gz
-</span><span class='line'><span class="nb">cd </span>riak-1.3.0
-</span><span class='line'>make devrel
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>wget http://downloads.basho.com.s3-website-us-east-1.amazonaws.com/riak/1.3/1.3.0/riak-1.3.0.tar.gz
+tar zxvf riak-1.3.0.tar.gz
+cd riak-1.3.0
+make devrel
+</code></pre>
 
-
-<h3>Riak を起動してみる</h3>
+<h3 id="riak-を起動してみる:3da2e91d05a6f28e6fc0216287013b9b">Riak を起動してみる</h3>
 
 <p>4 ノードを起動。ulimit しているのはなしだと警告が出るので一応。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">ulimit</span> -n 4096
-</span><span class='line'>dev/dev1/bin/riak start
-</span><span class='line'>dev/dev2/bin/riak start
-</span><span class='line'>dev/dev3/bin/riak start
-</span><span class='line'>dev/dev4/bin/riak start
-</span></code></pre></td></tr></table></div></figure>
-
+<pre><code>ulimit -n 4096
+dev/dev1/bin/riak start
+dev/dev2/bin/riak start
+dev/dev3/bin/riak start
+dev/dev4/bin/riak start
+</code></pre>
 
 <p>起動しただけではノード同士は接続されてない状態なので、ノード同士を接続します。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>dev/dev2/bin/riak-admin cluster join dev1@127.0.0.1
-</span><span class='line'>dev/dev3/bin/riak-admin cluster join dev1@127.0.0.1
-</span><span class='line'>dev/dev4/bin/riak-admin cluster join dev1@127.0.0.1
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>dev/dev2/bin/riak-admin cluster join dev1@127.0.0.1
+dev/dev3/bin/riak-admin cluster join dev1@127.0.0.1
+dev/dev4/bin/riak-admin cluster join dev1@127.0.0.1
+</code></pre>
 
-
-<h2>Data::Riak::Fast で操作してみる</h2>
+<h2 id="data-riak-fast-で操作してみる:3da2e91d05a6f28e6fc0216287013b9b">Data::Riak::Fast で操作してみる</h2>
 
 <p>Perl のクライアントとして、<a href="http://search.cpan.org/~franckc/Net-Riak/">Net::Riak</a> が以前からありますが、<a href="https://gist.github.com/myfinder/5232845">ベンチマーク</a>すると遅いらしいです。@myfinder さんが <a href="https://github.com/myfinder/p5-riak-lite">Riak::Lite</a>、<a href="https://github.com/myfinder/p5-data-riak-fast">Data::Riak::Fast</a> を作ってくれているので、Data::Riak::Fast を使って操作してみます。</p>
 
-<figure class='code'><figcaption><span>riak-test.pl perl </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="c1">#!/usr/bin/env perl</span>
-</span><span class='line'><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">use</span> <span class="nn">Data::</span><span class="n">Dumper</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nn">Data::Riak::</span><span class="n">Fast</span><span class="p">;</span>
-</span><span class='line'><span class="k">use</span> <span class="nn">JSON::</span><span class="n">XS</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">my</span> <span class="nv">$riak</span> <span class="o">=</span> <span class="nn">Data::Riak::</span><span class="n">Fast</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span>
-</span><span class='line'>    <span class="n">transport</span> <span class="o">=&gt;</span> <span class="nn">Data::Riak::Fast::</span><span class="n">HTTP</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span>
-</span><span class='line'>        <span class="n">host</span> <span class="o">=&gt;</span> <span class="s">&#39;192.168.33.10&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="n">port</span> <span class="o">=&gt;</span> <span class="s">&#39;10018&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">),</span>
-</span><span class='line'><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># stats</span>
-</span><span class='line'><span class="k">my</span> <span class="nv">$stat</span> <span class="o">=</span> <span class="nv">$riak</span><span class="o">-&gt;</span><span class="n">stats</span><span class="p">();</span>
-</span><span class='line'><span class="k">print</span> <span class="n">Dumper</span><span class="p">(</span><span class="nv">$stat</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># bucket</span>
-</span><span class='line'><span class="k">my</span> <span class="nv">$bucket</span> <span class="o">=</span> <span class="nv">$riak</span><span class="o">-&gt;</span><span class="n">bucket</span><span class="p">(</span><span class="s">&#39;my_bucket&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># put</span>
-</span><span class='line'><span class="nv">$bucket</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># get</span>
-</span><span class='line'><span class="k">my</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$bucket</span><span class="o">-&gt;</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code class="language-perl">#!/usr/bin/env perl
+use strict;
+use warnings;
 
+use Data::Dumper;
+use Data::Riak::Fast;
+use JSON::XS;
 
-<h2>まとめ</h2>
+my $riak = Data::Riak::Fast-&gt;new(
+    transport =&gt; Data::Riak::Fast::HTTP-&gt;new(
+        host =&gt; '192.168.33.10',
+        port =&gt; '10018',
+    ),
+);
+
+# stats
+my $stat = $riak-&gt;stats();
+print Dumper($stat);
+
+# bucket
+my $bucket = $riak-&gt;bucket('my_bucket');
+
+# put
+$bucket-&gt;add('foo', 'bar');
+
+# get
+my $foo = $bucket-&gt;get('foo');
+</code></pre>
+
+<h2 id="まとめ:3da2e91d05a6f28e6fc0216287013b9b">まとめ</h2>
 
 <p>Riak の利用例みてたら node.js + Riak + Redis で <a href="http://clipboard.com/">clipboard.com</a> を作ってるとか、色々と面白そうな使い方してる例が多そうで、特に <a href="https://speakerdeck.com/jnewland/github-pages-on-riak-and-webmachine">GitHub Pages のホスティングの話</a> がよさげだったので、同じような仕組み作ってみたいとか思ってる次第です。</p>
 
-<h2>参考等</h2>
+<h2 id="参考等:3da2e91d05a6f28e6fc0216287013b9b">参考等</h2>
 
 <ul>
 <li><a href="https://speakerdeck.com/kuenishi/riak-and-and-riak-cs">Riak &amp;&amp; Riak CS</a></li>
 <li><a href="https://speakerdeck.com/wfarr/learn-you-some-riak">Learn You Some Riak</a></li>
-<li><a href="https://vimeo.com/52417831">Building a Social Application on Riak &ndash; Gary Flake, RICON2012</a></li>
+<li><a href="https://vimeo.com/52417831">Building a Social Application on Riak - Gary Flake, RICON2012</a></li>
 </ul>
 
-</div>
+    </section>
 
 
-  <footer>
-    <p class="meta">
-      
-  
+  <footer class="post-footer">
 
-<span class="byline author vcard">Posted by <span class="fn">Takumi Sakamoto</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2013-03-28T11:00:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:00 am</span></time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2013/03/28/riak-install/" data-via="" data-counturl="http://blog.takus.me/2013/03/28/riak-install/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
 
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/2013/03/22/test-web-api-client/" title="Previous Post: Test::Fake::HTTPD で Web API クライアントをテスト">&laquo; Test::Fake::HTTPD で Web API クライアントをテスト</a>
-      
-      
-        <a class="basic-alignment right" href="/2013/04/25/supergrep/" title="Next Post: ブラウザから tail -f log | grep keyword できるツール supergrep">ブラウザから tail -f log | grep keyword できるツール supergrep &raquo;</a>
-      
-    </p>
+    <figure class="author-image">
+        <a class="img" href="http://blog.takus.me" style="background-image: url(http://blog.takus.mefavicon.ico)"><span class="hidden">Takumi Sakamoto's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://blog.takus.me">Takumi Sakamoto</a></h4>
+  
+  <p>Software Engineer at SmartNews</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Tokyo, Japan</span>
+    <span class="author-link icon-link"><a href="http://about.me/takus">http://about.me/takus</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=CentOS%20%e3%81%ab%20Riak%20%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%20%26%20Data%3a%3aRiak%3a%3aFast%20%e3%81%a7%e6%93%8d%e4%bd%9c%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b&amp;url=http%3a%2f%2fblog.takus.me%2f2013%2f03%2f28%2friak-install%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.takus.me%2f2013%2f03%2f28%2friak-install%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.takus.me%2f2013%2f03%2f28%2friak-install%2f&amp;description=CentOS%20%e3%81%ab%20Riak%20%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%20%26%20Data%3a%3aRiak%3a%3aFast%20%e3%81%a7%e6%93%8d%e4%bd%9c%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.takus.me%2f2013%2f03%2f28%2friak-install%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'takus';
+  var disqus_url = 'http:\/\/blog.takus.me\/2013\/03\/28\/riak-install\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
   </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Me</h1>
-  <div style="margin-top:10px">
-    <img src="http://farm8.staticflickr.com/7293/11929418323_e084604fe5_q.jpg" alt="me"><br />
-    Takumi Sakamoto<br />
-    Software Engineer@SmartNews, Inc.<br />
-  </div>
-  <div style="margin-top:10px">
-    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
-  </div>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/takus">@takus</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'takus',
-            count: 5,
-            skip_forks: false,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Takumi Sakamoto -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'takus';
-      
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">takus&#39;s blog</a> Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</section>
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.takus.me/2013/03/28/riak-install/';
-        var disqus_url = 'http://blog.takus.me/2013/03/28/riak-install/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/index.js"></script>
+    
 </body>
 </html>
+

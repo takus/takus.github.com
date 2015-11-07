@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜 &middot;  takus&#39;s blog" />
+  	<meta property="og:site_name" content="takus&#39;s blog" />
+  	<meta property="og:url" content="http://blog.takus.me/2015/10/10/datadog-with-fluentd/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2015-10-10T00:00:00Z" />
+
+    
+    
+
+  <title>
+     Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜 &middot;  takus&#39;s blog
+  </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.takus.meimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.takus.meimages/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="http://blog.takus.meindex.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://blog.takus.me/2015/10/10/datadog-with-fluentd/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2841066-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+        <link rel="stylesheet" href="http://blog.takus.me/styles/solarized_dark.css">
+<script src="http://blog.takus.me/js/highlight.pack.js"></script>
+<script>
+    hljs.configure({ tabReplace: "  " });
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://blog.takus.meindex.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.takus.me"><img src="http://blog.takus.mefavicon.ico" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.takus.meindex.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2015-10-10T00:00:00Z">
+            Oct 10, 2015
+          </time>
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      
+
+<p><a href="https://datadoghq.com">Datadog</a> というシステム監視 SaaS のネタです。先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
+自分が知ってる <strong>Dogstatsd</strong> を使う方法をシェアします。</p>
+
+<p><img src="http://blog.takus.me/images/datadog_http_graph.jpg"></p>
+
+<p>これはあるサービスの Nginx のアクセスログとエラーログを、
+Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
+それぞれ、</p>
+
+<ul>
+<li>左上: ステータスコード別の集計グラフ</li>
+<li>右上: 今日・昨日・一週間前のレスポンスタイムグラフ</li>
+<li>左下: Fluentd の タグ毎の流量</li>
+<li>右下: Fluentd の ホスト毎の流量</li>
+</ul>
+
+<p>といったグラフになっています。このポストではこんなグラフを作る方法を説明してみます。</p>
+
+<h2 id="dogstatsd-とは:5a525c628f468fdda11fe314266c3265">Dogstatsd とは？</h2>
+
+<p><img src="http://blog.takus.me/images/dogstatsd.jpg"></p>
+
+<p>唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
+一言で何物か説明すると Datadog 用に拡張された <a href="https://github.com/etsy/statsd">StatsD</a> です。(StatsD をご存知ない方はググってみてください)
+これは Datadog の監視エージェント (dd-agent) に含まれているので、Datadog を使うなら特に設定なしで使えます。
+詳しい説明は <a href="http://docs.datadoghq.com/guides/dogstatsd/">公式ドキュメント</a> を読むといいでしょう。</p>
+
+<h2 id="アプリケーションから直接送る方法:5a525c628f468fdda11fe314266c3265">アプリケーションから直接送る方法</h2>
+
+<p>これは上で紹介したドキュメントにも &ldquo;The easiest way&rdquo; と紹介されているやり方になります。
+<a href="http://docs.datadoghq.com/libraries/">Datadog Docs - Libraries</a> に各言語用のライブラリが紹介されているので、
+これらのライブラリを各アプリケーションに組み込むことで好きなように送ることができます。
+例えば Ruby のアプリケーションで Page View  を集計する場合は、<a href="https://github.com/DataDog/dogstatsd-ruby">DataDog/dogstatsd-ruby</a> を下記のように使うだけです。</p>
+
+<pre><code class="language-ruby">require 'statsd'
+# Create a stats instance.
+statsd = Statsd.new('localhost', 8125)
+# Increment a counter.
+statsd.increment('page.views')
+</code></pre>
+
+<h2 id="fluentd-を経由して送る方法:5a525c628f468fdda11fe314266c3265">Fluentd を経由して送る方法</h2>
+
+<p>アプリケーションから直接送る方法は簡単に使える一方で、
+Datadog 以外のシステムにメトリクスやアラートを送るのに別の手段が必要になったり、
+ミドルウェアからカスタムメトリクスを送りたいような場合に手間がかかったりするため、
+自分は、Fluentd を経由する方法を利用することが多いです。</p>
+
+<p>Fluentd を経由することで監視に介在するコンポーネントが増える懸念はありますが、
+ほとんどの場合は安定して動いてくれるので実用上の問題はなく、
+豊富なプラグインを利用することで、様々なミドルウェアや SaaS との連携が簡単で、
+もし仮に監視システムを入れ替えるようなことがあっても、最小限の労力で入れ替えが可能になったり、
+複数のシステムにメトリクスを送ることも簡単にできます。</p>
+
+<h3 id="設定ファイルの例:5a525c628f468fdda11fe314266c3265">設定ファイルの例</h3>
+
+<p>よくありそうな例として Nginx のアクセスログから、ステータスコード集計とレスポンスタイム統計を取得する方法について説明します。
+全体的な流れとしては、</p>
+
+<ul>
+<li><a href="http://docs.fluentd.org/articles/in_tail">in_tail</a> でログを読み込む</li>
+<li><a href="https://github.com/sonots/fluent-plugin-record-reformer">out_record_reformer</a> で好みの形式にレコードを整形する</li>
+<li><a href="https://github.com/ryotarai/fluent-plugin-dogstatsd">out_dogstatsd</a> で dogstatsd にメトリクスを送信する</li>
+</ul>
+
+<p>となります。設定ファイルは下記のように配置するとして、それぞれの設定ファイルについて説明していきます。</p>
+
+<pre><code>$ tree /etc/td-agent
+/etc/td-agent
+├── conf.d
+│   ├── dogstatsd.conf.erb
+│   └── nginx.conf.erb
+└── td-agent.conf.erb
+</code></pre>
+
+<h3 id="td-agent-conf-erb:5a525c628f468fdda11fe314266c3265">td-agent.conf.erb</h3>
+
+<p>他の設定ファイルを include するだけです。
+<a href="https://www.datadoghq.com/blog/monitor-fluentd-datadog/">拙作の Datadog エージェントによるバッファ監視</a>を入れると捗るので monitor_agent の設定も入れておきます。</p>
+
+<pre><code class="language-apache">&lt;source&gt;
+  type monitor_agent
+  port 24220
+&lt;/source&gt;
+@include conf.d/nginx.conf
+@include conf.d/dogstatsd.conf
+</code></pre>
+
+<h3 id="conf-d-nginx-conf-erb:5a525c628f468fdda11fe314266c3265">conf.d/nginx.conf.erb</h3>
+
+<p>本筋とそれますが Fluentd v0.12 から使えるようになった<a href="http://qiita.com/sonots/items/a01d2233210b7b059967">ラベル機能</a>はすごい便利なので、
+未だにタグ書き換えで消耗してる人は、ラベルに置き換えると幸福度が増すと思います。</p>
+
+<pre><code class="language-apache">## アクセスログを LTSV 形式で取り込む
+&lt;source&gt;
+  type     tail
+  format   ltsv
+  path     /path/to/access.log
+  pos_file /path/to/nginx.access.pos
+  tag      nginx.access
+&lt;/source&gt;
+
+&lt;match nginx.access&gt;
+  type copy
+
+  ## ログ流量監視をするために out_flowcounter にも送る
+  &lt;store&gt;
+    type       flowcounter
+    count_keys *
+    unit       second
+    aggregate  all
+    tag        fluentd.flowcounter.nginx.access
+    @label     @dogstatsd
+  &lt;/store&gt;
+
+  ## @nginx にルーティングする
+  &lt;store&gt;
+    type   relabel
+    @label @nginx
+  &lt;/store&gt;
+&lt;/match&gt;
+
+&lt;label @nginx&gt;
+  ## out_record_reformer で目的に応じてレコードを整形する
+  &lt;match nginx.access&gt;
+    type copy
+    ## ステータスコード集計用
+    &lt;store&gt;
+      type record_reformer
+      renew_record true
+      enable_ruby  true
+      tag dogstatsd.increment
+      &lt;record&gt;
+        type &quot;increment&quot;
+        key  ${%!nginx.status_#{status[0]}xx!}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &lt;/record&gt;
+    &lt;/store&gt;
+    ## レスポンスタイム集計用
+    &lt;store&gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.histogram
+      &lt;record&gt;
+        type  &quot;histogram&quot;
+        key   &quot;nginx.response_time&quot;
+        value ${reqtime}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &lt;/record&gt;
+    &lt;/store&gt;
+    ## レスポンスサイズ集計用
+    &lt;store&gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.histogram
+      &lt;record&gt;
+        type  &quot;histogram&quot;
+        key   &quot;nginx.response_size&quot;
+        value ${size}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &lt;/record&gt;
+    &lt;/store&gt;
+  &lt;/match&gt;
+
+  ## @dogstatsd にルーティングする
+  &lt;match dogstatsd.**&gt;
+    type   relabel
+    @label @dogstatsd
+  &lt;/match&gt;
+&lt;/label&gt;
+</code></pre>
+
+<h2 id="conf-d-dogstatsd-conf:5a525c628f468fdda11fe314266c3265">conf.d/dogstatsd.conf</h2>
+
+<p>@dogstatsd に投げられたレコードを dogstatsd に投げます。</p>
+
+<p>out_dogstatsd で <code>flat_tag true</code> にすると type/key/value 以外のフィールドをメトリクスのタグにしてくれます。
+conf.d/nginx.conf で、<code>nginx_proto</code> や <code>nginx_vhost</code> を入れているのはこの機能のためで、
+後で可視化やアラート設定するときにこれらのタグを利用して特定の Virtual Host のみのグラフを表示するといったことが可能になるので、
+用途に応じて設定することをオススメします。</p>
+
+<p>またこれも本筋とはそれますが、out_dogstatsd で Datadog の Event も送れるので、
+エラーログに特定の文字列が現れたら Datadog に通知するとかも簡単にできて捗る感じです。</p>
+
+<pre><code class="language-apache">&lt;label @dogstatsd&gt;
+
+  ## flowcounter のログも record_reformer で整形する
+  &lt;match fluentd.flowcounter.**&gt;
+    type copy
+    &lt;store&gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.count
+      &lt;record&gt;
+        key   &quot;fluentd.flowcounter.bytes&quot;
+        value ${bytes}
+        type  &quot;count&quot;
+        fluentd_source ${tag_suffix[2]}
+      &lt;/record&gt;
+    &lt;/store&gt;
+    &lt;store&gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.count
+      &lt;record&gt;
+        key   &quot;fluentd.flowcounter.count&quot;
+        value ${count}
+        type  &quot;count&quot;
+        fluentd_source ${tag_suffix[2]}
+      &lt;/record&gt;
+    &lt;/store&gt;
+  &lt;/match&gt;
+
+  ## String として送られてくることがあるのでキャストしておく
+  &lt;filter dogstatsd.count&gt;
+    type  typecast
+    types value:integer
+  &lt;/filter&gt;
+  &lt;filter dogstatsd.histogram&gt;
+    type  typecast
+    types value:float
+  &lt;/filter&gt;
+
+  ## dogstatsd に送る
+  ## flat_tag true にすると type/key/value 以外のフィールドをメトリクスのタグにしてくれる
+  &lt;match dogstatsd.**&gt;
+    type copy
+    &lt;store&gt;
+      @id  dogstatsd
+      type dogstatsd
+      flat_tag true
+    &lt;/store&gt;
+  &lt;/match&gt;
+
+&lt;/label&gt;
+</code></pre>
+
+<p>あとは Datadog でダッシュボードを作るなり、アラートを作るなり好きにしてください。
+ちょっと雑な説明なので分からないことがあれば twitter などで聞いて下さい。</p>
+
+<h2 id="おわりに:5a525c628f468fdda11fe314266c3265">おわりに</h2>
+
+<p>これも木曜に出てきたのですが「Datadog の情報ってインターネットにあまり出てなくないですか」というのがありました。
+確かに言われてみればそんな気もするので自分の持ってる知見は積極的に出していけたらなと思います。</p>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="http://blog.takus.me" style="background-image: url(http://blog.takus.mefavicon.ico)"><span class="hidden">Takumi Sakamoto's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://blog.takus.me">Takumi Sakamoto</a></h4>
+  
+  <p>Software Engineer at SmartNews</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Tokyo, Japan</span>
+    <span class="author-link icon-link"><a href="http://about.me/takus">http://about.me/takus</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Dogstatsd%20%e3%81%a7%20Datadog%20%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%e3%83%a1%e3%83%88%e3%83%aa%e3%82%af%e3%82%b9%e3%82%92%e9%80%81%e3%82%8b%e6%96%b9%e6%b3%95%20%e3%80%9cFluentd%20%e3%81%a8%e3%81%ae%e9%80%a3%e6%90%ba%e3%82%92%e6%b7%bb%e3%81%88%e3%81%a6%e3%80%9c&amp;url=http%3a%2f%2fblog.takus.me%2f2015%2f10%2f10%2fdatadog-with-fluentd%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.takus.me%2f2015%2f10%2f10%2fdatadog-with-fluentd%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.takus.me%2f2015%2f10%2f10%2fdatadog-with-fluentd%2f&amp;description=Dogstatsd%20%e3%81%a7%20Datadog%20%e3%81%ab%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%e3%83%a1%e3%83%88%e3%83%aa%e3%82%af%e3%82%b9%e3%82%92%e9%80%81%e3%82%8b%e6%96%b9%e6%b3%95%20%e3%80%9cFluentd%20%e3%81%a8%e3%81%ae%e9%80%a3%e6%90%ba%e3%82%92%e6%b7%bb%e3%81%88%e3%81%a6%e3%80%9c"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.takus.me%2f2015%2f10%2f10%2fdatadog-with-fluentd%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'takus';
+  var disqus_url = 'http:\/\/blog.takus.me\/2015\/10\/10\/datadog-with-fluentd\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">takus&#39;s blog</a> Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/index.js"></script>
+    
+</body>
+</html>
+

@@ -1,356 +1,296 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="ja-jp">
 <head>
-  <meta charset="utf-8">
-  <title>Velocity 2013 に参加 & LT してきました！！ - TAKUMI SAKAMOTO&#8217;S BLOG</title>
-  <meta name="author" content="Takumi Sakamoto">
 
-  
-  <meta name="description" content="6/18 ~ 6/20 に Santa Clara で開催された Velocity 2013 に参加して来ました。Velocity は Web Performance や Web Operation などが主なテーマで、Google、Facebook、Twitter、Amazon、Yahoo! &hellip;">
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta property="og:title" content=" Velocity 2013 に参加 &amp; LT してきました！！ &middot;  takus&#39;s blog" />
+  	<meta property="og:site_name" content="takus&#39;s blog" />
+  	<meta property="og:url" content="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/" />
 
-  
-  <link rel="canonical" href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    
+  	<meta property="og:type" content="article" />
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-2841066-12']);
-    _gaq.push(['_trackPageview']);
+    <meta property="og:article:published_time" content="2013-06-21T00:00:00Z" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    
+    
+
+  <title>
+     Velocity 2013 に参加 &amp; LT してきました！！ &middot;  takus&#39;s blog
+  </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.takus.meimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.takus.meimages/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
+    
+      
+          <link href="http://blog.takus.meindex.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2841066-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+        <link rel="stylesheet" href="http://blog.takus.me/styles/solarized_dark.css">
+<script src="http://blog.takus.me/js/highlight.pack.js"></script>
+<script>
+    hljs.configure({ tabReplace: "  " });
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
 </head>
+<body class="nav-closed">
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">TAKUMI SAKAMOTO&#8217;S BLOG</a></h1>
-  
-    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
-  
-</hgroup>
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://blog.takus.meindex.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
 
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.takus.me"><img src="http://blog.takus.mefavicon.ico" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.takus.meindex.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.takus.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="http://about.me/takus">AboutMe</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">Velocity 2013 に参加 & LT してきました！！<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/"></a></h1>
-    
-    
-      <p class="meta">
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Velocity 2013 に参加 &amp; LT してきました！！</h1>
+        <small></small>
+
+        <section class="post-meta">
         
-
-
-
-
-<time class='entry-date' datetime='2013-06-21T00:00:00+09:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
+          <time class="post-date" datetime="2013-06-21T00:00:00Z">
+            Jun 21, 2013
+          </time>
         
-      </p>
-    
-  </header>
+         
+        </section>
+    </header>
 
+    <section class="post-content">
+      
 
-<div class="entry-content"><p>6/18 ~ 6/20 に Santa Clara で開催された <a href="http://velocityconf.com/velocity2013/">Velocity 2013</a> に参加して来ました。Velocity は Web Performance や Web Operation などが主なテーマで、Google、Facebook、Twitter、Amazon、Yahoo! などをはじめとした様々な企業から 1,000 人以上が参加する大規模なカンファレンスです。いまやよく耳にする <em>DevOps</em> というキーワードも <a href="http://www.youtube.com/watch?v=LdOe18KhtT4">10+ Deploys Per Day: Dev and Ops Cooperation at Flickr</a> という Velocity 2009 のトークで有名になった言葉ですね。</p>
+<p><sup>6</sup>&frasl;<sub>18</sub> ~ <sup>6</sup>&frasl;<sub>20</sub> に Santa Clara で開催された <a href="http://velocityconf.com/velocity2013/">Velocity 2013</a> に参加して来ました。Velocity は Web Performance や Web Operation などが主なテーマで、Google、Facebook、Twitter、Amazon、Yahoo! などをはじめとした様々な企業から 1,000 人以上が参加する大規模なカンファレンスです。いまやよく耳にする <em>DevOps</em> というキーワードも <a href="http://www.youtube.com/watch?v=LdOe18KhtT4">10+ Deploys Per Day: Dev and Ops Cooperation at Flickr</a> という Velocity 2009 のトークで有名になった言葉ですね。</p>
 
 <p>参加するにあたって、@xaicron さんの <a href="http://blog.livedoor.jp/xaicron/archives/54515196.html">勝手に YAPC::NA 2013 に行ってきた！！</a> と同じく、会社が渡航費、宿泊費、参加費等の全ての費用を負担してくれました！！新卒入社 2 年目の自分をこのような素晴らしいカンファレンスに快く派遣してくれた DeNA++ です。</p>
 
-<p><a href="http://www.flickr.com/photos/oreillyconf/9083213242/in/set-72157634209656690/"><img src="http://farm6.staticflickr.com/5448/9083213242_27feaaaca5_z.jpg" width="640" height="427"></a></p>
+<p><img src="http://farm6.staticflickr.com/5448/9083213242_27feaaaca5_z.jpg"></p>
 
-<h2>My Ignite Talk</h2>
+<h2 id="my-ignite-talk:07cfc048da731ec3d89542953618ac9f">My Ignite Talk</h2>
 
 <p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4532318955/takus-22/ref=nosim">&ldquo;不格好経営&rdquo;</a>にも載ってる DeNA の創業者である南場さんの言葉に、<em>&ldquo;これから会社がどんなに長生きしようとも、地球や宇宙の時間のなかでほんの瞬間の存在になる。けれどもなにか宇宙に引っ掻きキズみたいな証を残したい。&rdquo;</em> というものがあります。そこで、Velocity への参加が決まってから、DeNA 社員として何か引っ掻きキズを残せないか考えていたところ、<a href="http://velocityconf.com/velocity2013/public/schedule/detail/29483">Ignite Velocity</a> という LT のセッションを見つけたので、abstract 書いて応募したところ accept されたので LT してきました。</p>
 
 <p>ご存知ない方のために紹介しておくと <a href="http://igniteshow.com/">Ignite</a> は 20 枚のスライドを 15 秒づつ流して、5 分間のプレゼンをするというプレゼン形式で、Velocity 2012 では <a href="http://www.youtube.com/watch?v=Xfu47E5MkJo">DevOps に関する話</a> 等が Youtube にあがってます。</p>
 
-<p><a href="http://www.flickr.com/photos/oreillyconf/9089461762/"><img src="http://l6.yimg.com/so/7374/9089461762_ef95b9fcf7_z.jpg"" width="640" height="427"></a></p>
+<p><img src="http://l6.yimg.com/so/7374/9089461762_ef95b9fcf7_z.jpg"></p>
 
 <p>Ignite が近づくにつれてかなり緊張が高まって、スラダンのミッチー並みにトイレに行ってたのですが、さらに始まる直前になって上の写真のような会場だと分かり、「あ、これ無理だ」と思って、ドラゴンボール Z のミスター・サタンみたいに腹痛起こそうか悩んでたわけですが、Citrix のナイスガイが「みんな酒飲んでるし、ミスったって誰も覚えてないよー」的な話してくれたおかげでだいぶ緊張がほぐれて、自分のトークはリラックスして臨めました。</p>
 
-<p><a href="http://www.flickr.com/photos/oreillyconf/9081016555/"><img src="http://farm4.staticflickr.com/3753/9081016555_9dfbd912a2_z.jpg" width="640" height="428"></a></p>
+<p><img src="http://farm4.staticflickr.com/3753/9081016555_9dfbd912a2_z.jpg"></p>
 
-<p>LT は <a href="https://speakerdeck.com/takus/3-popular-ops-tools-in-japan">3 Pupular Ops Tool in Japan</a> という、(popular がかなり主観ですが) serverspec と GrowthForecast と Fluentd について簡単に紹介するような話で、日本の皆様にはお馴染みの内容ですが、海外の人にとってはちょっとは役立つんじゃないかと思ってこの内容にしたところ、トーク後に fluentd について聞きに来てくれた人がいたり、色んな人から good job とか interesting みたいなお褒めの言葉をいただいたり、以下のようなツイートを頂けたので、小さいながらも引っ掻きキズを残してこれたんじゃないかと思います。</p>
+<p>LT は <a href="https://speakerdeck.com/takus/3-popular-ops-tools-in-japan">3 Pupular Ops Tool in Japan</a> という、(popular がかなり主観ですが) serverspec と GrowthForecast と Fluentd について簡単に紹介するような話で、日本の皆様にはお馴染みの内容ですが、海外の人にとってはちょっとは役立つんじゃないかと思ってこの内容にしました。</p>
 
-<blockquote><p>@takus doing a great #ignite talk on some popular ops tools in Japan! Very pretty slides and awesome content</p><footer><strong>@sethvargo</strong> <cite><a href='https://twitter.com/sethvargo/status/347198222206386178'>twitter.com/sethvargo/status/&hellip;</a></cite></footer></blockquote>
+<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/sethvargo/status/347198222206386178"></a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
 
+<p>トーク後に fluentd について聞きに来てくれた人がいたり、色んな人から good job とか interesting みたいなお褒めの言葉をいただいたり、以下のようなツイートを頂けたので、小さいながらも引っ掻きキズを残してこれたんじゃないかと思います。</p>
 
-
-
-<blockquote><p>@takus did great and lots of great information, we&#8217;ll be using severspec as soon as I &#8230; feel better from the Anchor Steam  #velocityconf</p><footer><strong>@ckolos</strong> <cite><a href='https://twitter.com/ckolos/status/347200219986948097'>twitter.com/ckolos/status/&hellip;</a></cite></footer></blockquote>
-
-
-<p><a href="http://www.flickr.com/photos/oreillyconf/9089460246/"><img src="http://farm3.staticflickr.com/2856/9089460246_e0477f5467_z.jpg" width="640" height="428"></a></p>
+<p><img src="http://farm3.staticflickr.com/2856/9089460246_e0477f5467_z.jpg"></p>
 
 <p>そして、色々と声かけてもらった中でも、<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873114934/takus-22/ref=nosim">&ldquo;Web Operations&rdquo;</a> の著者で、Velocity の Program Chair でもある @allspaw が自分のこと覚えててくれて、excellent って言ってくれたのには痺れました(お世辞だと分かっててもw)</p>
 
-<blockquote><p>It was a wonderful moment for me. @allspaw said to me &#8220;your #ignite talk was excellent&#8221;.</p><footer><strong>@takus</strong> <cite><a href='https://twitter.com/takus/status/347527386927083520'>twitter.com/takus/status/&hellip;</a></cite></footer></blockquote>
+<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/takus/status/347527386927083520"></a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
 
+<h2 id="awesome-people:07cfc048da731ec3d89542953618ac9f">Awesome People</h2>
 
-<h2>Awesome People</h2>
+<p><img src="http://farm8.staticflickr.com/7406/9081005095_6f9e32e1e8_z.jpg"></p>
 
-<p><a href="http://www.flickr.com/photos/oreillyconf/9081005095/"><img src="http://farm8.staticflickr.com/7406/9081005095_6f9e32e1e8_z.jpg" width="640" height="427"></a></p>
+<p>Velocity ではほんとに色んな人に優しくしてもらいました。ホテルでチップ用の紙幣なくて両替しようとしたら $5 にしか変えれないと言われて困ってたら、通りかかった人が、&rdquo;一昨日のトークよかったよ。あとモバゲーのゲームもやったことあるんだ&rdquo; って言って 3 ドルくれたり（失礼ながら名前聞くの忘れてしまった&hellip;)、Closing Party で Adobe で働いてるジェラール・ピケ似のイケメンと喋ってたらビール奢ってくれたり、思い返すとそんなエピソードばかりでほんとに参加者が素晴らしかったです！</p>
 
-<p>Velocity ではほんとに色んな人に優しくしてもらいました。ホテルでチップ用の紙幣なくて両替しようとしたら $5 にしか変えれないと言われて困ってたら、通りかかった人が、&#8221;一昨日のトークよかったよ。あとモバゲーのゲームもやったことあるんだ&#8221; って言って 3 ドルくれたり（失礼ながら名前聞くの忘れてしまった&hellip;)、Closing Party で Adobe で働いてるジェラール・ピケ似のイケメンと喋ってたらビール奢ってくれたり、思い返すとそんなエピソードばかりでほんとに参加者が素晴らしかったです！</p>
-
-<h2>Awesome Talks</h2>
+<h2 id="awesome-talks:07cfc048da731ec3d89542953618ac9f">Awesome Talks</h2>
 
 <p>素晴らしいトークがたくさんありましたが、全部紹介しきれないので印象深いものだけ簡単にまとめておきます。もうちょっと踏み込んだものはまた後日&hellip;。</p>
 
-<p><a href="http://www.flickr.com/photos/oreillyconf/9087254909/"><img src="http://farm6.staticflickr.com/5527/9087254909_301923410e_z.jpg" width="640" height="427"></a></p>
+<p><img src="http://farm6.staticflickr.com/5527/9087254909_301923410e_z.jpg"></p>
 
-<h3><a href="http://cdn.oreillystatic.com/en/assets/1/event/94/Avoiding%20Performance%20Regression%20at%20Twitter%20Presentation.pdf">Avoiding Performance Regression at Twitter</a></h3>
+<h3 id="avoiding-performance-regression-at-twitter:07cfc048da731ec3d89542953618ac9f">Avoiding Performance Regression at Twitter</h3>
 
 <p>機能追加やバグフィックスを反映するたびに性能劣化が起きてしまうのをどのように防ぐかといった内容で、<a href="http://webpagetest.org">WebPageTest</a>、<a href="http://phantomjs.org">PhantomJS</a>、<a href="http://showslow.com">ShowSlow</a> といったツールを使って、branch 毎の TTFT (最初のツイートが表示されるまでの時間) を Jenkins でテストしているそうです。性能が劣化するようなら merge させないといった仕組みなので、性能向上はあっても性能劣化は起きないような仕組みが自動で回るようになっている点がスバラシイですね。</p>
 
-<blockquote><p>@takus thanks! it&#8217;s a matter of either fight against perf regression in an automated fashion or chase whoever causes that and point finger</p><footer><strong>@marcelduran</strong> <cite><a href='https://twitter.com/marcelduran/status/348150304862240768'>twitter.com/marcelduran/status/&hellip;</a></cite></footer></blockquote>
-
+<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/marcelduran/status/348150304862240768"></a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
 
 <p>ちなみに、この話すごくよかったのでスピーカーの @marcelduran にリプライしたら、返ってきたリプライまで素晴らしくてさらに感銘を受けました。犯人捜しするのでなく、犯人を作らないような仕組みを考えられる人になりたいですね。</p>
 
-<h3><a href="https://speakerdeck.com/astanway/bring-the-noise-continuously-deploying-under-a-hailstorm-of-metrics">Bring the Noise: Making Effective Use of a Quarter Million Metrics</a></h3>
+<h3 id="bring-the-noise-making-effective-use-of-a-quarter-million-metrics:07cfc048da731ec3d89542953618ac9f">Bring the Noise: Making Effective Use of a Quarter Million Metrics</h3>
 
-<p>Etsy といえば、<em>&ldquo;Graph everything&rdquo;</em> とか <em>&ldquo;If it moves, graph it&rdquo;</em> に代表されるようにとにかく何でもグラフにしてることでお馴染みですが、&#8221;たとえグラフの波形が乱れても、誰も見てなかったらそれはスパイクと言えるんだろうか？&#8221; というところから、リアルタイム異常検知とそれに似たグラフを自動で見つける <a href="http://codeascraft.com/2013/06/11/introducing-kale/">Kale</a> の話でした。トークの中で出てきた<a href="https://twitter.com/DEVOPS_BORAT/status/281242898165538818">このツイート</a>でも言ってるように、不味そうな兆候って後で致命的な問題を招くわけで、先ほどの Twitter の話と同じく、問題が小さいうちに対処できるようにしていく部分に Velocity のカルチャーを感じました。</p>
+<p>Etsy といえば、<em>&ldquo;Graph everything&rdquo;</em> とか <em>&ldquo;If it moves, graph it&rdquo;</em> に代表されるようにとにかく何でもグラフにしてることでお馴染みですが、&rdquo;たとえグラフの波形が乱れても、誰も見てなかったらそれはスパイクと言えるんだろうか？&rdquo; というところから、リアルタイム異常検知とそれに似たグラフを自動で見つける <a href="http://codeascraft.com/2013/06/11/introducing-kale/">Kale</a> の話でした。トークの中で出てきた<a href="https://twitter.com/DEVOPS_BORAT/status/281242898165538818">このツイート</a>でも言ってるように、不味そうな兆候って後で致命的な問題を招くわけで、先ほどの Twitter の話と同じく、問題が小さいうちに対処できるようにしていく部分に Velocity のカルチャーを感じました。</p>
 
-<h3><a href="https://speakerdeck.com/skottler/configuration-management-anti-patterns">Configuration Management Anti-patterns</a></h3>
+<h3 id="configuration-management-anti-patterns:07cfc048da731ec3d89542953618ac9f">Configuration Management Anti-patterns</h3>
 
 <p><em>&ldquo;Stop putting upstream modules and cookbooks into your repos&rdquo;</em> という berkshelf とか librarian-chef とか使って使いたいバージョン固定すれば、勝手にバージョンアップされてりしても安心だよねって話が印象に残りました。DeNA のように大規模に色々なシステムが動くような環境で DRY に則って共通化すると、ある環境のために加えた変更が、他の環境に影響を及ぼしてしまうことがたびたびありますが、使う環境毎にきちんとバージョン固定しておけば、そういう苦しみから解放されて、共通化を進めやすくなり、みんなハッピーになれそうだと思いました。</p>
 
-<h2>Future</h2>
+<h2 id="future:07cfc048da731ec3d89542953618ac9f">Future</h2>
 
 <p>Velocity に行って日本のエンジニアのレベルはやっぱ高いんだなと感じました。例えば 3 日目に聞いた MHA のトークはチュートリアル的な内容に留まっていたので、じゃあ DeNA でどのように MHA を運用してるのかって話なんかは当然喋らせてもらえそうで、DeNA のようにグローバルカンパニーを自負する会社や、日頃から素晴らしいツール・ライブラリを公開してるエンジニアの方々はどんどん海外のカンファレンスで喋っていったらいいんじゃないでしょうか！</p>
 
 <p>自分自身については、エンジニアとしてまだまだ半人前の存在だと再認識しながらも、Velocity の本セッションもそんなに遠い場所でないという感触は掴めたので、いつかは本セッションでトークできるように日頃から精進していきたいと思います:D</p>
 
-<h2>Acknowledgments</h2>
+<h2 id="acknowledgments:07cfc048da731ec3d89542953618ac9f">Acknowledgments</h2>
 
 <p>最後になりましたが、Velocity に参加するための手配を色々と整えてくれたスーパーヘルパー様と、自分がするべきだった仕事を代わりに引き受けてくださった部署の皆様に心から感謝してます。@katemats が <a href="http://www.youtube.com/watch?v=RGFGdFS_3Cc">If You Don&rsquo;t Understand People, You Don&rsquo;t Understand Ops</a> というトークで <em>You get what you give.</em> って言ってましたが、今回与えてもらった分は必ずお返しします。本当にありがとうございました！</p>
-</div>
+
+    </section>
 
 
-  <footer>
-    <p class="meta">
-      
-  
+  <footer class="post-footer">
 
-<span class="byline author vcard">Posted by <span class="fn">Takumi Sakamoto</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2013-06-21T00:00:00+09:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>12:00 am</span></time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/" data-via="" data-counturl="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
 
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/2013/06/06/code-simplicity/" title="Previous Post: Code Simplicity">&laquo; Code Simplicity</a>
-      
-      
-        <a class="basic-alignment right" href="/2013/08/06/nagira-nagios-restful-api/" title="Next Post: nagira という Nagios RESTful API が便利そうな件">nagira という Nagios RESTful API が便利そうな件 &raquo;</a>
-      
-    </p>
+    <figure class="author-image">
+        <a class="img" href="http://blog.takus.me" style="background-image: url(http://blog.takus.mefavicon.ico)"><span class="hidden">Takumi Sakamoto's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://blog.takus.me">Takumi Sakamoto</a></h4>
+  
+  <p>Software Engineer at SmartNews</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Tokyo, Japan</span>
+    <span class="author-link icon-link"><a href="http://about.me/takus">http://about.me/takus</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Velocity%202013%20%e3%81%ab%e5%8f%82%e5%8a%a0%20%26%20LT%20%e3%81%97%e3%81%a6%e3%81%8d%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81%ef%bc%81&amp;url=http%3a%2f%2fblog.takus.me%2f2013%2f06%2f21%2fvelocity-conference-santa-clara-2013%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.takus.me%2f2013%2f06%2f21%2fvelocity-conference-santa-clara-2013%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.takus.me%2f2013%2f06%2f21%2fvelocity-conference-santa-clara-2013%2f&amp;description=Velocity%202013%20%e3%81%ab%e5%8f%82%e5%8a%a0%20%26%20LT%20%e3%81%97%e3%81%a6%e3%81%8d%e3%81%be%e3%81%97%e3%81%9f%ef%bc%81%ef%bc%81"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.takus.me%2f2013%2f06%2f21%2fvelocity-conference-santa-clara-2013%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'takus';
+  var disqus_url = 'http:\/\/blog.takus.me\/2013\/06\/21\/velocity-conference-santa-clara-2013\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
   </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Me</h1>
-  <div style="margin-top:10px">
-    <img src="http://farm8.staticflickr.com/7293/11929418323_e084604fe5_q.jpg" alt="me"><br />
-    Takumi Sakamoto<br />
-    Software Engineer@SmartNews, Inc.<br />
-  </div>
-  <div style="margin-top:10px">
-    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
-  </div>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/takus">@takus</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'takus',
-            count: 5,
-            skip_forks: false,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Takumi Sakamoto -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'takus';
-      
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">takus&#39;s blog</a> Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</section>
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/';
-        var disqus_url = 'http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/index.js"></script>
+    
 </body>
 </html>
+

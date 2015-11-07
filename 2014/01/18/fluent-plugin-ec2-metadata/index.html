@@ -1,160 +1,192 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="ja-jp">
 <head>
-  <meta charset="utf-8">
-  <title>fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた - TAKUMI SAKAMOTO&#8217;S BLOG</title>
-  <meta name="author" content="Takumi Sakamoto">
 
-  
-  <meta name="description" content="takus/fluent-plugin-ec2-metadata 前々から fluentd のプラグインを書いてみようと思っていたので、ec2 の metadata をレコードに追加するようなプラグインを書いてみました。プラグインの書き方は @tagomoris 先生の &ldquo; &hellip;">
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta property="og:title" content=" fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた &middot;  takus&#39;s blog" />
+  	<meta property="og:site_name" content="takus&#39;s blog" />
+  	<meta property="og:url" content="http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/" />
 
-  
-  <link rel="canonical" href="http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    
+  	<meta property="og:type" content="article" />
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-2841066-12']);
-    _gaq.push(['_trackPageview']);
+    <meta property="og:article:published_time" content="2014-01-18T00:00:00Z" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    
+    
+
+  <title>
+     fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた &middot;  takus&#39;s blog
+  </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.takus.meimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.takus.meimages/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
+    
+      
+          <link href="http://blog.takus.meindex.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2841066-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+        <link rel="stylesheet" href="http://blog.takus.me/styles/solarized_dark.css">
+<script src="http://blog.takus.me/js/highlight.pack.js"></script>
+<script>
+    hljs.configure({ tabReplace: "  " });
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
 </head>
+<body class="nav-closed">
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">TAKUMI SAKAMOTO&#8217;S BLOG</a></h1>
-  
-    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
-  
-</hgroup>
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://blog.takus.meindex.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
 
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.takus.me"><img src="http://blog.takus.mefavicon.ico" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.takus.meindex.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.takus.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="http://about.me/takus">AboutMe</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/"></a></h1>
-    
-    
-      <p class="meta">
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた</h1>
+        <small></small>
+
+        <section class="post-meta">
         
-
-
-
-
-<time class='entry-date' datetime='2014-01-18T13:31:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:31 pm</span></time>
+          <time class="post-date" datetime="2014-01-18T00:00:00Z">
+            Jan 18, 2014
+          </time>
         
-      </p>
-    
-  </header>
+         
+        </section>
+    </header>
 
+    <section class="post-content">
+      
 
-<div class="entry-content"><p><a href="https://github.com/takus/fluent-plugin-ec2-metadata">takus/fluent-plugin-ec2-metadata</a></p>
+<p>前々から fluentd のプラグインを書いてみようと思っていたので、ec2 の metadata をレコードに追加するようなプラグインを書いてみました。</p>
 
-<p>前々から fluentd のプラグインを書いてみようと思っていたので、ec2 の metadata をレコードに追加するようなプラグインを書いてみました。プラグインの書き方は @tagomoris 先生の <a href="http://d.hatena.ne.jp/tagomoris/20120221/1329815126">&ldquo;fluentdのためのプラグインをイチから書く手順(bundler版)&rdquo;</a> が大変参考になったので、プラグインを書いてみたい人は見るとよさそうです。あとは、@sonots 先生の <a href="https://github.com/sonots/fluent-plugin-record-reformer">fluent-plugin-record-reformer</a> をかなり参考にさせていただいたのと、Ruby 初心者なので<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774158798/takus-22/ref=nosim">&ldquo;パーフェクトRuby&rdquo;</a>にもお世話になりました。</p>
+<p><a href="https://github.com/takus/fluent-plugin-ec2-metadata">takus/fluent-plugin-ec2-metadata</a></p>
 
-<h2>なにをするプラグインか？</h2>
+<p>プラグインの書き方は @tagomoris 先生の <a href="http://d.hatena.ne.jp/tagomoris/20120221/1329815126">&ldquo;fluentdのためのプラグインをイチから書く手順(bundler版)&rdquo;</a> が大変参考になったので、プラグインを書いてみたい人は見るとよさそうです。
+あとは、@sonots 先生の <a href="https://github.com/sonots/fluent-plugin-record-reformer">fluent-plugin-record-reformer</a> をかなり参考にさせていただいたのと、Ruby 初心者なので<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774158798/takus-22/ref=nosim">&ldquo;パーフェクトRuby&rdquo;</a>にもお世話になりました。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="err">###</span> <span class="nx">Input</span>
-</span><span class='line'><span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="s2">&quot;hello ec2!&quot;</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<h2 id="なにをするプラグインか:31f28648f8773a34e9151cf50e0cfeb3">なにをするプラグインか？</h2>
 
+<pre><code class="language-javascript">### Input
+foo.bar {&quot;message&quot;:&quot;hello ec2!&quot;}
+</code></pre>
 
+<pre><code class="language-javascript">### Output
+web.foo.bar {
+  &quot;role_tag&quot;      : &quot;web&quot;,
+  &quot;instance_id&quot;   : &quot;i-28b5ee77&quot;,
+  &quot;instance_type&quot; : &quot;m1.large&quot;,
+  &quot;az&quot;            : &quot;us-west-1b&quot;,
+  &quot;vpc_id&quot;        : &quot;vpc-25dab194&quot;,
+  &quot;message&quot;       : &quot;hello ec2!&quot;
+}
+</code></pre>
 
+<p>たとえばこんな感じにレコードを出力してくれます。
+先週の月曜日に <a href="http://blog.livedoor.jp/sonots/archives/35635267.html">Immutable Infrastructure Hackathon at :D</a> というイベントをやっていたときに、
+EC2 で Immutable Infrastructure 前提ならホスト名ベースででなく EC2 のタグに入れた Role ベースで集計するのがいいのではないか思ったのがきっかけで、
+それっぽいプラグインがなかったので作ってみた感じです。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="err">###</span> <span class="nx">Output</span>
-</span><span class='line'><span class="nx">web</span><span class="p">.</span><span class="nx">foo</span><span class="p">.</span><span class="nx">bar</span> <span class="p">{</span>
-</span><span class='line'>  <span class="s2">&quot;role_tag&quot;</span>      <span class="o">:</span> <span class="s2">&quot;web&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="s2">&quot;instance_id&quot;</span>   <span class="o">:</span> <span class="s2">&quot;i-28b5ee77&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="s2">&quot;instance_type&quot;</span> <span class="o">:</span> <span class="s2">&quot;m1.large&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="s2">&quot;az&quot;</span>            <span class="o">:</span> <span class="s2">&quot;us-west-1b&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="s2">&quot;vpc_id&quot;</span>        <span class="o">:</span> <span class="s2">&quot;vpc-25dab194&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="s2">&quot;message&quot;</span>       <span class="o">:</span> <span class="s2">&quot;hello ec2!&quot;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<blockquote>
+<p>サーバに名前をつけるという行為はもはや古い慣習であり、クラウドネイティブな思考を妨げる足かせになります。</p>
 
+<p>クラウドでは、サーバはソフトウェアのように扱われます。いつでも必要に応じて立ち上げ、不要になれば簡単に削除することができます。
+そのような状況で、サーバ1台1台に手動でユニークな名前をつけていくことは、オートスケールをはじめとするクラウドの恩恵を失うことになります。
+ではどのようにサーバを管理するべきかというと、DNS で名前をつけるのではなく、
+EC2 のタギング機能を使ってサーバの属性を記述し、識別するべきである、と述べられています。</p>
+</blockquote>
 
-<p>たとえばこんな感じにレコードを出力してくれます。先週の月曜日に <a href="http://blog.livedoor.jp/sonots/archives/35635267.html">Immutable Infrastructure Hackathon at :D</a> というイベントをやっていたときに、EC2 で Immutable Infrastructure 前提ならホスト名ベースででなく EC2 のタグに入れた Role ベースで集計するのがいいのではないか思ったのがきっかけで、それっぽいプラグインがなかったので作ってみた感じです。</p>
+<p>と、@mirakui さんがおっしゃっていたり、</p>
 
-<blockquote><p>サーバに名前をつけるという行為はもはや古い慣習であり、クラウドネイティブな思考を妨げる足かせになります。</p><p>クラウドでは、サーバはソフトウェアのように扱われます。いつでも必要に応じて立ち上げ、不要になれば簡単に削除することができます。そのような状況で、サーバ1台1台に手動でユニークな名前をつけていくことは、オートスケールをはじめとするクラウドの恩恵を失うことになります。ではどのようにサーバを管理するべきかというと、DNS で名前をつけるのではなく、 EC2 のタギング機能を使ってサーバの属性を記述し、識別するべきである、と述べられています。</p><footer><strong>@mirakui</strong> <cite><a href='http://blog.mirakui.com/entry/2013/11/21/reinvent-immutable-infrastructure'>AWS re:Invent と Immutable Infrastructure</a></cite></footer></blockquote>
+<blockquote>
+<p>また、ホストがどんどん新しくなるので、負荷観測の連続性をどのように確保するか、などメトリクス情報の保存や可視化に関する課題もあります。</p>
+</blockquote>
 
+<p>@stanaka さんのブログにも上記のような内容が書いてあり、
+AWS 上で fluentd を使っていて EC2 のタグ毎に集計したい場合は役に立つプラグインなのではないかと思っています。</p>
 
+<h2 id="設定ファイル:31f28648f8773a34e9151cf50e0cfeb3">設定ファイル</h2>
 
+<p>設定ファイルは下記のような感じで、<a href="http://y-ken.hatenablog.com/entry/fluentd-how-to-use-tag_parts-placeholder">タグの書き換えに便利な tag_parts</a> もサポートしております。
+EC2 のタグのプレースホルダー名は若干悩んだところですが、aws-sdk で返ってくるフィールド名に合わせて <code>tagset_xxx</code> にしました。</p>
 
-<blockquote><p>また、ホストがどんどん新しくなるので、負荷観測の連続性をどのように確保するか、などメトリクス情報の保存や可視化に関する課題もあります。</p><footer><strong>@stanaka</strong> <cite><a href='http://blog.stanaka.org/entry/2013/12/01/092642'>2014年のウェブシステムアーキテクチャ</a></cite></footer></blockquote>
-
-
-<p>@mirakui さんのブログや @stanaka さんのブログにも上記のような内容が書いてあり、AWS 上で fluentd を使っていて EC2 のタグ毎に集計したい場合は役に立つプラグインなのではないかと思っています。</p>
-
-<h2>設定ファイル</h2>
-
-<p>設定ファイルは下記のような感じで、<a href="http://y-ken.hatenablog.com/entry/fluentd-how-to-use-tag_parts-placeholder">タグの書き換えに便利な tag_parts</a> もサポートしております。EC2 のタグのプレースホルダー名は若干悩んだところですが、aws-sdk で返ってくるフィールド名に合わせて <code>tagset_xxx</code> にしました。</p>
-
-<pre><code>&lt;match foo.**&gt;
+<pre><code class="language-apache">&lt;match foo.**&gt;
   type ec2_metadata
-
   aws_key_id  YOUR_AWS_KEY_ID
   aws_sec_key YOUR_AWS_SECRET/KEY
-
   output_tag ${instance_id}.${tag_parts[0]}
   &lt;record&gt;
     tag           ${tagset_name}
@@ -166,192 +198,101 @@
 &lt;/match&gt;
 </code></pre>
 
-<h2>今後について</h2>
+<h2 id="今後について:31f28648f8773a34e9151cf50e0cfeb3">今後について</h2>
 
-<p>テストコードが EC2 に依存していて TravisCI ではテストできないので、どうしようか考え中です。CircleCI だと<a href="http://d.hatena.ne.jp/naoya/20131215/1387090668">こんなカンジ</a>で EC2 にインスタンス立ち上げてよしなにテストしてくれるようなことができそうなので、その辺りを調べてみようかと思っていますが、これ使ってテストすればいいのではというアイデアがありましたら、教えていただけると大変助かります！</p>
+<p>テストコードが EC2 に依存していて TravisCI ではテストできないので、どうしようか考え中です。
+CircleCI だと<a href="http://d.hatena.ne.jp/naoya/20131215/1387090668">こんなカンジ</a>で EC2 にインスタンス立ち上げてよしなにテストしてくれるようなことができそうなので、その辺りを調べてみようかと思っていますが、
+これ使ってテストすればいいのではというアイデアがありましたら、教えていただけると大変助かります！</p>
 
-<p>あとは必要最低限のプレースホルダーは用意しましたが、これも使いたいみたいなのがあればお知らせください。もちろんそのほかのバグ報告や PR もウェルカムです:D</p>
-</div>
+<p>あとは必要最低限のプレースホルダーは用意しましたが、これも使いたいみたいなのがあればお知らせください。
+もちろんそのほかのバグ報告や PR もウェルカムです:D</p>
 
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Takumi Sakamoto</span></span>
-
-      
+    </section>
 
 
+  <footer class="post-footer">
 
-
-<time class='entry-date' datetime='2014-01-18T13:31:00+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:31 pm</span></time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/" data-via="" data-counturl="http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
 
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/2014/01/05/survival-strategy/" title="Previous Post: サイドバックの生存戦略">&laquo; サイドバックの生存戦略</a>
-      
-      
-        <a class="basic-alignment right" href="/2014/01/28/nagios-resource-graph/" title="Next Post: Nagios のアラートに CloudForecast へのリンクをつける">Nagios のアラートに CloudForecast へのリンクをつける &raquo;</a>
-      
-    </p>
+    <figure class="author-image">
+        <a class="img" href="http://blog.takus.me" style="background-image: url(http://blog.takus.mefavicon.ico)"><span class="hidden">Takumi Sakamoto's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://blog.takus.me">Takumi Sakamoto</a></h4>
+  
+  <p>Software Engineer at SmartNews</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Tokyo, Japan</span>
+    <span class="author-link icon-link"><a href="http://about.me/takus">http://about.me/takus</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=fluent-plugin-ec2-metadata%20%e3%81%a8%e3%81%84%e3%81%86%20fluentd%20%e3%83%97%e3%83%a9%e3%82%b0%e3%82%a4%e3%83%b3%e3%82%92%e6%9b%b8%e3%81%84%e3%81%a6%e3%81%bf%e3%81%9f&amp;url=http%3a%2f%2fblog.takus.me%2f2014%2f01%2f18%2ffluent-plugin-ec2-metadata%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.takus.me%2f2014%2f01%2f18%2ffluent-plugin-ec2-metadata%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.takus.me%2f2014%2f01%2f18%2ffluent-plugin-ec2-metadata%2f&amp;description=fluent-plugin-ec2-metadata%20%e3%81%a8%e3%81%84%e3%81%86%20fluentd%20%e3%83%97%e3%83%a9%e3%82%b0%e3%82%a4%e3%83%b3%e3%82%92%e6%9b%b8%e3%81%84%e3%81%a6%e3%81%bf%e3%81%9f"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.takus.me%2f2014%2f01%2f18%2ffluent-plugin-ec2-metadata%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'takus';
+  var disqus_url = 'http:\/\/blog.takus.me\/2014\/01\/18\/fluent-plugin-ec2-metadata\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
   </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Me</h1>
-  <div style="margin-top:10px">
-    <img src="http://farm8.staticflickr.com/7293/11929418323_e084604fe5_q.jpg" alt="me"><br />
-    Takumi Sakamoto<br />
-    Software Engineer@SmartNews, Inc.<br />
-  </div>
-  <div style="margin-top:10px">
-    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
-  </div>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/takus">@takus</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'takus',
-            count: 5,
-            skip_forks: false,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Takumi Sakamoto -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'takus';
-      
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">takus&#39;s blog</a> Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</section>
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/';
-        var disqus_url = 'http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/index.js"></script>
+    
 </body>
 </html>
+

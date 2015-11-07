@@ -1,395 +1,299 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="ja-jp">
 <head>
-  <meta charset="utf-8">
-  <title>Immutable Infrastructure Hackathon :D で docker をさわってみた - TAKUMI SAKAMOTO&#8217;S BLOG</title>
-  <meta name="author" content="Takumi Sakamoto">
 
-  
-  <meta name="description" content="Immutable Infrastructure Hackathon :D で Docker を触ってみただけという、ゆるふわなメモです。@muddydixon さんや @yosuke_furukawa さんが drone を触ってたのに比べてだいぶ素人丸出しな感じですが、Docker &hellip;">
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta property="og:title" content=" Immutable Infrastructure Hackathon :D で docker をさわってみた &middot;  takus&#39;s blog" />
+  	<meta property="og:site_name" content="takus&#39;s blog" />
+  	<meta property="og:url" content="http://blog.takus.me/2014/02/23/docker/" />
 
-  
-  <link rel="canonical" href="http://blog.takus.me/2014/02/23/docker/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    
+  	<meta property="og:type" content="article" />
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-2841066-12']);
-    _gaq.push(['_trackPageview']);
+    <meta property="og:article:published_time" content="2014-02-23T00:00:00Z" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    
+    
+
+  <title>
+     Immutable Infrastructure Hackathon :D で docker をさわってみた &middot;  takus&#39;s blog
+  </title>
+
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.takus.meimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.takus.meimages/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
+    
+      
+          <link href="http://blog.takus.meindex.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://blog.takus.me/2014/02/23/docker/" />
+
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2841066-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+
+    
+        <link rel="stylesheet" href="http://blog.takus.me/styles/solarized_dark.css">
+<script src="http://blog.takus.me/js/highlight.pack.js"></script>
+<script>
+    hljs.configure({ tabReplace: "  " });
+    hljs.initHighlightingOnLoad();
+</script>
+
+    
 </head>
+<body class="nav-closed">
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">TAKUMI SAKAMOTO&#8217;S BLOG</a></h1>
-  
-    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
-  
-</hgroup>
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://blog.takus.meindex.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
 
+
+ <div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+  <nav class="main-nav clearfix">
+
+
+  
+      <a class="blog-logo" href="http://blog.takus.me"><img src="http://blog.takus.mefavicon.ico" alt="Home" /></a>
+  
+  
+      <a class="menu-button icon-feed" href="http://blog.takus.meindex.xml">&nbsp;&nbsp;Subscribe</a>
+  
+  </nav>
 </header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.takus.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="http://about.me/takus">AboutMe</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">Immutable Infrastructure Hackathon :D で docker をさわってみた<a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/02/23/docker/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/02/23/docker/"></a></h1>
-    
-    
-      <p class="meta">
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">Immutable Infrastructure Hackathon :D で docker をさわってみた</h1>
+        <small></small>
+
+        <section class="post-meta">
         
-
-
-
-
-<time class='entry-date' datetime='2014-02-23T21:42:00+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:42 pm</span></time>
+          <time class="post-date" datetime="2014-02-23T00:00:00Z">
+            Feb 23, 2014
+          </time>
         
-      </p>
-    
-  </header>
+         
+        </section>
+    </header>
 
+    <section class="post-content">
+      
 
-<div class="entry-content"><p>Immutable Infrastructure Hackathon :D で <a href="https://www.docker.io/">Docker</a> を触ってみただけという、ゆるふわなメモです。@muddydixon さんや @yosuke_furukawa さんが <a href="http://blog.drone.io/">drone</a> を触ってたのに比べてだいぶ素人丸出しな感じですが、Docker 童貞からは脱却できたので、次は &ldquo;<a href="http://blog.tmtk.net/2013/09/28/docker-jenkins-serverspec-puppet.ja.html">Docker + Jenkins + serverspecでpuppetのmanifestをCIする</a>&rdquo; あたりに取り組んでみたいと思いました。</p>
+<p>Immutable Infrastructure Hackathon :D で <a href="https://www.docker.io/">Docker</a> を触ってみただけという、ゆるふわなメモです。</p>
 
-<h2>公式チュートリアル</h2>
+<p>@muddydixon さんや @yosuke_furukawa さんが <a href="http://blog.drone.io/">drone</a> を触ってたのに比べてだいぶ素人丸出しな感じですが、Docker 童貞からは脱却できたので、次は &ldquo;<a href="http://blog.tmtk.net/2013/09/28/docker-jenkins-serverspec-puppet.ja.html">Docker + Jenkins + serverspecでpuppetのmanifestをCIする</a>&rdquo; あたりに取り組んでみたいと思いました。</p>
+
+<h2 id="公式チュートリアル:69e60651f42783a7df723575c4088b5b">公式チュートリアル</h2>
 
 <p>まず、<a href="https://www.docker.io/gettingstarted/">公式サイトのチュートリアル</a>で一通り使い方を学びました。</p>
 
-<h2>Docker on DigitalOcean</h2>
+<h2 id="docker-on-digitalocean:69e60651f42783a7df723575c4088b5b">Docker on DigitalOcean</h2>
 
 <p>DigitalOcean は 1GB メモリのサーバが 1 時間 $0.015 で使える格安の VPS サーバで、手元で VM 動かしたくなかったので使ってみました。Docker は &ldquo;<a href="http://blog.glidenote.com/blog/2013/12/20/vagrant-docker-digitalocean/">MacからVagrantコマンド一発でSSDなVPS(DigitalOcean)上にCentOS6.5+Docker環境を構築する</a>&rdquo; を参考に入れます。</p>
 
 <p>最初は CentOS 6.4 に Docker をインストールして docker build していましたが、メモリ枯渇して OOMKiller 発動したり不安定だったので、公式サポートされてるという CentOS 6.5 にしました。ちなみに IPv6 が有効になってると <code>docker run -p</code> したときに IPv4 のアドレスを bind してくれなかったので無効にしてます。</p>
 
-<h2>Ukigumo-Server on Docker</h2>
+<h2 id="ukigumo-server-on-docker:69e60651f42783a7df723575c4088b5b">Ukigumo-Server on Docker</h2>
 
 <p>Docker が動くようになったので、@kazeburo 先生の &ldquo;<a href="http://blog.nomadscafe.jp/2013/12/centos-65dockergrowthforecast.html">CentOS 6.5にDockerいれてGrowthForecastを動かしてみた</a>&rdquo; を参考に Ukigumo-Server の image を作ってみました。</p>
 
-<h3>Dockerfile</h3>
+<h3 id="dockerfile:69e60651f42783a7df723575c4088b5b">Dockerfile</h3>
 
 <p>元の Dockerfile では <code>EXEC</code> してましたが、 <code>EXEC</code> 使うより <code>ENTRYPOINT</code> で引数渡せるようにした方が <code>docker run</code> するときに引数指定できて便利そうだったのでそうしてます。Dockerfile のコマンドについては、<a href="http://docs.docker.io/en/latest/reference/builder/">公式ドキュメント</a> が参考になりました。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>FROM centos
-</span><span class='line'>MAINTAINER Takumi Sakamoto, takus
-</span><span class='line'>RUN yum -y groupinstall "Development Tools"
-</span><span class='line'>RUN git clone https://github.com/tagomoris/xbuild.git
-</span><span class='line'>RUN xbuild/perl-install 5.18.1 /opt/perl-5.18
-</span><span class='line'>RUN echo 'export PATH=/opt/perl-5.18/bin:$PATH' &gt; /etc/profile.d/xbuild-perl.sh
-</span><span class='line'>RUN /opt/perl-5.18/bin/cpanm -n Ukigumo::Server
-</span><span class='line'>EXPOSE 2828
-</span><span class='line'>ENTRYPOINT ["/opt/perl-5.18/bin/ukigumo-server"]</span></code></pre></td></tr></table></div></figure>
+<pre><code>FROM centos
+MAINTAINER Takumi Sakamoto, takus
+RUN yum -y groupinstall &quot;Development Tools&quot;
+RUN git clone https://github.com/tagomoris/xbuild.git
+RUN xbuild/perl-install 5.18.1 /opt/perl-5.18
+RUN echo 'export PATH=/opt/perl-5.18/bin:$PATH' &gt; /etc/profile.d/xbuild-perl.sh
+RUN /opt/perl-5.18/bin/cpanm -n Ukigumo::Server
+EXPOSE 2828
+ENTRYPOINT [&quot;/opt/perl-5.18/bin/ukigumo-server&quot;]
+</code></pre>
 
-
-<h3>image を build して docker repository に push</h3>
+<h3 id="image-を-build-して-docker-repository-に-push:69e60651f42783a7df723575c4088b5b">image を build して docker repository に push</h3>
 
 <p>image を作って push してみました。push した image は<a href="https://index.docker.io/u/takus/ukigumo-server/">コチラ</a>にあります。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ docker login
-</span><span class='line'>Username: xxxx
-</span><span class='line'>Password:
-</span><span class='line'>Email: xxxx
-</span><span class='line'>Login Succeeded
-</span><span class='line'>
-</span><span class='line'>$ docker build -t takus/ukigumo-server .
-</span><span class='line'>Successfully built 14b737e414c6
-</span><span class='line'>
-</span><span class='line'>$ docker images
-</span><span class='line'>REPOSITORY             TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
-</span><span class='line'>takus/ukigumo-server   latest              14b737e414c6        About a minute ago   1.33 GB
-</span><span class='line'>
-</span><span class='line'>$ docker run -p 2828:2828 takus/ukigumo-server
-</span><span class='line'>d3b31b2f8603344636435d18138a74ff365cc5797f10fe900cc16d05b0451fe0
-</span><span class='line'>
-</span><span class='line'>$ docker push takus/ukigumo-server
-</span><span class='line'>d4fc918d1e82: Image successfully pushed
-</span><span class='line'>Pushing tag for rev [d4fc918d1e82] on {https://registry-1.docker.io/v1/repositories/takus/ukigumo-server/tags/latest}
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>$ docker login
+Username: xxxx
+Password:
+Email: xxxx
+Login Succeeded
 
+$ docker build -t takus/ukigumo-server .
+Successfully built 14b737e414c6
 
-<h3>他の人が作った image をもってきてみる</h3>
+$ docker images
+REPOSITORY             TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
+takus/ukigumo-server   latest              14b737e414c6        About a minute ago   1.33 GB
+
+$ docker run -p 2828:2828 takus/ukigumo-server
+d3b31b2f8603344636435d18138a74ff365cc5797f10fe900cc16d05b0451fe0
+
+$ docker push takus/ukigumo-server
+d4fc918d1e82: Image successfully pushed
+Pushing tag for rev [d4fc918d1e82] on {https://registry-1.docker.io/v1/repositories/takus/ukigumo-server/tags/latest}
+
+</code></pre>
+
+<h3 id="他の人が作った-image-をもってきてみる:69e60651f42783a7df723575c4088b5b">他の人が作った image をもってきてみる</h3>
 
 <p>試しに @sonots さんの growthforecast の image をもってきて動かしてみました。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ docker search growthforecast
-</span><span class='line'>NAME                            DESCRIPTION   STARS     OFFICIAL   TRUSTED
-</span><span class='line'>futoase/docker-growthforecast                 0                    [OK]
-</span><span class='line'>sonots/growthforecast                         0
-</span><span class='line'>
-</span><span class='line'>$ docker pull sonots/growthforecast
-</span><span class='line'>1c7f181e78b9: Download complete
-</span><span class='line'>
-</span><span class='line'>$ docker run -p 5125:5125 sonots/growthforecast
-</span><span class='line'>d3b31b2f8603344636435d18138a74ff365cc5797f10fe900cc16d05b0451fe0</span></code></pre></td></tr></table></div></figure>
+<pre><code>$ docker search growthforecast
+NAME                            DESCRIPTION   STARS     OFFICIAL   TRUSTED
+futoase/docker-growthforecast                 0                    [OK]
+sonots/growthforecast                         0
 
+$ docker pull sonots/growthforecast
+1c7f181e78b9: Download complete
+
+$ docker run -p 5125:5125 sonots/growthforecast
+d3b31b2f8603344636435d18138a74ff365cc5797f10fe900cc16d05b0451fe0
+</code></pre>
 
 <p>こんな感じで雰囲気は分かったのでもう少し触ってみたいと思います。</p>
-</div>
+
+    </section>
 
 
-  <footer>
-    <p class="meta">
-      
-  
+  <footer class="post-footer">
 
-<span class="byline author vcard">Posted by <span class="fn">Takumi Sakamoto</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2014-02-23T21:42:00+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:42 pm</span></time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.takus.me/2014/02/23/docker/" data-via="" data-counturl="http://blog.takus.me/2014/02/23/docker/" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
 
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/2014/01/28/nagios-resource-graph/" title="Previous Post: Nagios のアラートに CloudForecast へのリンクをつける">&laquo; Nagios のアラートに CloudForecast へのリンクをつける</a>
-      
-      
-        <a class="basic-alignment right" href="/2014/02/25/money/" title="Next Post: 自分が撮影した写真をドイツの出版社に買ってもらった話">自分が撮影した写真をドイツの出版社に買ってもらった話 &raquo;</a>
-      
-    </p>
+    <figure class="author-image">
+        <a class="img" href="http://blog.takus.me" style="background-image: url(http://blog.takus.mefavicon.ico)"><span class="hidden">Takumi Sakamoto's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="http://blog.takus.me">Takumi Sakamoto</a></h4>
+  
+  <p>Software Engineer at SmartNews</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">Tokyo, Japan</span>
+    <span class="author-link icon-link"><a href="http://about.me/takus">http://about.me/takus</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Immutable%20Infrastructure%20Hackathon%20%3aD%20%e3%81%a7%20docker%20%e3%82%92%e3%81%95%e3%82%8f%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f&amp;url=http%3a%2f%2fblog.takus.me%2f2014%2f02%2f23%2fdocker%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fblog.takus.me%2f2014%2f02%2f23%2fdocker%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=http%3a%2f%2fblog.takus.me%2f2014%2f02%2f23%2fdocker%2f&amp;description=Immutable%20Infrastructure%20Hackathon%20%3aD%20%e3%81%a7%20docker%20%e3%82%92%e3%81%95%e3%82%8f%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%9f"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=http%3a%2f%2fblog.takus.me%2f2014%2f02%2f23%2fdocker%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_shortname = 'takus';
+  var disqus_url = 'http:\/\/blog.takus.me\/2014\/02\/23\/docker\/';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
   </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Me</h1>
-  <div style="margin-top:10px">
-    <img src="http://farm8.staticflickr.com/7293/11929418323_e084604fe5_q.jpg" alt="me"><br />
-    Takumi Sakamoto<br />
-    Software Engineer@SmartNews, Inc.<br />
-  </div>
-  <div style="margin-top:10px">
-    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
-  </div>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/takus">@takus</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'takus',
-            count: 5,
-            skip_forks: false,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Takumi Sakamoto -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'takus';
-      
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">takus&#39;s blog</a> Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</section>
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.takus.me/2014/02/23/docker/';
-        var disqus_url = 'http://blog.takus.me/2014/02/23/docker/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/index.js"></script>
+    
 </body>
 </html>
+

@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on takus&#39;s blog</title>
+    <link>http://blog.takus.me/post/</link>
+    <description>Recent content in Posts on takus&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
+    <lastBuildDate>Sat, 10 Oct 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://blog.takus.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜</title>
+      <link>http://blog.takus.me/2015/10/10/datadog-with-fluentd/</link>
+      <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2015/10/10/datadog-with-fluentd/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://datadoghq.com&#34;&gt;Datadog&lt;/a&gt; というシステム監視 SaaS のネタです。先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
+自分が知ってる &lt;strong&gt;Dogstatsd&lt;/strong&gt; を使う方法をシェアします。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.takus.me/images/datadog_http_graph.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;これはあるサービスの Nginx のアクセスログとエラーログを、
+Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
+それぞれ、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;左上: ステータスコード別の集計グラフ&lt;/li&gt;
+&lt;li&gt;右上: 今日・昨日・一週間前のレスポンスタイムグラフ&lt;/li&gt;
+&lt;li&gt;左下: Fluentd の タグ毎の流量&lt;/li&gt;
+&lt;li&gt;右下: Fluentd の ホスト毎の流量&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といったグラフになっています。このポストではこんなグラフを作る方法を説明してみます。&lt;/p&gt;
+
+&lt;h2 id=&#34;dogstatsd-とは:5a525c628f468fdda11fe314266c3265&#34;&gt;Dogstatsd とは？&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.takus.me/images/dogstatsd.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
+一言で何物か説明すると Datadog 用に拡張された &lt;a href=&#34;https://github.com/etsy/statsd&#34;&gt;StatsD&lt;/a&gt; です。(StatsD をご存知ない方はググってみてください)
+これは Datadog の監視エージェント (dd-agent) に含まれているので、Datadog を使うなら特に設定なしで使えます。
+詳しい説明は &lt;a href=&#34;http://docs.datadoghq.com/guides/dogstatsd/&#34;&gt;公式ドキュメント&lt;/a&gt; を読むといいでしょう。&lt;/p&gt;
+
+&lt;h2 id=&#34;アプリケーションから直接送る方法:5a525c628f468fdda11fe314266c3265&#34;&gt;アプリケーションから直接送る方法&lt;/h2&gt;
+
+&lt;p&gt;これは上で紹介したドキュメントにも &amp;ldquo;The easiest way&amp;rdquo; と紹介されているやり方になります。
+&lt;a href=&#34;http://docs.datadoghq.com/libraries/&#34;&gt;Datadog Docs - Libraries&lt;/a&gt; に各言語用のライブラリが紹介されているので、
+これらのライブラリを各アプリケーションに組み込むことで好きなように送ることができます。
+例えば Ruby のアプリケーションで Page View  を集計する場合は、&lt;a href=&#34;https://github.com/DataDog/dogstatsd-ruby&#34;&gt;DataDog/dogstatsd-ruby&lt;/a&gt; を下記のように使うだけです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;statsd&#39;
+# Create a stats instance.
+statsd = Statsd.new(&#39;localhost&#39;, 8125)
+# Increment a counter.
+statsd.increment(&#39;page.views&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fluentd-を経由して送る方法:5a525c628f468fdda11fe314266c3265&#34;&gt;Fluentd を経由して送る方法&lt;/h2&gt;
+
+&lt;p&gt;アプリケーションから直接送る方法は簡単に使える一方で、
+Datadog 以外のシステムにメトリクスやアラートを送るのに別の手段が必要になったり、
+ミドルウェアからカスタムメトリクスを送りたいような場合に手間がかかったりするため、
+自分は、Fluentd を経由する方法を利用することが多いです。&lt;/p&gt;
+
+&lt;p&gt;Fluentd を経由することで監視に介在するコンポーネントが増える懸念はありますが、
+ほとんどの場合は安定して動いてくれるので実用上の問題はなく、
+豊富なプラグインを利用することで、様々なミドルウェアや SaaS との連携が簡単で、
+もし仮に監視システムを入れ替えるようなことがあっても、最小限の労力で入れ替えが可能になったり、
+複数のシステムにメトリクスを送ることも簡単にできます。&lt;/p&gt;
+
+&lt;h3 id=&#34;設定ファイルの例:5a525c628f468fdda11fe314266c3265&#34;&gt;設定ファイルの例&lt;/h3&gt;
+
+&lt;p&gt;よくありそうな例として Nginx のアクセスログから、ステータスコード集計とレスポンスタイム統計を取得する方法について説明します。
+全体的な流れとしては、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.fluentd.org/articles/in_tail&#34;&gt;in_tail&lt;/a&gt; でログを読み込む&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/sonots/fluent-plugin-record-reformer&#34;&gt;out_record_reformer&lt;/a&gt; で好みの形式にレコードを整形する&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ryotarai/fluent-plugin-dogstatsd&#34;&gt;out_dogstatsd&lt;/a&gt; で dogstatsd にメトリクスを送信する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;となります。設定ファイルは下記のように配置するとして、それぞれの設定ファイルについて説明していきます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tree /etc/td-agent
+/etc/td-agent
+├── conf.d
+│   ├── dogstatsd.conf.erb
+│   └── nginx.conf.erb
+└── td-agent.conf.erb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;td-agent-conf-erb:5a525c628f468fdda11fe314266c3265&#34;&gt;td-agent.conf.erb&lt;/h3&gt;
+
+&lt;p&gt;他の設定ファイルを include するだけです。
+&lt;a href=&#34;https://www.datadoghq.com/blog/monitor-fluentd-datadog/&#34;&gt;拙作の Datadog エージェントによるバッファ監視&lt;/a&gt;を入れると捗るので monitor_agent の設定も入れておきます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;source&amp;gt;
+  type monitor_agent
+  port 24220
+&amp;lt;/source&amp;gt;
+@include conf.d/nginx.conf
+@include conf.d/dogstatsd.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;conf-d-nginx-conf-erb:5a525c628f468fdda11fe314266c3265&#34;&gt;conf.d/nginx.conf.erb&lt;/h3&gt;
+
+&lt;p&gt;本筋とそれますが Fluentd v0.12 から使えるようになった&lt;a href=&#34;http://qiita.com/sonots/items/a01d2233210b7b059967&#34;&gt;ラベル機能&lt;/a&gt;はすごい便利なので、
+未だにタグ書き換えで消耗してる人は、ラベルに置き換えると幸福度が増すと思います。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;## アクセスログを LTSV 形式で取り込む
+&amp;lt;source&amp;gt;
+  type     tail
+  format   ltsv
+  path     /path/to/access.log
+  pos_file /path/to/nginx.access.pos
+  tag      nginx.access
+&amp;lt;/source&amp;gt;
+
+&amp;lt;match nginx.access&amp;gt;
+  type copy
+
+  ## ログ流量監視をするために out_flowcounter にも送る
+  &amp;lt;store&amp;gt;
+    type       flowcounter
+    count_keys *
+    unit       second
+    aggregate  all
+    tag        fluentd.flowcounter.nginx.access
+    @label     @dogstatsd
+  &amp;lt;/store&amp;gt;
+
+  ## @nginx にルーティングする
+  &amp;lt;store&amp;gt;
+    type   relabel
+    @label @nginx
+  &amp;lt;/store&amp;gt;
+&amp;lt;/match&amp;gt;
+
+&amp;lt;label @nginx&amp;gt;
+  ## out_record_reformer で目的に応じてレコードを整形する
+  &amp;lt;match nginx.access&amp;gt;
+    type copy
+    ## ステータスコード集計用
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      enable_ruby  true
+      tag dogstatsd.increment
+      &amp;lt;record&amp;gt;
+        type &amp;quot;increment&amp;quot;
+        key  ${%!nginx.status_#{status[0]}xx!}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+    ## レスポンスタイム集計用
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.histogram
+      &amp;lt;record&amp;gt;
+        type  &amp;quot;histogram&amp;quot;
+        key   &amp;quot;nginx.response_time&amp;quot;
+        value ${reqtime}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+    ## レスポンスサイズ集計用
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.histogram
+      &amp;lt;record&amp;gt;
+        type  &amp;quot;histogram&amp;quot;
+        key   &amp;quot;nginx.response_size&amp;quot;
+        value ${size}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+  &amp;lt;/match&amp;gt;
+
+  ## @dogstatsd にルーティングする
+  &amp;lt;match dogstatsd.**&amp;gt;
+    type   relabel
+    @label @dogstatsd
+  &amp;lt;/match&amp;gt;
+&amp;lt;/label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;conf-d-dogstatsd-conf:5a525c628f468fdda11fe314266c3265&#34;&gt;conf.d/dogstatsd.conf&lt;/h2&gt;
+
+&lt;p&gt;@dogstatsd に投げられたレコードを dogstatsd に投げます。&lt;/p&gt;
+
+&lt;p&gt;out_dogstatsd で &lt;code&gt;flat_tag true&lt;/code&gt; にすると type/key/value 以外のフィールドをメトリクスのタグにしてくれます。
+conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;nginx_vhost&lt;/code&gt; を入れているのはこの機能のためで、
+後で可視化やアラート設定するときにこれらのタグを利用して特定の Virtual Host のみのグラフを表示するといったことが可能になるので、
+用途に応じて設定することをオススメします。&lt;/p&gt;
+
+&lt;p&gt;またこれも本筋とはそれますが、out_dogstatsd で Datadog の Event も送れるので、
+エラーログに特定の文字列が現れたら Datadog に通知するとかも簡単にできて捗る感じです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;label @dogstatsd&amp;gt;
+
+  ## flowcounter のログも record_reformer で整形する
+  &amp;lt;match fluentd.flowcounter.**&amp;gt;
+    type copy
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.count
+      &amp;lt;record&amp;gt;
+        key   &amp;quot;fluentd.flowcounter.bytes&amp;quot;
+        value ${bytes}
+        type  &amp;quot;count&amp;quot;
+        fluentd_source ${tag_suffix[2]}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.count
+      &amp;lt;record&amp;gt;
+        key   &amp;quot;fluentd.flowcounter.count&amp;quot;
+        value ${count}
+        type  &amp;quot;count&amp;quot;
+        fluentd_source ${tag_suffix[2]}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+  &amp;lt;/match&amp;gt;
+
+  ## String として送られてくることがあるのでキャストしておく
+  &amp;lt;filter dogstatsd.count&amp;gt;
+    type  typecast
+    types value:integer
+  &amp;lt;/filter&amp;gt;
+  &amp;lt;filter dogstatsd.histogram&amp;gt;
+    type  typecast
+    types value:float
+  &amp;lt;/filter&amp;gt;
+
+  ## dogstatsd に送る
+  ## flat_tag true にすると type/key/value 以外のフィールドをメトリクスのタグにしてくれる
+  &amp;lt;match dogstatsd.**&amp;gt;
+    type copy
+    &amp;lt;store&amp;gt;
+      @id  dogstatsd
+      type dogstatsd
+      flat_tag true
+    &amp;lt;/store&amp;gt;
+  &amp;lt;/match&amp;gt;
+
+&amp;lt;/label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あとは Datadog でダッシュボードを作るなり、アラートを作るなり好きにしてください。
+ちょっと雑な説明なので分からないことがあれば twitter などで聞いて下さい。&lt;/p&gt;
+
+&lt;h2 id=&#34;おわりに:5a525c628f468fdda11fe314266c3265&#34;&gt;おわりに&lt;/h2&gt;
+
+&lt;p&gt;これも木曜に出てきたのですが「Datadog の情報ってインターネットにあまり出てなくないですか」というのがありました。
+確かに言われてみればそんな気もするので自分の持ってる知見は積極的に出していけたらなと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SmartNews&#39;s Journey into Microservices という LT をしてきました</title>
+      <link>http://blog.takus.me/2015/10/09/livesense-technight/</link>
+      <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2015/10/09/livesense-technight/</guid>
+      <description>&lt;p&gt;先週の火曜日の話になりますが &lt;a href=&#34;http://made.livesense.co.jp/blogs/431&#34;&gt;Livesense TechNight&lt;/a&gt; というイベントで &amp;ldquo;SmartNews&amp;rsquo;s Journey into Microservices&amp;rdquo; という LT をしてきました。&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/ksF1CkWTC5a4UT&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
+&lt;/p&gt;
+
+&lt;p&gt;SmartNews のバックエンドは、ニュース記事のクローラー、その記事の意味を解釈するサービス、サムネイル画像の品質判定をするサービス、記事の閲覧履歴を元に準リアルタイムにランキングを調整するサービス、アプリから記事情報を取得するための API Gateway などの多種多様なサービスで構成される Microservices 的なアプローチを取っていますが、資料の前半でそのあたりに至った背景を説明しつつ、後半は Microservices 化のための施策の一つである &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; によるデプロイ自動化について説明しました。&lt;/p&gt;
+
+&lt;p&gt;その他に小ネタとして、Slack へのデプロイ通知とか &lt;a href=&#34;https://github.com/airbnb/interferon&#34;&gt;airbnb/interferon&lt;/a&gt; による Datadog アラートの自動生成とかの話も入れましたが、時間なくてほとんど説明しなかったので、このあたりはどこかで話す機会があったらいいなと思っています。&lt;/p&gt;
+
+&lt;p&gt;また、スライドを公開したところ AWS の Chief Evangelist である Jeff Barr さんが twitter で言及してくれて、今後も定期的に情報発信をしていこうかなというモチベーションが湧いたのも個人的にはよかったです。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/jeffbarr/status/649575575787454464&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;ちなみに、デプロイ自動化の話に関しては &lt;a href=&#34;http://developer.smartnews.com/blog/2015/10/01/20151001itamae-autoscaling-codedeploy/&#34;&gt;Itamae / Auto Scaling / CodeDeploy を用いて deploy フローを刷新した話。そして板前を provisioning した話。 | SmartNews 開発者ブログ&lt;/a&gt; にも解説があるので興味がある方がいましたらご覧くださいませ。&lt;/p&gt;
+
+&lt;p&gt;以上です。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>fluent-plugin-dynamodb-streams を作った</title>
+      <link>http://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams/</link>
+      <pubDate>Tue, 15 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams/</guid>
+      <description>
+
+&lt;p&gt;Amazon DynamoDB Streams のレコードを Fluentd で扱いたい要件があり、ググっても見当たらなかったのでプラグインを実装してみました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/takus/fluent-plugin-dynamodb-streams&#34;&gt;takus/fluent-plugin-dynamodb-streams&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;使い方:85108b4d7d02550fdd8c71a7f2e81632&#34;&gt;使い方&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/takus/fluent-plugin-dynamodb-streams/blob/master/README.md&#34;&gt;README&lt;/a&gt; に書いてある通りですが、こんな設定でお使いいただけます。他の Fluentd のプラグインと組み合わせることで、&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/new-logstash-plugin-search-dynamodb-content-using-elasticsearch/&#34;&gt;AWS Official Blog&lt;/a&gt; にある、Logstash + Elasticsearch のような用途にもお使いいただけるのではないかと思います。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;source&amp;gt;
+  type dynamodb_streams
+  stream_arn YOUR_DDB_STREAMS_ARN
+  pos_file /var/lib/fluent/dynamodb_streams_table_name
+  fetch_interval 1
+  fetch_size 100
+&amp;lt;/source&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;また、&lt;a href=&#34;https://github.com/takus/fluent-plugin-dynamodb-streams/blob/master/example/fluentd.conf&#34;&gt;example&lt;/a&gt; にあるように、
+&lt;a href=&#34;https://github.com/winebarrel/fluent-plugin-filter-jq&#34;&gt;fluent-plugin-filter-jq&lt;/a&gt; と組み合わせると特定の条件で、特定のフィールドだけ取得するみたいなこともできるかと思います。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;source&amp;gt;
+  type dynamodb_streams
+  tag stream
+  aws_region ddblocal
+  stream_arn &amp;quot;#{ENV[&#39;STREAM_ARN&#39;]}&amp;quot;
+&amp;lt;/source&amp;gt;
+
+# Only pass MODIFY event
+&amp;lt;filter stream&amp;gt;
+  type grep
+  regexp1 event_name MODIFY
+&amp;lt;/filter&amp;gt;
+
+# Only keep new_image
+&amp;lt;filter stream&amp;gt;
+  type jq
+  jq &#39;.dynamodb|{new_image:.new_image}&#39;
+&amp;lt;/filter&amp;gt;
+
+&amp;lt;match stream&amp;gt;
+  type stdout
+&amp;lt;/match&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;そのほか:85108b4d7d02550fdd8c71a7f2e81632&#34;&gt;そのほか&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://docs.aws.amazon.com/ja_jp/kinesis/latest/dev/developing-consumers-with-kcl.html&#34;&gt;Amazon KCL (Kinesis Client Library)&lt;/a&gt; では、DynamoDB に Checkpoint を保持して耐障害性をあげていたり、ワーカーが並列にレコードを取得することで性能を稼いでいたりしますが、とりあえず自分の要件を満たすのには不要なので実装しておらず、若干不十分なところもありますのでご注意くださいませ。Issue / PR もお待ちしております。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Datadog ユーザの集い #dd_sushi を開催しました</title>
+      <link>http://blog.takus.me/2015/02/26/dd-sushi/</link>
+      <pubDate>Thu, 26 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2015/02/26/dd-sushi/</guid>
+      <description>
+
+&lt;p&gt;こんにちは。スマートニュースの &lt;a href=&#34;https://twitter.com/takus&#34;&gt;@takus&lt;/a&gt; です。
+&lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;24&lt;/sub&gt; に Datadog ユーザの集まり &lt;a href=&#34;https://twitter.com/search?q=%23dd_sushi&#34;&gt;#dd_sushi&lt;/a&gt; というイベントを開催しましたので、この場を借りて簡単にレポートさせていただきます。&lt;/p&gt;
+
+&lt;p&gt;このイベントは &lt;a href=&#34;http://eventdots.jp/event/276987&#34;&gt;Presto Meetup&lt;/a&gt; で、
+Treasure Data の &lt;a href=&#34;https://twitter.com/repeatedly&#34;&gt;@repeatedly&lt;/a&gt; さんと話をしているときに 「スマートニュースの新オフィスに遊びに行きたい！」という話が出て、
+Treasure Data も最近 Datadog を使い始めたというところから、
+せっかくなので Datadog について話をするイベントにしてみようという経緯で、開催に至りました。
+Datadog を代表して &lt;a href=&#34;https://twitter.com/jhotta&#34;&gt;@jhotta&lt;/a&gt; さんに 2015 年のロードマップについて話をしていただいたり、
+Datadog を利用している様々な会社から導入経緯、利用方法、便利ツールなどの発表をしていただき、
+とても有意義な時間になりました。&lt;/p&gt;
+
+&lt;h2 id=&#34;発表資料-発表順:144dda02c62d145abfdfe96b945fb036&#34;&gt;発表資料(発表順)&lt;/h2&gt;
+
+&lt;p&gt;&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;af1e6ad4f24148c89d5886a3be4b0cc0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;cb1435fedb304357b9f1526f1b9839b0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;d6dc9de74fa6411f9cf7e7bd5884bf71&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;パブリックなイベントではなかったので公開されてない方もいますが、ひとまず公開されてる資料だけまとめておきます。&lt;/p&gt;
+
+&lt;h2 id=&#34;当日の様子:144dda02c62d145abfdfe96b945fb036&#34;&gt;当日の様子&lt;/h2&gt;
+
+&lt;p&gt;弊社の &lt;a href=&#34;https://twitter.com/just_do_neet&#34;&gt;@just_do_neet&lt;/a&gt; さんが、
+&lt;a href=&#34;http://togetter.com/li/787532&#34;&gt;togetter のまとめ&lt;/a&gt; を作ってくれたので、
+雰囲気は togetter を見て感じ取ってくださればと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8573/16464500850_f826114d3b_z.jpg&#34;&gt;
+&lt;img src=&#34;https://farm9.staticflickr.com/8628/16625959386_4513e6f105_z.jpg&#34;&gt;
+&lt;img src=&#34;https://farm9.staticflickr.com/8566/16625959426_1e640c61c1_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;まとめ:144dda02c62d145abfdfe96b945fb036&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;ここ 1 年くらいの動向として、海外では &lt;a href=&#34;https://www.datadoghq.com/2015/02/datadog-acquires-mortar-data/&#34;&gt;Datadog が Mortar Data を買収したり&lt;/a&gt;、&lt;a href=&#34;http://techcrunch.com/2014/05/07/google-acquires-cloud-monitoring-service-stackdriver/&#34;&gt;Google が Stackdriver を買収したり&lt;/a&gt; と盛り上がってる一方で、日本でも &lt;a href=&#34;https://mackerel.io&#34;&gt;Mackerel&lt;/a&gt; が流行ってきていて、Monitoring as a Service も注目すべき分野になりつつあるように感じるので、個人的には Monitoring as a Service 現状確認会みたいなイベントもゆくゆくはできたらいいなと思っています。&lt;/p&gt;
+
+&lt;h2 id=&#34;各種イベントへの会場提供について:144dda02c62d145abfdfe96b945fb036&#34;&gt;各種イベントへの会場提供について&lt;/h2&gt;
+
+&lt;p&gt;最後は告知になりますが、スマートニュースは各種イベントへの会場提供を積極的に行っております。2/21 (土) に開催された &lt;a href=&#34;http://nulab-inc.com/ja/blog/nulab/jissenscala/&#34;&gt;実戦での Scala 〜 6つの事例から知る Scala の勘所〜&lt;/a&gt; や、3/6 (金) に行われる &lt;a href=&#34;http://www.zusaar.com/event/12857005&#34;&gt;第9回若手Webエンジニア交流会&lt;/a&gt; のような 100~200 名程度の大きめの会場から、~10 名規模の会場まで、様々な規模の勉強会への会場提供をお手伝いいたします。ご入用の際はお気軽に &lt;a href=&#34;https://twitter.com/takus&#34;&gt;@takus&lt;/a&gt;、または他の弊社メンバーまで連絡くださいませ。(※ 会場の空き状況やイベントの内容などによって利用可否の判断がございますので、その点はご了承いただければ幸いです。)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AWS re:Invent 2014 day1 のまとめ</title>
+      <link>http://blog.takus.me/2014/11/12/reinvent-2014-day1/</link>
+      <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/11/12/reinvent-2014-day1/</guid>
+      <description>
+
+&lt;p&gt;AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。&lt;code&gt;@suzu_v&lt;/code&gt; 先生が&lt;a href=&#34;http://suzuken.hatenablog.jp/entry/2014/11/13/112730&#34;&gt;メモ書き&lt;/a&gt;をしていたので、自分も簡単ながらメモを残しておこうと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7545/15782079551_8690d5ac80_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;keynote:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Keynote&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2014/11/highly-scalable-mysql-compat-rds-db-engine.html&#34;&gt;Amazon Aurora&lt;/a&gt; は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、やっぱり既存のものをクラウドに持ってくだけじゃ不十分ってことで、クラウドだからできることは何かを真剣に考えていくことでこういうものが生まれてくるのでしょう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2014/11/new-aws-tools-for-code-management-and-deployment.html&#34;&gt;AWS CodeDeploy, AWS CodeCommit, AWS CodePipeline&lt;/a&gt; あたりは、ちょうどこの辺を整備しようかと思っていたので最高のタイミングで登場してくれて、若干手間がかかるところやってくれるのは非常にありがたいと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2014/11/track-aws-with-config.html&#34;&gt;AWS Config&lt;/a&gt; は、簡単に説明すると AWS のリソース変更履歴を残してくれるもので、ウワサに聞くと任意のタイミングにロールバックなどもできる（ようになる？）だとかで、Route53 あたりも対応してくれるとかなり助かる感じなのではないかと。&lt;/p&gt;
+
+&lt;h2 id=&#34;how-dropbox-scales-massive-workloads-using-amazon-sqs:d0538dcb99110c96961d7fbc97d14347&#34;&gt;How Dropbox Scales Massive Workloads Using Amazon SQS&lt;/h2&gt;
+
+&lt;p&gt;ファイルの更新をフックに、そのファイルに関する様々な処理を行うフレームワークについて紹介するセッション。Livefill と呼ばれる非同期処理パイプラインをマネージするフレームワークを SQS を利用して実装していて、開発者は YAML で input/output するキューと処理を記述するだけで非同期処理を追加していけるようになっていてクール。当たり前ですが、パイプラインの可視化がかなり重要で、コードのバグや書き込み先の詰まりなどで容易にパイプラインが詰まることがあるので、この手のものには、可視化することで早期に発見して対策していける仕組みが不可欠ですね。&lt;/p&gt;
+
+&lt;h2 id=&#34;infrastructure-as-code:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Infrastructure as Code&lt;/h2&gt;
+
+&lt;p&gt;CloudFormation の話な感じだったが、やっぱりJSON はツラい気がした。&lt;a href=&#34;https://www.simple.com/&#34;&gt;Simple&lt;/a&gt; の事例では Python のスクリプトで JSON 生成してるようだったが、もし使うならなんらかのラッパーが必要そうだなという印象。&lt;/p&gt;
+
+&lt;h2 id=&#34;netflix-s-next-generation-big-data-platform:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Netflix&amp;rsquo;s Next Generation Big Data Platform&lt;/h2&gt;
+
+&lt;p&gt;Netflix がいわゆるビッグデータ周りをどのように運用しているかについて、利用しているツール、それを選んだ理由、既存手法とのベンチマーク比較、導入する上での OSS への貢献などについて話をしていました。やはり 2000 台の EMR クラスタみたいな話があったり、規模感が相変わらずすごいです。&lt;/p&gt;
+
+&lt;p&gt;最近は社内でも &lt;a href=&#34;http://prestodb.io/docs/current/connector/mysql.html&#34;&gt;Presto の MySQL connector&lt;/a&gt; を利用して、S3 に置いてあるログと RDS にあるマスタを JOIN できるような環境が整いつつありますが、Presto や Parquet FF の話は大変参考になりました。(&lt;a href=&#34;http://techblog.netflix.com/2014/10/using-presto-in-our-big-data-platform.html&#34;&gt;関連ブログ&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;話を聞いていて、アプリケーションとストレージをできるだけ分離しておくことはかなり大切で、例えば Netflix のように基本的にデータを S3 に置くような運用していると、Hadoop v1 と v2 を並行稼働みたいなことが実現できて、バージョンアップ対応とか再起動祭りへの対応負荷がかなり下がりそうなので、この辺りは心がけていきたいですね。&lt;/p&gt;
+
+&lt;h2 id=&#34;aws-re-invent-central:d0538dcb99110c96961d7fbc97d14347&#34;&gt;AWS re:Invent Central&lt;/h2&gt;
+
+&lt;p&gt;スポンサー企業がブースを出展していて、普段使ってるサービスの開発者やサポートの人と直接会えたり、色々な企業のノベルティ貰えたりととても楽しい場所でした。&lt;/p&gt;
+
+&lt;h3 id=&#34;datadog:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Datadog&lt;/h3&gt;
+
+&lt;p&gt;1 年半前に &lt;a href=&#34;http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/&#34;&gt;Velocity Conference に参加したとき&lt;/a&gt;は、会場の隅に小さいブースを持ってるだけだったのですが、この 1 年半で大きく成長したようで、入り口近くにかなり大きなブースを構えるようになっていて、3 年くらい前から密かに Datadog ファンをしていた自分としては嬉しかったです。また、ブースで話をしていたら、&amp;rdquo;Are you Takumi? Coincidence!!&amp;rdquo; みたいなノリでいつもメールでサポート対応してくれてる人と出会えて話ができたのもとても有意義でした。&lt;/p&gt;
+
+&lt;p&gt;せっかくなので色々とディスカッションしてましたが、エージェントがメモリ使いすぎ問題について聞いたら、Golang でエージェント書いてるみたいな答えが返ってくるなど、こちらの課題感と同じ感覚をちゃんと持ってくれていて、この辺りが 1 年間ですごく成長してる理由の 1 つなのかなと勝手に思ってました。&lt;/p&gt;
+
+&lt;h3 id=&#34;chef:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Chef&lt;/h3&gt;
+
+&lt;p&gt;「昔、Chef のベストプラクティスで、コミュニティクックブックをラップしろみたいなのがあったけど、あれは本気か」って聞いてみたところ、コミュニティクックブックはテンプレートとして使うのがいいよと中の人が言っていたので、スッキリしました。&lt;/p&gt;
+
+&lt;h2 id=&#34;おわり:d0538dcb99110c96961d7fbc97d14347&#34;&gt;おわり&lt;/h2&gt;
+
+&lt;p&gt;ということで、2 日目がそろそろ終わるタイミングでの 1 日目のメモでした。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>YAPC::Asia 2014 にいってきた #yapcasia</title>
+      <link>http://blog.takus.me/2014/08/31/yapc-asia-2014/</link>
+      <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/08/31/yapc-asia-2014/</guid>
+      <description>&lt;p&gt;ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。&lt;/p&gt;
+
+&lt;p&gt;初めて&lt;a href=&#34;http://yapcasia.org/2014/individual_sponsors/&#34;&gt;個人スポンサー&lt;/a&gt;として参加させていただきましたが、
+10000 円という価格は 2 日間 HUB が貸し切りとか考えたらかなりリーズナブルなんじゃないかという印象です。
+(HUB は個人スポンサーじゃなくても入れますが&amp;hellip;)&lt;/p&gt;
+
+&lt;p&gt;セッションの中で印象に残ったのは @yanbe さんの &amp;ldquo;&lt;a href=&#34;http://yapcasia.org/2014/talk/show/2718b8f2-0331-11e4-9357-07b16aeab6a4&#34;&gt;最近のウェブサービスの検索機能やその先の話&lt;/a&gt;&amp;rdquo; と @tagomoris さんの &amp;ldquo;&lt;a href=&#34;http://yapcasia.org/2014/talk/show/d5049940-ebb2-11e3-bd6d-c7a06aeab6a4&#34;&gt;そんなにビッグでもないデータ処理手法の話&lt;/a&gt;&amp;rdquo; と @typester さんの&amp;rdquo;&lt;a href=&#34;http://yapcasia.org/2014/member/show/02387faa-ebb1-11e3-bd6d-c7a06aeab6a4&#34;&gt;キーノート&lt;/a&gt;&amp;rdquo; あたりなんですが、今回はトーク以上に懇親会とか会場で色んな人と喋ってるのがとても楽しくて刺激になって、いつも以上に楽しめました。&lt;/p&gt;
+
+&lt;p&gt;後は、前職を辞めてから初めての YAPC だったわけですが、会場で会ったときに「いつ戻ってくるの？」、「あれ？スマートなんとかの人だw」みたいなハートフル (?) な絡みをしてくれる人が多くてよかったです(笑)&lt;/p&gt;
+
+&lt;p&gt;運営の皆様、関係者の皆様、本当にありがとうございました。来年はどうなるか分からない感じだったけど、また開催されたらいいなと思ってるので、もし開催されるなら何らかの形で貢献できたらなと思ってます！&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>スマートニュースにジョインしました</title>
+      <link>http://blog.takus.me/2014/08/01/join-smartnews/</link>
+      <pubDate>Fri, 01 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/08/01/join-smartnews/</guid>
+      <description>&lt;p&gt;様々な大物な方々の人事ニュースが飛び交う中で恐縮ですが、スマートニュース株式会社にジョインしたことをこの場を借りて報告させていただきます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.takus.me/images/smartnews.png&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;会社は、同じタイミングで入社することになった &lt;code&gt;@komiya_atsushi&lt;/code&gt; さんの&lt;a href=&#34;http://life.k11i.biz/post/93450605375&#34;&gt;入社エントリ&lt;/a&gt;や &lt;a href=&#34;http://blog.kushii.net/archives/1869405.html&#34;&gt;941::blog の行ってきたシリーズ&lt;/a&gt;で詳しく紹介されていますが、働くメンバー、オフィス環境、福利厚生のどれも素晴らしく、よいプロダクトを作ることに集中できる素晴らしい環境が整っている一方で、&lt;a href=&#34;https://www.youtube.com/watch?v=b2ukMvyDlRQ&#34;&gt;すもうとにゅーす&lt;/a&gt; の CM が &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt; から始まったり、&lt;a href=&#34;https://www.youtube.com/watch?v=b2ukMvyDlRQ&#34;&gt;北米版のリリース&lt;/a&gt;が控えていたり、会社としても非常に面白いフェーズで、今のタイミングでジョインして色々なことに携わっていくことに大きな魅力を感じたことが入社理由の 1 つです。&lt;/p&gt;
+
+&lt;p&gt;まだスマートニュースのアプリをダウンロードしていない方がいましたらぜひこの機会に&lt;a href=&#34;http://www.smartnews.be/&#34;&gt;ダウンロード&lt;/a&gt;していただけたら嬉しいです。アプリへの要望・不満なども気軽にお問い合わせください！&lt;/p&gt;
+
+&lt;p&gt;また、そろそろ現状確認がしたい方もいるようですので、ぜひ気軽にオフィスに遊びに来て頂ければと思います。今後ともよろしくお願いいたします！&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>結婚しました &amp; 退職しました</title>
+      <link>http://blog.takus.me/2014/07/31/got-married-and-leave-dena/</link>
+      <pubDate>Thu, 31 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/07/31/got-married-and-leave-dena/</guid>
+      <description>&lt;p&gt;一部の方には既に報告させていただいてますが &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;22&lt;/sub&gt; に入籍しました。&lt;/p&gt;
+
+&lt;p&gt;ちなみに &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;22&lt;/sub&gt; は 天赦日 (てんしゃび) といって、日本の暦の上で最上の吉日とされているそうです (&lt;a href=&#34;https://www.richerie.jp/blog/best-marriage-day-2014/&#34;&gt;参考&lt;/a&gt;)。嫁さんとは高校時代から 8 年以上の付き合いで、すでに何年も一緒に住んでる上に、挙式もこれからのため、あまり実感が湧いてきてない状態ではありますが、よい家庭を築けるように二人でがんばっていきたいと思います。&lt;/p&gt;
+
+&lt;p&gt;さらに、こちらも社内の方や社外の一部の方にしか話をしていませんでしたが、7/31 をもって DeNA を退職します。かなり悩んで、色んな人に相談にのってもらったりしましたが、新たな場所で新たなチャレンジをしたいという思いが強かったため、退職を決めました。&lt;/p&gt;
+
+&lt;p&gt;2 年前に新卒として入社して、希望通りにインフラの部署に配属してもらい、&lt;a href=&#34;http://mbga.jp/&#34;&gt;mobage&lt;/a&gt; や &lt;a href=&#34;https://co-mm.com/&#34;&gt;comm&lt;/a&gt; といった数百万〜数千万ユーザ規模のサービスの運用を中心に、海外向けのソーシャルゲームでは AWS の運用に携わったり、海外の子会社や協力会社の方々への技術コンサルをさせていただいたり、短い在籍期間ながら実に様々な経験をすることができました。&lt;/p&gt;
+
+&lt;p&gt;また、上記のような仕事に加えて、国際学会派遣制度で Velocity Conference に参加させていただいたり (&lt;a href=&#34;http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/&#34;&gt;Velocity 2013 に参加 &amp;amp; LT してきました！！&lt;/a&gt;)、JAWS DAYS 2014 で話をする機会をいただいたり (&lt;a href=&#34;http://blog.takus.me/2014/03/17/jawsdays-2014/&#34;&gt;#jawsdays の #最強のAWS で「ぜんぶ AWS でやらないワケ」という話をしてきた&lt;/a&gt;)、若手エンジニア交流会をやりたいとお願いしたらお寿司を提供してくれたり(&lt;a href=&#34;http://engineer.dena.jp/2012/07/web.html&#34;&gt;「Web若手エンジニアの会」を開催しました&lt;/a&gt;)、課外活動でも様々な機会を与えてくださった DeNA という会社やお世話になった皆様にはただただ感謝するばかりです。&lt;/p&gt;
+
+&lt;p&gt;じゃあ、なんで辞めるのかというと、今これをやりたいと思うことに会社の外で出会ったことが大きいです。ある人に「もっと経験を積んでからでも遅くない」といった内容のアドバイスをいただいたときに、DeNA という素晴らしい環境の中で得られる経験は間違いなく自分のキャリアにとってプラスになることは間違いないとは思ったものの、そういう機会を逸してでもやってみたいという気持ちが抑えきれず、&lt;a href=&#34;http://anond.hatelabo.jp/20110128031409&#34;&gt;やらないことで後悔する&lt;/a&gt;という最悪な選択をしてしまうのがどうしても嫌だったので、こういう決断に至りました。(たぶんこれは昔の経験が大きく影響してるんですが、長々と自分語りしてもアレなので割愛します)&lt;/p&gt;
+
+&lt;p&gt;人間としてもエンジニアとしてもまだまだ未熟なことは重々承知ですが、この決断がよいものであったと周りの人に思ってもらえるように努力していきたいと思うので、どうぞ温かい目で見守っていただけますと幸いです。今まで本当に本当にありがとうございました。そして、今後ともどうぞよろしくお願いいたします。&lt;/p&gt;
+
+&lt;p&gt;P.S. せっかくの機会なので恒例の&lt;a href=&#34;http://www.amazon.co.jp/gp/registry/wishlist/2D5WTNTDJ7K4A/ref=cm_wl_huc_view&#34;&gt;ウィッシュリスト&lt;/a&gt;も貼らせていただきます。もしお祝いしてあげてもいいよという神様みたいな方がいましたらよろしくお願いいたします:D&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Barcelona にいってきた</title>
+      <link>http://blog.takus.me/2014/05/16/travel-to-barcelona/</link>
+      <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/05/16/travel-to-barcelona/</guid>
+      <description>
+
+&lt;p&gt;去年の「&lt;a href=&#34;http://blog.takus.me/2013/05/11/travel-to-los-angeles/&#34;&gt;Los Angeles に行ってきた&lt;/a&gt;」「&lt;a href=&#34;http://blog.takus.me/2013/05/12/travel-to-new-york/&#34;&gt;New York に行ってきた&lt;/a&gt;」に引き続き、今年は Barcelona にいってきましたが、かなりいい場所だったのでカンタンにまとめです。&lt;/p&gt;
+
+&lt;h2 id=&#34;バルセロナがオススメな理由:83d1fd963712beba12114c2d942dde9e&#34;&gt;バルセロナがオススメな理由&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;カンプノウやサグラダ・ファミリアなど見所が満載&lt;/li&gt;
+&lt;li&gt;魚介を中心として料理がメチャクチャ美味しい&lt;/li&gt;
+&lt;li&gt;比較的どこでも英語が通じて治安も悪くない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;見所満載のバルセロナ:83d1fd963712beba12114c2d942dde9e&#34;&gt;見所満載のバルセロナ&lt;/h2&gt;
+
+&lt;h3 id=&#34;camp-nou:83d1fd963712beba12114c2d942dde9e&#34;&gt;Camp Nou&lt;/h3&gt;
+
+&lt;p&gt;バルセロナに行く一番の目的といえば、サクラダファミリアかカンプノウの 2 つは外せないでしょう。ということで、ちょうどリーガエスパニョーラのヘタフェ戦がやっていたので見に行きました。チケットはクラシコのようなビッグマッチでない限り、&lt;a href=&#34;http://www.fcbarcelona.com/&#34;&gt;FC バルセロナのオフィシャルサイト&lt;/a&gt; の Tickets から辿っていけば好きな席を買えます。今回は 2F の最前列の席を取ったために 2 枚で 240 ユーロとかなりお高い感じでしたが、UEFA も認めるスタジアムだけあって、試合観戦のしやすさには衝撃をうけました。日本のスタジアムと比べて 2F の席であんなに選手が近くに感じられるスタジアムはないんじゃないかなという印象です。観戦チップスとしては、2F がせり出してる分、1F の最後列はかなり見づらそうな雰囲気だったので避けた方がいいのと、デイゲームでバックスタンド側にいると直射日光がハンパないので、お金のある人はメインスタンドのがベターなんじゃないかと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm6.staticflickr.com/5481/14193032595_2d08bc2919_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm6.staticflickr.com/5506/14193105695_9885011f88_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;la-sagrada-família:83d1fd963712beba12114c2d942dde9e&#34;&gt;La Sagrada Família&lt;/h3&gt;
+
+&lt;p&gt;いつまでも完成しなくて、作ってる間にもメンテナンスが必要なところが Web サービスっぽいことでお馴染みサグラダ・ファミリア教会。&lt;a href=&#34;http://www.sagradafamilia.cat/&#34;&gt;公式サイト&lt;/a&gt;で予約して指定時間に行けばすぐに入れるので予約をオススメします。夜にいくのもだいぶオススメで 23:00 頃に行きましたがそれなりに人もいて、全く危険な気配はない雰囲気でした。それまでにカサ・バトリョやカサ・ミラ、グエル公園などに行って(建築素人から見ても)ガウディの建築物はすごいなと思ってましたが、こいつは別格ですね。今のところ 2026 年くらいに完成予定？みたいなので、完成したらもう一度行きたいなって思ってます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm3.staticflickr.com/2919/14170054646_b549c68842_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7373/14006576829_731498804e_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;museu-nacional-d-art-de-catalunya:83d1fd963712beba12114c2d942dde9e&#34;&gt;Museu Nacional d&amp;rsquo;Art de Catalunya&lt;/h2&gt;
+
+&lt;p&gt;カンプノウとサグラダ・ファミリアは別格として、もう一個オススメするならカタルーニャ美術館です。19:00 くらいからはじまる噴水ショーはもちろん、下から見上げる美術館が偉大なのと、上から見る眺めもステキで、新婚旅行でいくとロマンチックな雰囲気を楽しめるんじゃないでしょうかね。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7423/14006634478_a8f819be2a_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7451/14193308825_1865eccee3_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7337/14006652870_94f6ed898f_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;メシについて:83d1fd963712beba12114c2d942dde9e&#34;&gt;メシについて&lt;/h2&gt;
+
+&lt;p&gt;どこに行ってもかなり美味しくて大変満足度が高かったです。サングリアも 4 ユーロくらいで大量に飲めたりして、普段あまりお酒飲まないタイプですが、ついつい連日飲んでしまった感じでした。とはいえ、レストランいくと 1 食で 10 ~ 15 ユーロかかって、1 ユーロ 145 円くらいだったのでなかなかお金はかかりました。印象深かったのは &lt;a href=&#34;https://www.facebook.com/ObsessionsDelRaval&#34;&gt;Obsessions del Raval&lt;/a&gt; というこじんまりしたお店で、Trip Adviser みたらレートがよさそうだったので入ってみたら、バケットにリコッタチーズと生ハムが載った料理が激ウマだったので、かなりオススメです。おそらく地元の人しか来ないようなお店のためかメニューがスペイン語とカタルーニャ語しかないですが、店のおばちゃんが全メニュー英語で説明してくれたので空いてる時に行けばなんとかなるんじゃないかと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm6.staticflickr.com/5593/14190085591_2beb81d2c2_z.jpg&#34;&gt;
+&lt;img src=&#34;https://farm3.staticflickr.com/2922/14190822342_4fa1835ca0_z.jpg&#34;&gt;
+&lt;img src=&#34;https://farm8.staticflickr.com/7450/14190085401_7c3e597797_z.jpg&#34;&gt;
+&lt;img src=&#34;https://farm6.staticflickr.com/5475/14006706039_ffa4c9ffb7_z.jpg&#34;&gt;
+&lt;img src=&#34;https://farm8.staticflickr.com/7340/14190822002_4c41068bdb_z.jpg&#34;&gt;
+&lt;img src=&#34;https://farm8.staticflickr.com/7368/14193318744_4e8ec0dbae_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;英語と治安について:83d1fd963712beba12114c2d942dde9e&#34;&gt;英語と治安について&lt;/h2&gt;
+
+&lt;p&gt;さすがにオリンピックもやるような国際都市は違うなという感じで、あと数年で東京がこのレベルに達するのかというと、なかなか厳しそうだなという印象でしたが、日本人として日本にいると気づかないだけで、観光名所やその周辺の飯処は英語が通じたりするんでしょうかね？&lt;/p&gt;
+
+&lt;p&gt;またスペインってかなり失業率が高いと聞いていて、治安が悪い印象があったんですが、ほとんど危険を感じるようなことなありませんでした。日が沈むのが遅いので、20:00 くらいまでは明るいのに加え、23:00 くらいになっても子連れで歩く家族がいたり、お子様を連れて行くのも比較的難易度が低いのではないかなと思います。&lt;/p&gt;
+
+&lt;h2 id=&#34;そのほか:83d1fd963712beba12114c2d942dde9e&#34;&gt;そのほか&lt;/h2&gt;
+
+&lt;p&gt;モバイル事情もそんなに悪くなく、「&lt;a href=&#34;http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/&#34;&gt;バルセロナでプリペイド SIM カードを購入する&lt;/a&gt;」で紹介したように現地でプリペイド SIM を買ってネットしていましたが、下りで 6Mbps くらいは出ていて、地下鉄でも比較的電波が入るところが多く、不便を感じることはありませんでした。ただ、そういうインフラがある割に、電車の中でスマホ弄ってる人は圧倒的に少なくて、自分がチラチラみる限りは WhatsApp してるか Candy Crush Saga やってるかみたいな雰囲気でした。&lt;/p&gt;
+
+&lt;p&gt;あと、今回かかった旅費ですが、2 人で 7 泊 9 日の日程で 48 万くらいかかってしまいました。航空券が 24 万で、宿泊費が 8 万くらいなので、現地でもかなりお金を使ってしまった印象ですが、一人旅じゃないので仕方なしといったところでしょうか。&lt;/p&gt;
+
+&lt;h2 id=&#34;まとめ:83d1fd963712beba12114c2d942dde9e&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;今回、紹介した場所はもちろん、その他にもバルセロナ市街を一望できるモンジュイックや、ピカソやミロを中心とした美術館、地中海をクルージングできるバルセロナ港など、とにかく見所満載でオススメな場所なので、夏休みに行ってみるのはいかがでしょうか？ということで終わりです。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>バルセロナでプリペイド SIM カードを購入する</title>
+      <link>http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/</link>
+      <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/</guid>
+      <description>
+
+&lt;p&gt;休暇でバルセロナに来てるわけですが、今回は現地でプリペイド SIM カードを買ってみたので買い方などをまとめておきます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7329/13922739997_155d5662b8_z.jpg&#34;&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;購入方法:40218906cadbdd5725e61aeddba649b4&#34;&gt;購入方法&lt;/h2&gt;
+
+&lt;p&gt;エル・プラット国際空港のターミナル 1 の出口あたりで Lebara というキャリアの SIM が売っていて、他に買えそうな場所がなかったのでそこで買いました。
+購入の流れとしては、店員さんにプリペイド SIM カードをくださいと伝えるとパスポート見せろと言われるので、
+それを見せれば SIM カードと簡易なマニュアルが貰えるので、マニュアルに従って APN の設定等を済ませるだけです。
+今回の場合は、店員さんが丁寧に APN の設定等までやってくれる感じだったので、
+あらかじめ言語設定を英語にしておくとスムーズに設定してもらえるんじゃないかと思います。&lt;/p&gt;
+
+&lt;h2 id=&#34;料金:40218906cadbdd5725e61aeddba649b4&#34;&gt;料金&lt;/h2&gt;
+
+&lt;p&gt;契約した Lebara というキャリアの話になってしまいますが、€10 で 1GB のデータ通信がついてきて、足りない場合は €3 で 100MB づつ買い足していけるようです。今回はバルセロナに 8 日間ほど滞在していましたが、2 人でテザリングして 1GB 程度だったので、普通に使うのであれば €10 のプランで問題ないのではないかと思います。(あとは €25 で 3GB のプランもありました)&lt;/p&gt;
+
+&lt;h2 id=&#34;チャージ:40218906cadbdd5725e61aeddba649b4&#34;&gt;チャージ&lt;/h2&gt;
+
+&lt;p&gt;最初に購入した分を使い切ってしまったらチャージする必要があります。
+街中で Lebara のステッカーが貼ってあるお店を見つけて、電話番号を伝えてお金を払うとチャージできますが、
+単にチャージするだけではダメで、&lt;a href=&#34;http://www.lebara.es/passes/internet?isoCode=en_GB&#34;&gt;22233 に SMS で D100 というメッセージを送る必要があるようです&lt;/a&gt;。
+ちなみに &lt;a href=&#34;http://www.lebara.es/&#34;&gt;Lebara のサイト&lt;/a&gt;からクレジットカードでもチャージできるみたいですが、
+何度やっても上手くいかなかったので諦めました。&lt;/p&gt;
+
+&lt;h2 id=&#34;まとめ:40218906cadbdd5725e61aeddba649b4&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;購入に少し手間はかかりますが、海外ローミングやモバイルルータを使うと 1 日 1000 円くらいかかるモバイル回線が、
+プリペイドの SIM を買うことで 100~200 円レベルになるのでバルセロナ (スペイン) に行く人がいれば検討するとよいと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>『グーグル ネット覇者の真実』を読んだ</title>
+      <link>http://blog.takus.me/2014/04/16/google-in-the-plex/</link>
+      <pubDate>Wed, 16 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/04/16/google-in-the-plex/</guid>
+      <description>
+
+&lt;p&gt;ある人にオススメされたので『&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/B009LFBL4Y/takus-22/ref=nosim&#34;&gt;グーグル ネット覇者の真実&lt;/a&gt;』を読んでみたらかなり面白い本でした。検索連動型広告という金脈を見つけて急成長していく序盤のワクワクする感じから、上場して今のような大企業になるにつれていわゆる大企業病が蔓延して色々と悩みが増えてくる様子などがかなり生々しく書かれていて、色々と考えさせられる内容が多かったです。その中でもいくつか印象に残ったことなどをメモっておきます。&lt;/p&gt;
+
+&lt;h2 id=&#34;徹底したコストへの意識:c41707fe51a83289c0cb219970daffe8&#34;&gt;徹底したコストへの意識&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;「検索リクエストをひとつ処理するたびにお金がかかる。広告収入が得られるようになるのはまだ先のことだった。そこでペイジとプリンとヘルツルは、可能な限り安くインフラを構築する方法を考えたんだ。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(ビジネスがうまくいってる限りは) 極端にインフラのコストを下げる必要はないのかなと思ってましたが、考えを改めさせられました。たとえばグーグルのように収益得られるようになるまでいいプロダクトを作ることにフォーカスできる体力を残せるという価値もあるし、ユーザ視点で考えると、コストがかかって今までは有料じゃなければできなかったことが、無料 (広告) のみで提供できるようになるみたいな価値の生み方もあるなと。ということで、1 クエリの処理にいくらかかるのかを即答できるレベルでコストと向き合っていくべきだなと感じてます。&lt;/p&gt;
+
+&lt;h2 id=&#34;低レイテンシーの追求:c41707fe51a83289c0cb219970daffe8&#34;&gt;低レイテンシーの追求&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;「彼 (ラリー・ペイジ) は常にあらゆることを測っている」&lt;/p&gt;
+
+&lt;p&gt;検索結果の戻りが遅いと「ユーザは検索し直すことを無意識に嫌がるようになる」とヘルツルは言う。「あるいは検索リクエストを別の表現で入力し直すより、全く別の情報を探そうとするかもしれない。ユーザに直接聞いても、そうだとは決して答えないだろうが、全体のデータを見れば一目瞭然だ。」&lt;/p&gt;
+
+&lt;p&gt;スライドショーが 3 倍速く動くようにすると、改善策について発表があったわけでもないのに、実施当日の「ピカサ」サイトのトラフィックは 40% 増加した。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;これもコストの話と同じで、もっと低レイテンシーを追求していかなきゃいかんと考えさせられることが色々書いてあり、意識が高まりました。&lt;/p&gt;
+
+&lt;h2 id=&#34;大企業になると:c41707fe51a83289c0cb219970daffe8&#34;&gt;大企業になると&amp;hellip;&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;(上場後) つまり、グーグラーたちは裕福になるにつれて保守化していったのだ。&lt;/p&gt;
+
+&lt;p&gt;グーグルとユーチューブの社内で交わされていたメールやプレゼン資料を比較すると、両者は著しく対照的な企業であることがわかる。グーグルビデオ・チームは上層部から承認とアドバイスを得るために膨大な時間を費やしていた。&amp;hellip;ユーチューブでは、上司のために大量のスライド資料を何度も書き直す必要はなかった。彼らは自分が正しいと感じたことをやるだけでよかった。&lt;/p&gt;
+
+&lt;p&gt;この問題で直面した状況は、グーグルを苦しめてる問題の縮図だった。小さな企業がテクノロジーと頭脳の力を駆使して、既存のビジネスモデルは文化的伝統をかき乱せば、その企業は魅力的で刺激的だと賞賛され、かたやライバル企業は既得権にしがみつく守旧派のいじめっ子というレッテルを貼られる。しかし、資金力の豊富な巨大企業が市場をかき乱すと、その企業がいじめっ子と見なされ、ライバル企業は（たとえ、よこしまな意図で行動していても）同情を集められる。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;上場するような規模になってくると、それまでとは違う色々な問題が出てきて、Google も例外でないんだなと実感させられました。&lt;/p&gt;
+
+&lt;h2 id=&#34;そのほか:c41707fe51a83289c0cb219970daffe8&#34;&gt;そのほか&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;「グーグルは当時 1 万 ~ 1 万 5000 台のサーバを保有していたので、2000 台くらいは自由に使わせてもらうことができた」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;これはさすが Google 先生という内容&amp;hellip;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;「サーバの反応が遅すぎる場合、あなたならどのように診断しますか？」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ある社員が面接で聞かれたらしいですが、シンプルであるにも関わらず本質を理解してないと答えられない良問だと思いました。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;「問題を突き詰めるとこうこうことになる」とマカフリーは後に語った。「限られた予算を技術開発やインフラや本当に優秀な社員の雇用に注ぎ込みたいのか？それとも効果を測定することすらできないマーケティングに使って台無しにしたいのか？」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;マーケティングって成功のためには大切な要素の一つではあると思いますが、プロダクトの質を高めるのにお金使う方がより健全だし、ユーザに与える価値も大きくなるんじゃないかなという印象をうけました。&lt;/p&gt;
+
+&lt;h2 id=&#34;まとめ:c41707fe51a83289c0cb219970daffe8&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;全体的にかなり面白くて意識も高まる内容だったので『ソーシャルネットワーク』みたいに映画化してくれないかなって思いました。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>『アルゴリズムが世界を支配する』を読んだ</title>
+      <link>http://blog.takus.me/2014/04/05/automate-this/</link>
+      <pubDate>Sat, 05 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/04/05/automate-this/</guid>
+      <description>&lt;p&gt;『&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/B00FMI2XIW/takus-22/ref=nosim&#34;&gt;アルゴリズムが世界を支配する&lt;/a&gt;』を読んでみました。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;アルゴリズムとは無数の二者択一からなる巨大なデシジョン・ツリーだととらえることができる。
+私たちのやることなすことほぼすべてが—車の運転から株の売買から配偶者選びにいたるまで—二者択一の無数の要素にまで分解することができる (本文より)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Amazon の &amp;ldquo;この商品を買った人はこんな商品も買っています&amp;rdquo; のような、いかにもコンピュータが得意そうなものだけでなく、今までは人がやることしか考えられなかったような仕事までもどんどんアルゴリズムで置き換えられていきますよ？ って具体例がたくさん載っていて興味深い内容でした。&lt;/p&gt;
+
+&lt;p&gt;例えば、コールセンター業務では、アルゴリズムによって会話内容から顧客のパーソナリティを分類してパーソナリティが近い人に対応させることで、通話時間と問題の解決率を 50% も改善できる可能性があるらしく、企業からみれば今までの半分の人数でコールセンター業務を回せることになるので大きな価値がある一方で、コールセンターで働いてる人の仕事の半分はアルゴリズムで置き換えられてしまうことになります。&lt;/p&gt;
+
+&lt;p&gt;自分が普段やってるような仕事でも、例えば @mirakui さんの『&lt;a href=&#34;http://blog.mirakui.com/entry/2013/02/20/003401&#34;&gt;全自動パラメータチューニングさん&lt;/a&gt; 』のようなものがもっともっと発達してしまうと、仕事の大半はアルゴリズムによって自動化されて失職なんてこともあるかもしれません。&lt;/p&gt;
+
+&lt;p&gt;じゃあ、世の中の仕事は全てアルゴリズムで置き換えていけるかっていうとそういうわけでもなくて、過去の膨大なデータから未来の傾向を予測するようなことは得意な一方で、今までにない新しい概念や新しい仕組みを作るような行為はアルゴリズムで置き換えるのは難しい部分になってくると思います。本に載ってた例が聞いたことない音楽の例だったので自分なりに解釈すると、全盛期のモー娘。の身体的な特徴とヒット曲の分析をいくらしても、AKB は生まれてこないってのがしっくりくるかなってとこです。&lt;/p&gt;
+
+&lt;p&gt;というわけで、既存の延長で仕事してないでもっと新しいことやっていかないとなって思ってます。おわり。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Think Simple は学びが多い本でした</title>
+      <link>http://blog.takus.me/2014/03/29/think-simple/</link>
+      <pubDate>Sat, 29 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/03/29/think-simple/</guid>
+      <description>
+
+&lt;p&gt;Macbook や iPhone のデザインはシンプルでクールで最高だろ、みたいな本かと思って敬遠してましたが、&lt;a href=&#34;http://blog.kenjiskywalker.org/blog/2013/11/16/think-simple/&#34;&gt;@kenjiskywalker さんのブログ&lt;/a&gt; みて面白そうだったので、&amp;rdquo;&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/B008YOHMCS/takus-22/ref=nosim&#34;&gt;Think Simple - アップルを生みだす熱狂的哲学&lt;/a&gt;&amp;rdquo; 読んでみたら、予想以上に学びが多くて、イイ本でした。&lt;/p&gt;
+
+&lt;h2 id=&#34;コミュニケーションについて:8685147bccd786826563be26c18bad1a&#34;&gt;コミュニケーションについて&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;相手が敵でも友人でも、真実は真実で変わりないし、自分の意見は自分の意見で変わらなかった。
+相手を好きか嫌いか、その働きを評価しているかどうかは関係なかったし、部屋の空気も関係なかった。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;仕事上のコミュニケーションってどうしてもシンプルにするのが難しい部分があって、たとえば外の会社と一緒に開発するような案件で、明らかに外部の会社の人がおかしなこと言っていたとしても、人間関係とか考えると、話させるのをやめたり、厳しく批判するのを躊躇ったりしがちですが、もっとシンプルにコミュニケーションすべきじゃないかと思いました。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;自分のチームに最高の結果をもたらすために、ただ言うべきことを言うことなのだ。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;これも上に書いてあることと同じですね。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;人を不快にさせたり、陰で悪口を言われたりすることがあっても、もっとよくできることがわかっているときは、これでいいかと自分を納得させてはならない。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;他の人が進めてるプロジェクトなんかでありがちな気がするんですが、自分が見た時にはすでに議論や作業がある程度進んでいるんだけど、説明を聞くとイマイチいけてないみたいな状況で、面倒だからスルーしちゃうみたいなのやめた方がよさそうです。&lt;/p&gt;
+
+&lt;h2 id=&#34;仕事の進め方について:8685147bccd786826563be26c18bad1a&#34;&gt;仕事の進め方について&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;部屋にいる者は全員がそこにいるべき理由を持っていること。
+「情けで招待する」ようなことはあってはならない。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Wiki にまとめた資料を読むだけの会議とかほんと無駄なので、読んでおいてくださいで終わらせたい。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;スティーブの頭にはレポートカードを作ったり、それに対応したりして、貴重な時間を費やすことなどまったく思い浮かばなかっただろう。
+彼はリアルタイムの正直さを好んだ。何か気にかかることがあれば、その場で告げた。それが私たちのレポートカードだった。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;会議のための資料作りって、自分の思考を整理できるという面においてはいいんですが、見た目とかに凝り出しちゃうと本質見失ってる感じですね。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;つまりこういうことだ。プロセスが王様のときに、アイデアはけっして王様になれない。
+プロセスの段階を増やせば増やすほど、完成品の質が悪くなることは、&amp;lt;常識&amp;gt; を働かせればわかるだろう。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;もっと承認とか減らしてやった方がうまく行くんだろうなって思うことは色々ありますね。もちろん失敗することもあるんじゃないかと思いますが、スピード感持ってやれば、その分だけ挑戦する回数も多くなって、結果的に成功が増えるってイメージです。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;シンプルさはせっかちだ。いきなり本題に入って、大事なことに集中したがる。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;なんでもシンプルにやることで、本質にフォーカスして、もっとバリュー出したいです。&lt;/p&gt;
+
+&lt;h2 id=&#34;まとめ:8685147bccd786826563be26c18bad1a&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;ということで、日頃、なんか仕事しにくいなとか思いながら働いてる人は読んでみるといいんじゃないかと思いました。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>#jawsdays の #最強のAWS で「ぜんぶ AWS でやらないワケ」という話をしてきた</title>
+      <link>http://blog.takus.me/2014/03/17/jawsdays-2014/</link>
+      <pubDate>Mon, 17 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/03/17/jawsdays-2014/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/hirose31&#34;&gt;@hirose31&lt;/a&gt; さん経由で &lt;a href=&#34;https://twitter.com/con_mame&#34;&gt;@con_mame&lt;/a&gt; さんからお話をいただき、
+&lt;a href=&#34;http://jawsdays2014.jaws-ug.jp/&#34;&gt;JAWSDAYS 2014&lt;/a&gt; の「&lt;a href=&#34;http://jawsdays2014.jaws-ug.jp/sessions/track7/&#34;&gt;これで最強AWSに&lt;/a&gt;」というセッションで話をしてきました。&lt;/p&gt;
+
+&lt;p&gt;内容としては、オンプレも AWS も運用してる立場から両者を比較してみてどうなのといった感じのお話です。
+&lt;a href=&#34;http://togetter.com/li/639957&#34;&gt;2014/03/15 JAWS DAYS 2014 - 『これで最強のAWSに』セッション #jawsdays #最強のAWS&lt;/a&gt; にツイートまとめがあるので、資料と一緒にご覧いただければと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;e47ff2c08e49013146041a945ae20cc0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;こんな話も出ていましたが、&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/rada_bashishi/status/444737901440409600&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;AWS は必ずしも銀の弾丸ってわけではなく、どこの会社も悩ましい部分を抱えながら運用しているわけで、
+&lt;a href=&#34;https://twitter.com/sgwr_dts&#34;&gt;@sgwr_dts&lt;/a&gt; さんの &lt;a href=&#34;https://bitbucket.org/winebarrel/roadworker&#34;&gt;Roadworker&lt;/a&gt; のようにユーザ側でイケてる仕組みにするようなアプローチもありますが、このような機会を利用して AWS の中の人に直接フィードバックできたという意味で、いいセッションになったのではないかと思っています。&lt;/p&gt;
+
+&lt;p&gt;関係者のみなさま、ありがとうございました！&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>EC2 に SSH できない時の対処法、あるいは Marketplace の AMI を気軽に選ぶべきでない理由</title>
+      <link>http://blog.takus.me/2014/03/04/ec2-ssh/</link>
+      <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2014/03/04/ec2-ssh/</guid>
+      <description>&lt;p&gt;前半の部分をまとめようと思ったら、大切なことは全て&lt;a href=&#34;https://gist.github.com/j3tm0t0/5560892&#34;&gt; @j3tm0t0 さんの gist &lt;/a&gt;に書いてあったので、SSH でログインできなくなった時はまず上記の gist に書いてあることを確認するといいと思います。&lt;/p&gt;
+
+&lt;p&gt;で、今回の話は、snapshot を取得して 新たに volume を作成して、他のインスタンスにアタッチ＆マウントしてエラーが出ていないかを確認しようとした時に下記のエラーでマウントできなかった件に関するお話です。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;vol-xxxxxxx&#39; with Marketplace codes may not be attached as as secondary device.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ググったら &lt;a href=&#34;http://www.quora.com/Amazon-EC2/Is-it-possible-to-rescue-an-EBS-volume-which-has-marketplace-codes&#34;&gt;&amp;ldquo;Is it possible to rescue an EBS volume which has marketplace codes?&amp;rdquo;&lt;/a&gt; や &lt;a href=&#34;http://techblog.willshouse.com/2013/08/21/marketplace-codes-may-not-be-attached-as-a-secondary-device/&#34;&gt;&amp;ldquo;Marketplace codes may not be attached as a secondary device&amp;rdquo;&lt;/a&gt; といった記事を見つけて、まとめると、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Marketplace で提供される AMI はルートボリューム以外にマウントできない&lt;/li&gt;
+&lt;li&gt;AWS のサポートに連絡するとマウントできない制限を解除してくれる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;とのことで、AWS のサポートに調査対象ボリュームのスナップショットを共有すると、マウントできない制限を解除してくれるようです。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/marketplace/seller-profile/ref=dtl_pcp_sold_by?ie=UTF8&amp;amp;id=16cb8b03-256e-4dde-8f34-1b0f377efe89&#34;&gt;CentOS は公式の AMI が Marketplace で提供されてる&lt;/a&gt;のでついつい選んでしまいがちですが、問題が起きた時のトラブルシューティングに一手間かかってしまうので、気軽な気持ちで選んでしまうと面倒なことになるよという話でした。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

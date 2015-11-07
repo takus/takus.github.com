@@ -1,794 +1,531 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html lang="ja-jp">
 <head>
-  <meta charset="utf-8">
-  <title>TAKUMI SAKAMOTO&#8217;S BLOG</title>
-  <meta name="author" content="Takumi Sakamoto">
 
-  
-  <meta name="description" content="こんにちは。スマートニュースの @takus です。2/24 に Datadog ユーザの集まり #dd_sushi というイベントを開催しましたので、この場を借りて簡単にレポートさせていただきます。 このイベントは Presto Meetup で Treasure Data の @ &hellip;">
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta property="og:title" content=" takus&#39;s blog" />
+  	<meta property="og:site_name" content="takus&#39;s blog" />
+  	<meta property="og:url" content="http://blog.takus.me/" />
 
-  
-  <link rel="canonical" href="http://blog.takus.me/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="TAKUMI SAKAMOTO'S BLOG" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    
+    <meta property="og:type" content="website" />
+    
 
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-2841066-12']);
-    _gaq.push(['_trackPageview']);
+  <title>
+     takus&#39;s blog
+  </title>
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="http://blog.takus.meimages/favicon.ico">
+	  <link rel="apple-touch-icon" href="http://blog.takus.meimages/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/screen.css" />
+    <link rel="stylesheet" type="text/css" href="http://blog.takus.mecss/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
 
 
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">TAKUMI SAKAMOTO&#8217;S BLOG</a></h1>
-  
-    <h2>A weblog about Web Operations, Programming, Football, Travel and Other My Interests.</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:blog.takus.me" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="http://about.me/takus">AboutMe</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
+    
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-26T12:00:00+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="https://farm9.staticflickr.com/8679/16032002853_cc339f1ba5_z.jpg" width="640" height="374" title="'flickr.com'" ></p>
-
-<p>こんにちは。スマートニュースの <a href="https://twitter.com/takus">@takus</a> です。2/24 に Datadog ユーザの集まり <a href="https://twitter.com/search?q=%23dd_sushi">#dd_sushi</a> というイベントを開催しましたので、この場を借りて簡単にレポートさせていただきます。</p>
-
-<p>このイベントは <a href="http://eventdots.jp/event/276987">Presto Meetup</a> で Treasure Data の <a href="https://twitter.com/repeatedly">@repeatedly</a> さんと話をしているときに 「スマートニュースの新オフィスに遊びに行きたい！」という話が出て、Treasure Data も最近 Datadog を使い始めたというところから、せっかくなので Datadog について話をするイベントにしてみようという経緯で、開催に至ったわけですが、Datadog を代表して <a href="https://twitter.com/jhotta">@jhotta</a> さんに 2015 年のロードマップについて話をしていただいたり、Datadog を利用している様々な会社から導入経緯、利用方法、便利ツールなどの発表をしていただき、とても有意義な時間になりました。</p>
-
-<h2>発表資料(発表順)</h2>
-
-<script async class="speakerdeck-embed" data-id="af1e6ad4f24148c89d5886a3be4b0cc0" src="//speakerdeck.com/assets/embed.js"></script>
-
-
-
-
-<script async class="speakerdeck-embed" data-id="cb1435fedb304357b9f1526f1b9839b0" src="//speakerdeck.com/assets/embed.js"></script>
-
-
-
-
-<script async class="speakerdeck-embed" data-id="d6dc9de74fa6411f9cf7e7bd5884bf71" src="//speakerdeck.com/assets/embed.js"></script>
-
-
-<p>パブリックなイベントではなかったので公開されてない方もいますが、ひとまず公開されてる資料だけまとめておきます。</p>
-
-<h2>当日の様子</h2>
-
-<p>弊社の <a href="https://twitter.com/just_do_neet">@just_do_neet</a> さんが <a href="http://togetter.com/li/787532">togetter のまとめ</a> を作ってくれたので雰囲気は togetter を見て感じ取ってくださればと思います。</p>
-
-<p><img src="https://farm9.staticflickr.com/8573/16464500850_f826114d3b_z.jpg" width="640" height="374" title="'flickr.com'" ></p>
-
-<p><img src="https://farm9.staticflickr.com/8628/16625959386_4513e6f105_z.jpg" width="640" height="374" title="'flickr.com'" ></p>
-
-<p><img src="https://farm9.staticflickr.com/8566/16625959426_1e640c61c1_z.jpg" width="640" height="374" title="'flickr.com'" ></p>
-
-<h2>まとめ</h2>
-
-<p>ここ 1 年くらいの動向として、海外では <a href="https://www.datadoghq.com/2015/02/datadog-acquires-mortar-data/">Datadog が Mortar Data を買収したり</a>、<a href="http://techcrunch.com/2014/05/07/google-acquires-cloud-monitoring-service-stackdriver/">Google が Stackdriver を買収したり</a> と盛り上がってる一方で、日本でも <a href="https://mackerel.io">Mackerel</a> が流行ってきていて、Monitoring as a Service も注目すべき分野になりつつあるように感じるので、個人的には Monitoring as a Service 現状確認会みたいなイベントもゆくゆくはできたらいいなと思っています。</p>
-
-<h2>各種イベントへの会場提供について</h2>
-
-<p>最後は告知になりますが、スマートニュースは各種イベントへの会場提供を積極的に行っております。2/21 (土) に開催された <a href="http://nulab-inc.com/ja/blog/nulab/jissenscala/">実戦での Scala 〜 6つの事例から知る Scala の勘所〜</a> や、3/6 (金) に行われる <a href="http://www.zusaar.com/event/12857005">第9回若手Webエンジニア交流会</a> のような 100~200 名程度の大きめの会場から、~10 名規模の会場まで、様々な規模の勉強会への会場提供をお手伝いいたします。ご入用の際はお気軽に <a href="https://twitter.com/takus">@takus</a>、または他の弊社メンバーまで連絡くださいませ。(※ 会場の空き状況やイベントの内容などによって利用可否の判断がございますので、その点はご了承いただければ幸いです。)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-13T15:21:48+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:21 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="https://farm8.staticflickr.com/7545/15782079551_8690d5ac80_z.jpg" width="640" height="480"></p>
-
-<p>AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。<code>@suzu_v</code> 先生が<a href="http://suzuken.hatenablog.jp/entry/2014/11/13/112730">メモ書き</a>をしていたので、自分も簡単ながらメモを残しておこうと思います。</p>
-
-<h2>Keynote</h2>
-
-<p><a href="http://aws.typepad.com/aws_japan/2014/11/highly-scalable-mysql-compat-rds-db-engine.html">Amazon Aurora</a> は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、やっぱり既存のものをクラウドに持ってくだけじゃ不十分ってことで、クラウドだからできることは何かを真剣に考えていくことでこういうものが生まれてくるのでしょう。</p>
-
-<p><a href="http://aws.typepad.com/aws_japan/2014/11/new-aws-tools-for-code-management-and-deployment.html">AWS CodeDeploy, AWS CodeCommit, AWS CodePipeline</a> あたりは、ちょうどこの辺を整備しようかと思っていたので最高のタイミングで登場してくれて、若干手間がかかるところやってくれるのは非常にありがたいと思います。</p>
-
-<p><a href="http://aws.typepad.com/aws_japan/2014/11/track-aws-with-config.html">AWS Config</a> は、簡単に説明すると AWS のリソース変更履歴を残してくれるもので、ウワサに聞くと任意のタイミングにロールバックなどもできる（ようになる？）だとかで、Route53 あたりも対応してくれるとかなり助かる感じなのではないかと。</p>
-
-<h2>How Dropbox Scales Massive Workloads Using Amazon SQS</h2>
-
-<p>ファイルの更新をフックに、そのファイルに関する様々な処理を行うフレームワークについて紹介するセッション。Livefill と呼ばれる非同期処理パイプラインをマネージするフレームワークを SQS を利用して実装していて、開発者は YAML で input/output するキューと処理を記述するだけで非同期処理を追加していけるようになっていてクール。当たり前ですが、パイプラインの可視化がかなり重要で、コードのバグや書き込み先の詰まりなどで容易にパイプラインが詰まることがあるので、この手のものには、可視化することで早期に発見して対策していける仕組みが不可欠ですね。</p>
-
-<h2>Infrastructure as Code</h2>
-
-<p>CloudFormation の話な感じだったが、やっぱりJSON はツラい気がした。<a href="https://www.simple.com/">Simple</a> の事例では Python のスクリプトで JSON 生成してるようだったが、もし使うならなんらかのラッパーが必要そうだなという印象。</p>
-
-<h2>Netflix&rsquo;s Next Generation Big Data Platform</h2>
-
-<p>Netflix がいわゆるビッグデータ周りをどのように運用しているかについて、利用しているツール、それを選んだ理由、既存手法とのベンチマーク比較、導入する上での OSS への貢献などについて話をしていました。やはり 2000 台の EMR クラスタみたいな話があったり、規模感が相変わらずすごいです。</p>
-
-<p>最近は社内でも <a href="http://prestodb.io/docs/current/connector/mysql.html">Presto の MySQL connector</a> を利用して、S3 に置いてあるログと RDS にあるマスタを JOIN できるような環境が整いつつありますが、Presto や Parquet FF の話は大変参考になりました。(<a href="http://techblog.netflix.com/2014/10/using-presto-in-our-big-data-platform.html">関連ブログ</a>)</p>
-
-<p>話を聞いていて、アプリケーションとストレージをできるだけ分離しておくことはかなり大切で、例えば Netflix のように基本的にデータを S3 に置くような運用していると、Hadoop v1 と v2 を並行稼働みたいなことが実現できて、バージョンアップ対応とか再起動祭りへの対応負荷がかなり下がりそうなので、この辺りは心がけていきたいですね。</p>
-
-<h2>AWS re:Invent Central</h2>
-
-<p>スポンサー企業がブースを出展していて、普段使ってるサービスの開発者やサポートの人と直接会えたり、色々な企業のノベルティ貰えたりととても楽しい場所でした。</p>
-
-<h3>Datadog</h3>
-
-<p>1 年半前に <a href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity Conference に参加したとき</a>は、会場の隅に小さいブースを持ってるだけだったのですが、この 1 年半で大きく成長したようで、入り口近くにかなり大きなブースを構えるようになっていて、3 年くらい前から密かに Datadog ファンをしていた自分としては嬉しかったです。また、ブースで話をしていたら、&#8221;Are you Takumi? Coincidence!!&ldquo; みたいなノリでいつもメールでサポート対応してくれてる人と出会えて話ができたのもとても有意義でした。</p>
-
-<p>せっかくなので色々とディスカッションしてましたが、エージェントがメモリ使いすぎ問題について聞いたら、Golang でエージェント書いてるみたいな答えが返ってくるなど、こちらの課題感と同じ感覚をちゃんと持ってくれていて、この辺りが 1 年間ですごく成長してる理由の 1 つなのかなと勝手に思ってました。</p>
-
-<h3>Chef</h3>
-
-<p>「昔、Chef のベストプラクティスで、コミュニティクックブックをラップしろみたいなのがあったけど、あれは本気か」って聞いてみたところ、コミュニティクックブックはテンプレートとして使うのがいいよと中の人が言っていたので、スッキリしました。</p>
-
-<h2>おわり</h2>
-
-<p>ということで、2 日目がそろそろ終わるタイミングでの 1 日目のメモでした。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+        <link href="http://blog.takus.me/index.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
       
-  <header>
     
-      <h1 class="entry-title"><a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a></h1>
+    <meta name="generator" content="Hugo 0.14" />
+
+    <link rel="canonical" href="http://blog.takus.me/" />
+
     
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2841066-12', 'auto');
+      ga('send', 'pageview');
+
+    </script>
     
-      <p class="meta">
-        
 
-
-
-
-<time class='entry-date' datetime='2014-08-31T21:00:00+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:00 pm</span></time>
-        
-      </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。今年で 4 回目の参加で、初めて<a href="http://yapcasia.org/2014/individual_sponsors/">個人スポンサー</a>として参加させていただきましたが、10000 円という価格は 2 日間 HUB が貸し切りとか考えたらかなりリーズナブルなんじゃないかという印象です。(HUB は個人スポンサーじゃなくても入れますが&hellip;)</p>
-
-<p>セッションの中で印象に残ったのは @yanbe さんの &ldquo;<a href="http://yapcasia.org/2014/talk/show/2718b8f2-0331-11e4-9357-07b16aeab6a4">最近のウェブサービスの検索機能やその先の話</a>&rdquo; と @tagomoris さんの &ldquo;<a href="http://yapcasia.org/2014/talk/show/d5049940-ebb2-11e3-bd6d-c7a06aeab6a4">そんなにビッグでもないデータ処理手法の話</a>&rdquo; と @typester さんの&#8221;<a href="http://yapcasia.org/2014/member/show/02387faa-ebb1-11e3-bd6d-c7a06aeab6a4">キーノート</a>&ldquo; あたりなんですが、今回はトーク以上に懇親会とか会場で色んな人と喋ってるのがとても楽しくて刺激になって、いつも以上に楽しめました。</p>
-
-<p>後は、前職を辞めてから初めての YAPC だったわけですが、会場で会ったときに「いつ戻ってくるの？」、「あれ？スマートなんとかの人だw」みたいなハートフル (?) な絡みをしてくれる人が多くてよかったです(笑)</p>
-
-<p>運営の皆様、関係者の皆様、本当にありがとうございました。来年はどうなるか分からない感じだったけど、また開催されたらいいなと思ってるので、もし開催されるなら何らかの形で貢献できたらなと思ってます！</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-01T17:00:00+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:00 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.smartnews.be/"><img src="https://s3-ap-northeast-1.amazonaws.com/smartnews.be/img/devices.png" width="320" height="123"></a></p>
-
-<p>様々な大物な方々の人事ニュースが飛び交う中で恐縮ですが、スマートニュース株式会社にジョインしたことをこの場を借りて報告させていただきます。</p>
-
-<p>会社は、同じタイミングで入社することになった <code>@komiya_atsushi</code> さんの<a href="http://life.k11i.biz/post/93450605375">入社エントリ</a>や <a href="http://blog.kushii.net/archives/1869405.html">941::blog の行ってきたシリーズ</a>で詳しく紹介されていますが、働くメンバー、オフィス環境、福利厚生のどれも素晴らしく、よいプロダクトを作ることに集中できる素晴らしい環境が整っている一方で、<a href="https://www.youtube.com/watch?v=b2ukMvyDlRQ">すもうとにゅーす</a> の CM が 8/1 から始まったり、<a href="https://www.youtube.com/watch?v=b2ukMvyDlRQ">北米版のリリース</a>が控えていたり、会社としても非常に面白いフェーズで、今のタイミングでジョインして色々なことに携わっていくことに大きな魅力を感じたことが入社理由の 1 つです。</p>
-
-<p>まだスマートニュースのアプリをダウンロードしていない方がいましたらぜひこの機会に<a href="http://www.smartnews.be/">ダウンロード</a>していただけたら嬉しいです。アプリへの要望・不満なども気軽にお問い合わせください！</p>
-
-<blockquote><p>Smartnews，最近TV CMするくらい勢いもあるし，そろそろSmartnews現状確認会とか必要では…</p><footer><strong>@repeatedly</strong> <cite><a href='https://twitter.com/repeatedly/status/495059564790697986'>twitter.com/repeatedly/status/&hellip;</a></cite></footer></blockquote>
-
-
-<p>また、そろそろ現状確認がしたい方もいるようですので、ぜひ気軽にオフィスに遊びに来て頂ければと思います。今後ともよろしくお願いいたします！</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-07-31T03:00:00+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>3:00 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一部の方には既に報告させていただいてますが 7/22 に入籍しました。ちなみに 7/22 は 天赦日 (てんしゃび) といって、日本の暦の上で最上の吉日とされているそうです (<a href="https://www.richerie.jp/blog/best-marriage-day-2014/">参考</a>)。嫁さんとは高校時代から 8 年以上の付き合いで、すでに何年も一緒に住んでる上に、挙式もこれからのため、あまり実感が湧いてきてない状態ではありますが、よい家庭を築けるように二人でがんばっていきたいと思います。</p>
-
-<p>さらに、こちらも社内の方や社外の一部の方にしか話をしていませんでしたが、7/31 をもって DeNA を退職します。かなり悩んで、色んな人に相談にのってもらったりしましたが、新たな場所で新たなチャレンジをしたいという思いが強かったため、退職を決めました。</p>
-
-<p>2 年前に新卒として入社して、希望通りにインフラの部署に配属してもらい、<a href="http://mbga.jp/">mobage</a> や <a href="https://co-mm.com/">comm</a> といった数百万〜数千万ユーザ規模のサービスの運用を中心に、海外向けのソーシャルゲームでは AWS の運用に携わったり、海外の子会社や協力会社の方々への技術コンサルをさせていただいたり、短い在籍期間ながら実に様々な経験をすることができました。</p>
-
-<p>また、上記のような仕事に加えて、国際学会派遣制度で Velocity Conference に参加させていただいたり (<a href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity 2013 に参加 &amp; LT してきました！！</a>)、JAWS DAYS 2014 で話をする機会をいただいたり (<a href="http://blog.takus.me/2014/03/17/jawsdays-2014/">#jawsdays の #最強のAWS で「ぜんぶ AWS でやらないワケ」という話をしてきた</a>)、若手エンジニア交流会をやりたいとお願いしたらお寿司を提供してくれたり(<a href="http://engineer.dena.jp/2012/07/web.html">「Web若手エンジニアの会」を開催しました</a>)、課外活動でも様々な機会を与えてくださった DeNA という会社やお世話になった皆様にはただただ感謝するばかりです。</p>
-
-<p>じゃあ、なんで辞めるのかというと、今これをやりたいと思うことに会社の外で出会ったことが大きいです。ある人に「もっと経験を積んでからでも遅くない」といった内容のアドバイスをいただいたときに、DeNA という素晴らしい環境の中で得られる経験は間違いなく自分のキャリアにとってプラスになることは間違いないとは思ったものの、そういう機会を逸してでもやってみたいという気持ちが抑えきれず、<a href="http://anond.hatelabo.jp/20110128031409">やらないことで後悔する</a>という最悪な選択をしてしまうのがどうしても嫌だったので、こういう決断に至りました。(たぶんこれは昔の経験が大きく影響してるんですが、長々と自分語りしてもアレなので割愛します)</p>
-
-<p>人間としてもエンジニアとしてもまだまだ未熟なことは重々承知ですが、この決断がよいものであったと周りの人に思ってもらえるように努力していきたいと思うので、どうぞ温かい目で見守っていただけますと幸いです。今まで本当に本当にありがとうございました。そして、今後ともどうぞよろしくお願いいたします。</p>
-
-<p>P.S. せっかくの機会なので恒例の<a href="http://www.amazon.co.jp/gp/registry/wishlist/2D5WTNTDJ7K4A/ref=cm_wl_huc_view">ウィッシュリスト</a>も貼らせていただきます。もしお祝いしてあげてもいいよという神様みたいな方がいましたらよろしくお願いいたします:D</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/05/16/travel-to-barcelona/">Barcelona にいってきた</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/16/travel-to-barcelona/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/16/travel-to-barcelona/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-16T02:19:00+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:19 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>去年の「<a href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">Los Angeles に行ってきた</a>」「<a href="http://blog.takus.me/2013/05/12/travel-to-new-york/">New York に行ってきた</a>」に引き続き、今年は Barcelona にいってきましたが、かなりいい場所だったのでカンタンにまとめです。</p>
-
-<h2>バルセロナがオススメな理由</h2>
-
-<ul>
-<li>カンプノウやサグラダ・ファミリアなど見所が満載</li>
-<li>魚介を中心として料理がメチャクチャ美味しい</li>
-<li>比較的どこでも英語が通じて治安も悪くない</li>
-</ul>
-
-
-<h2>見所満載のバルセロナ</h2>
-
-<h3>Camp Nou</h3>
-
-<p>バルセロナに行く一番の目的といえば、サクラダファミリアかカンプノウの 2 つは外せないでしょう。ということで、ちょうどリーガエスパニョーラのヘタフェ戦がやっていたので見に行きました。チケットはクラシコのようなビッグマッチでない限り、<a href="http://www.fcbarcelona.com/">FC バルセロナのオフィシャルサイト</a> の Tickets から辿っていけば好きな席を買えます。今回は 2F の最前列の席を取ったために 2 枚で 240 ユーロとかなりお高い感じでしたが、UEFA も認めるスタジアムだけあって、試合観戦のしやすさには衝撃をうけました。日本のスタジアムと比べて 2F の席であんなに選手が近くに感じられるスタジアムはないんじゃないかなという印象です。観戦チップスとしては、2F がせり出してる分、1F の最後列はかなり見づらそうな雰囲気だったので避けた方がいいのと、デイゲームでバックスタンド側にいると直射日光がハンパないので、お金のある人はメインスタンドのがベターなんじゃないかと思います。</p>
-
-<p><img src="https://farm6.staticflickr.com/5481/14193032595_2d08bc2919_z.jpg" width="640" height="374" title="'Camp Nou by Takumi Sakamoto (takus) on flickr.com'" ></p>
-
-<p><img src="https://farm6.staticflickr.com/5506/14193105695_9885011f88_z.jpg" width="640" height="374" title="'Messi by Takumi Sakamoto (takus) on flickr.com'" ></p>
-
-<h3>La Sagrada Família</h3>
-
-<p>いつまでも完成しなくて、作ってる間にもメンテナンスが必要なところが Web サービスっぽいことでお馴染みサグラダ・ファミリア教会。<a href="http://www.sagradafamilia.cat/">公式サイト</a>で予約して指定時間に行けばすぐに入れるので予約をオススメします。夜にいくのもだいぶオススメで 23:00 頃に行きましたがそれなりに人もいて、全く危険な気配はない雰囲気でした。それまでにカサ・バトリョやカサ・ミラ、グエル公園などに行って(建築素人から見ても)ガウディの建築物はすごいなと思ってましたが、こいつは別格ですね。今のところ 2026 年くらいに完成予定？みたいなので、完成したらもう一度行きたいなって思ってます。</p>
-
-<p><img src="https://farm3.staticflickr.com/2919/14170054646_b549c68842_z.jpg" width="640" height="374" title="'La Sagrada Família by Takumi Sakamoto (takus) on flickr.com'" ></p>
-
-<p><img src="https://farm8.staticflickr.com/7373/14006576829_731498804e_z.jpg" width="640" height="374" title="'La Sagrada Família by Takumi Sakamoto (takus) on flickr.com'" ></p>
-
-<h2>Museu Nacional d&#8217;Art de Catalunya</h2>
-
-<p>カンプノウとサグラダ・ファミリアは別格として、もう一個オススメするならカタルーニャ美術館です。19:00 くらいからはじまる噴水ショーはもちろん、下から見上げる美術館が偉大なのと、上から見る眺めもステキで、新婚旅行でいくとロマンチックな雰囲気を楽しめるんじゃないでしょうかね。</p>
-
-<p><img src="https://farm8.staticflickr.com/7423/14006634478_a8f819be2a_z.jpg" width="640" height="374" title="'Museu Nacional d'Art de Catalunya by Takumi Sakamoto (takus) on flickr.com'" ></p>
-
-<p><img src="https://farm8.staticflickr.com/7451/14193308825_1865eccee3_z.jpg" width="640" height="374" title="'Museu Nacional d'Art de Catalunya by Takumi Sakamoto (takus) on flickr.com'" ></p>
-
-<p><img src="https://farm8.staticflickr.com/7337/14006652870_94f6ed898f_z.jpg" width="640" height="374" title="'Museu Nacional d'Art de Catalunya by Takumi Sakamoto (takus) on flickr.com'" ></p>
-
-<h2>メシについて</h2>
-
-<p>どこに行ってもかなり美味しくて大変満足度が高かったです。サングリアも 4 ユーロくらいで大量に飲めたりして、普段あまりお酒飲まないタイプですが、ついつい連日飲んでしまった感じでした。とはいえ、レストランいくと 1 食で 10 ~ 15 ユーロかかって、1 ユーロ 145 円くらいだったのでなかなかお金はかかりました。印象深かったのは <a href="https://www.facebook.com/ObsessionsDelRaval">Obsessions del Raval</a> というこじんまりしたお店で、Trip Adviser みたらレートがよさそうだったので入ってみたら、バケットにリコッタチーズと生ハムが載った料理が激ウマだったので、かなりオススメです。おそらく地元の人しか来ないようなお店のためかメニューがスペイン語とカタルーニャ語しかないですが、店のおばちゃんが全メニュー英語で説明してくれたので空いてる時に行けばなんとかなるんじゃないかと思います。</p>
-
-<p><img src="https://farm6.staticflickr.com/5593/14190085591_2beb81d2c2_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
-<img src="https://farm3.staticflickr.com/2922/14190822342_4fa1835ca0_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
-<img src="https://farm8.staticflickr.com/7450/14190085401_7c3e597797_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
-<img src="https://farm6.staticflickr.com/5475/14006706039_ffa4c9ffb7_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
-<img src="https://farm8.staticflickr.com/7340/14190822002_4c41068bdb_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" >
-<img src="https://farm8.staticflickr.com/7368/14193318744_4e8ec0dbae_m.jpg" width="240" height="159" title="'Food by Takumi Sakamoto (takus) on flickr.com'" ></p>
-
-<h2>英語と治安について</h2>
-
-<p>さすがにオリンピックもやるような国際都市は違うなという感じで、あと数年で東京がこのレベルに達するのかというと、なかなか厳しそうだなという印象でしたが、日本人として日本にいると気づかないだけで、観光名所やその周辺の飯処は英語が通じたりするんでしょうかね？</p>
-
-<p>またスペインってかなり失業率が高いと聞いていて、治安が悪い印象があったんですが、ほとんど危険を感じるようなことなありませんでした。日が沈むのが遅いので、20:00 くらいまでは明るいのに加え、23:00 くらいになっても子連れで歩く家族がいたり、お子様を連れて行くのも比較的難易度が低いのではないかなと思います。</p>
-
-<h2>そのほか</h2>
-
-<p>モバイル事情もそんなに悪くなく、「<a href="http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a>」で紹介したように現地でプリペイド SIM を買ってネットしていましたが、下りで 6Mbps くらいは出ていて、地下鉄でも比較的電波が入るところが多く、不便を感じることはありませんでした。ただ、そういうインフラがある割に、電車の中でスマホ弄ってる人は圧倒的に少なくて、自分がチラチラみる限りは WhatsApp してるか Candy Crush Saga やってるかみたいな雰囲気でした。</p>
-
-<p>あと、今回かかった旅費ですが、2 人で 7 泊 9 日の日程で 48 万くらいかかってしまいました。航空券が 24 万で、宿泊費が 8 万くらいなので、現地でもかなりお金を使ってしまった印象ですが、一人旅じゃないので仕方なしといったところでしょうか。</p>
-
-<h2>まとめ</h2>
-
-<p>今回、紹介した場所はもちろん、その他にもバルセロナ市街を一望できるモンジュイックや、ピカソやミロを中心とした美術館、地中海をクルージングできるバルセロナ港など、とにかく見所満載でオススメな場所なので、夏休みに行ってみるのはいかがでしょうか？ということで終わりです。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/05/05/barcelona-prepaid-sim/">バルセロナでプリペイド SIM カードを購入する</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-05T09:51:06+09:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:51 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>休暇でバルセロナに来てるわけですが、今回は現地でプリペイド SIM カードを買ってみたので買い方などをまとめておきます。</p>
-
-<p><a href="https://www.flickr.com/photos/esperto/13922739997"><img src="https://farm8.staticflickr.com/7329/13922739997_155d5662b8_z.jpg" width="640" height="427"></a></p>
-
-<h2>購入方法</h2>
-
-<p>エル・プラット国際空港のターミナル 1 の出口あたりで Lebara というキャリアの SIM が売っていて、他に買えそうな場所がなかったのでそこで買いました。購入の流れとしては、店員さんにプリペイド SIM カードをくださいと伝えるとパスポート見せろと言われるのでそれを見せれば SIM カードと簡易なマニュアルが貰えるので、マニュアルに従って APN の設定等を済ませるだけです。今回の場合は、店員さんが丁寧に APN の設定等までやってくれる感じだったので、あらかじめ言語設定を英語にしておくとスムーズに設定してもらえるんじゃないかと思います。</p>
-
-<h2>料金</h2>
-
-<p>契約した Lebara というキャリアの話になってしまいますが、€10 で 1GB のデータ通信がついてきて、足りない場合は €3 で 100MB づつ買い足していけるようです。今回はバルセロナに 8 日間ほど滞在していましたが、2 人でテザリングして 1GB 程度だったので、普通に使うのであれば €10 のプランで問題ないのではないかと思います。(あとは €25 で 3GB のプランもありました)</p>
-
-<h2>チャージ</h2>
-
-<p>最初に購入した分を使い切ってしまったらチャージする必要がありますが、街中で Lebara のステッカーが貼ってあるお店を見つけて、電話番号を伝えてお金を払うとチャージできますが、単にチャージするだけではダメで、<a href="http://www.lebara.es/passes/internet?isoCode=en_GB">22233 に SMS で D100 というメッセージを送る必要があるようです</a>。ちなみに <a href="http://www.lebara.es/">Lebara のサイト</a> からクレジットカードでもチャージできるみたいですが、何度やっても上手くいかなかったので諦めました。</p>
-
-<h2>まとめ</h2>
-
-<p>購入に少し手間はかかりますが、海外ローミングやモバイルルータを使うと 1 日 1000 円くらいかかるモバイル回線が、プリペイドの SIM を買うことで 100~200 円レベルになるのでバルセロナ (スペイン) に行く人がいれば検討するとよいと思います。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/04/16/google-in-the-plex/">『グーグル ネット覇者の真実』を読んだ</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/04/16/google-in-the-plex/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/04/16/google-in-the-plex/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-04-16T00:42:00+09:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:42 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>ある人にオススメされたので『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B009LFBL4Y/takus-22/ref=nosim">グーグル ネット覇者の真実</a>』を読んでみたらかなり面白い本でした。検索連動型広告という金脈を見つけて急成長していく序盤のワクワクする感じから、上場して今のような大企業になるにつれていわゆる大企業病が蔓延して色々と悩みが増えてくる様子などがかなり生々しく書かれていて、色々と考えさせられる内容が多かったです。その中でもいくつか印象に残ったことなどをメモっておきます。</p>
-
-<h2>徹底したコストへの意識</h2>
-
-<blockquote><p>「検索リクエストをひとつ処理するたびにお金がかかる。広告収入が得られるようになるのはまだ先のことだった。そこでペイジとプリンとヘルツルは、可能な限り安くインフラを構築する方法を考えたんだ。」</p></blockquote>
-
-<p>(ビジネスがうまくいってる限りは) 極端にインフラのコストを下げる必要はないのかなと思ってましたが、考えを改めさせられました。たとえばグーグルのように収益得られるようになるまでいいプロダクトを作ることにフォーカスできる体力を残せるという価値もあるし、ユーザ視点で考えると、コストがかかって今までは有料じゃなければできなかったことが、無料 (広告) のみで提供できるようになるみたいな価値の生み方もあるなと。ということで、1 クエリの処理にいくらかかるのかを即答できるレベルでコストと向き合っていくべきだなと感じてます。</p>
-
-<h2>低レイテンシーの追求</h2>
-
-<blockquote><p>「彼 (ラリー・ペイジ) は常にあらゆることを測っている」</p>
-
-<p>検索結果の戻りが遅いと「ユーザは検索し直すことを無意識に嫌がるようになる」とヘルツルは言う。「あるいは検索リクエストを別の表現で入力し直すより、全く別の情報を探そうとするかもしれない。ユーザに直接聞いても、そうだとは決して答えないだろうが、全体のデータを見れば一目瞭然だ。」</p>
-
-<p>スライドショーが 3 倍速く動くようにすると、改善策について発表があったわけでもないのに、実施当日の「ピカサ」サイトのトラフィックは 40% 増加した。</p></blockquote>
-
-<p>これもコストの話と同じで、もっと低レイテンシーを追求していかなきゃいかんと考えさせられることが色々書いてあり、意識が高まりました。</p>
-
-<h2>大企業になると&hellip;</h2>
-
-<blockquote><p>(上場後) つまり、グーグラーたちは裕福になるにつれて保守化していったのだ。</p>
-
-<p>グーグルとユーチューブの社内で交わされていたメールやプレゼン資料を比較すると、両者は著しく対照的な企業であることがわかる。グーグルビデオ・チームは上層部から承認とアドバイスを得るために膨大な時間を費やしていた。&hellip;ユーチューブでは、上司のために大量のスライド資料を何度も書き直す必要はなかった。彼らは自分が正しいと感じたことをやるだけでよかった。</p>
-
-<p>この問題で直面した状況は、グーグルを苦しめてる問題の縮図だった。小さな企業がテクノロジーと頭脳の力を駆使して、既存のビジネスモデルは文化的伝統をかき乱せば、その企業は魅力的で刺激的だと賞賛され、かたやライバル企業は既得権にしがみつく守旧派のいじめっ子というレッテルを貼られる。しかし、資金力の豊富な巨大企業が市場をかき乱すと、その企業がいじめっ子と見なされ、ライバル企業は（たとえ、よこしまな意図で行動していても）同情を集められる。</p></blockquote>
-
-<p>上場するような規模になってくると、それまでとは違う色々な問題が出てきて、Google も例外でないんだなと実感させられました。</p>
-
-<h2>そのほか</h2>
-
-<blockquote><p>「グーグルは当時 1 万 ~ 1 万 5000 台のサーバを保有していたので、2000 台くらいは自由に使わせてもらうことができた」</p></blockquote>
-
-<p>これはさすが Google 先生という内容&hellip;。</p>
-
-<blockquote><p>「サーバの反応が遅すぎる場合、あなたならどのように診断しますか？」</p></blockquote>
-
-<p>ある社員が面接で聞かれたらしいですが、シンプルであるにも関わらず本質を理解してないと答えられない良問だと思いました。</p>
-
-<blockquote><p>「問題を突き詰めるとこうこうことになる」とマカフリーは後に語った。「限られた予算を技術開発やインフラや本当に優秀な社員の雇用に注ぎ込みたいのか？それとも効果を測定することすらできないマーケティングに使って台無しにしたいのか？」</p></blockquote>
-
-<p>マーケティングって成功のためには大切な要素の一つではあると思いますが、プロダクトの質を高めるのにお金使う方がより健全だし、ユーザに与える価値も大きくなるんじゃないかなという印象をうけました。</p>
-
-<h2>まとめ</h2>
-
-<p>全体的にかなり面白くて意識も高まる内容だったので『ソーシャルネットワーク』みたいに映画化してくれないかなって思いました。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/04/05/automate-this/">『アルゴリズムが世界を支配する』を読んだ</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/04/05/automate-this/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/04/05/automate-this/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-04-05T12:35:00+09:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:35 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>『<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B00FMI2XIW/takus-22/ref=nosim">アルゴリズムが世界を支配する</a>』を読んでみました。</p>
-
-<blockquote><p>アルゴリズムとは無数の二者択一からなる巨大なデシジョン・ツリーだととらえることができる。私たちのやることなすことほぼすべてが—車の運転から株の売買から配偶者選びにいたるまで—二者択一の無数の要素にまで分解することができる (本文より)</p></blockquote>
-
-<p>Amazon の &ldquo;この商品を買った人はこんな商品も買っています&rdquo; のような、いかにもコンピュータが得意そうなものだけでなく、今までは人がやることしか考えられなかったような仕事までもどんどんアルゴリズムで置き換えられていきますよ？ って具体例がたくさん載っていて興味深い内容でした。</p>
-
-<p>例えば、コールセンター業務では、アルゴリズムによって会話内容から顧客のパーソナリティを分類してパーソナリティが近い人に対応させることで、通話時間と問題の解決率を 50% も改善できる可能性があるらしく、企業からみれば今までの半分の人数でコールセンター業務を回せることになるので大きな価値がある一方で、コールセンターで働いてる人の仕事の半分はアルゴリズムで置き換えられてしまうことになります。</p>
-
-<p>自分が普段やってるような仕事でも、例えば @mirakui さんの『<a href="http://blog.mirakui.com/entry/2013/02/20/003401">全自動パラメータチューニングさん</a> 』のようなものがもっともっと発達してしまうと、仕事の大半はアルゴリズムによって自動化されて失職なんてこともあるかもしれません。</p>
-
-<p>じゃあ、世の中の仕事は全てアルゴリズムで置き換えていけるかっていうとそういうわけでもなくて、過去の膨大なデータから未来の傾向を予測するようなことは得意な一方で、今までにない新しい概念や新しい仕組みを作るような行為はアルゴリズムで置き換えるのは難しい部分になってくると思います。本に載ってた例が聞いたことない音楽の例だったので自分なりに解釈すると、全盛期のモー娘。の身体的な特徴とヒット曲の分析をいくらしても、AKB は生まれてこないってのがしっくりくるかなってとこです。</p>
-
-<p>というわけで、既存の延長で仕事してないでもっと新しいことやっていかないとなって思ってます。おわり。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2014/03/29/think-simple/">Think Simple は学びが多い本でした</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/03/29/think-simple/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/03/29/think-simple/"></a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-03-29T19:15:00+09:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:15 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Macbook や iPhone のデザインはシンプルでクールで最高だろ、みたいな本かと思って敬遠してましたが、<a href="http://blog.kenjiskywalker.org/blog/2013/11/16/think-simple/">@kenjiskywalker さんのブログ</a> みて面白そうだったので、&#8221;<a href="http://www.amazon.co.jp/exec/obidos/ASIN/B008YOHMCS/takus-22/ref=nosim">Think Simple &ndash; アップルを生みだす熱狂的哲学</a>&ldquo; 読んでみたら、予想以上に学びが多くて、イイ本でした。</p>
-
-<h2>コミュニケーションについて</h2>
-
-<blockquote><p>相手が敵でも友人でも、真実は真実で変わりないし、自分の意見は自分の意見で変わらなかった。相手を好きか嫌いか、その働きを評価しているかどうかは関係なかったし、部屋の空気も関係なかった。</p></blockquote>
-
-<p>仕事上のコミュニケーションってどうしてもシンプルにするのが難しい部分があって、たとえば外の会社と一緒に開発するような案件で、明らかに外部の会社の人がおかしなこと言っていたとしても、人間関係とか考えると、話させるのをやめたり、厳しく批判するのを躊躇ったりしがちですが、もっとシンプルにコミュニケーションすべきじゃないかと思いました。</p>
-
-<blockquote><p>自分のチームに最高の結果をもたらすために、ただ言うべきことを言うことなのだ。</p></blockquote>
-
-<p>これも上に書いてあることと同じですね。</p>
-
-<blockquote><p>人を不快にさせたり、陰で悪口を言われたりすることがあっても、もっとよくできることがわかっているときは、これでいいかと自分を納得させてはならない。</p></blockquote>
-
-<p>他の人が進めてるプロジェクトなんかでありがちな気がするんですが、自分が見た時にはすでに議論や作業がある程度進んでいるんだけど、説明を聞くとイマイチいけてないみたいな状況で、面倒だからスルーしちゃうみたいなのやめた方がよさそうです。</p>
-
-<h2>仕事の進め方について</h2>
-
-<blockquote><p>部屋にいる者は全員がそこにいるべき理由を持っていること。「情けで招待する」ようなことはあってはならない。</p></blockquote>
-
-<p>Wiki にまとめた資料を読むだけの会議とかほんと無駄なので、読んでおいてくださいで終わらせたい。</p>
-
-<blockquote><p>スティーブの頭にはレポートカードを作ったり、それに対応したりして、貴重な時間を費やすことなどまったく思い浮かばなかっただろう。彼はリアルタイムの正直さを好んだ。何か気にかかることがあれば、その場で告げた。それが私たちのレポートカードだった。</p></blockquote>
-
-<p>会議のための資料作りって、自分の思考を整理できるという面においてはいいんですが、見た目とかに凝り出しちゃうと本質見失ってる感じですね。</p>
-
-<blockquote><p>つまりこういうことだ。プロセスが王様のときに、アイデアはけっして王様になれない。プロセスの段階を増やせば増やすほど、完成品の質が悪くなることは、&lt;常識> を働かせればわかるだろう。</p></blockquote>
-
-<p>もっと承認とか減らしてやった方がうまく行くんだろうなって思うことは色々ありますね。もちろん失敗することもあるんじゃないかと思いますが、スピード感持ってやれば、その分だけ挑戦する回数も多くなって、結果的に成功が増えるってイメージです。</p>
-
-<blockquote><p>シンプルさはせっかちだ。いきなり本題に入って、大事なことに集中したがる。</p></blockquote>
-
-<p>なんでもシンプルにやることで、本質にフォーカスして、もっとバリュー出したいです。</p>
-
-<h2>まとめ</h2>
-
-<p>ということで、日頃、なんか仕事しにくいなとか思いながら働いてる人は読んでみるといいんじゃないかと思いました。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/page2">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>About Me</h1>
-  <div style="margin-top:10px">
-    <img src="http://farm8.staticflickr.com/7293/11929418323_e084604fe5_q.jpg" alt="me"><br />
-    Takumi Sakamoto<br />
-    Software Engineer@SmartNews, Inc.<br />
-  </div>
-  <div style="margin-top:10px">
-    <a href="http://twitter.com/takus" class="twitter-follow-button" data-show-count="true">Follow @takus</a>
-  </div>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/2015/02/26/dd-sushi/">Datadog ユーザの集い #dd_sushi を開催しました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2015/02/26/dd-sushi/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2015/02/26/dd-sushi/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/11/13/reinvent-2014-day1/">AWS re:Invent 2014 day1</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/11/13/reinvent-2014-day1/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/31/yapc-asia-2014/">YAPC::Asia 2014 にいってきた #yapcasia</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/31/yapc-asia-2014/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/31/yapc-asia-2014/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/08/01/join-smartnews/">スマートニュースにジョインしました</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/08/01/join-smartnews/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/08/01/join-smartnews/"></a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/07/31/got-married-and-leave-dena/">結婚しました & 退職します</a><a href="http://b.hatena.ne.jp/entry/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"><img src="http://b.hatena.ne.jp/entry/image/large/http://blog.takus.me/2014/07/31/got-married-and-leave-dena/"></a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/takus">@takus</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'takus',
-            count: 5,
-            skip_forks: false,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Takumi Sakamoto -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'takus';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
+        <link rel="stylesheet" href="http://blog.takus.me/styles/solarized_dark.css">
+<script src="http://blog.takus.me/js/highlight.pack.js"></script>
+<script>
+    hljs.configure({ tabReplace: "  " });
+    hljs.initHighlightingOnLoad();
 </script>
 
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="http://blog.takus.me/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
 
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
+ <div class="site-wrapper">
 
 
 
+<header class="main-header " style="background-image: url(http://blog.takus.meimages/cover.jpg)">
+
+
+    <nav class="main-nav overlay clearfix">
+        
+            <a class="blog-logo" href="http://blog.takus.me/"><img src="http://blog.takus.mefavicon.ico" alt="Blog Logo" /></a>
+        
+        
+            
+              <a class="menu-button icon-feed" href="http://blog.takus.me/index.xml">&nbsp;&nbsp;Subscribe</a>
+            
+        
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            
+                <a  href="https://github.com/takus">
+                <span class="icon-github" style="color:white;font-size:2em"></span>
+                </a>
+            
+            &nbsp;
+            
+                <a class="bloglogo" href="https://twitter.com/takus">
+                    <span class="icon-twitter" style="color:white;font-size:2em"></span>
+                </a>
+            
+            
+            
+            
+            
+
+            <h1 class="page-title">takus&#39;s blog</h1>
+            <h2 class="page-description"></h2>
+        </div>
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content"><span class="hidden">Scroll Down</span></a>
+</header>
+
+
+<main id="content" class="content" role="main">
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+        
+            
+        
+    
+    
+
+    <div class="extra-pagination inner">
+        <nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 6</span>
+	
+	    <a class="older-posts" href="http://blog.takus.me/page/2/">Older Posts &rarr;</a>
+	
+</nav>
+
+    </div>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2015/10/10/datadog-with-fluentd">Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p><a href="https://datadoghq.com">Datadog</a> というシステム監視 SaaS のネタです。先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
+自分が知ってる <strong>Dogstatsd</strong> を使う方法をシェアします。</p>
+ <a class="read-more" href="http://blog.takus.me/2015/10/10/datadog-with-fluentd">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2015-10-10T00:00:00Z">
+            10 Oct 2015
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2015/10/09/livesense-technight">SmartNews&#39;s Journey into Microservices という LT をしてきました</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>先週の火曜日の話になりますが <a href="http://made.livesense.co.jp/blogs/431">Livesense TechNight</a> というイベントで &ldquo;SmartNews&rsquo;s Journey into Microservices&rdquo; という LT をしてきました。</p>
+ <a class="read-more" href="http://blog.takus.me/2015/10/09/livesense-technight">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2015-10-09T00:00:00Z">
+            9 Oct 2015
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams">fluent-plugin-dynamodb-streams を作った</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>Amazon DynamoDB Streams のレコードを Fluentd で扱いたい要件があり、ググっても見当たらなかったのでプラグインを実装してみました。</p>
+ <a class="read-more" href="http://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2015-09-15T00:00:00Z">
+            15 Sep 2015
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2015/02/26/dd-sushi">Datadog ユーザの集い #dd_sushi を開催しました</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>こんにちは。スマートニュースの <a href="https://twitter.com/takus">@takus</a> です。
+<sup>2</sup>&frasl;<sub>24</sub> に Datadog ユーザの集まり <a href="https://twitter.com/search?q=%23dd_sushi">#dd_sushi</a> というイベントを開催しましたので、この場を借りて簡単にレポートさせていただきます。</p>
+ <a class="read-more" href="http://blog.takus.me/2015/02/26/dd-sushi">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2015-02-26T00:00:00Z">
+            26 Feb 2015
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2014/11/12/reinvent-2014-day1">AWS re:Invent 2014 day1 のまとめ</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。<code>@suzu_v</code> 先生が<a href="http://suzuken.hatenablog.jp/entry/2014/11/13/112730">メモ書き</a>をしていたので、自分も簡単ながらメモを残しておこうと思います。</p>
+ <a class="read-more" href="http://blog.takus.me/2014/11/12/reinvent-2014-day1">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2014-11-12T00:00:00Z">
+            12 Nov 2014
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2014/08/31/yapc-asia-2014">YAPC::Asia 2014 にいってきた #yapcasia</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。</p>
+ <a class="read-more" href="http://blog.takus.me/2014/08/31/yapc-asia-2014">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2014-08-31T00:00:00Z">
+            31 Aug 2014
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2014/08/01/join-smartnews">スマートニュースにジョインしました</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>様々な大物な方々の人事ニュースが飛び交う中で恐縮ですが、スマートニュース株式会社にジョインしたことをこの場を借りて報告させていただきます。</p>
+ <a class="read-more" href="http://blog.takus.me/2014/08/01/join-smartnews">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2014-08-01T00:00:00Z">
+            1 Aug 2014
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2014/07/31/got-married-and-leave-dena">結婚しました &amp; 退職しました</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>一部の方には既に報告させていただいてますが <sup>7</sup>&frasl;<sub>22</sub> に入籍しました。</p>
+ <a class="read-more" href="http://blog.takus.me/2014/07/31/got-married-and-leave-dena">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2014-07-31T00:00:00Z">
+            31 Jul 2014
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2014/05/16/travel-to-barcelona">Barcelona にいってきた</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>去年の「<a href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">Los Angeles に行ってきた</a>」「<a href="http://blog.takus.me/2013/05/12/travel-to-new-york/">New York に行ってきた</a>」に引き続き、今年は Barcelona にいってきましたが、かなりいい場所だったのでカンタンにまとめです。</p>
+ <a class="read-more" href="http://blog.takus.me/2014/05/16/travel-to-barcelona">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2014-05-16T00:00:00Z">
+            16 May 2014
+        </time>
+    </footer>
+</article>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2014/05/05/barcelona-prepaid-sim">バルセロナでプリペイド SIM カードを購入する</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>休暇でバルセロナに来てるわけですが、今回は現地でプリペイド SIM カードを買ってみたので買い方などをまとめておきます。</p>
+ <a class="read-more" href="http://blog.takus.me/2014/05/05/barcelona-prepaid-sim">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.mefavicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2014-05-05T00:00:00Z">
+            5 May 2014
+        </time>
+    </footer>
+</article>
+
+    
+
+    <nav class="pagination" role="navigation">
+	
+	<span class="page-number">Page 1 of 6</span>
+	
+	    <a class="older-posts" href="http://blog.takus.me/page/2/">Older Posts &rarr;</a>
+	
+</nav>
+
+
+</main>
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">takus&#39;s blog</a> Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="http://blog.takus.mejs/index.js"></script>
+    
 </body>
 </html>
+
