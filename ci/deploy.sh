@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-cd public
-rm -rf *
+rm -rf public
+git clone -b master git@github.com:takus/takus.github.com.git public
 
-cd .. && hugo
+hugo
 
 cd public
 git add .
