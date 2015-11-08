@@ -135,7 +135,14 @@
 先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
 自分が知ってる <strong>Dogstatsd</strong> を使う方法をシェアします。</p>
 
-<p><img src="http://blog.takus.me/images/datadog_http_graph.jpg"></p>
+<p>
+<figure >
+    
+        <img src="http://blog.takus.me/images/datadog_http_graph.jpg" />
+    
+    
+</figure>
+</p>
 
 <p>これはあるサービスの Nginx のアクセスログとエラーログを、
 Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
@@ -152,7 +159,14 @@ Fluentd 経由で Datadog にカスタムメトリクスとして送って可視
 
 <h2 id="dogstatsd-とは:5a525c628f468fdda11fe314266c3265">Dogstatsd とは？</h2>
 
-<p><img src="http://blog.takus.me/images/dogstatsd.jpg"></p>
+<p>
+<figure >
+    
+        <img src="http://blog.takus.me/images/dogstatsd.jpg" />
+    
+    
+</figure>
+</p>
 
 <p>唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
 一言で何物か説明すると Datadog 用に拡張された <a href="https://github.com/etsy/statsd">StatsD</a> です。(StatsD をご存知ない方はググってみてください)
