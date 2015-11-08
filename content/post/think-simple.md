@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Think Simple は学びが多い本でした"
+title: "『Think Simple』 は学びが多い本でした"
 date: 2014-03-29
 comments: true
 ---
 
-Macbook や iPhone のデザインはシンプルでクールで最高だろ、みたいな本かと思って敬遠してましたが、[@kenjiskywalker さんのブログ](http://blog.kenjiskywalker.org/blog/2013/11/16/think-simple/) みて面白そうだったので、"[Think Simple - アップルを生みだす熱狂的哲学](http://www.amazon.co.jp/exec/obidos/ASIN/B008YOHMCS/takus-22/ref=nosim)" 読んでみたら、予想以上に学びが多くて、イイ本でした。
+Macbook や iPhone のデザインはシンプルでクールで最高だろ、みたいな本かと思って敬遠してましたが、[@kenjiskywalker さんのブログ](http://blog.kenjiskywalker.org/blog/2013/11/16/think-simple/) みて面白そうだったので、{{% amazon B008YOHMCS  "Think Simple - アップルを生みだす熱狂的哲学" %}} 読んでみたら、予想以上に学びが多くて、イイ本でした。
 
 <!--more-->
 

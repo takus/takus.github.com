@@ -11,7 +11,7 @@ comments: true
 
 <!--more-->
 
-<img src="/images/datadog_http_graph.jpg">
+{{% figure src="/images/datadog_http_graph.jpg" %}}
 
 これはあるサービスの Nginx のアクセスログとエラーログを、
 Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
@@ -26,7 +26,7 @@ Fluentd 経由で Datadog にカスタムメトリクスとして送って可視
 
 ## Dogstatsd とは？
 
-<img src="/images/dogstatsd.jpg">
+{{% figure src="/images/dogstatsd.jpg" %}}
 
 唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
 一言で何物か説明すると Datadog 用に拡張された [StatsD](https://github.com/etsy/statsd) です。(StatsD をご存知ない方はググってみてください)
