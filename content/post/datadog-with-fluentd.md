@@ -1,9 +1,9 @@
----
-layout: post
-title: "Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜"
-date: 2015-10-10
-comments: true
----
++++
+date = "2015-10-10"
+title = "Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜"
+tags = ["datadog", "fluentd"]
+comments = true
++++
 
 [Datadog](https://datadoghq.com) というシステム監視 SaaS のネタです。
 先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、

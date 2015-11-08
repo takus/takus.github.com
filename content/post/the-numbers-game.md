@@ -1,9 +1,8 @@
 +++
-comments = true
 date = "2015-11-08T17:22:05+09:00"
-share = true
-tags = ["book", "football"]
 title = "良いディフェンダーはタックルをしないし、良いエンジニアは障害対応をしない"
+tags = ["book", "football"]
+comments = true
 +++
 
 Amazon のオススメに出てきた「 {{% amazon B00R5Z9EU0 "サッカー　データ革命　ロングボールは時代遅れか" %}}」を読んでみました。

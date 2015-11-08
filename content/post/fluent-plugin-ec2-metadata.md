@@ -1,9 +1,9 @@
----
-layout: post
-title: "fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた"
-date: 2014-01-18
-comments: true
----
++++
+date = "2014-01-18"
+title = "fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた"
+tags = ["fluentd"]
+comments = true
++++
 
 前々から fluentd のプラグインを書いてみようと思っていたので、ec2 の metadata をレコードに追加するようなプラグインを書いてみました。
 

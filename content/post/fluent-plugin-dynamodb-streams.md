@@ -1,9 +1,9 @@
----
-layout: post
-title: "fluent-plugin-dynamodb-streams を作った"
-date: 2015-09-15
-comments: true
----
++++
+date = "2015-09-15"
+title = "fluent-plugin-dynamodb-streams を作った"
+tags = ["fluentd"]
+comments = true
++++
 
 Amazon DynamoDB Streams のレコードを Fluentd で扱いたい要件があり、ググっても見当たらなかったのでプラグインを実装してみました。
 <!--more-->
