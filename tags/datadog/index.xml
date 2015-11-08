@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Datadog on takus&#39;s blog</title>
+    <link>http://blog.takus.me/tags/datadog/</link>
+    <description>Recent content in Datadog on takus&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
+    <lastBuildDate>Sat, 10 Oct 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://blog.takus.me/tags/datadog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜</title>
+      <link>http://blog.takus.me/2015/10/10/datadog-with-fluentd/</link>
+      <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2015/10/10/datadog-with-fluentd/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://datadoghq.com&#34;&gt;Datadog&lt;/a&gt; というシステム監視 SaaS のネタです。
+先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
+自分が知ってる &lt;strong&gt;Dogstatsd&lt;/strong&gt; を使う方法をシェアします。&lt;/p&gt;
+
+&lt;p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://blog.takus.me/images/datadog_http_graph.jpg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;これはあるサービスの Nginx のアクセスログとエラーログを、
+Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
+それぞれ、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;左上: ステータスコード別の集計グラフ&lt;/li&gt;
+&lt;li&gt;右上: 今日・昨日・一週間前のレスポンスタイムグラフ&lt;/li&gt;
+&lt;li&gt;左下: Fluentd の タグ毎の流量&lt;/li&gt;
+&lt;li&gt;右下: Fluentd の ホスト毎の流量&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といったグラフになっています。このポストではこんなグラフを作る方法を説明します。&lt;/p&gt;
+
+&lt;h2 id=&#34;dogstatsd-とは:5a525c628f468fdda11fe314266c3265&#34;&gt;Dogstatsd とは？&lt;/h2&gt;
+
+&lt;p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://blog.takus.me/images/dogstatsd.jpg&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
+一言で何物か説明すると Datadog 用に拡張された &lt;a href=&#34;https://github.com/etsy/statsd&#34;&gt;StatsD&lt;/a&gt; です。(StatsD をご存知ない方はググってみてください)
+これは Datadog の監視エージェント (dd-agent) に含まれているので、Datadog を使うなら特に設定なしで使えます。
+詳しい説明は &lt;a href=&#34;http://docs.datadoghq.com/guides/dogstatsd/&#34;&gt;公式ドキュメント&lt;/a&gt; を読むといいでしょう。&lt;/p&gt;
+
+&lt;h2 id=&#34;アプリケーションから直接送る方法:5a525c628f468fdda11fe314266c3265&#34;&gt;アプリケーションから直接送る方法&lt;/h2&gt;
+
+&lt;p&gt;これは上で紹介したドキュメントにも &amp;ldquo;The easiest way&amp;rdquo; と紹介されているやり方になります。
+&lt;a href=&#34;http://docs.datadoghq.com/libraries/&#34;&gt;Datadog Docs - Libraries&lt;/a&gt; に各言語用のライブラリが紹介されているので、
+これらのライブラリを各アプリケーションに組み込むことで好きなように送ることができます。
+例えば Ruby のアプリケーションで Page View  を集計する場合は、&lt;a href=&#34;https://github.com/DataDog/dogstatsd-ruby&#34;&gt;DataDog/dogstatsd-ruby&lt;/a&gt; を下記のように使うだけです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;statsd&#39;
+# Create a stats instance.
+statsd = Statsd.new(&#39;localhost&#39;, 8125)
+# Increment a counter.
+statsd.increment(&#39;page.views&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;fluentd-を経由して送る方法:5a525c628f468fdda11fe314266c3265&#34;&gt;Fluentd を経由して送る方法&lt;/h2&gt;
+
+&lt;p&gt;アプリケーションから直接送る方法は簡単に使える一方で、
+Datadog 以外のシステムにメトリクスやアラートを送るのに別の手段が必要になったり、
+ミドルウェアからカスタムメトリクスを送りたいような場合に手間がかかったりするため、
+自分は、Fluentd を経由する方法を利用することが多いです。&lt;/p&gt;
+
+&lt;p&gt;Fluentd を経由することで監視に介在するコンポーネントが増える懸念はありますが、
+ほとんどの場合は安定して動いてくれるので実用上の問題はなく、
+豊富なプラグインを利用することで、様々なミドルウェアや SaaS との連携が簡単で、
+もし仮に監視システムを入れ替えるようなことがあっても、最小限の労力で入れ替えが可能になったり、
+複数のシステムにメトリクスを送ることも簡単にできます。&lt;/p&gt;
+
+&lt;h3 id=&#34;設定ファイルの例:5a525c628f468fdda11fe314266c3265&#34;&gt;設定ファイルの例&lt;/h3&gt;
+
+&lt;p&gt;よくありそうな例として Nginx のアクセスログから、ステータスコード集計とレスポンスタイム統計を取得する方法について説明します。
+全体的な流れとしては、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.fluentd.org/articles/in_tail&#34;&gt;in_tail&lt;/a&gt; でログを読み込む&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/sonots/fluent-plugin-record-reformer&#34;&gt;out_record_reformer&lt;/a&gt; で好みの形式にレコードを整形する&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ryotarai/fluent-plugin-dogstatsd&#34;&gt;out_dogstatsd&lt;/a&gt; で dogstatsd にメトリクスを送信する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;となります。設定ファイルは下記のように配置するとして、それぞれの設定ファイルについて説明していきます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tree /etc/td-agent
+/etc/td-agent
+├── conf.d
+│   ├── dogstatsd.conf.erb
+│   └── nginx.conf.erb
+└── td-agent.conf.erb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;td-agent-conf-erb:5a525c628f468fdda11fe314266c3265&#34;&gt;td-agent.conf.erb&lt;/h3&gt;
+
+&lt;p&gt;他の設定ファイルを include するだけです。
+&lt;a href=&#34;https://www.datadoghq.com/blog/monitor-fluentd-datadog/&#34;&gt;拙作の Datadog エージェントによるバッファ監視&lt;/a&gt;を入れると捗るので monitor_agent の設定も入れておきます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;source&amp;gt;
+  type monitor_agent
+  port 24220
+&amp;lt;/source&amp;gt;
+@include conf.d/nginx.conf
+@include conf.d/dogstatsd.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;conf-d-nginx-conf-erb:5a525c628f468fdda11fe314266c3265&#34;&gt;conf.d/nginx.conf.erb&lt;/h3&gt;
+
+&lt;p&gt;本筋とそれますが Fluentd v0.12 から使えるようになった&lt;a href=&#34;http://qiita.com/sonots/items/a01d2233210b7b059967&#34;&gt;ラベル機能&lt;/a&gt;はすごい便利なので、
+未だにタグ書き換えで消耗してる人は、ラベルに置き換えると幸福度が増すと思います。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;## アクセスログを LTSV 形式で取り込む
+&amp;lt;source&amp;gt;
+  type     tail
+  format   ltsv
+  path     /path/to/access.log
+  pos_file /path/to/nginx.access.pos
+  tag      nginx.access
+&amp;lt;/source&amp;gt;
+
+&amp;lt;match nginx.access&amp;gt;
+  type copy
+
+  ## ログ流量監視をするために out_flowcounter にも送る
+  &amp;lt;store&amp;gt;
+    type       flowcounter
+    count_keys *
+    unit       second
+    aggregate  all
+    tag        fluentd.flowcounter.nginx.access
+    @label     @dogstatsd
+  &amp;lt;/store&amp;gt;
+
+  ## @nginx にルーティングする
+  &amp;lt;store&amp;gt;
+    type   relabel
+    @label @nginx
+  &amp;lt;/store&amp;gt;
+&amp;lt;/match&amp;gt;
+
+&amp;lt;label @nginx&amp;gt;
+  ## out_record_reformer で目的に応じてレコードを整形する
+  &amp;lt;match nginx.access&amp;gt;
+    type copy
+    ## ステータスコード集計用
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      enable_ruby  true
+      tag dogstatsd.increment
+      &amp;lt;record&amp;gt;
+        type &amp;quot;increment&amp;quot;
+        key  ${%!nginx.status_#{status[0]}xx!}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+    ## レスポンスタイム集計用
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.histogram
+      &amp;lt;record&amp;gt;
+        type  &amp;quot;histogram&amp;quot;
+        key   &amp;quot;nginx.response_time&amp;quot;
+        value ${reqtime}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+    ## レスポンスサイズ集計用
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.histogram
+      &amp;lt;record&amp;gt;
+        type  &amp;quot;histogram&amp;quot;
+        key   &amp;quot;nginx.response_size&amp;quot;
+        value ${size}
+        nginx_proto ${forwardedproto}
+        nginx_vhost ${vhost}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+  &amp;lt;/match&amp;gt;
+
+  ## @dogstatsd にルーティングする
+  &amp;lt;match dogstatsd.**&amp;gt;
+    type   relabel
+    @label @dogstatsd
+  &amp;lt;/match&amp;gt;
+&amp;lt;/label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;conf-d-dogstatsd-conf:5a525c628f468fdda11fe314266c3265&#34;&gt;conf.d/dogstatsd.conf&lt;/h2&gt;
+
+&lt;p&gt;@dogstatsd に投げられたレコードを dogstatsd に投げます。&lt;/p&gt;
+
+&lt;p&gt;out_dogstatsd で &lt;code&gt;flat_tag true&lt;/code&gt; にすると type/key/value 以外のフィールドをメトリクスのタグにしてくれます。
+conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;nginx_vhost&lt;/code&gt; を入れているのはこの機能のためで、
+後で可視化やアラート設定するときにこれらのタグを利用して特定の Virtual Host のみのグラフを表示するといったことが可能になるので、
+用途に応じて設定することをオススメします。&lt;/p&gt;
+
+&lt;p&gt;またこれも本筋とはそれますが、out_dogstatsd で Datadog の Event も送れるので、
+エラーログに特定の文字列が現れたら Datadog に通知するとかも簡単にできて捗る感じです。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;label @dogstatsd&amp;gt;
+
+  ## flowcounter のログも record_reformer で整形する
+  &amp;lt;match fluentd.flowcounter.**&amp;gt;
+    type copy
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.count
+      &amp;lt;record&amp;gt;
+        key   &amp;quot;fluentd.flowcounter.bytes&amp;quot;
+        value ${bytes}
+        type  &amp;quot;count&amp;quot;
+        fluentd_source ${tag_suffix[2]}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+    &amp;lt;store&amp;gt;
+      type record_reformer
+      renew_record true
+      tag dogstatsd.count
+      &amp;lt;record&amp;gt;
+        key   &amp;quot;fluentd.flowcounter.count&amp;quot;
+        value ${count}
+        type  &amp;quot;count&amp;quot;
+        fluentd_source ${tag_suffix[2]}
+      &amp;lt;/record&amp;gt;
+    &amp;lt;/store&amp;gt;
+  &amp;lt;/match&amp;gt;
+
+  ## String として送られてくることがあるのでキャストしておく
+  &amp;lt;filter dogstatsd.count&amp;gt;
+    type  typecast
+    types value:integer
+  &amp;lt;/filter&amp;gt;
+  &amp;lt;filter dogstatsd.histogram&amp;gt;
+    type  typecast
+    types value:float
+  &amp;lt;/filter&amp;gt;
+
+  ## dogstatsd に送る
+  ## flat_tag true にすると type/key/value 以外のフィールドをメトリクスのタグにしてくれる
+  &amp;lt;match dogstatsd.**&amp;gt;
+    type copy
+    &amp;lt;store&amp;gt;
+      @id  dogstatsd
+      type dogstatsd
+      flat_tag true
+    &amp;lt;/store&amp;gt;
+  &amp;lt;/match&amp;gt;
+
+&amp;lt;/label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あとは Datadog でダッシュボードを作るなり、アラートを作るなり好きにしてください。
+ちょっと雑な説明なので分からないことがあれば twitter などで聞いて下さい。&lt;/p&gt;
+
+&lt;h2 id=&#34;おわりに:5a525c628f468fdda11fe314266c3265&#34;&gt;おわりに&lt;/h2&gt;
+
+&lt;p&gt;これも木曜に出てきたのですが「Datadog の情報ってインターネットにあまり出てなくないですか」というのがありました。
+確かに言われてみればそんな気もするので自分の持ってる知見は積極的に出していけたらなと思います。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
