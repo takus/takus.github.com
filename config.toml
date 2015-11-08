@@ -1,6 +1,6 @@
-BaseUrl= "http://blog.takus.me/"
-Title= "takus's blog"
-LanguageCode= "ja-jp"
+BaseUrl = "http://blog.takus.me/"
+Title = "takus's blog"
+LanguageCode = "ja-jp"
 Copyright = "Copyright (C) 2011- Takumi Sakamoto All Right Reserved."
 
 theme = "casper"
