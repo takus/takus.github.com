@@ -132,10 +132,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/06/06/code-simplicity">Code Simplicity</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/06/06/code-simplicity/">Code Simplicity</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>This blog post reminds me of the book I read six months ago. Code Simplicity Altough I don&rsquo;t remember the exact sentences in the book, the author wrote something like that: The ultimate goal of software is to help people, and great software is a software that will continue to help people. However, continuing to help people is really difficult because the environment around our software is going to change. As a result, we must maintain our software for continuing to help people. <a class="read-more" href="http://blog.takus.me/2013/06/06/code-simplicity">&raquo;</a></p>
+        <p>This blog post reminds me of the book I read six months ago. Code Simplicity Altough I don&rsquo;t remember the exact sentences in the book, the author wrote something like that: The ultimate goal of software is to help people, and great software is a software that will continue to help people. However, continuing to help people is really difficult because the environment around our software is going to change. As a result, we must maintain our software for continuing to help people. <a class="read-more" href="http://blog.takus.me/2013/06/06/code-simplicity/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -156,10 +156,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/06/03/rsync-ssh-maxstartups">rsync が &#39;ssh_exchange_identification: Connection closed by remote host&#39; で失敗するときの対処法</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/06/03/rsync-ssh-maxstartups/">rsync が &#39;ssh_exchange_identification: Connection closed by remote host&#39; で失敗するときの対処法</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>rsync したときに下記のようなエラーでファイル転送が失敗する事案があったので、 /etc/sshd_config の LogLevel を DEBUG 2 に変更して再実行したところ、drop connection されていました。 $ deploy-tool . . . err:host0001:65280 ssh_exchange_identification: Connection closed by remote host rsync: connection unexpectedly closed (0 bytes received so far) [sender] rsync error: unexplained error (code 255) at io.c(600) [sender=3.0.6] $ sudo tail -f /var/log/secure | grep 'drop connection' Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10 Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10 man を見ると /etc/sshd_config の MaxStartUps が作用してそうだったので MaxStartups を大きな値にして回避しました。 外部から攻撃される可能性がないサーバなら大きな値にしておくとよさそうです。 $ man sshd_config MaxStartups Specifies the maximum number of concurrent unauthenticated connections to the SSH daemon. <a class="read-more" href="http://blog.takus.me/2013/06/03/rsync-ssh-maxstartups">&raquo;</a></p>
+        <p>rsync したときに下記のようなエラーでファイル転送が失敗する事案があったので、 /etc/sshd_config の LogLevel を DEBUG 2 に変更して再実行したところ、drop connection されていました。 $ deploy-tool . . . err:host0001:65280 ssh_exchange_identification: Connection closed by remote host rsync: connection unexpectedly closed (0 bytes received so far) [sender] rsync error: unexplained error (code 255) at io.c(600) [sender=3.0.6] $ sudo tail -f /var/log/secure | grep 'drop connection' Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10 Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10 man を見ると /etc/sshd_config の MaxStartUps が作用してそうだったので MaxStartups を大きな値にして回避しました。 外部から攻撃される可能性がないサーバなら大きな値にしておくとよさそうです。 $ man sshd_config MaxStartups Specifies the maximum number of concurrent unauthenticated connections to the SSH daemon. <a class="read-more" href="http://blog.takus.me/2013/06/03/rsync-ssh-maxstartups/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -180,10 +180,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj">CentOS 6 に /dev/sdf としてアタッチした EBS ボリュームが /dev/xvdj として認識される件</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj/">CentOS 6 に /dev/sdf としてアタッチした EBS ボリュームが /dev/xvdj として認識される件</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>インスタンスガチャなのかなんなのか、同じくらいの負荷与えてる EBS ボリュームのうち 1 台だけ性能劣化することがあって、ひとまず EC2 の問題なのか EBS の問題なのか切り分けるために EBS ボリュームを作って、AWS のマネジメントコンソールから CentOS 6 のサーバに /dev/sdf としてアタッチしたのに一向にデバイス認識されず、おかしいなと思って調べていたらアタッチしたボリュームと同じサイズのデバイスがあって、ググったら RHEL 6 や CentOS 6 でデバイス名がズレてしまうバグが存在するというオチでした。 # fdisk -l . . . Disk /dev/xvdj: 429.5 GB, 429496729600 bytes 255 heads, 63 sectors/track, 52216 cylinders Units = cylinders of 16065 * 512 = 8225280 bytes Sector size (logical/physical): 512 bytes / 512 bytes I/O size (minimum/optimal): 512 bytes / 512 bytes Disk identifier: 0x00000000 <a class="read-more" href="http://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj">&raquo;</a></p>
+        <p>インスタンスガチャなのかなんなのか、同じくらいの負荷与えてる EBS ボリュームのうち 1 台だけ性能劣化することがあって、ひとまず EC2 の問題なのか EBS の問題なのか切り分けるために EBS ボリュームを作って、AWS のマネジメントコンソールから CentOS 6 のサーバに /dev/sdf としてアタッチしたのに一向にデバイス認識されず、おかしいなと思って調べていたらアタッチしたボリュームと同じサイズのデバイスがあって、ググったら RHEL 6 や CentOS 6 でデバイス名がズレてしまうバグが存在するというオチでした。 # fdisk -l . . . Disk /dev/xvdj: 429.5 GB, 429496729600 bytes 255 heads, 63 sectors/track, 52216 cylinders Units = cylinders of 16065 * 512 = 8225280 bytes Sector size (logical/physical): 512 bytes / 512 bytes I/O size (minimum/optimal): 512 bytes / 512 bytes Disk identifier: 0x00000000 <a class="read-more" href="http://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -204,10 +204,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/12/travel-to-new-york">New York に行ってきた</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/12/travel-to-new-york/">New York に行ってきた</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>前回の&rdquo;Los Angeles に行ってきた&ldquo;の続きです。New York 編。 Tips Unlimited Ride MetroCard 市内であれば、ほとんどの場所に地下鉄で行けるので地下鉄の乗り放題パスを買うと捗ります。7 日間乗り放題で $30 と無駄に期間が長くて使い切れないですが、すぐに元取れます。 NEW YORK CityPASS とりあえず初めて NY 行く人はこれを買っておくといいと思います。エンパイアステートビル展望台、メトロポリタン美術館、アメリカ自然史博物館、トップオブザロック展望台、近代美術館、自由の女神周辺のフェリー観光ができて、$106 は個別にチケットを買うよりはかなりお得です。旅行行く前にオンラインで支払って、バーコード入りのチケットを印刷して持って行けば OK です。 Statue of Liverty フェリーで自由の女神からブルックリン橋まで Manhattan 島の南部を全体的に回ってくれてだいぶ満足できるツアーになってます。 911 Memorial すでに One World Trade Center と呼ばれる新しいビルが天空高くそびえ立っていましたが、こんなビルが跡形もなく崩れ去るなんてとても想像できないわけで、自分の中での 9&frasl;11 に対する見方が変わって、遠い国の出来事から急にすごくリアルな出来事に思えるようになりました。 Brooklyn Bridge 全長 2km くらいなので歩いて渡ると楽しめます。Manhattan 側から歩いていき、Brooklyn 側の公園でアイスを食べながら一休みして地下鉄で帰りました。 Yankee Stadium せっかくなのでメジャーリーグも見てきました。オンラインでチケット買ってくこともできますが、人気カードでない限り当日スタジアム行って買えば問題ないです。$50 くらいのチケット買いましたが、球場内の移動が割と自由で写真のように内野席の後ろとか入れて立ち見できるので、一番安いチケット買って歩き回るのがベストなんじゃないかと思います。 Top of The Rock &amp; Empire State Buinding New York の町を一望できる場所として、この 2 箇所がありますが、夜景を楽しむなら Empire State Building のライトアップを見れる Top of The Rock <a class="read-more" href="http://blog.takus.me/2013/05/12/travel-to-new-york">&raquo;</a></p>
+        <p>前回の&rdquo;Los Angeles に行ってきた&ldquo;の続きです。New York 編。 Tips Unlimited Ride MetroCard 市内であれば、ほとんどの場所に地下鉄で行けるので地下鉄の乗り放題パスを買うと捗ります。7 日間乗り放題で $30 と無駄に期間が長くて使い切れないですが、すぐに元取れます。 NEW YORK CityPASS とりあえず初めて NY 行く人はこれを買っておくといいと思います。エンパイアステートビル展望台、メトロポリタン美術館、アメリカ自然史博物館、トップオブザロック展望台、近代美術館、自由の女神周辺のフェリー観光ができて、$106 は個別にチケットを買うよりはかなりお得です。旅行行く前にオンラインで支払って、バーコード入りのチケットを印刷して持って行けば OK です。 Statue of Liverty フェリーで自由の女神からブルックリン橋まで Manhattan 島の南部を全体的に回ってくれてだいぶ満足できるツアーになってます。 911 Memorial すでに One World Trade Center と呼ばれる新しいビルが天空高くそびえ立っていましたが、こんなビルが跡形もなく崩れ去るなんてとても想像できないわけで、自分の中での 9&frasl;11 に対する見方が変わって、遠い国の出来事から急にすごくリアルな出来事に思えるようになりました。 Brooklyn Bridge 全長 2km くらいなので歩いて渡ると楽しめます。Manhattan 側から歩いていき、Brooklyn 側の公園でアイスを食べながら一休みして地下鉄で帰りました。 Yankee Stadium せっかくなのでメジャーリーグも見てきました。オンラインでチケット買ってくこともできますが、人気カードでない限り当日スタジアム行って買えば問題ないです。$50 くらいのチケット買いましたが、球場内の移動が割と自由で写真のように内野席の後ろとか入れて立ち見できるので、一番安いチケット買って歩き回るのがベストなんじゃないかと思います。 Top of The Rock &amp; Empire State Buinding New York の町を一望できる場所として、この 2 箇所がありますが、夜景を楽しむなら Empire State Building のライトアップを見れる Top of The Rock <a class="read-more" href="http://blog.takus.me/2013/05/12/travel-to-new-york/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -228,10 +228,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001">Provisioning Frameworks Casual Talks vol.1 に行ってきた #pfcasual</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/">Provisioning Frameworks Casual Talks vol.1 に行ってきた #pfcasual</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>金曜日にヒカリエで開催された Provisioning Frameworks Casual Talks vol.1 に参加 &amp; 少しだけお手伝いしてきたのでまとめ。@zabbiozabbio さんと一緒に 27F のエレベーターホールで待ち受けていたのが自分です。 serverspec の話 chef + puppet の話というよりも chef 使うにしても、puppet 使うにしても、(Touryo 使うにしても)、serverspec 使って構成管理ツールとは別にサーバの構成をテストすべきだよねという話が印象に残っていて、どの構成管理ツール使うか検討している間に、まずは serverspec でテストするようにしておくのがよさそうかなと思いました。 で、attribute(config) の管理方法の話 serverspec 自体は出たときからよさそうだなとは思っていたものの、attribute に入れた内容が設定ファイルに反映されているかみたいなテストをしようとすると上記のような疑問にぶち当たって、serverspec が構成管理ツールに依存するのイケてないなーとか思っていましたが、家に帰って twitter 眺めてたら @riywo 先生がボソっといいことつぶやいてました。 弊社でいえば、たとえば admintool 的なツールが attribute 持っていて、provision と test の両方から参照できるみたいになっていれば、なんとなく上記の問題も解決できそうで、chef-solo -j URL で URL 指定して json 取ってこれると言ってた気がするので、なんかこの辺りうまくやれるツールがあるとよさそうですね:D 2013/05/12 23:34 追記 serverspec でホスト固有の属性値を扱う方法 で参考になりそうな仕組みが提案されてたので参考にしたいところです。 自動更新の話 @sonots さんのブログ にまとまってる話。自分は自動更新は怖い派ですが、実現できないか考える余地は色々とありそうだと思いました。話に出ていた staging はもちろん @sethvargo 先生がお話していた、environments を使えば production の一部のサーバだけ更新するみたいなこともできそうで、staging → production の一部 <a class="read-more" href="http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001">&raquo;</a></p>
+        <p>金曜日にヒカリエで開催された Provisioning Frameworks Casual Talks vol.1 に参加 &amp; 少しだけお手伝いしてきたのでまとめ。@zabbiozabbio さんと一緒に 27F のエレベーターホールで待ち受けていたのが自分です。 serverspec の話 chef + puppet の話というよりも chef 使うにしても、puppet 使うにしても、(Touryo 使うにしても)、serverspec 使って構成管理ツールとは別にサーバの構成をテストすべきだよねという話が印象に残っていて、どの構成管理ツール使うか検討している間に、まずは serverspec でテストするようにしておくのがよさそうかなと思いました。 で、attribute(config) の管理方法の話 serverspec 自体は出たときからよさそうだなとは思っていたものの、attribute に入れた内容が設定ファイルに反映されているかみたいなテストをしようとすると上記のような疑問にぶち当たって、serverspec が構成管理ツールに依存するのイケてないなーとか思っていましたが、家に帰って twitter 眺めてたら @riywo 先生がボソっといいことつぶやいてました。 弊社でいえば、たとえば admintool 的なツールが attribute 持っていて、provision と test の両方から参照できるみたいになっていれば、なんとなく上記の問題も解決できそうで、chef-solo -j URL で URL 指定して json 取ってこれると言ってた気がするので、なんかこの辺りうまくやれるツールがあるとよさそうですね:D 2013/05/12 23:34 追記 serverspec でホスト固有の属性値を扱う方法 で参考になりそうな仕組みが提案されてたので参考にしたいところです。 自動更新の話 @sonots さんのブログ にまとまってる話。自分は自動更新は怖い派ですが、実現できないか考える余地は色々とありそうだと思いました。話に出ていた staging はもちろん @sethvargo 先生がお話していた、environments を使えば production の一部のサーバだけ更新するみたいなこともできそうで、staging → production の一部 <a class="read-more" href="http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -252,10 +252,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/11/travel-to-los-angeles">Los Angeles に行ってきた</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">Los Angeles に行ってきた</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>帰ってきてから 1 週間ぐらいたってしまいましたが、ゴールデンウィークを利用して Los Angeles と New York に行ってきたのでまとめ。ひとまず Los Angeles 編。 We Need a Car ヨーロッパ旅行の感覚で現地に着いてから色々考えようとか思ってましたが、公共交通機関で移動すると時間かかりすぎなのが非常に辛い町でした。ロサンゼルス国際空港の近くのホテルに宿泊していましたが、ビーチで有名な Santa Monica まではバスで 40 分程度、Hollywood までは 1 時間はかかってしまいます。逆にタクシーだとそれぞれ 30 分程度で着いてしまうので、レンタカー借りて移動するのが正解でした&hellip;。 Disney Resort California の Disney Resort は LAX から南に車で 40 分ほどの Anaheim にあります。LAX からは有料のシャトルバスが出ていて、&rdquo;Long Distance Vans&rdquo; と書かれた緑色の案内版の下で待ってると &ldquo;Disney Resort&rdquo; と書かれたバスが通るので合図して停車してもらって乗ります。片道 $20 程度。「帰りも乗ってくか？」と聞かれたので、「09:00 からショーがあってそれを見たいから 10:00 に迎えに来てくれて、ホテルまで送ってくれるなら」と交渉したところ、「ノープロブレム」とのことだったのでお願いしました。 日本におけるディズニーランドとディズニーシーのように、Disney Park と Disney California Park の 2 つがあったので、1 日でどちらにも出入りが自由な Park Hopper Ticket を $125 で購入。日本のディズニーランドが 6200 円なので大体同じくらいの感覚なんじゃないかと思います。 <a class="read-more" href="http://blog.takus.me/2013/05/11/travel-to-los-angeles">&raquo;</a></p>
+        <p>帰ってきてから 1 週間ぐらいたってしまいましたが、ゴールデンウィークを利用して Los Angeles と New York に行ってきたのでまとめ。ひとまず Los Angeles 編。 We Need a Car ヨーロッパ旅行の感覚で現地に着いてから色々考えようとか思ってましたが、公共交通機関で移動すると時間かかりすぎなのが非常に辛い町でした。ロサンゼルス国際空港の近くのホテルに宿泊していましたが、ビーチで有名な Santa Monica まではバスで 40 分程度、Hollywood までは 1 時間はかかってしまいます。逆にタクシーだとそれぞれ 30 分程度で着いてしまうので、レンタカー借りて移動するのが正解でした&hellip;。 Disney Resort California の Disney Resort は LAX から南に車で 40 分ほどの Anaheim にあります。LAX からは有料のシャトルバスが出ていて、&rdquo;Long Distance Vans&rdquo; と書かれた緑色の案内版の下で待ってると &ldquo;Disney Resort&rdquo; と書かれたバスが通るので合図して停車してもらって乗ります。片道 $20 程度。「帰りも乗ってくか？」と聞かれたので、「09:00 からショーがあってそれを見たいから 10:00 に迎えに来てくれて、ホテルまで送ってくれるなら」と交渉したところ、「ノープロブレム」とのことだったのでお願いしました。 日本におけるディズニーランドとディズニーシーのように、Disney Park と Disney California Park の 2 つがあったので、1 日でどちらにも出入りが自由な Park Hopper Ticket を $125 で購入。日本のディズニーランドが 6200 円なので大体同じくらいの感覚なんじゃないかと思います。 <a class="read-more" href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -276,10 +276,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/01/crontab-date">crontab で date コマンド使う場合の注意</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/01/crontab-date/">crontab で date コマンド使う場合の注意</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>crontab で定期的にを実行したときに出力されたものをログとして書き出すときに、ファイル名のサフィックスとして日時をつけることでログローテーションさせたいというケースはあると思います。ですが、以下のような記述はうまくいきません。 0 0 * * * /home/takus/bin/oreno_script.pl &gt; /tmp/log.`date -d '1 days ago' +%Y%m%d` 2&gt;&amp;1 これは % が crontab では特別な意味を持つ文字であるのが原因で、下記のように % はバックスラッシュでエスケープしておく必要があります。 0 0 * * * /home/takus/bin/oreno_script.pl &gt; /tmp/log.`date -d '1 days ago' +\%Y\%m\%d` 2&gt;&amp;1 crontab は man を読んで正しく使いましょう。 参考 詳細は man 5 crontab で確認できます。 <a class="read-more" href="http://blog.takus.me/2013/05/01/crontab-date">&raquo;</a></p>
+        <p>crontab で定期的にを実行したときに出力されたものをログとして書き出すときに、ファイル名のサフィックスとして日時をつけることでログローテーションさせたいというケースはあると思います。ですが、以下のような記述はうまくいきません。 0 0 * * * /home/takus/bin/oreno_script.pl &gt; /tmp/log.`date -d '1 days ago' +%Y%m%d` 2&gt;&amp;1 これは % が crontab では特別な意味を持つ文字であるのが原因で、下記のように % はバックスラッシュでエスケープしておく必要があります。 0 0 * * * /home/takus/bin/oreno_script.pl &gt; /tmp/log.`date -d '1 days ago' +\%Y\%m\%d` 2&gt;&amp;1 crontab は man を読んで正しく使いましょう。 参考 詳細は man 5 crontab で確認できます。 <a class="read-more" href="http://blog.takus.me/2013/05/01/crontab-date/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -300,10 +300,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/04/25/supergrep">ブラウザから tail -f log | grep keyword できるツール supergrep</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/04/25/supergrep/">ブラウザから tail -f log | grep keyword できるツール supergrep</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>エンジニアならサーバにログインしてコマンド打てば済む話ですが、世の中には非エンジニアでも tail -f log | grep keyword みたいにログを見れるようにしたいという案件がたまにあるみたいです。自分で書いてもよかったのですが、supergrep というツールがあったので使ってみました。 Is It A Bird? Is It A Plane? No, It’s Supergrep! esty/supergrep インストール supergrep は node.js で書かれているので、node のインストールから。node の作法はよく知らないので適当です。 git clone https://github.com/creationix/nvm.git ~/nvm . ~/nvm/nvm.sh nvm install v0.10.5 nvm alias default v0.10.5 node -v 続いて supergrep をインストールして起動します。これだけ。起動時に &lsquo;Warning: express.createServer() is deprecated, express&rsquo; が出るのはご愛敬。 git clone https://github.com/etsy/supergrep.git cd supergrep npm install ./runlocal http://hostname:3000 にブラウザからアクセスするとログが見れる状態になりました。 設定 デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config 等もありましたが、今回は必要としてないので調べてません。 files: [ { name: 'web', path: ['/var/log/httpd/info.log', '/var/log/httpd/php.log'] // you can also do this // filter: function (line, config) { // if (! <a class="read-more" href="http://blog.takus.me/2013/04/25/supergrep">&raquo;</a></p>
+        <p>エンジニアならサーバにログインしてコマンド打てば済む話ですが、世の中には非エンジニアでも tail -f log | grep keyword みたいにログを見れるようにしたいという案件がたまにあるみたいです。自分で書いてもよかったのですが、supergrep というツールがあったので使ってみました。 Is It A Bird? Is It A Plane? No, It’s Supergrep! esty/supergrep インストール supergrep は node.js で書かれているので、node のインストールから。node の作法はよく知らないので適当です。 git clone https://github.com/creationix/nvm.git ~/nvm . ~/nvm/nvm.sh nvm install v0.10.5 nvm alias default v0.10.5 node -v 続いて supergrep をインストールして起動します。これだけ。起動時に &lsquo;Warning: express.createServer() is deprecated, express&rsquo; が出るのはご愛敬。 git clone https://github.com/etsy/supergrep.git cd supergrep npm install ./runlocal http://hostname:3000 にブラウザからアクセスするとログが見れる状態になりました。 設定 デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config 等もありましたが、今回は必要としてないので調べてません。 files: [ { name: 'web', path: ['/var/log/httpd/info.log', '/var/log/httpd/php.log'] // you can also do this // filter: function (line, config) { // if (! <a class="read-more" href="http://blog.takus.me/2013/04/25/supergrep/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -324,10 +324,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/03/28/riak-install">CentOS に Riak をインストール &amp; Data::Riak::Fast で操作してみる</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/03/28/riak-install/">CentOS に Riak をインストール &amp; Data::Riak::Fast で操作してみる</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>最近、社内 TechTalk で何か話せという依頼があり、ちょうど Riak Serious Talk もあるので、Riak についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。 インストール Vagrantbox.es から CentOS 6.4 x86_64 Minimal を持ってきてテストサーバを用意。起動後にひとまず iptables だけ停止。Vagrant の操作などは割愛します。 依存パッケージ導入 Erlang をインストールするのに必要なパッケージをインストールします。 sudo yum groupinstall “Development tools” sudo yum install git sudo yum install libwx unixODBC.x86_64 unixODBC-devel.x86_6 wxBase.x86_64 wxGTK.x86_64 wxGTK-gl wget https://elearning.erlang-solutions.com/couchdb//rbingen_adapter//package_R15B01_centos664_1333462308/esl-erlang-R15B01-1.x86_64.rpm sudo rpm -ivh esl-erlang-R15B01-1.x86_64.rpm Riak をインストール とりあえず make まで。ソースは Basho のサイトから入手できます。 wget http://downloads.basho.com.s3-website-us-east-1.amazonaws.com/riak/1.3/1.3.0/riak-1.3.0.tar.gz tar zxvf riak-1.3.0.tar.gz cd riak-1.3.0 make devrel Riak を起動してみる 4 ノードを起動。ulimit しているのはなしだと警告が出るので一応。 ulimit <a class="read-more" href="http://blog.takus.me/2013/03/28/riak-install">&raquo;</a></p>
+        <p>最近、社内 TechTalk で何か話せという依頼があり、ちょうど Riak Serious Talk もあるので、Riak についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。 インストール Vagrantbox.es から CentOS 6.4 x86_64 Minimal を持ってきてテストサーバを用意。起動後にひとまず iptables だけ停止。Vagrant の操作などは割愛します。 依存パッケージ導入 Erlang をインストールするのに必要なパッケージをインストールします。 sudo yum groupinstall “Development tools” sudo yum install git sudo yum install libwx unixODBC.x86_64 unixODBC-devel.x86_6 wxBase.x86_64 wxGTK.x86_64 wxGTK-gl wget https://elearning.erlang-solutions.com/couchdb//rbingen_adapter//package_R15B01_centos664_1333462308/esl-erlang-R15B01-1.x86_64.rpm sudo rpm -ivh esl-erlang-R15B01-1.x86_64.rpm Riak をインストール とりあえず make まで。ソースは Basho のサイトから入手できます。 wget http://downloads.basho.com.s3-website-us-east-1.amazonaws.com/riak/1.3/1.3.0/riak-1.3.0.tar.gz tar zxvf riak-1.3.0.tar.gz cd riak-1.3.0 make devrel Riak を起動してみる 4 ノードを起動。ulimit しているのはなしだと警告が出るので一応。 ulimit <a class="read-more" href="http://blog.takus.me/2013/03/28/riak-install/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -348,10 +348,10 @@
 	   
 <article class="post post">
     <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/03/22/test-web-api-client">Test::Fake::HTTPD で Web API クライアントをテスト</a></h2>
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/03/22/test-web-api-client/">Test::Fake::HTTPD で Web API クライアントをテスト</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>ある社内向け Web API のクライアントのテスト書く時にどうすべきかなと小一時間調べてみて、Test::Fake::HTTPD がよさそうなので使ってみたメモ。思うがままにレスポンス返せるし、実際に本番サーバ叩いたりしなくてもいいし、オフラインでもテストできて、だいぶテストが捗りそうです。 #!/usr/bin/env perl use warnings; use strict; use Test::More; use Test::Fake::HTTPD; use JSON::XS; use Furl::HTTP; subtest api =&gt; sub { my $response = { '/1/statuses/user_timeline/takus.json?count=1' =&gt; [ { 'created_at' =&gt; 'Thu Mar 21 07:22:25 +0000 2013', 'text' =&gt; 'Hello, world', 'user' =&gt; { 'screen_name' =&gt; 'takus', 'lang' =&gt; 'en', 'location' =&gt; 'Tokyo, Japan', }, 'id' =&gt; '314638108048097280', } ], }; my $httpd = run_http_server { my $req = shift; if ( $response-&gt;{ $req-&gt;uri } ) { return HTTP::Response-&gt;new( 200, 'ok', [ 'Content-Type' =&gt; 'text/html' ], encode_json $response-&gt;{ $req-&gt;uri } ); } return HTTP::Response-&gt;new( 404, $req-&gt;uri . <a class="read-more" href="http://blog.takus.me/2013/03/22/test-web-api-client">&raquo;</a></p>
+        <p>ある社内向け Web API のクライアントのテスト書く時にどうすべきかなと小一時間調べてみて、Test::Fake::HTTPD がよさそうなので使ってみたメモ。思うがままにレスポンス返せるし、実際に本番サーバ叩いたりしなくてもいいし、オフラインでもテストできて、だいぶテストが捗りそうです。 #!/usr/bin/env perl use warnings; use strict; use Test::More; use Test::Fake::HTTPD; use JSON::XS; use Furl::HTTP; subtest api =&gt; sub { my $response = { '/1/statuses/user_timeline/takus.json?count=1' =&gt; [ { 'created_at' =&gt; 'Thu Mar 21 07:22:25 +0000 2013', 'text' =&gt; 'Hello, world', 'user' =&gt; { 'screen_name' =&gt; 'takus', 'lang' =&gt; 'en', 'location' =&gt; 'Tokyo, Japan', }, 'id' =&gt; '314638108048097280', } ], }; my $httpd = run_http_server { my $req = shift; if ( $response-&gt;{ $req-&gt;uri } ) { return HTTP::Response-&gt;new( 200, 'ok', [ 'Content-Type' =&gt; 'text/html' ], encode_json $response-&gt;{ $req-&gt;uri } ); } return HTTP::Response-&gt;new( 404, $req-&gt;uri . <a class="read-more" href="http://blog.takus.me/2013/03/22/test-web-api-client/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
