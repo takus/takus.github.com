@@ -231,6 +231,8 @@
     
         
     
+        
+    
 
     
         
@@ -251,6 +253,31 @@
 </nav>
 
     </div>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2014/01/28/nagios-resource-graph/">Nagios のアラートに CloudForecast へのリンクをつける</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p><p>といっても、単に <code>Graph: http://cf.example.com/server?address=$HOSTADDRESS$\n</code> みたいな記述を <code>command.cfg</code> に追加してあげるだけの話です。</p>
+ <a class="read-more" href="http://blog.takus.me/2014/01/28/nagios-resource-graph/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2014-01-28T00:00:00Z">
+            28 Jan 2014
+        </time>
+    </footer>
+</article>
 
     
         
@@ -470,30 +497,6 @@
         
         <time class="post-date" datetime="2013-08-06T00:00:00Z">
             6 Aug 2013
-        </time>
-    </footer>
-</article>
-
-    
-        
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity 2013 に参加 &amp; LT してきました！！</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>6&frasl;18 ~ 6&frasl;20 に Santa Clara で開催された Velocity 2013 に参加して来ました。Velocity は Web Performance や Web Operation などが主なテーマで、Google、Facebook、Twitter、Amazon、Yahoo! などをはじめとした様々な企業から 1,000 人以上が参加する大規模なカンファレンスです。いまやよく耳にする DevOps というキーワードも 10+ Deploys Per Day: Dev and Ops Cooperation at Flickr という Velocity 2009 のトークで有名になった言葉ですね。 参加するにあたって、@xaicron さんの 勝手に YAPC::NA 2013 に行ってきた！！ と同じく、会社が渡航費、宿泊費、参加費等の全ての費用を負担してくれました！！新卒入社 2 年目の自分をこのような素晴らしいカンファレンスに快く派遣してくれた DeNA++ です。 My Ignite Talk &ldquo;不格好経営&rdquo;にも載ってる DeNA の創業者である南場さんの言葉に、&ldquo;これから会社がどんなに長生きしようとも、地球や宇宙の時間のなかでほんの瞬間の存在になる。けれどもなにか宇宙に引っ掻きキズみたいな証を残したい。&rdquo; というものがあります。そこで、Velocity への参加が決まってから、DeNA 社員として何か引っ掻きキズを残せないか考えていたところ、Ignite Velocity という LT のセッションを見つけたので、abstract 書いて応募したところ accept されたので LT してきました。 ご存知ない方のために紹介しておくと Ignite は 20 枚のスライドを 15 秒づつ流して、5 分間のプレゼンをするというプレゼン形式で、Velocity 2012 では DevOps に関する話 等が Youtube にあがってます。 Ignite が近づくにつれてかなり緊張が高まって、スラダンのミッチー並みにトイレに行ってたのですが、さらに始まる直前になって上の写真のような会場だと分かり、「あ、これ無理だ」と思って、ドラゴンボール Z のミスター・サタンみたいに腹痛起こそうか悩んでたわけですが、Citrix のナイスガイが「みんな酒飲んでるし、ミスったって誰も覚えてないよー」的な話してくれたおかげでだいぶ緊張がほぐれて、自分のトークはリラックスして臨めました。 LT は 3 Pupular Ops Tool in Japan という、(popular がかなり主観ですが) serverspec と GrowthForecast と Fluentd について簡単に紹介するような話で、日本の皆様にはお馴染みの内容ですが、海外の人にとってはちょっとは役立つんじゃないかと思ってこの内容にしました。 トーク後に fluentd について聞きに来てくれた人がいたり、色んな人から good job とか interesting みたいなお褒めの言葉をいただいたり、以下のようなツイートを頂けたので、小さいながらも引っ掻きキズを残してこれたんじゃないかと思います。 そして、色々と声かけてもらった中でも、&ldquo;Web Operations&rdquo; の著者で、Velocity の Program Chair でもある @allspaw が自分のこと覚えててくれて、excellent って言ってくれたのには痺れました(お世辞だと分かっててもw) Awesome People Velocity ではほんとに色んな人に優しくしてもらいました。ホテルでチップ用の紙幣なくて両替しようとしたら $5 にしか変えれないと言われて困ってたら、通りかかった人が、&rdquo;一昨日のトークよかったよ。あとモバゲーのゲームもやったことあるんだ&rdquo; って言って 3 ドルくれたり（失礼ながら名前聞くの忘れてしまった&hellip;)、Closing Party で Adobe で働いてるジェラール・ピケ似のイケメンと喋ってたらビール奢ってくれたり、思い返すとそんなエピソードばかりでほんとに参加者が素晴らしかったです！ Awesome Talks 素晴らしいトークがたくさんありましたが、全部紹介しきれないので印象深いものだけ簡単にまとめておきます。もうちょっと踏み込んだものはまた後日&hellip;。 Avoiding Performance Regression at Twitter 機能追加やバグフィックスを反映するたびに性能劣化が起きてしまうのをどのように防ぐかといった内容で、WebPageTest、PhantomJS、ShowSlow といったツールを使って、branch 毎の TTFT (最初のツイートが表示されるまでの時間) を Jenkins でテストしているそうです。性能が劣化するようなら merge させないといった仕組みなので、性能向上はあっても性能劣化は起きないような仕組みが自動で回るようになっている点がスバラシイですね。 ちなみに、この話すごくよかったのでスピーカーの @marcelduran にリプライしたら、返ってきたリプライまで素晴らしくてさらに感銘を受けました。犯人捜しするのでなく、犯人を作らないような仕組みを考えられる人になりたいですね。 Bring the Noise: Making Effective Use of a Quarter Million Metrics Etsy といえば、&ldquo;Graph everything&rdquo; とか &ldquo;If it moves, graph it&rdquo; に代表されるようにとにかく何でもグラフにしてることでお馴染みですが、&rdquo;たとえグラフの波形が乱れても、誰も見てなかったらそれはスパイクと言えるんだろうか？&rdquo; というところから、リアルタイム異常検知とそれに似たグラフを自動で見つける Kale の話でした。トークの中で出てきたこのツイートでも言ってるように、不味そうな兆候って後で致命的な問題を招くわけで、先ほどの Twitter の話と同じく、問題が小さいうちに対処できるようにしていく部分に Velocity のカルチャーを感じました。 Configuration Management Anti-patterns &ldquo;Stop putting upstream modules and cookbooks into your repos&rdquo; という berkshelf とか librarian-chef とか使って使いたいバージョン固定すれば、勝手にバージョンアップされてりしても安心だよねって話が印象に残りました。DeNA のように大規模に色々なシステムが動くような環境で DRY に則って共通化すると、ある環境のために加えた変更が、他の環境に影響を及ぼしてしまうことがたびたびありますが、使う環境毎にきちんとバージョン固定しておけば、そういう苦しみから解放されて、共通化を進めやすくなり、みんなハッピーになれそうだと思いました。 Future Velocity に行って日本のエンジニアのレベルはやっぱ高いんだなと感じました。例えば 3 日目に聞いた MHA のトークはチュートリアル的な内容に留まっていたので、じゃあ DeNA でどのように MHA を運用してるのかって話なんかは当然喋らせてもらえそうで、DeNA のようにグローバルカンパニーを自負する会社や、日頃から素晴らしいツール・ライブラリを公開してるエンジニアの方々はどんどん海外のカンファレンスで喋っていったらいいんじゃないでしょうか！ 自分自身については、エンジニアとしてまだまだ半人前の存在だと再認識しながらも、Velocity の本セッションもそんなに遠い場所でないという感触は掴めたので、いつかは本セッションでトークできるように日頃から精進していきたいと思います:D Acknowledgments 最後になりましたが、Velocity に参加するための手配を色々と整えてくれたスーパーヘルパー様と、自分がするべきだった仕事を代わりに引き受けてくださった部署の皆様に心から感謝してます。@katemats が If You Don&rsquo;t Understand People, You Don&rsquo;t Understand Ops というトークで You get what you give. <a class="read-more" href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">&raquo;</a></p>
-    </section>
-    <footer class="post-meta">
-        
-        
-            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
-        
-        
-            Takumi Sakamoto
-        
-        
-        <time class="post-date" datetime="2013-06-21T00:00:00Z">
-            21 Jun 2013
         </time>
     </footer>
 </article>

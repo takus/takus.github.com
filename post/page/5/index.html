@@ -132,6 +132,30 @@
 	   
 <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/03/22/test-web-api-client/">Test::Fake::HTTPD で Web API クライアントをテスト</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>ある社内向け Web API のクライアントのテスト書く時にどうすべきかなと小一時間調べてみて、Test::Fake::HTTPD がよさそうなので使ってみたメモ。思うがままにレスポンス返せるし、実際に本番サーバ叩いたりしなくてもいいし、オフラインでもテストできて、だいぶテストが捗りそうです。 #!/usr/bin/env perl use warnings; use strict; use Test::More; use Test::Fake::HTTPD; use JSON::XS; use Furl::HTTP; subtest api =&gt; sub { my $response = { '/1/statuses/user_timeline/takus.json?count=1' =&gt; [ { 'created_at' =&gt; 'Thu Mar 21 07:22:25 +0000 2013', 'text' =&gt; 'Hello, world', 'user' =&gt; { 'screen_name' =&gt; 'takus', 'lang' =&gt; 'en', 'location' =&gt; 'Tokyo, Japan', }, 'id' =&gt; '314638108048097280', } ], }; my $httpd = run_http_server { my $req = shift; if ( $response-&gt;{ $req-&gt;uri } ) { return HTTP::Response-&gt;new( 200, 'ok', [ 'Content-Type' =&gt; 'text/html' ], encode_json $response-&gt;{ $req-&gt;uri } ); } return HTTP::Response-&gt;new( 404, $req-&gt;uri . <a class="read-more" href="http://blog.takus.me/2013/03/22/test-web-api-client/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2013-03-22T00:00:00Z">
+            22 Mar 2013
+        </time>
+    </footer>
+</article>
+
+	
+	   
+<article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="http://blog.takus.me/2013/01/01/2012-to-2013/">2012 年を振り返って</a></h2>
     </header>
     <section class="post-excerpt">
@@ -340,30 +364,6 @@
         
         <time class="post-date" datetime="2011-11-19T00:00:00Z">
             19 Nov 2011
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2011/10/17/28199456070/">YAPC::ASIA 2011 に行ってきた</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>年に 1 度の perl の祭典、YAPC::ASIA 2011 に行ってきました。「家に帰ってブログを書くまでが YAPC です」とアナウンスされていたので書いてみました。 はじめてのYAPC::ASIA 2011 今回が初めての YAPC 参加。perl は書き始めて半年くらいで知識も浅い状態でしたが、perl という言語自体の話だけでなく、「perl を使って hogehoge した」みたいなトークが多く、perl 初心者でも充分に楽しめました。 印象に残ったセッション Carton: CPAN dependencies manager by @miyagawa さん Carton という Ruby における Bundler のようなモジュールのお話 プレゼンテーションの流れが非常にロジカルで分かりやすい。参考にしたい。 デモもお洒落でカッコよかった。これも真似したい。 Perlで構築された中規模サイトのDC引っ越し記録 by @fujiwara さん KAYACが運営している こえ部 を別の DC に引っ越したというお話 とにかく話にリアリティがあって面白かった コンポーネント毎に検証しながら少しづつ移行、すごく丁寧 ベストスピーカー賞も納得（もちろん自分も投票しました） 運用しやすいWebアプリケーションの構築方法 by @kazeburo さん Log、DB、Cache、Metrics に使える各種モジュールの紹介 単にモジュールの機能の紹介だけでなく、なぜそのような機能が必要なのかまで深掘りして説明していた 説明が丁寧なため、すごくそのモジュールを使ってみたい気分にさせる Managing A Band Of Hackers by @higek さん マネジメントについてすごく真面目ないいお話 その一方で、@hidek さんをいじる TL が横で流れていて面白かった 「1+1 <a class="read-more" href="http://blog.takus.me/2011/10/17/28199456070/">&raquo;</a></p>
-    </section>
-    <footer class="post-meta">
-        
-        
-            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
-        
-        
-            Takumi Sakamoto
-        
-        
-        <time class="post-date" datetime="2011-10-17T00:00:00Z">
-            17 Oct 2011
         </time>
     </footer>
 </article>

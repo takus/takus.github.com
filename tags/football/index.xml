@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Football on takus&#39;s blog</title>
+    <link>http://blog.takus.me/tags/football/</link>
+    <description>Recent content in Football on takus&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
+    <lastBuildDate>Sun, 08 Nov 2015 17:22:05 +0900</lastBuildDate>
+    <atom:link href="http://blog.takus.me/tags/football/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>良いディフェンダーはタックルをしないし、良いエンジニアは障害対応をしない</title>
+      <link>http://blog.takus.me/2015/11/08/the-numbers-game/</link>
+      <pubDate>Sun, 08 Nov 2015 17:22:05 +0900</pubDate>
+      
+      <guid>http://blog.takus.me/2015/11/08/the-numbers-game/</guid>
+      <description>
+
+&lt;p&gt;Amazon のオススメに出てきた「 &lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B00R5Z9EU0/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00R5Z9EU0&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;サッカー　データ革命　ロングボールは時代遅れか&lt;/a&gt;
+」を読んでみました。
+野球では &lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B006Y44WJG/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B006Y44WJG&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;マネーボール&lt;/a&gt;
+が脚光を浴びたように、
+サッカーにおいてもデータ分析を中心にしたチーム運営は有効ではないだろうか、
+といった内容が書いてあるのですが、引っかかったところがあったのでまとめてみます。&lt;/p&gt;
+
+&lt;h2 id=&#34;良いディフェンダーはタックルをしない:fbf6d2862a4818492e68e3a85cabe008&#34;&gt;良いディフェンダーはタックルをしない&lt;/h2&gt;
+
+&lt;p&gt;本書の中で、
+四半世紀に渡ってマンチェスター・ユナイテッドを率いた名将ファーガソンが、
+オランダ代表のディフェンダー、ヤープ・スタムを放出したことは、
+自らの長いキャリアの中で最大級のミスだったというエピソードがあります。&lt;/p&gt;
+
+&lt;p&gt;ファーガソンは、スタムのスライディングタックル数が減っていることに気づき、
+29 歳のディフェンダーが衰えはじめたと判断したのですが、
+経験を重ねて、優れたポジショニングや状況判断が身につき、
+タックルをしなくても済む場面が多くなっている可能性を見逃してしまっていたのです。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;多くの状況で、動物と人間は、何かの欠如や、何かが起こらなかったことによって生じた情報を知覚し、使うことを、驚くほど苦手としている。
+一般的に、出来事が起こらないことは、何かが起こることに比べ、重要性が低く、理解しにくく、記憶しにくいのだ。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;このことは、人が実際に起きたことを記憶し、過度に重視しようとしている心理的な傾向があるためだと、著者は述べています。
+タックルというのは最後の手段であって、望ましいプレーではないのですが、
+人は実際に起きたこと、つまり「タックルで相手を止めたこと」を過大評価しすぎてしまいます。&lt;/p&gt;
+
+&lt;p&gt;この心理的バイアスはゴールキーパーやディフェンダーの評価を低めに見積もり、チームの補強戦略をも狂わせます。
+本書に書かれているように、統計的には
+&lt;strong&gt;無失点で試合を終えることは、2 点を取ることとほぼ等しい価値がある&lt;/strong&gt; にも関わらず、
+人が実際に起きたこと（ゴール）を記憶して、過度に重視しようとしている心理的な傾向のために、
+エースストライカーを獲得するのに大金を使ってしまうわけです。&lt;/p&gt;
+
+&lt;h2 id=&#34;良いエンジニアは障害対応をしない:fbf6d2862a4818492e68e3a85cabe008&#34;&gt;良いエンジニアは障害対応をしない&lt;/h2&gt;
+
+&lt;p&gt;この話はそっくりそのまま、エンジニアリングの世界に置き換えてしまうとどうなるでしょうか？
+フォワード陣をプロダクトチーム、ディフェンダー陣をインフラチームやセキュリティチームに当てはめるとしっくり来そうです。&lt;/p&gt;
+
+&lt;p&gt;プロダクトチームの評価は、インフラチームやセキュリティチームに比べると、分かりやすいかと思います。
+ダウンロード数、アクティブユーザ数、売上など、実際に起きたことを評価に使えます。&lt;/p&gt;
+
+&lt;p&gt;一方で、インフラチームやセキュリティチームの評価はディフェンダーの評価と同じように注意する必要があります。
+ディフェンダーが良い状況判断でタックルをしなくても済ませているように、
+良いエンジニアは重大な障害が起きる前に良い状況判断で障害の芽を摘み取っているのかもしれないわけです。
+(良いエンジニアは障害対応をしないってのは言い過ぎですが&amp;hellip;)&lt;/p&gt;
+
+&lt;p&gt;評価する側は、起きなかったことに対する評価にはバイアスがかかっていると認識した上で評価した方がよいのはもちろん、
+評価される側も、バイアスがあることを認識した上で成果をアピールしていく努力は必要なのかなと思いました。&lt;/p&gt;
+
+&lt;h2 id=&#34;とはいえ:fbf6d2862a4818492e68e3a85cabe008&#34;&gt;とはいえ&amp;hellip;&lt;/h2&gt;
+
+&lt;p&gt;メッシやクリロナのように、めちゃくちゃにゴールを決めちゃえるストライカーや、
+運用しづらくてもセキュリティがちょっとくらいアレでもヒットするプロダクトを作っちゃうエンジニアは、
+やっぱり素晴らしいと思いマス。&lt;/p&gt;
+
+&lt;p&gt;ちなみに、上で挙げた話以外にも、チームが負けているとき、交代によって最大の効果を得るためには、
+1 人目の交代を後半 13 分、2 人目を後半 28 分、3 人目を後半 34 分までに行うべきだとか、
+極端に能力の高い選手を獲得するのと、弱点となる選手の穴を埋める補強はどちらがいいのかとか、等々、
+面白い話が多いのでサッカー好きな人にはオススメです。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
