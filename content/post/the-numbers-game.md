@@ -1,7 +1,6 @@
 +++
 comments = true
 date = "2015-11-08T17:22:05+09:00"
-draft = true
 share = true
 tags = ["book", "football"]
 title = "良いディフェンダーはタックルをしないし、良いエンジニアは障害対応をしない"
