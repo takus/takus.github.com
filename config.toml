@@ -27,4 +27,5 @@ DisqusShortname = "takus"
   githubName = "takus"
   twitterName = "takus"
   hideHUGOSupport = false
-  customHeaderPartial = "highlight"
+  customHeaderPartial = "custom_header"
+  customFooterPartial = "custom_footer"
