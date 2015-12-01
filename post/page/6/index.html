@@ -131,6 +131,30 @@
 	   
 <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2011/11/19/28199459336/">s3fs を使って Amazon S3 を Linux にマウントする</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>最近，My365 という iPhone アプリのサーバサイドを担当することになり，全然使ったことのなかった Amazon Web Service をほげほげしてるので，その辺のネタの一部を紹介. さくら VPS から Amazon EC2 への移行話もそのうちまとめたいと思います. s3fs とは？ FUSE-based file system backed by Amazon S3. Mount a bucket as a local file system read/write. Store files/folders natively and transparently. ―s3fs というわけで，S3 の bucket をファイルシステムとしてマウントできてしまう便利なツールです. EC2 のインスタンスをターミネートすると基本的に全てのデータが失われてしまうので，全てのサーバが起動時に S3 の bucket をマウントしておくようにし，アプリケーションのログなどは日次で S3 に mv しておき，ターミネートする前にログを S3 に待避するようにしておくと幸せになれます. ((他にいいログ管理ソリューションがあれば教えてください)) インストール こんな感じのスクリプトを使ってあげれば，サクッとインストールできるんじゃないかと思います. エラーチェック等はしてないですのであしからず. インストール後に書き込みを行うと，S3 へファイルが作成されていることが確認できます. ほかにも，ローカルキャッシュを使って転送量を減らすこともできるみたいですね． s3fs まとめ s3fs を使えば，Linux 上に S3 の bucket をマウントできる <a class="read-more" href="http://blog.takus.me/2011/11/19/28199459336/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2011-11-19T00:00:00Z">
+            19 Nov 2011
+        </time>
+    </footer>
+</article>
+
+	
+	   
+<article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="http://blog.takus.me/2011/10/17/28199456070/">YAPC::ASIA 2011 に行ってきた</a></h2>
     </header>
     <section class="post-excerpt">
