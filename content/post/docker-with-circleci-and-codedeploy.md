@@ -1,7 +1,7 @@
 +++
 date = "2015-12-02T00:00:00+09:00"
 title = "AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ"
-tags = ["docker", "deployment"]
+tags = ["AWS", "Docker", "CodeDeploy", "CircleCI", "deployment"]
 comments = true
 +++
 
