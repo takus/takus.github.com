@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Deployment on takus&#39;s blog</title>
-    <link>http://blog.takus.me/tags/deployment/</link>
-    <description>Recent content in Deployment on takus&#39;s blog</description>
+    <title>Codedeploy on takus&#39;s blog</title>
+    <link>http://blog.takus.me/tags/codedeploy/</link>
+    <description>Recent content in Codedeploy on takus&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Thu, 03 Dec 2015 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://blog.takus.me/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://blog.takus.me/tags/codedeploy/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>AWS CodeDeploy と AutoScaling の組み合わせで気をつけたいこと</title>

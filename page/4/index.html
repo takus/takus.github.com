@@ -236,6 +236,8 @@
     
         
     
+        
+    
 
     
         
@@ -256,6 +258,30 @@
 </nav>
 
     </div>
+
+    
+        
+<article class="post post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/08/11/mysql_secure_installation/">mysql_secure_installation の中身</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>単純に気になったので。5.1 系のソース眺めただけです。 root ユーザのパスワード文字列を設定 # Set the root password UPDATE mysql.user SET Password=PASSWORD('password') WHERE User='root'; anonymous ユーザを削除 # Remove anonymous users DELETE FROM mysql.user WHERE User=''; リモートからの root ログインを禁止する # Disallow remote root login DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); test データベースを削除する # Remove test database DROP DATABASE test; DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'; 権限を再読み出しする # Reload privilege tables FLUSH PRIVILEGES;` <a class="read-more" href="http://blog.takus.me/2013/08/11/mysql_secure_installation/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2013-08-11T00:00:00Z">
+            11 Aug 2013
+        </time>
+    </footer>
+</article>
 
     
         
@@ -471,30 +497,6 @@
         
         <time class="post-date" datetime="2013-05-01T00:00:00Z">
             1 May 2013
-        </time>
-    </footer>
-</article>
-
-    
-        
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/04/25/supergrep/">ブラウザから tail -f log | grep keyword できるツール supergrep</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>エンジニアならサーバにログインしてコマンド打てば済む話ですが、世の中には非エンジニアでも tail -f log | grep keyword みたいにログを見れるようにしたいという案件がたまにあるみたいです。自分で書いてもよかったのですが、supergrep というツールがあったので使ってみました。 Is It A Bird? Is It A Plane? No, It’s Supergrep! esty/supergrep インストール supergrep は node.js で書かれているので、node のインストールから。node の作法はよく知らないので適当です。 git clone https://github.com/creationix/nvm.git ~/nvm . ~/nvm/nvm.sh nvm install v0.10.5 nvm alias default v0.10.5 node -v 続いて supergrep をインストールして起動します。これだけ。起動時に &lsquo;Warning: express.createServer() is deprecated, express&rsquo; が出るのはご愛敬。 git clone https://github.com/etsy/supergrep.git cd supergrep npm install ./runlocal http://hostname:3000 にブラウザからアクセスするとログが見れる状態になりました。 設定 デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.js にログのパスを追加します。他にも IRC にポストできそうな config 等もありましたが、今回は必要としてないので調べてません。 files: [ { name: 'web', path: ['/var/log/httpd/info.log', '/var/log/httpd/php.log'] // you can also do this // filter: function (line, config) { // if (! <a class="read-more" href="http://blog.takus.me/2013/04/25/supergrep/">&raquo;</a></p>
-    </section>
-    <footer class="post-meta">
-        
-        
-            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
-        
-        
-            Takumi Sakamoto
-        
-        
-        <time class="post-date" datetime="2013-04-25T00:00:00Z">
-            25 Apr 2013
         </time>
     </footer>
 </article>

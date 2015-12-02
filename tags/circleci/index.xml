@@ -1,65 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Deployment on takus&#39;s blog</title>
-    <link>http://blog.takus.me/tags/deployment/</link>
-    <description>Recent content in Deployment on takus&#39;s blog</description>
+    <title>Circleci on takus&#39;s blog</title>
+    <link>http://blog.takus.me/tags/circleci/</link>
+    <description>Recent content in Circleci on takus&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
-    <lastBuildDate>Thu, 03 Dec 2015 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://blog.takus.me/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>AWS CodeDeploy と AutoScaling の組み合わせで気をつけたいこと</title>
-      <link>http://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</link>
-      <pubDate>Thu, 03 Dec 2015 00:00:00 +0900</pubDate>
-      
-      <guid>http://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</guid>
-      <description>
-
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/aws&#34;&gt;AWS Advent Calendar 2015 - Qiita&lt;/a&gt; の 3 日目の記事です。昨日は &amp;ldquo;&lt;a href=&#34;http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/&#34;&gt;AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ&lt;/a&gt;&amp;rdquo; という記事を書きましたが、それに引き続き &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; ネタです。&lt;/p&gt;
-
-&lt;p&gt;Fabric や Capistrano などのデプロイツールを利用していると、AutoScaling によって起動してくるインスタンスへのアプリケーションのデプロイをどうするかというのは悩みの種ですが、 AWS CodeDeploy を利用すると、最後にデプロイに成功したリビジョンを起動時にデプロイしてくれるので非常に助かります。その一方で、 AutoScaling と連携して使うときに気をつけておくべきいいポイントがいくつかあるので、それについて書きます。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-user-data-でのプロビジョニングに注意:e1a69903f6a819874cb0b910d89cca22&#34;&gt;1. User Data でのプロビジョニングに注意&lt;/h2&gt;
-
-&lt;p&gt;プロビジョニングも AWS CodeDeploy の hook スクリプトでやることもできますが、アプリケーションのデプロイとプロビジョニングは分けておきたいケースもあります。その場合は User Data にシェルスクリプトを入れて起動時に実行する形にするかと思いますが、2 つほど気をつけた方がいいことがあります。&lt;/p&gt;
-
-&lt;p&gt;1 つ目は、EC2 のタグが付与されるタイミングです。Auto Scaling Group でタグを設定しておくと、グループ内のインスタンスにタグをつけてくれるので、タグに応じてプロビジョニングするといった運用ができるのですが、AWS CodeDeploy と AutoScaling を組み合わせる場合、デプロイが終わったあとでないとタグが付与されません。このためタグをベースにプロビジョニングを行う場合は User Data の最初で自身にタグをつけるといったことが必要になります。&lt;/p&gt;
-
-&lt;p&gt;2 つ目は CodeDeploy エージェントの起動順序についてです。&amp;rdquo;User Data の実行&amp;rdquo; と &amp;ldquo;CodeDeploy の実行&amp;rdquo; は特に順序制御の仕組みがないので、AMI に CodeDeploy Agent をインストールして自動起動をしていると、プロビジョニングが終わる前にデプロイされて ELB に追加されてしまう可能性があります。このため、プロビジョニングの最後に CodeDeploy エージェントを起動するようにした方がよいです。&lt;/p&gt;
-
-&lt;p&gt;これらを踏まえると User Data は下記のようなスクリプトにしておくのが望ましいかと思います。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
-
-## Role タグと Env タグを付与
-aws ec2 create-tags \
-  --resources $(wget -q -O - http://169.254.169.254/latest/meta-data/instance-id) \
-  --tags Key=Role,Value=api Key=Env,Value=production
-
-## プロビジョニングする (Chef, Puppet, Ansible, Itamae)
-aws s3 sync s3://itamae-repo/ /path/to/itamae-repo/ --delete
-cd /path/to/itamae-repo &amp;amp;&amp;amp; itamae local bootstrap.rb --ohai
-
-## CodeDeploy Agent は最後に起動する
-service codedeploy-agent start
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;2-スケーリング中のデプロイに注意:e1a69903f6a819874cb0b910d89cca22&#34;&gt;2. スケーリング中のデプロイに注意&lt;/h2&gt;
-
-&lt;p&gt;AutoScaling によるスケールアウト中に、新たに CodeDeploy のデプロイメント作成を行うと、スケーリングによって新たに追加されたインスタンスへは、最新のリビジョンがデプロイされずにスキップされることがあります。方法は色々と考えられますが、何らかの排他制御をしておく方が安全な気がします。&lt;/p&gt;
-
-&lt;p&gt;一方、AutoScaling によるスケールインにも注意が必要で、ログ回収などの終了処理のために自前の LifeCycle Hook を &lt;code&gt;autoscaling:EC2_INSTANCE_TERMINATING&lt;/code&gt; などに仕込んでいる場合に、この終了処理をしているインスタンスへデプロイするところでデプロイの進捗が止まってしまうことがあります。こちらも排他制御をするか、終了処理はできるだけすぐ終わるようにしておくとよさそうです。&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ:e1a69903f6a819874cb0b910d89cca22&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;ということで、 AWS CodeDeploy を使う上でいくつか気をつけたい点について説明しました。もうちょっと CodeDeploy さんが賢くやってくれればと思ったりもしますが、&lt;/p&gt;
-
-&lt;p&gt;最後になりますが、紹介したもののいくつかは、&lt;a href=&#34;https://blogs.aws.amazon.com/application-management/post/Tx1NRS217K1YOPJ/Under-the-Hood-AWS-CodeDeploy-and-Auto-Scaling-Integration&#34;&gt;Under the Hood: AWS CodeDeploy and Auto Scaling Integration&lt;/a&gt; という AWS のブログで、Best Practices として書かれていたりもするので、 AWS Code Deploy を使う前には一読をオススメいたします。&lt;/p&gt;
-</description>
-    </item>
+    <lastBuildDate>Wed, 02 Dec 2015 00:00:00 +0900</lastBuildDate>
+    <atom:link href="http://blog.takus.me/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ</title>
