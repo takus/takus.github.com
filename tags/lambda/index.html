@@ -5,16 +5,16 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  	<meta property="og:title" content=" Deployment &middot;  takus&#39;s blog" />
+  	<meta property="og:title" content=" Lambda &middot;  takus&#39;s blog" />
   	<meta property="og:site_name" content="takus&#39;s blog" />
-  	<meta property="og:url" content="http://blog.takus.me/tags/deployment/" />
+  	<meta property="og:url" content="http://blog.takus.me/tags/lambda/" />
 
     
     <meta property="og:type" content="website" />
     
 
   <title>
-     Deployment &middot;  takus&#39;s blog
+     Lambda &middot;  takus&#39;s blog
   </title>
 
     <meta name="description" content="" />
@@ -35,12 +35,12 @@
           <link href="http://blog.takus.me/index.xml" rel="alternate" type="application/rss+xml" title="takus&#39;s blog" />
       
       
-        <link href="http://blog.takus.me/tags/deployment/index.xml" rel="alternate" type="application/rss+xml" title="Deployment &middot; takus&#39;s blog" />
+        <link href="http://blog.takus.me/tags/lambda/index.xml" rel="alternate" type="application/rss+xml" title="Lambda &middot; takus&#39;s blog" />
       
     
     <meta name="generator" content="Hugo 0.14" />
 
-    <link rel="canonical" href="http://blog.takus.me/tags/deployment/" />
+    <link rel="canonical" href="http://blog.takus.me/tags/lambda/" />
 
     
     <script>
@@ -80,7 +80,7 @@
     </ul>
     
     
-    <a class="subscribe-button icon-feed" href="http://blog.takus.me/tags/deployment/index.xml">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="http://blog.takus.me/tags/lambda/index.xml">Subscribe</a>
     
 </div>
 <span class="nav-cover"></span>
@@ -99,13 +99,13 @@
       
       
         
-          <a class="menu-button icon-feed" href="http://blog.takus.me/tags/deployment/index.xml">&nbsp;&nbsp;Subscribe</a>
+          <a class="menu-button icon-feed" href="http://blog.takus.me/tags/lambda/index.xml">&nbsp;&nbsp;Subscribe</a>
         
       
     </nav>
     <div class="vertical">
         <div class="main-header-content inner">
-            <h1 class="page-title">Deployment</h1>
+            <h1 class="page-title">Lambda</h1>
             <h2 class="page-description">
                 
             </h2>
@@ -156,84 +156,6 @@
         
         <time class="post-date" datetime="2015-12-07T00:00:00&#43;09:00">
             7 Dec 2015
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/">AWS CodeDeploy と AutoScaling の組み合わせで気をつけたいこと</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p><p>この記事は <a href="http://qiita.com/advent-calendar/2015/aws">AWS Advent Calendar 2015 - Qiita</a> の 3 日目の記事です。昨日は &ldquo;<a href="http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/">AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ</a>&rdquo; という記事を書きましたが、それに引き続き <a href="https://aws.amazon.com/jp/codedeploy/">AWS CodeDeploy</a> ネタです。</p>
-
-<p>Fabric や Capistrano などのデプロイツールを利用していると、AutoScaling によって起動してくるインスタンスへのアプリケーションのデプロイをどうするかというのは悩みの種ですが、 AWS CodeDeploy を利用すると、最後にデプロイに成功したリビジョンを起動時にデプロイしてくれるので非常に助かります。その一方で、 AutoScaling と連携して使うときに気をつけておくべきいいポイントがいくつかあるので、それについて書きます。</p>
- <a class="read-more" href="http://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/">&raquo;</a></p>
-    </section>
-    <footer class="post-meta">
-        
-        
-            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
-        
-        
-            Takumi Sakamoto
-        
-        on
-            
-                <a href="http://blog.takus.me/tags/aws/">#AWS</a>,
-            
-                <a href="http://blog.takus.me/tags/codedeploy/">#CodeDeploy</a>,
-            
-                <a href="http://blog.takus.me/tags/deployment/">#deployment</a>,
-            
-        
-        <time class="post-date" datetime="2015-12-03T00:00:00&#43;09:00">
-            3 Dec 2015
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/">AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p><p>この記事は <a href="http://qiita.com/advent-calendar/2015/circleci">CircleCI Advent Calendar 2015 - Qiita</a> の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&rdquo;CircleCIでサクッとビルドチェーンを実現する&rdquo;お話でした。</p>
-
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/stormcat24/status/671486430548393985"></a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
-
-<p>というわけで、2 日目は、<a href="http://blog.takus.me/2015/10/09/livesense-technight/">SmartNews&rsquo;s Journey into Microservices という LT をしてきました</a> のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。</p>
- <a class="read-more" href="http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/">&raquo;</a></p>
-    </section>
-    <footer class="post-meta">
-        
-        
-            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
-        
-        
-            Takumi Sakamoto
-        
-        on
-            
-                <a href="http://blog.takus.me/tags/aws/">#AWS</a>,
-            
-                <a href="http://blog.takus.me/tags/docker/">#Docker</a>,
-            
-                <a href="http://blog.takus.me/tags/codedeploy/">#CodeDeploy</a>,
-            
-                <a href="http://blog.takus.me/tags/circleci/">#CircleCI</a>,
-            
-                <a href="http://blog.takus.me/tags/deployment/">#deployment</a>,
-            
-        
-        <time class="post-date" datetime="2015-12-02T00:00:00&#43;09:00">
-            2 Dec 2015
         </time>
     </footer>
 </article>

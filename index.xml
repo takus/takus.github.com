@@ -7,8 +7,36 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
-    <lastBuildDate>Thu, 03 Dec 2015 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 07 Dec 2015 00:00:00 +0900</lastBuildDate>
     <atom:link href="http://blog.takus.me/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>AWS Lambda のココが惜しい</title>
+      <link>http://blog.takus.me/2015/12/07/requests-for-aws-lambda/</link>
+      <pubDate>Mon, 07 Dec 2015 00:00:00 +0900</pubDate>
+      
+      <guid>http://blog.takus.me/2015/12/07/requests-for-aws-lambda/</guid>
+      <description>
+
+&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
+
+&lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;
+
+&lt;h2 id=&#34;各種リソース使用量の制限:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;各種リソース使用量の制限&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/limits.html&#34;&gt;AWS Lambda の制限&lt;/a&gt;に色々と書いてありますが、一時ディスク容量 500 MB 以内、実行時間は最大 300 秒以内というのはちょっと足りない気がします。VPC 対応したら Amazon RDS にも繫げるようになるので活躍の幅は広がりそうだと思っていますが、1 日に 1 回 mysqldump するみたいなことは、この制限によって難しそうな雰囲気がします。&lt;/p&gt;
+
+&lt;h2 id=&#34;スケジュール実行が-5-個しか指定できない:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;スケジュール実行が 5 個しか指定できない&lt;/h2&gt;
+
+&lt;p&gt;せっかく登場したスケジュール実行ですが、&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/getting-started-scheduled-events.html&#34;&gt;AWS アカウント毎に、最大 5 つまでの指定&lt;/a&gt; しかできないようです。これはそのうち緩和されることを願うばかり&amp;hellip;。&lt;/p&gt;
+
+&lt;h2 id=&#34;関数ごとの同時実行数を制限できない:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;関数ごとの同時実行数を制限できない&lt;/h2&gt;
+
+&lt;p&gt;並列に実行してくれるのは Lambda のいいとこではありますが、例えば何かのイベントをトリガーに DB や Redis に書き込みをするようなケースでは、逆に同時実行数を制限したいケースも出てきそうです。工夫すれば色々と方法はありそうですが、スロットリングしたときにイベントを捨てるのか、何回かリトライするのかを含めて、Lambda の設定だけでできると嬉しい気がします。&lt;/p&gt;
+
+&lt;p&gt;ということで、投稿が遅れた上に内容が少なめですが、まずは上記の 3 点が解決されると個人的には嬉しいです。AWS サンタさん、よろしくお願いいたします。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>AWS CodeDeploy と AutoScaling の組み合わせで気をつけたいこと</title>
@@ -1007,43 +1035,6 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;h2 id=&#34;まとめ:c41707fe51a83289c0cb219970daffe8&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;全体的にかなり面白くて意識も高まる内容だったので『ソーシャルネットワーク』みたいに映画化してくれないかなって思いました。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>『アルゴリズムが世界を支配する』を読んだ</title>
-      <link>http://blog.takus.me/2014/04/05/automate-this/</link>
-      <pubDate>Sat, 05 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://blog.takus.me/2014/04/05/automate-this/</guid>
-      <description>&lt;p&gt;&lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B00FMI2XIW/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00FMI2XIW&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;アルゴリズムが世界を支配する&lt;/a&gt;
-を読んでみました。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;アルゴリズムとは無数の二者択一からなる巨大なデシジョン・ツリーだととらえることができる。
-私たちのやることなすことほぼすべてが—車の運転から株の売買から配偶者選びにいたるまで—二者択一の無数の要素にまで分解することができる (本文より)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Amazon の &amp;ldquo;この商品を買った人はこんな商品も買っています&amp;rdquo; のような、いかにもコンピュータが得意そうなものだけでなく、
-今までは人がやることしか考えられなかったような仕事までもどんどんアルゴリズムで置き換えられていきますよ？
-って具体例がたくさん載っていて興味深い内容でした。&lt;/p&gt;
-
-&lt;p&gt;例えば、コールセンター業務では、アルゴリズムによって会話内容から顧客のパーソナリティを分類してパーソナリティが近い人に対応させることで、
-通話時間と問題の解決率を 50% も改善できる可能性があるらしく、
-企業からみれば今までの半分の人数でコールセンター業務を回せることになるので大きな価値がある一方で、
-コールセンターで働いてる人の仕事の半分はアルゴリズムで置き換えられてしまうことになります。&lt;/p&gt;
-
-&lt;p&gt;自分が普段やってるような仕事でも、
-例えば『&lt;a href=&#34;http://blog.mirakui.com/entry/2013/02/20/003401&#34;&gt;全自動パラメータチューニングさん&lt;/a&gt; 』のようなものがもっともっと発達してしまうと、
-仕事の大半はアルゴリズムによって自動化されて失職なんてこともあるかもしれません。&lt;/p&gt;
-
-&lt;p&gt;じゃあ、世の中の仕事は全てアルゴリズムで置き換えていけるかっていうとそういうわけでもなくて、
-過去の膨大なデータから未来の傾向を予測するようなことは得意な一方で、
-今までにない新しい概念や新しい仕組みを作るような行為はアルゴリズムで置き換えるのは難しい部分になってくると思います。
-本に載ってた例が聞いたことない音楽の例だったので自分なりに解釈すると、全盛期のモー娘。の身体的な特徴とヒット曲の分析をいくらしても、
-AKB は生まれてこないってのがしっくりくるかなってとこです。&lt;/p&gt;
-
-&lt;p&gt;というわけで、既存の延長で仕事してないでもっと新しいことやっていかないとなって思ってます。おわり。&lt;/p&gt;
 </description>
     </item>
     
