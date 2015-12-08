@@ -133,6 +133,30 @@
 	   
 <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/11/02/daemontools-setuidgid/">daemontools の setuidgid が supplementary groups 権限をつけてくれない件</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>『daemontools の setuidgid』や 『補助グループ権限もつけてくれるsetuidgidのようなもの』のところに書いてある話なんですが、daemontools の setuidgid は 補助グループ権限をつけてくれません。 どういうことかというと、sysadmin グループに属する admin ユーザがいて、下記のような設定になってるときに、 $ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin),2501(sysadmin) $ ls -l /home/admin/password.pl -rw-r----- 1 root sysadmin 584 Jul 24 22:47 /home/admin/password.pl 下記のような run ファイルで daemon を起動したところ、password.pl が読めないというエラーが出ました。 #!/bin/sh exec 2&gt;&amp;1 exec setuidgid admin /path/to/oreno_daemon 一見すると、admin ユーザは sysadmin ユーザに含まれているため権限は問題ないように思えて、実際にコンソールから実行すると読むことができるのですが、前述の通り setuidgid は補助グループ権限をつけてくれないため、setuidgid で指定した admin ユーザは下記のようなユーザとみなされ、password.pl を読むことができないというオチでした。 $ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin) 解決策は、『補助グループ権限もつけてくれるsetuidgidのようなもの』にまとまってますが、この辺りを使うのがいいのではないかと思ってる次第です。 <a class="read-more" href="http://blog.takus.me/2013/11/02/daemontools-setuidgid/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2013-11-02T00:00:00Z">
+            2 Nov 2013
+        </time>
+    </footer>
+</article>
+
+	
+	   
+<article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="http://blog.takus.me/2013/10/18/yapc-devopsday-wakateweb/">#yapcasia と #devopsday と #wakateweb の話</a></h2>
     </header>
     <section class="post-excerpt">
@@ -343,30 +367,6 @@
         
         <time class="post-date" datetime="2013-05-12T00:00:00Z">
             12 May 2013
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">Los Angeles に行ってきた</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>帰ってきてから 1 週間ぐらいたってしまいましたが、ゴールデンウィークを利用して Los Angeles と New York に行ってきたのでまとめ。ひとまず Los Angeles 編。 We Need a Car ヨーロッパ旅行の感覚で現地に着いてから色々考えようとか思ってましたが、公共交通機関で移動すると時間かかりすぎなのが非常に辛い町でした。ロサンゼルス国際空港の近くのホテルに宿泊していましたが、ビーチで有名な Santa Monica まではバスで 40 分程度、Hollywood までは 1 時間はかかってしまいます。逆にタクシーだとそれぞれ 30 分程度で着いてしまうので、レンタカー借りて移動するのが正解でした&hellip;。 Disney Resort California の Disney Resort は LAX から南に車で 40 分ほどの Anaheim にあります。LAX からは有料のシャトルバスが出ていて、&rdquo;Long Distance Vans&rdquo; と書かれた緑色の案内版の下で待ってると &ldquo;Disney Resort&rdquo; と書かれたバスが通るので合図して停車してもらって乗ります。片道 $20 程度。「帰りも乗ってくか？」と聞かれたので、「09:00 からショーがあってそれを見たいから 10:00 に迎えに来てくれて、ホテルまで送ってくれるなら」と交渉したところ、「ノープロブレム」とのことだったのでお願いしました。 日本におけるディズニーランドとディズニーシーのように、Disney Park と Disney California Park の 2 つがあったので、1 日でどちらにも出入りが自由な Park Hopper Ticket を $125 で購入。日本のディズニーランドが 6200 円なので大体同じくらいの感覚なんじゃないかと思います。 <a class="read-more" href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">&raquo;</a></p>
-    </section>
-    <footer class="post-meta">
-        
-        
-            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
-        
-        
-            Takumi Sakamoto
-        
-        
-        <time class="post-date" datetime="2013-05-11T00:00:00Z">
-            11 May 2013
         </time>
     </footer>
 </article>

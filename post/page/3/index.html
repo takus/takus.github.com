@@ -133,6 +133,30 @@
 	   
 <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2014/03/01/octopress-hatena-bookmark/">Octopress で はてなブックマーク数 を表示する</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>https://github.com/takus/takus.github.com/commit/0cf6d223e4f2512c63652b8bc0147956b9d77722 こちらからは以上です。 <a class="read-more" href="http://blog.takus.me/2014/03/01/octopress-hatena-bookmark/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2014-03-01T00:00:00Z">
+            1 Mar 2014
+        </time>
+    </footer>
+</article>
+
+	
+	   
+<article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="http://blog.takus.me/2014/02/25/drone-on-centos/">Docker/Drone を CentOS 6.5 で動かして Github Enterprise のリポジトリをテストする</a></h2>
     </header>
     <section class="post-excerpt">
@@ -353,30 +377,6 @@
         
         <time class="post-date" datetime="2013-11-10T00:00:00Z">
             10 Nov 2013
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2013/11/02/daemontools-setuidgid/">daemontools の setuidgid が supplementary groups 権限をつけてくれない件</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>『daemontools の setuidgid』や 『補助グループ権限もつけてくれるsetuidgidのようなもの』のところに書いてある話なんですが、daemontools の setuidgid は 補助グループ権限をつけてくれません。 どういうことかというと、sysadmin グループに属する admin ユーザがいて、下記のような設定になってるときに、 $ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin),2501(sysadmin) $ ls -l /home/admin/password.pl -rw-r----- 1 root sysadmin 584 Jul 24 22:47 /home/admin/password.pl 下記のような run ファイルで daemon を起動したところ、password.pl が読めないというエラーが出ました。 #!/bin/sh exec 2&gt;&amp;1 exec setuidgid admin /path/to/oreno_daemon 一見すると、admin ユーザは sysadmin ユーザに含まれているため権限は問題ないように思えて、実際にコンソールから実行すると読むことができるのですが、前述の通り setuidgid は補助グループ権限をつけてくれないため、setuidgid で指定した admin ユーザは下記のようなユーザとみなされ、password.pl を読むことができないというオチでした。 $ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin) 解決策は、『補助グループ権限もつけてくれるsetuidgidのようなもの』にまとまってますが、この辺りを使うのがいいのではないかと思ってる次第です。 <a class="read-more" href="http://blog.takus.me/2013/11/02/daemontools-setuidgid/">&raquo;</a></p>
-    </section>
-    <footer class="post-meta">
-        
-        
-            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
-        
-        
-            Takumi Sakamoto
-        
-        
-        <time class="post-date" datetime="2013-11-02T00:00:00Z">
-            2 Nov 2013
         </time>
     </footer>
 </article>
