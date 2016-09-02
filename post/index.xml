@@ -20,7 +20,7 @@
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/web_api&#34;&gt;Web API Advent Calendar 2015 - Qiita&lt;/a&gt; の 9 日目の記事です。&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; という Web API 監視サービスについて紹介したいと思います。&lt;/p&gt;
 
-&lt;h2 id=&#34;背景:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;背景&lt;/h2&gt;
+&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;マイクロサービス化によって、システム全体が API を通して処理をするようになっていく中で、各 API が正しく動いているかどうかを監視したいという要求が出てくるかと思います。&lt;/p&gt;
 
@@ -38,75 +38,75 @@
 
 &lt;p&gt;そうした監視を簡単に実現できる SaaS として、&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; というサービスを見つけたので、紹介したいと思います。&lt;/p&gt;
 
-&lt;h2 id=&#34;runscope-について:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;Runscope について&lt;/h2&gt;
+&lt;h2 id=&#34;runscope-について&#34;&gt;Runscope について&lt;/h2&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/runscope-overview.png&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;Runscope は Web API の監視サービスで、指定したリクエストヘッダやパラメータをつけて Web API を叩き、その結果に対してバリデーションをかけ、問題があれば通知するような SaaS になります。 Public API については、&lt;a href=&#34;https://www.runscope.com/docs/api-testing/locations#on-premises-agents&#34;&gt;世界 12 ヶ所 のロケーション(ほとんど AWS region)&lt;/a&gt; から監視ができ、Private API についても、&lt;code&gt;radar&lt;/code&gt; と呼ばれるエージェントを AWS であれば VPC 内に立てることで、外には公開してない API も監視することができます。&lt;/p&gt;
 
-&lt;h3 id=&#34;api-リクエストの設定:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;API リクエストの設定&lt;/h3&gt;
+&lt;h3 id=&#34;api-リクエストの設定&#34;&gt;API リクエストの設定&lt;/h3&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/runscope-configuration.png&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;監視の設定画面はこのような形になっていて、初めての人でも簡単に使いこなせるようになるかと思います。API のエンドポイントやリクエストヘッダなどの設定をチョロッとするだけです。たくさん API があって大変な人のために、&lt;a href=&#34;http://blog.runscope.com/posts/new-import-feature-support-for-swagger-postman&#34;&gt;Swagger  の設定をエクスポートして監視定義を作る機能&lt;/a&gt; があるので、もし Swagger を使っていれば楽に設定できます。&lt;/p&gt;
 
-&lt;h3 id=&#34;api-レスポンスのアサーション:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;API レスポンスのアサーション&lt;/h3&gt;
+&lt;h3 id=&#34;api-レスポンスのアサーション&#34;&gt;API レスポンスのアサーション&lt;/h3&gt;
 
 &lt;p&gt;レスポンスコード、レスポンスタイム、レスポンスサイズ、レスポンスヘッダ、レスポンスにある文字列が含まれるかなどの単純なアサーションなら、API リクエスト時の設定フォームみたいなところで簡単に設定できます。&lt;/p&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/runscope-assertion.png&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;背景で説明したようなちょっとリッチなアサーションをする場合、上記の図のように Javascript でアサーションを書けるので、「記事リストに記事が xx 件以上含まれている」とか「各記事は、直近 xx 時間以内に作られている」といったアサーションを記述することができます。&lt;/p&gt;
 
-&lt;h3 id=&#34;各種-saas-との連携:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;各種 SaaS との連携&lt;/h3&gt;
+&lt;h3 id=&#34;各種-saas-との連携&#34;&gt;各種 SaaS との連携&lt;/h3&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/runscope-integration.png&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;各アサーションの結果は PagerDuty、Datadog、Slack などに通知できるので、production の API に異常があれば PagerDuty でコールする、staging の API に異常があれば Slack に通知する、といった連携が簡単にできます。&lt;/p&gt;
 
 &lt;p&gt;また、もし &lt;a href=&#34;https://www.datadoghq.com/&#34;&gt;Datadog&lt;/a&gt;  を使っていたら、リージョン毎のレスポンスタイムなどが Datadog に記録されていくので、サーバやデータベースのメトリクスと並べて比較ができて、より捗ります。&lt;/p&gt;
 
-&lt;h3 id=&#34;価格:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;価格&lt;/h3&gt;
+&lt;h3 id=&#34;価格&#34;&gt;価格&lt;/h3&gt;
 
 &lt;p&gt;で、気になるお値段ですが、&lt;a href=&#34;https://www.runscope.com/pricing-and-plans&#34;&gt;価格表&lt;/a&gt;はちゃんと公開されていて、Medium プランだと、$199.0 で月に 100 万回のチェックが行えます。毎分これを走らせることを考えると、23 並列なのでちょっと物足りない感じですが、本番系のクリティカルなところは 1 分単位でチェックして、Staging などの API は 1 時間おきとか、API を更新するタイミングで実行するといった形に融通すれば、この回数に収まる会社が多いのではないでしょうか？&lt;/p&gt;
 
-&lt;h3 id=&#34;信頼性:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;信頼性&lt;/h3&gt;
+&lt;h3 id=&#34;信頼性&#34;&gt;信頼性&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://status.runscope.com/history&#34;&gt;Runscope Status - Incident History&lt;/a&gt; を見ると、月に一回くらいは軽微な障害が起きている雰囲気ですが、価格を考えるとこのくらいは妥当なラインな気がします。&lt;/p&gt;
 
-&lt;h3 id=&#34;そのほか:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;そのほか&lt;/h3&gt;
+&lt;h3 id=&#34;そのほか&#34;&gt;そのほか&lt;/h3&gt;
 
 &lt;p&gt;さらに、まだ試してないですが、ある  API リクエストによって受け取ったレスポンスの一部を変数に入れて、その次のリクエストに利用するといったこともできるみたいです。これを使うことで、サインアップや商品購入みたいな一連の API の動作もテストすることもできそうな気がします。（監視に対する DB の更新をどうハンドルするかといった問題はありますが。)&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:2bb78c8e726a283df1360e64ebd2aa07&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;AWS Lambda をなどをうまく使えば独自ソリューションで安価に同じようなこともできそうですが、このくらいの価格で使えるのであれば、とりあえず使い始めてしまうのも全然ありかなと思います。ということで、 Runscope という SaaS についての紹介でした。&lt;/p&gt;
 </description>
@@ -124,15 +124,15 @@
 
 &lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;
 
-&lt;h2 id=&#34;各種リソース使用量の制限:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;各種リソース使用量の制限&lt;/h2&gt;
+&lt;h2 id=&#34;各種リソース使用量の制限&#34;&gt;各種リソース使用量の制限&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/limits.html&#34;&gt;AWS Lambda の制限&lt;/a&gt;に色々と書いてありますが、一時ディスク容量 500 MB 以内、実行時間は最大 300 秒以内というのはちょっと足りない気がします。VPC 対応したら Amazon RDS にも繫げるようになるので活躍の幅は広がりそうだと思っていますが、1 日に 1 回 mysqldump するみたいなことは、この制限によって難しそうな雰囲気がします。&lt;/p&gt;
 
-&lt;h2 id=&#34;スケジュール実行が-5-個しか指定できない:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;スケジュール実行が 5 個しか指定できない&lt;/h2&gt;
+&lt;h2 id=&#34;スケジュール実行が-5-個しか指定できない&#34;&gt;スケジュール実行が 5 個しか指定できない&lt;/h2&gt;
 
 &lt;p&gt;せっかく登場したスケジュール実行ですが、&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/getting-started-scheduled-events.html&#34;&gt;AWS アカウント毎に、最大 5 つまでの指定&lt;/a&gt; しかできないようです。これはそのうち緩和されることを願うばかり&amp;hellip;。&lt;/p&gt;
 
-&lt;h2 id=&#34;関数ごとの同時実行数を制限できない:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;関数ごとの同時実行数を制限できない&lt;/h2&gt;
+&lt;h2 id=&#34;関数ごとの同時実行数を制限できない&#34;&gt;関数ごとの同時実行数を制限できない&lt;/h2&gt;
 
 &lt;p&gt;並列に実行してくれるのは Lambda のいいとこではありますが、例えば何かのイベントをトリガーに DB や Redis に書き込みをするようなケースでは、逆に同時実行数を制限したいケースも出てきそうです。工夫すれば色々と方法はありそうですが、スロットリングしたときにイベントを捨てるのか、何回かリトライするのかを含めて、Lambda の設定だけでできると嬉しい気がします。&lt;/p&gt;
 
@@ -152,7 +152,7 @@
 
 &lt;p&gt;Fabric や Capistrano などのデプロイツールを利用していると、AutoScaling によって起動してくるインスタンスへのアプリケーションのデプロイをどうするかというのは悩みの種ですが、 AWS CodeDeploy を利用すると、最後にデプロイに成功したリビジョンを起動時にデプロイしてくれるので非常に助かります。その一方で、 AutoScaling と連携して使うときに気をつけておくべきいいポイントがいくつかあるので、それについて書きます。&lt;/p&gt;
 
-&lt;h2 id=&#34;1-user-data-でのプロビジョニングに注意:e1a69903f6a819874cb0b910d89cca22&#34;&gt;1. User Data でのプロビジョニングに注意&lt;/h2&gt;
+&lt;h2 id=&#34;1-user-data-でのプロビジョニングに注意&#34;&gt;1. User Data でのプロビジョニングに注意&lt;/h2&gt;
 
 &lt;p&gt;プロビジョニングも AWS CodeDeploy の hook スクリプトでやることもできますが、アプリケーションのデプロイとプロビジョニングは分けておきたいケースもあります。その場合は User Data にシェルスクリプトを入れて起動時に実行する形にするかと思いますが、2 つほど気をつけた方がいいことがあります。&lt;/p&gt;
 
@@ -177,13 +177,13 @@ cd /path/to/itamae-repo &amp;amp;&amp;amp; itamae local bootstrap.rb --ohai
 service codedeploy-agent start
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;2-スケーリング中のデプロイに注意:e1a69903f6a819874cb0b910d89cca22&#34;&gt;2. スケーリング中のデプロイに注意&lt;/h2&gt;
+&lt;h2 id=&#34;2-スケーリング中のデプロイに注意&#34;&gt;2. スケーリング中のデプロイに注意&lt;/h2&gt;
 
 &lt;p&gt;AutoScaling によるスケールアウト中に、新たに CodeDeploy のデプロイメント作成を行うと、スケーリングによって新たに追加されたインスタンスへは、最新のリビジョンがデプロイされずにスキップされることがあります。方法は色々と考えられますが、何らかの排他制御をしておく方が安全な気がします。&lt;/p&gt;
 
 &lt;p&gt;一方、AutoScaling によるスケールインにも注意が必要で、ログ回収などの終了処理のために自前の LifeCycle Hook を &lt;code&gt;autoscaling:EC2_INSTANCE_TERMINATING&lt;/code&gt; などに仕込んでいる場合に、この終了処理をしているインスタンスへデプロイするところでデプロイの進捗が止まってしまうことがあります。こちらも排他制御をするか、終了処理はできるだけすぐ終わるようにしておくとよさそうです。&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:e1a69903f6a819874cb0b910d89cca22&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;ということで、 AWS CodeDeploy を使う上でいくつか気をつけたい点について説明しました。もうちょっと CodeDeploy さんが賢くやってくれればと思ったりもしますが、&lt;/p&gt;
 
@@ -201,17 +201,17 @@ service codedeploy-agent start
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
 
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/stormcat24/status/671486430548393985&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/stormcat24/status/671486430548393985&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;というわけで、2 日目は、&lt;a href=&#34;http://blog.takus.me/2015/10/09/livesense-technight/&#34;&gt;SmartNews&amp;rsquo;s Journey into Microservices という LT をしてきました&lt;/a&gt; のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。&lt;/p&gt;
 
-&lt;h2 id=&#34;背景:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;背景&lt;/h2&gt;
+&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;僕が所属しているスマートニュースという会社では、Java でアプリケーションが書かれていることが多いため、JAR/WAR を持ってきて実行するようなことを CodeDeploy を使った Pull 型デプロイでやっています。一方で、一部のアプリケーションは依存ライブラリの関係などから C++ で書かれているので、 Docker を使うことで C++ のアプリを JAR/WAR と同じデプロイフローに載せて運用できるようにする目的で、この仕組みを用意した形になります。&lt;/p&gt;
 
-&lt;h2 id=&#34;設定方法:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;設定方法&lt;/h2&gt;
+&lt;h2 id=&#34;設定方法&#34;&gt;設定方法&lt;/h2&gt;
 
 &lt;p&gt;アプリケーションのリポジトリは下記のような構造にします。&lt;/p&gt;
 
@@ -225,7 +225,7 @@ service codedeploy-agent start
 └── src
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;circle-yml:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;circle.yml&lt;/h3&gt;
+&lt;h3 id=&#34;circle-yml&#34;&gt;circle.yml&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;dependencies&lt;/code&gt; セクションで、&lt;code&gt;src&lt;/code&gt; ディレクトリ内のソースコードをコンテナ内でコンパイルして、それを &lt;code&gt;docker save&lt;/code&gt; コマンドで &lt;code&gt;docker&lt;/code&gt; ディレクトリ内に書き出しています。&lt;/p&gt;
 
@@ -266,7 +266,7 @@ deployment:
         deployment_config: CodeDeployDefault.OneAtATime
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;appspec-yml:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;appspec.yml&lt;/h3&gt;
+&lt;h3 id=&#34;appspec-yml&#34;&gt;appspec.yml&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;files&lt;/code&gt; セクションでは S3 からダウンロードした docker イメージを &lt;code&gt;/tmp&lt;/code&gt; 下に配置するようにしておき、 &lt;code&gt;hooks&lt;/code&gt; セクションの ApplicationStart の中で &lt;code&gt;docker load&lt;/code&gt; コマンドを使って読み込むような形です。&lt;/p&gt;
 
@@ -306,20 +306,20 @@ sleep 5
 docker rm -f yourapp || true
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;slack:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;Slack&lt;/h3&gt;
+&lt;h3 id=&#34;slack&#34;&gt;Slack&lt;/h3&gt;
 
 &lt;p&gt;後は Slack 通知を設定しておくと、デプロイの成功や失敗を通知してくれるようになるので、デプロイの失敗を自分でトラッキングする必要がなくなるのでオススメです。&lt;/p&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/slack-circleci.png&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/jp/ecr/&#34;&gt;Amazon EC2 Container Registry&lt;/a&gt; が出てきたら、そこに Push して運用しようかなと思ってますが、今のところは S3 にコンテナを置いて Pull 型デプロイするのは権限周りを考えるとリーズナブルなのではないかと思っています。&lt;/p&gt;
 </description>
@@ -343,7 +343,7 @@ docker rm -f yourapp || true
 極端に能力の高い選手を獲得するのと弱点となる選手の穴を埋める補強はどちらがいいのかとか、
 統計を元にしたサッカーに関する興味深い考察が多かったのですが、その中に 1 つ引っかかる話があったのでそれについて書いてみます。&lt;/p&gt;
 
-&lt;h2 id=&#34;良いディフェンダーはタックルをしない:fbf6d2862a4818492e68e3a85cabe008&#34;&gt;良いディフェンダーはタックルをしない&lt;/h2&gt;
+&lt;h2 id=&#34;良いディフェンダーはタックルをしない&#34;&gt;良いディフェンダーはタックルをしない&lt;/h2&gt;
 
 &lt;p&gt;本書の中で、
 四半世紀に渡ってマンチェスター・ユナイテッドを率いた名将ファーガソンが、
@@ -369,7 +369,7 @@ docker rm -f yourapp || true
 ところが、人は、実際に起きたこと（ゴール）を記憶して、過度に重視しようとしている心理的な傾向のために、
 エースストライカーを獲得するのに大金を使ってしまうわけです。&lt;/p&gt;
 
-&lt;h2 id=&#34;良いエンジニアは障害対応をしない:fbf6d2862a4818492e68e3a85cabe008&#34;&gt;良いエンジニアは障害対応をしない&lt;/h2&gt;
+&lt;h2 id=&#34;良いエンジニアは障害対応をしない&#34;&gt;良いエンジニアは障害対応をしない&lt;/h2&gt;
 
 &lt;p&gt;この話は、エンジニアリングの世界に置き換えて考えるとどうなるでしょうか？
 フォワード陣をプロダクトチーム、ディフェンダー陣をインフラチームやセキュリティチームに当てはめるとしっくり来そうです。&lt;/p&gt;
@@ -385,7 +385,7 @@ docker rm -f yourapp || true
 評価される側も、バイアスがあることを認識した上で成果をアピールしていく努力は必要なのかなと思いました。
 (誤解がないように書いておくと、今の会社は特別にアピールしなくてもすごく高く評価してくれてる気がします。)&lt;/p&gt;
 
-&lt;h2 id=&#34;とはいえ:fbf6d2862a4818492e68e3a85cabe008&#34;&gt;とはいえ&amp;hellip;&lt;/h2&gt;
+&lt;h2 id=&#34;とはいえ&#34;&gt;とはいえ&amp;hellip;&lt;/h2&gt;
 
 &lt;p&gt;メッシやクリロナのように、一人でゴールを決めちゃえるストライカーや、
 多少運用しづらくても大ヒットするプロダクトを作っちゃうエンジニアは、
@@ -405,14 +405,14 @@ docker rm -f yourapp || true
 先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
 自分が知ってる &lt;strong&gt;Dogstatsd&lt;/strong&gt; を使う方法をシェアします。&lt;/p&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/datadog_http_graph.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;これはあるサービスの Nginx のアクセスログとエラーログを、
 Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
@@ -427,23 +427,23 @@ Fluentd 経由で Datadog にカスタムメトリクスとして送って可視
 
 &lt;p&gt;といったグラフになっています。このポストではこんなグラフを作る方法を説明します。&lt;/p&gt;
 
-&lt;h2 id=&#34;dogstatsd-とは:5a525c628f468fdda11fe314266c3265&#34;&gt;Dogstatsd とは？&lt;/h2&gt;
+&lt;h2 id=&#34;dogstatsd-とは&#34;&gt;Dogstatsd とは？&lt;/h2&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/dogstatsd.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
 一言で何物か説明すると Datadog 用に拡張された &lt;a href=&#34;https://github.com/etsy/statsd&#34;&gt;StatsD&lt;/a&gt; です。(StatsD をご存知ない方はググってみてください)
 これは Datadog の監視エージェント (dd-agent) に含まれているので、Datadog を使うなら特に設定なしで使えます。
 詳しい説明は &lt;a href=&#34;http://docs.datadoghq.com/guides/dogstatsd/&#34;&gt;公式ドキュメント&lt;/a&gt; を読むといいでしょう。&lt;/p&gt;
 
-&lt;h2 id=&#34;アプリケーションから直接送る方法:5a525c628f468fdda11fe314266c3265&#34;&gt;アプリケーションから直接送る方法&lt;/h2&gt;
+&lt;h2 id=&#34;アプリケーションから直接送る方法&#34;&gt;アプリケーションから直接送る方法&lt;/h2&gt;
 
 &lt;p&gt;これは上で紹介したドキュメントにも &amp;ldquo;The easiest way&amp;rdquo; と紹介されているやり方になります。
 &lt;a href=&#34;http://docs.datadoghq.com/libraries/&#34;&gt;Datadog Docs - Libraries&lt;/a&gt; に各言語用のライブラリが紹介されているので、
@@ -457,7 +457,7 @@ statsd = Statsd.new(&#39;localhost&#39;, 8125)
 statsd.increment(&#39;page.views&#39;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;fluentd-を経由して送る方法:5a525c628f468fdda11fe314266c3265&#34;&gt;Fluentd を経由して送る方法&lt;/h2&gt;
+&lt;h2 id=&#34;fluentd-を経由して送る方法&#34;&gt;Fluentd を経由して送る方法&lt;/h2&gt;
 
 &lt;p&gt;アプリケーションから直接送る方法は簡単に使える一方で、
 Datadog 以外のシステムにメトリクスやアラートを送るのに別の手段が必要になったり、
@@ -470,7 +470,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 もし仮に監視システムを入れ替えるようなことがあっても、最小限の労力で入れ替えが可能になったり、
 複数のシステムにメトリクスを送ることも簡単にできます。&lt;/p&gt;
 
-&lt;h3 id=&#34;設定ファイルの例:5a525c628f468fdda11fe314266c3265&#34;&gt;設定ファイルの例&lt;/h3&gt;
+&lt;h3 id=&#34;設定ファイルの例&#34;&gt;設定ファイルの例&lt;/h3&gt;
 
 &lt;p&gt;よくありそうな例として Nginx のアクセスログから、ステータスコード集計とレスポンスタイム統計を取得する方法について説明します。
 全体的な流れとしては、&lt;/p&gt;
@@ -491,7 +491,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 └── td-agent.conf.erb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;td-agent-conf-erb:5a525c628f468fdda11fe314266c3265&#34;&gt;td-agent.conf.erb&lt;/h3&gt;
+&lt;h3 id=&#34;td-agent-conf-erb&#34;&gt;td-agent.conf.erb&lt;/h3&gt;
 
 &lt;p&gt;他の設定ファイルを include するだけです。
 &lt;a href=&#34;https://www.datadoghq.com/blog/monitor-fluentd-datadog/&#34;&gt;拙作の Datadog エージェントによるバッファ監視&lt;/a&gt;を入れると捗るので monitor_agent の設定も入れておきます。&lt;/p&gt;
@@ -504,7 +504,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 @include conf.d/dogstatsd.conf
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;conf-d-nginx-conf-erb:5a525c628f468fdda11fe314266c3265&#34;&gt;conf.d/nginx.conf.erb&lt;/h3&gt;
+&lt;h3 id=&#34;conf-d-nginx-conf-erb&#34;&gt;conf.d/nginx.conf.erb&lt;/h3&gt;
 
 &lt;p&gt;本筋とそれますが Fluentd v0.12 から使えるようになった&lt;a href=&#34;http://qiita.com/sonots/items/a01d2233210b7b059967&#34;&gt;ラベル機能&lt;/a&gt;はすごい便利なので、
 未だにタグ書き換えで消耗してる人は、ラベルに置き換えると幸福度が増すと思います。&lt;/p&gt;
@@ -591,7 +591,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 &amp;lt;/label&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conf-d-dogstatsd-conf:5a525c628f468fdda11fe314266c3265&#34;&gt;conf.d/dogstatsd.conf&lt;/h2&gt;
+&lt;h2 id=&#34;conf-d-dogstatsd-conf&#34;&gt;conf.d/dogstatsd.conf&lt;/h2&gt;
 
 &lt;p&gt;@dogstatsd に投げられたレコードを dogstatsd に投げます。&lt;/p&gt;
 
@@ -659,7 +659,7 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
 &lt;p&gt;あとは Datadog でダッシュボードを作るなり、アラートを作るなり好きにしてください。
 ちょっと雑な説明なので分からないことがあれば twitter などで聞いて下さい。&lt;/p&gt;
 
-&lt;h2 id=&#34;おわりに:5a525c628f468fdda11fe314266c3265&#34;&gt;おわりに&lt;/h2&gt;
+&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
 
 &lt;p&gt;これも木曜に出てきたのですが「Datadog の情報ってインターネットにあまり出てなくないですか」というのがありました。
 確かに言われてみればそんな気もするので自分の持ってる知見は積極的に出していけたらなと思います。&lt;/p&gt;
@@ -674,8 +674,8 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
       <guid>http://blog.takus.me/2015/10/09/livesense-technight/</guid>
       <description>&lt;p&gt;先週の火曜日の話になりますが &lt;a href=&#34;http://made.livesense.co.jp/blogs/431&#34;&gt;Livesense TechNight&lt;/a&gt; というイベントで &amp;ldquo;SmartNews&amp;rsquo;s Journey into Microservices&amp;rdquo; という LT をしてきました。&lt;/p&gt;
 
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/ksF1CkWTC5a4UT&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
-&lt;/p&gt;
+&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/ksF1CkWTC5a4UT&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
+
 
 &lt;p&gt;SmartNews のバックエンドは、ニュース記事のクローラー、その記事の意味を解釈するサービス、サムネイル画像の品質判定をするサービス、記事の閲覧履歴を元に準リアルタイムにランキングを調整するサービス、アプリから記事情報を取得するための API Gateway などの多種多様なサービスで構成される Microservices 的なアプローチを取っていますが、資料の前半でそのあたりに至った背景を説明しつつ、後半は Microservices 化のための施策の一つである &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; によるデプロイ自動化について説明しました。&lt;/p&gt;
 
@@ -683,9 +683,9 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
 
 &lt;p&gt;また、スライドを公開したところ AWS の Chief Evangelist である Jeff Barr さんが twitter で言及してくれて、今後も定期的に情報発信をしていこうかなというモチベーションが湧いたのも個人的にはよかったです。&lt;/p&gt;
 
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/jeffbarr/status/649575575787454464&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/jeffbarr/status/649575575787454464&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;ちなみに、デプロイ自動化の話に関しては &lt;a href=&#34;http://developer.smartnews.com/blog/2015/10/01/20151001itamae-autoscaling-codedeploy/&#34;&gt;Itamae / Auto Scaling / CodeDeploy を用いて deploy フローを刷新した話。そして板前を provisioning した話。 | SmartNews 開発者ブログ&lt;/a&gt; にも解説があるので興味がある方がいましたらご覧くださいませ。&lt;/p&gt;
 
@@ -705,7 +705,7 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/takus/fluent-plugin-dynamodb-streams&#34;&gt;takus/fluent-plugin-dynamodb-streams&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;使い方:85108b4d7d02550fdd8c71a7f2e81632&#34;&gt;使い方&lt;/h2&gt;
+&lt;h2 id=&#34;使い方&#34;&gt;使い方&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/takus/fluent-plugin-dynamodb-streams/blob/master/README.md&#34;&gt;README&lt;/a&gt; に書いてある通りですが、こんな設定でお使いいただけます。他の Fluentd のプラグインと組み合わせることで、&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/new-logstash-plugin-search-dynamodb-content-using-elasticsearch/&#34;&gt;AWS Official Blog&lt;/a&gt; にある、Logstash + Elasticsearch のような用途にもお使いいただけるのではないかと思います。&lt;/p&gt;
 
@@ -745,7 +745,7 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
 &amp;lt;/match&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;そのほか:85108b4d7d02550fdd8c71a7f2e81632&#34;&gt;そのほか&lt;/h2&gt;
+&lt;h2 id=&#34;そのほか&#34;&gt;そのほか&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://docs.aws.amazon.com/ja_jp/kinesis/latest/dev/developing-consumers-with-kcl.html&#34;&gt;Amazon KCL (Kinesis Client Library)&lt;/a&gt; では、DynamoDB に Checkpoint を保持して耐障害性をあげていたり、ワーカーが並列にレコードを取得することで性能を稼いでいたりしますが、とりあえず自分の要件を満たすのには不要なので実装しておらず、若干不十分なところもありますのでご注意くださいませ。Issue / PR もお待ちしております。&lt;/p&gt;
 </description>
@@ -770,20 +770,20 @@ Datadog を代表して &lt;a href=&#34;https://twitter.com/jhotta&#34;&gt;@jhot
 Datadog を利用している様々な会社から導入経緯、利用方法、便利ツールなどの発表をしていただき、
 とても有意義な時間になりました。&lt;/p&gt;
 
-&lt;h2 id=&#34;発表資料-発表順:144dda02c62d145abfdfe96b945fb036&#34;&gt;発表資料(発表順)&lt;/h2&gt;
+&lt;h2 id=&#34;発表資料-発表順&#34;&gt;発表資料(発表順)&lt;/h2&gt;
 
-&lt;p&gt;&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;af1e6ad4f24148c89d5886a3be4b0cc0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;af1e6ad4f24148c89d5886a3be4b0cc0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
 
-&lt;p&gt;&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;cb1435fedb304357b9f1526f1b9839b0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
 
-&lt;p&gt;&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;d6dc9de74fa6411f9cf7e7bd5884bf71&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;cb1435fedb304357b9f1526f1b9839b0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;d6dc9de74fa6411f9cf7e7bd5884bf71&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+
 
 &lt;p&gt;パブリックなイベントではなかったので公開されてない方もいますが、ひとまず公開されてる資料だけまとめておきます。&lt;/p&gt;
 
-&lt;h2 id=&#34;当日の様子:144dda02c62d145abfdfe96b945fb036&#34;&gt;当日の様子&lt;/h2&gt;
+&lt;h2 id=&#34;当日の様子&#34;&gt;当日の様子&lt;/h2&gt;
 
 &lt;p&gt;弊社の &lt;a href=&#34;https://twitter.com/just_do_neet&#34;&gt;@just_do_neet&lt;/a&gt; さんが、
 &lt;a href=&#34;http://togetter.com/li/787532&#34;&gt;togetter のまとめ&lt;/a&gt; を作ってくれたので、
@@ -793,11 +793,11 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;img src=&#34;https://farm9.staticflickr.com/8628/16625959386_4513e6f105_z.jpg&#34;&gt;
 &lt;img src=&#34;https://farm9.staticflickr.com/8566/16625959426_1e640c61c1_z.jpg&#34;&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:144dda02c62d145abfdfe96b945fb036&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;ここ 1 年くらいの動向として、海外では &lt;a href=&#34;https://www.datadoghq.com/2015/02/datadog-acquires-mortar-data/&#34;&gt;Datadog が Mortar Data を買収したり&lt;/a&gt;、&lt;a href=&#34;http://techcrunch.com/2014/05/07/google-acquires-cloud-monitoring-service-stackdriver/&#34;&gt;Google が Stackdriver を買収したり&lt;/a&gt; と盛り上がってる一方で、日本でも &lt;a href=&#34;https://mackerel.io&#34;&gt;Mackerel&lt;/a&gt; が流行ってきていて、Monitoring as a Service も注目すべき分野になりつつあるように感じるので、個人的には Monitoring as a Service 現状確認会みたいなイベントもゆくゆくはできたらいいなと思っています。&lt;/p&gt;
 
-&lt;h2 id=&#34;各種イベントへの会場提供について:144dda02c62d145abfdfe96b945fb036&#34;&gt;各種イベントへの会場提供について&lt;/h2&gt;
+&lt;h2 id=&#34;各種イベントへの会場提供について&#34;&gt;各種イベントへの会場提供について&lt;/h2&gt;
 
 &lt;p&gt;最後は告知になりますが、スマートニュースは各種イベントへの会場提供を積極的に行っております。2/21 (土) に開催された &lt;a href=&#34;http://nulab-inc.com/ja/blog/nulab/jissenscala/&#34;&gt;実戦での Scala 〜 6つの事例から知る Scala の勘所〜&lt;/a&gt; や、3/6 (金) に行われる &lt;a href=&#34;http://www.zusaar.com/event/12857005&#34;&gt;第9回若手Webエンジニア交流会&lt;/a&gt; のような 100~200 名程度の大きめの会場から、~10 名規模の会場まで、様々な規模の勉強会への会場提供をお手伝いいたします。ご入用の際はお気軽に &lt;a href=&#34;https://twitter.com/takus&#34;&gt;@takus&lt;/a&gt;、または他の弊社メンバーまで連絡くださいませ。(※ 会場の空き状況やイベントの内容などによって利用可否の判断がございますので、その点はご了承いただければ幸いです。)&lt;/p&gt;
 </description>
@@ -815,7 +815,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 
 &lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7545/15782079551_8690d5ac80_z.jpg&#34;&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;keynote:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Keynote&lt;/h2&gt;
+&lt;h2 id=&#34;keynote&#34;&gt;Keynote&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2014/11/highly-scalable-mysql-compat-rds-db-engine.html&#34;&gt;Amazon Aurora&lt;/a&gt; は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、やっぱり既存のものをクラウドに持ってくだけじゃ不十分ってことで、クラウドだからできることは何かを真剣に考えていくことでこういうものが生まれてくるのでしょう。&lt;/p&gt;
 
@@ -823,15 +823,15 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 
 &lt;p&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2014/11/track-aws-with-config.html&#34;&gt;AWS Config&lt;/a&gt; は、簡単に説明すると AWS のリソース変更履歴を残してくれるもので、ウワサに聞くと任意のタイミングにロールバックなどもできる（ようになる？）だとかで、Route53 あたりも対応してくれるとかなり助かる感じなのではないかと。&lt;/p&gt;
 
-&lt;h2 id=&#34;how-dropbox-scales-massive-workloads-using-amazon-sqs:d0538dcb99110c96961d7fbc97d14347&#34;&gt;How Dropbox Scales Massive Workloads Using Amazon SQS&lt;/h2&gt;
+&lt;h2 id=&#34;how-dropbox-scales-massive-workloads-using-amazon-sqs&#34;&gt;How Dropbox Scales Massive Workloads Using Amazon SQS&lt;/h2&gt;
 
 &lt;p&gt;ファイルの更新をフックに、そのファイルに関する様々な処理を行うフレームワークについて紹介するセッション。Livefill と呼ばれる非同期処理パイプラインをマネージするフレームワークを SQS を利用して実装していて、開発者は YAML で input/output するキューと処理を記述するだけで非同期処理を追加していけるようになっていてクール。当たり前ですが、パイプラインの可視化がかなり重要で、コードのバグや書き込み先の詰まりなどで容易にパイプラインが詰まることがあるので、この手のものには、可視化することで早期に発見して対策していける仕組みが不可欠ですね。&lt;/p&gt;
 
-&lt;h2 id=&#34;infrastructure-as-code:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Infrastructure as Code&lt;/h2&gt;
+&lt;h2 id=&#34;infrastructure-as-code&#34;&gt;Infrastructure as Code&lt;/h2&gt;
 
 &lt;p&gt;CloudFormation の話な感じだったが、やっぱりJSON はツラい気がした。&lt;a href=&#34;https://www.simple.com/&#34;&gt;Simple&lt;/a&gt; の事例では Python のスクリプトで JSON 生成してるようだったが、もし使うならなんらかのラッパーが必要そうだなという印象。&lt;/p&gt;
 
-&lt;h2 id=&#34;netflix-s-next-generation-big-data-platform:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Netflix&amp;rsquo;s Next Generation Big Data Platform&lt;/h2&gt;
+&lt;h2 id=&#34;netflix-s-next-generation-big-data-platform&#34;&gt;Netflix&amp;rsquo;s Next Generation Big Data Platform&lt;/h2&gt;
 
 &lt;p&gt;Netflix がいわゆるビッグデータ周りをどのように運用しているかについて、利用しているツール、それを選んだ理由、既存手法とのベンチマーク比較、導入する上での OSS への貢献などについて話をしていました。やはり 2000 台の EMR クラスタみたいな話があったり、規模感が相変わらずすごいです。&lt;/p&gt;
 
@@ -839,21 +839,21 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 
 &lt;p&gt;話を聞いていて、アプリケーションとストレージをできるだけ分離しておくことはかなり大切で、例えば Netflix のように基本的にデータを S3 に置くような運用していると、Hadoop v1 と v2 を並行稼働みたいなことが実現できて、バージョンアップ対応とか再起動祭りへの対応負荷がかなり下がりそうなので、この辺りは心がけていきたいですね。&lt;/p&gt;
 
-&lt;h2 id=&#34;aws-re-invent-central:d0538dcb99110c96961d7fbc97d14347&#34;&gt;AWS re:Invent Central&lt;/h2&gt;
+&lt;h2 id=&#34;aws-re-invent-central&#34;&gt;AWS re:Invent Central&lt;/h2&gt;
 
 &lt;p&gt;スポンサー企業がブースを出展していて、普段使ってるサービスの開発者やサポートの人と直接会えたり、色々な企業のノベルティ貰えたりととても楽しい場所でした。&lt;/p&gt;
 
-&lt;h3 id=&#34;datadog:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Datadog&lt;/h3&gt;
+&lt;h3 id=&#34;datadog&#34;&gt;Datadog&lt;/h3&gt;
 
 &lt;p&gt;1 年半前に &lt;a href=&#34;http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/&#34;&gt;Velocity Conference に参加したとき&lt;/a&gt;は、会場の隅に小さいブースを持ってるだけだったのですが、この 1 年半で大きく成長したようで、入り口近くにかなり大きなブースを構えるようになっていて、3 年くらい前から密かに Datadog ファンをしていた自分としては嬉しかったです。また、ブースで話をしていたら、&amp;rdquo;Are you Takumi? Coincidence!!&amp;rdquo; みたいなノリでいつもメールでサポート対応してくれてる人と出会えて話ができたのもとても有意義でした。&lt;/p&gt;
 
 &lt;p&gt;せっかくなので色々とディスカッションしてましたが、エージェントがメモリ使いすぎ問題について聞いたら、Golang でエージェント書いてるみたいな答えが返ってくるなど、こちらの課題感と同じ感覚をちゃんと持ってくれていて、この辺りが 1 年間ですごく成長してる理由の 1 つなのかなと勝手に思ってました。&lt;/p&gt;
 
-&lt;h3 id=&#34;chef:d0538dcb99110c96961d7fbc97d14347&#34;&gt;Chef&lt;/h3&gt;
+&lt;h3 id=&#34;chef&#34;&gt;Chef&lt;/h3&gt;
 
 &lt;p&gt;「昔、Chef のベストプラクティスで、コミュニティクックブックをラップしろみたいなのがあったけど、あれは本気か」って聞いてみたところ、コミュニティクックブックはテンプレートとして使うのがいいよと中の人が言っていたので、スッキリしました。&lt;/p&gt;
 
-&lt;h2 id=&#34;おわり:d0538dcb99110c96961d7fbc97d14347&#34;&gt;おわり&lt;/h2&gt;
+&lt;h2 id=&#34;おわり&#34;&gt;おわり&lt;/h2&gt;
 
 &lt;p&gt;ということで、2 日目がそろそろ終わるタイミングでの 1 日目のメモでした。&lt;/p&gt;
 </description>
@@ -933,7 +933,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 「&lt;a href=&#34;http://blog.takus.me/2013/05/12/travel-to-new-york/&#34;&gt;New York に行ってきた&lt;/a&gt;」に引き続き、
 今年はバルセロナにいってきましたが、かなりいい場所だったのでカンタンにまとめです。&lt;/p&gt;
 
-&lt;h2 id=&#34;バルセロナがオススメな理由:83d1fd963712beba12114c2d942dde9e&#34;&gt;バルセロナがオススメな理由&lt;/h2&gt;
+&lt;h2 id=&#34;バルセロナがオススメな理由&#34;&gt;バルセロナがオススメな理由&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;カンプノウやサグラダ・ファミリアなど見所が満載&lt;/li&gt;
@@ -941,9 +941,9 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;li&gt;比較的どこでも英語が通じて治安も悪くない&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;見所満載のバルセロナ:83d1fd963712beba12114c2d942dde9e&#34;&gt;見所満載のバルセロナ&lt;/h2&gt;
+&lt;h2 id=&#34;見所満載のバルセロナ&#34;&gt;見所満載のバルセロナ&lt;/h2&gt;
 
-&lt;h3 id=&#34;camp-nou:83d1fd963712beba12114c2d942dde9e&#34;&gt;Camp Nou&lt;/h3&gt;
+&lt;h3 id=&#34;camp-nou&#34;&gt;Camp Nou&lt;/h3&gt;
 
 &lt;p&gt;バルセロナに行く一番の目的といえば、サクラダファミリアかカンプノウの 2 つは外せないでしょう。
 ということで、ちょうどリーガエスパニョーラのヘタフェ戦がやっていたので見に行きました。
@@ -956,7 +956,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;p&gt;&lt;img src=&#34;https://farm6.staticflickr.com/5481/14193032595_2d08bc2919_z.jpg&#34;&gt;
 &lt;img src=&#34;https://farm6.staticflickr.com/5506/14193105695_9885011f88_z.jpg&#34;&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;la-sagrada-família:83d1fd963712beba12114c2d942dde9e&#34;&gt;La Sagrada Família&lt;/h3&gt;
+&lt;h3 id=&#34;la-sagrada-família&#34;&gt;La Sagrada Família&lt;/h3&gt;
 
 &lt;p&gt;いつまでも完成しなくて、作ってる間にもメンテナンスが必要なところが Web サービスっぽいことでお馴染みサグラダ・ファミリア教会。
 &lt;a href=&#34;http://www.sagradafamilia.cat/&#34;&gt;公式サイト&lt;/a&gt;で予約して指定時間に行けばすぐに入れるので予約をオススメします。
@@ -967,7 +967,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;p&gt;&lt;img src=&#34;https://farm3.staticflickr.com/2919/14170054646_b549c68842_z.jpg&#34;&gt;
 &lt;img src=&#34;https://farm8.staticflickr.com/7373/14006576829_731498804e_z.jpg&#34;&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;museu-nacional-d-art-de-catalunya:83d1fd963712beba12114c2d942dde9e&#34;&gt;Museu Nacional d&amp;rsquo;Art de Catalunya&lt;/h2&gt;
+&lt;h2 id=&#34;museu-nacional-d-art-de-catalunya&#34;&gt;Museu Nacional d&amp;rsquo;Art de Catalunya&lt;/h2&gt;
 
 &lt;p&gt;カンプノウとサグラダ・ファミリアは別格として、もう一個オススメするならカタルーニャ美術館です。
 19:00 くらいからはじまる噴水ショーはもちろん、下から見上げる美術館が偉大なのと、
@@ -977,7 +977,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;img src=&#34;https://farm8.staticflickr.com/7451/14193308825_1865eccee3_z.jpg&#34;&gt;
 &lt;img src=&#34;https://farm8.staticflickr.com/7337/14006652870_94f6ed898f_z.jpg&#34;&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;メシについて:83d1fd963712beba12114c2d942dde9e&#34;&gt;メシについて&lt;/h2&gt;
+&lt;h2 id=&#34;メシについて&#34;&gt;メシについて&lt;/h2&gt;
 
 &lt;p&gt;どこに行ってもかなり美味しくて大変満足度が高かったです。
 サングリアも 4 ユーロくらいで大量に飲めたりして、普段あまりお酒飲まないタイプですが、ついつい連日飲んでしまった感じでした。
@@ -993,7 +993,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;img src=&#34;https://farm8.staticflickr.com/7340/14190822002_4c41068bdb_z.jpg&#34;&gt;
 &lt;img src=&#34;https://farm8.staticflickr.com/7368/14193318744_4e8ec0dbae_z.jpg&#34;&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;英語と治安について:83d1fd963712beba12114c2d942dde9e&#34;&gt;英語と治安について&lt;/h2&gt;
+&lt;h2 id=&#34;英語と治安について&#34;&gt;英語と治安について&lt;/h2&gt;
 
 &lt;p&gt;さすがにオリンピックもやるような国際都市は違うなという感じで、あと数年で東京がこのレベルに達するのかというと、
 なかなか厳しそうだなという印象ですが、日本人として日本にいると気づかないだけで、観光名所やその周辺の飯処は英語が通じたりするんでしょうかね？&lt;/p&gt;
@@ -1002,7 +1002,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 日が沈むのが遅いので、20:00 くらいまでは明るいのに加え、23:00 くらいになっても子連れで歩く家族がいたり、
 お子様を連れて行くのも比較的難易度が低いのではないかなと思います。&lt;/p&gt;
 
-&lt;h2 id=&#34;そのほか:83d1fd963712beba12114c2d942dde9e&#34;&gt;そのほか&lt;/h2&gt;
+&lt;h2 id=&#34;そのほか&#34;&gt;そのほか&lt;/h2&gt;
 
 &lt;p&gt;モバイル事情もそんなに悪くなく、「&lt;a href=&#34;http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/&#34;&gt;バルセロナでプリペイド SIM カードを購入する&lt;/a&gt;」で紹介したように現地でプリペイド SIM を買ってネットしていましたが、
 下りで 6Mbps くらいは出ていて、地下鉄でも比較的電波が入るところが多く、不便を感じることはありませんでした。
@@ -1012,7 +1012,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;p&gt;あと、今回かかった旅費ですが、2 人で 7 泊 9 日の日程で 48 万くらいかかってしまいました。
 航空券が 24 万で、宿泊費が 8 万くらいなので、現地でもかなりお金を使ってしまった印象ですが、一人旅じゃないので仕方なしといったところでしょうか。&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:83d1fd963712beba12114c2d942dde9e&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;今回、紹介した場所はもちろん、その他にもバルセロナ市街を一望できるモンジュイックや、
 ピカソやミロを中心とした美術館、地中海をクルージングできるバルセロナ港など、
@@ -1032,7 +1032,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 
 &lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7329/13922739997_155d5662b8_z.jpg&#34;&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;購入方法:40218906cadbdd5725e61aeddba649b4&#34;&gt;購入方法&lt;/h2&gt;
+&lt;h2 id=&#34;購入方法&#34;&gt;購入方法&lt;/h2&gt;
 
 &lt;p&gt;エル・プラット国際空港のターミナル 1 の出口あたりで Lebara というキャリアの SIM が売っていて、他に買えそうな場所がなかったのでそこで買いました。
 購入の流れとしては、店員さんにプリペイド SIM カードをくださいと伝えるとパスポート見せろと言われるので、
@@ -1040,11 +1040,11 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 今回の場合は、店員さんが丁寧に APN の設定等までやってくれる感じだったので、
 あらかじめ言語設定を英語にしておくとスムーズに設定してもらえるんじゃないかと思います。&lt;/p&gt;
 
-&lt;h2 id=&#34;料金:40218906cadbdd5725e61aeddba649b4&#34;&gt;料金&lt;/h2&gt;
+&lt;h2 id=&#34;料金&#34;&gt;料金&lt;/h2&gt;
 
 &lt;p&gt;契約した Lebara というキャリアの話になってしまいますが、€10 で 1GB のデータ通信がついてきて、足りない場合は €3 で 100MB づつ買い足していけるようです。今回はバルセロナに 8 日間ほど滞在していましたが、2 人でテザリングして 1GB 程度だったので、普通に使うのであれば €10 のプランで問題ないのではないかと思います。(あとは €25 で 3GB のプランもありました)&lt;/p&gt;
 
-&lt;h2 id=&#34;チャージ:40218906cadbdd5725e61aeddba649b4&#34;&gt;チャージ&lt;/h2&gt;
+&lt;h2 id=&#34;チャージ&#34;&gt;チャージ&lt;/h2&gt;
 
 &lt;p&gt;最初に購入した分を使い切ってしまったらチャージする必要があります。
 街中で Lebara のステッカーが貼ってあるお店を見つけて、電話番号を伝えてお金を払うとチャージできますが、
@@ -1052,7 +1052,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 ちなみに &lt;a href=&#34;http://www.lebara.es/&#34;&gt;Lebara のサイト&lt;/a&gt;からクレジットカードでもチャージできるみたいですが、
 何度やっても上手くいかなかったので諦めました。&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:40218906cadbdd5725e61aeddba649b4&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;購入に少し手間はかかりますが、海外ローミングやモバイルルータを使うと 1 日 1000 円くらいかかるモバイル回線が、
 プリペイドの SIM を買うことで 100~200 円レベルになるのでバルセロナ (スペイン) に行く人がいれば検討するとよいと思います。&lt;/p&gt;

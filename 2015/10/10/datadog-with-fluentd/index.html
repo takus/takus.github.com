@@ -44,7 +44,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2015/10/10/datadog-with-fluentd/" />
 
@@ -144,14 +144,14 @@
 先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
 自分が知ってる <strong>Dogstatsd</strong> を使う方法をシェアします。</p>
 
-<p>
+
 <figure >
     
         <img src="http://blog.takus.me/images/datadog_http_graph.jpg" />
     
     
 </figure>
-</p>
+
 
 <p>これはあるサービスの Nginx のアクセスログとエラーログを、
 Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
@@ -166,23 +166,23 @@ Fluentd 経由で Datadog にカスタムメトリクスとして送って可視
 
 <p>といったグラフになっています。このポストではこんなグラフを作る方法を説明します。</p>
 
-<h2 id="dogstatsd-とは:5a525c628f468fdda11fe314266c3265">Dogstatsd とは？</h2>
+<h2 id="dogstatsd-とは">Dogstatsd とは？</h2>
 
-<p>
+
 <figure >
     
         <img src="http://blog.takus.me/images/dogstatsd.jpg" />
     
     
 </figure>
-</p>
+
 
 <p>唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
 一言で何物か説明すると Datadog 用に拡張された <a href="https://github.com/etsy/statsd">StatsD</a> です。(StatsD をご存知ない方はググってみてください)
 これは Datadog の監視エージェント (dd-agent) に含まれているので、Datadog を使うなら特に設定なしで使えます。
 詳しい説明は <a href="http://docs.datadoghq.com/guides/dogstatsd/">公式ドキュメント</a> を読むといいでしょう。</p>
 
-<h2 id="アプリケーションから直接送る方法:5a525c628f468fdda11fe314266c3265">アプリケーションから直接送る方法</h2>
+<h2 id="アプリケーションから直接送る方法">アプリケーションから直接送る方法</h2>
 
 <p>これは上で紹介したドキュメントにも &ldquo;The easiest way&rdquo; と紹介されているやり方になります。
 <a href="http://docs.datadoghq.com/libraries/">Datadog Docs - Libraries</a> に各言語用のライブラリが紹介されているので、
@@ -196,7 +196,7 @@ statsd = Statsd.new('localhost', 8125)
 statsd.increment('page.views')
 </code></pre>
 
-<h2 id="fluentd-を経由して送る方法:5a525c628f468fdda11fe314266c3265">Fluentd を経由して送る方法</h2>
+<h2 id="fluentd-を経由して送る方法">Fluentd を経由して送る方法</h2>
 
 <p>アプリケーションから直接送る方法は簡単に使える一方で、
 Datadog 以外のシステムにメトリクスやアラートを送るのに別の手段が必要になったり、
@@ -209,7 +209,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 もし仮に監視システムを入れ替えるようなことがあっても、最小限の労力で入れ替えが可能になったり、
 複数のシステムにメトリクスを送ることも簡単にできます。</p>
 
-<h3 id="設定ファイルの例:5a525c628f468fdda11fe314266c3265">設定ファイルの例</h3>
+<h3 id="設定ファイルの例">設定ファイルの例</h3>
 
 <p>よくありそうな例として Nginx のアクセスログから、ステータスコード集計とレスポンスタイム統計を取得する方法について説明します。
 全体的な流れとしては、</p>
@@ -230,7 +230,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 └── td-agent.conf.erb
 </code></pre>
 
-<h3 id="td-agent-conf-erb:5a525c628f468fdda11fe314266c3265">td-agent.conf.erb</h3>
+<h3 id="td-agent-conf-erb">td-agent.conf.erb</h3>
 
 <p>他の設定ファイルを include するだけです。
 <a href="https://www.datadoghq.com/blog/monitor-fluentd-datadog/">拙作の Datadog エージェントによるバッファ監視</a>を入れると捗るので monitor_agent の設定も入れておきます。</p>
@@ -243,7 +243,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 @include conf.d/dogstatsd.conf
 </code></pre>
 
-<h3 id="conf-d-nginx-conf-erb:5a525c628f468fdda11fe314266c3265">conf.d/nginx.conf.erb</h3>
+<h3 id="conf-d-nginx-conf-erb">conf.d/nginx.conf.erb</h3>
 
 <p>本筋とそれますが Fluentd v0.12 から使えるようになった<a href="http://qiita.com/sonots/items/a01d2233210b7b059967">ラベル機能</a>はすごい便利なので、
 未だにタグ書き換えで消耗してる人は、ラベルに置き換えると幸福度が増すと思います。</p>
@@ -330,7 +330,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 &lt;/label&gt;
 </code></pre>
 
-<h2 id="conf-d-dogstatsd-conf:5a525c628f468fdda11fe314266c3265">conf.d/dogstatsd.conf</h2>
+<h2 id="conf-d-dogstatsd-conf">conf.d/dogstatsd.conf</h2>
 
 <p>@dogstatsd に投げられたレコードを dogstatsd に投げます。</p>
 
@@ -398,7 +398,7 @@ conf.d/nginx.conf で、<code>nginx_proto</code> や <code>nginx_vhost</code> �
 <p>あとは Datadog でダッシュボードを作るなり、アラートを作るなり好きにしてください。
 ちょっと雑な説明なので分からないことがあれば twitter などで聞いて下さい。</p>
 
-<h2 id="おわりに:5a525c628f468fdda11fe314266c3265">おわりに</h2>
+<h2 id="おわりに">おわりに</h2>
 
 <p>これも木曜に出てきたのですが「Datadog の情報ってインターネットにあまり出てなくないですか」というのがありました。
 確かに言われてみればそんな気もするので自分の持ってる知見は積極的に出していけたらなと思います。</p>

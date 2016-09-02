@@ -22,7 +22,7 @@
 
 &lt;p&gt;Fabric や Capistrano などのデプロイツールを利用していると、AutoScaling によって起動してくるインスタンスへのアプリケーションのデプロイをどうするかというのは悩みの種ですが、 AWS CodeDeploy を利用すると、最後にデプロイに成功したリビジョンを起動時にデプロイしてくれるので非常に助かります。その一方で、 AutoScaling と連携して使うときに気をつけておくべきいいポイントがいくつかあるので、それについて書きます。&lt;/p&gt;
 
-&lt;h2 id=&#34;1-user-data-でのプロビジョニングに注意:e1a69903f6a819874cb0b910d89cca22&#34;&gt;1. User Data でのプロビジョニングに注意&lt;/h2&gt;
+&lt;h2 id=&#34;1-user-data-でのプロビジョニングに注意&#34;&gt;1. User Data でのプロビジョニングに注意&lt;/h2&gt;
 
 &lt;p&gt;プロビジョニングも AWS CodeDeploy の hook スクリプトでやることもできますが、アプリケーションのデプロイとプロビジョニングは分けておきたいケースもあります。その場合は User Data にシェルスクリプトを入れて起動時に実行する形にするかと思いますが、2 つほど気をつけた方がいいことがあります。&lt;/p&gt;
 
@@ -47,13 +47,13 @@ cd /path/to/itamae-repo &amp;amp;&amp;amp; itamae local bootstrap.rb --ohai
 service codedeploy-agent start
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;2-スケーリング中のデプロイに注意:e1a69903f6a819874cb0b910d89cca22&#34;&gt;2. スケーリング中のデプロイに注意&lt;/h2&gt;
+&lt;h2 id=&#34;2-スケーリング中のデプロイに注意&#34;&gt;2. スケーリング中のデプロイに注意&lt;/h2&gt;
 
 &lt;p&gt;AutoScaling によるスケールアウト中に、新たに CodeDeploy のデプロイメント作成を行うと、スケーリングによって新たに追加されたインスタンスへは、最新のリビジョンがデプロイされずにスキップされることがあります。方法は色々と考えられますが、何らかの排他制御をしておく方が安全な気がします。&lt;/p&gt;
 
 &lt;p&gt;一方、AutoScaling によるスケールインにも注意が必要で、ログ回収などの終了処理のために自前の LifeCycle Hook を &lt;code&gt;autoscaling:EC2_INSTANCE_TERMINATING&lt;/code&gt; などに仕込んでいる場合に、この終了処理をしているインスタンスへデプロイするところでデプロイの進捗が止まってしまうことがあります。こちらも排他制御をするか、終了処理はできるだけすぐ終わるようにしておくとよさそうです。&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:e1a69903f6a819874cb0b910d89cca22&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;ということで、 AWS CodeDeploy を使う上でいくつか気をつけたい点について説明しました。もうちょっと CodeDeploy さんが賢くやってくれればと思ったりもしますが、&lt;/p&gt;
 
@@ -71,17 +71,17 @@ service codedeploy-agent start
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
 
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/stormcat24/status/671486430548393985&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/stormcat24/status/671486430548393985&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;というわけで、2 日目は、&lt;a href=&#34;http://blog.takus.me/2015/10/09/livesense-technight/&#34;&gt;SmartNews&amp;rsquo;s Journey into Microservices という LT をしてきました&lt;/a&gt; のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。&lt;/p&gt;
 
-&lt;h2 id=&#34;背景:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;背景&lt;/h2&gt;
+&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 
 &lt;p&gt;僕が所属しているスマートニュースという会社では、Java でアプリケーションが書かれていることが多いため、JAR/WAR を持ってきて実行するようなことを CodeDeploy を使った Pull 型デプロイでやっています。一方で、一部のアプリケーションは依存ライブラリの関係などから C++ で書かれているので、 Docker を使うことで C++ のアプリを JAR/WAR と同じデプロイフローに載せて運用できるようにする目的で、この仕組みを用意した形になります。&lt;/p&gt;
 
-&lt;h2 id=&#34;設定方法:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;設定方法&lt;/h2&gt;
+&lt;h2 id=&#34;設定方法&#34;&gt;設定方法&lt;/h2&gt;
 
 &lt;p&gt;アプリケーションのリポジトリは下記のような構造にします。&lt;/p&gt;
 
@@ -95,7 +95,7 @@ service codedeploy-agent start
 └── src
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;circle-yml:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;circle.yml&lt;/h3&gt;
+&lt;h3 id=&#34;circle-yml&#34;&gt;circle.yml&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;dependencies&lt;/code&gt; セクションで、&lt;code&gt;src&lt;/code&gt; ディレクトリ内のソースコードをコンテナ内でコンパイルして、それを &lt;code&gt;docker save&lt;/code&gt; コマンドで &lt;code&gt;docker&lt;/code&gt; ディレクトリ内に書き出しています。&lt;/p&gt;
 
@@ -136,7 +136,7 @@ deployment:
         deployment_config: CodeDeployDefault.OneAtATime
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;appspec-yml:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;appspec.yml&lt;/h3&gt;
+&lt;h3 id=&#34;appspec-yml&#34;&gt;appspec.yml&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;files&lt;/code&gt; セクションでは S3 からダウンロードした docker イメージを &lt;code&gt;/tmp&lt;/code&gt; 下に配置するようにしておき、 &lt;code&gt;hooks&lt;/code&gt; セクションの ApplicationStart の中で &lt;code&gt;docker load&lt;/code&gt; コマンドを使って読み込むような形です。&lt;/p&gt;
 
@@ -176,20 +176,20 @@ sleep 5
 docker rm -f yourapp || true
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;slack:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;Slack&lt;/h3&gt;
+&lt;h3 id=&#34;slack&#34;&gt;Slack&lt;/h3&gt;
 
 &lt;p&gt;後は Slack 通知を設定しておくと、デプロイの成功や失敗を通知してくれるようになるので、デプロイの失敗を自分でトラッキングする必要がなくなるのでオススメです。&lt;/p&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/slack-circleci.png&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:9b9582904af9ec673f21bb242d6fadf5&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/jp/ecr/&#34;&gt;Amazon EC2 Container Registry&lt;/a&gt; が出てきたら、そこに Push して運用しようかなと思ってますが、今のところは S3 にコンテナを置いて Pull 型デプロイするのは権限周りを考えるとリーズナブルなのではないかと思っています。&lt;/p&gt;
 </description>

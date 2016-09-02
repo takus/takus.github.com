@@ -22,15 +22,15 @@
 
 &lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;
 
-&lt;h2 id=&#34;各種リソース使用量の制限:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;各種リソース使用量の制限&lt;/h2&gt;
+&lt;h2 id=&#34;各種リソース使用量の制限&#34;&gt;各種リソース使用量の制限&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/limits.html&#34;&gt;AWS Lambda の制限&lt;/a&gt;に色々と書いてありますが、一時ディスク容量 500 MB 以内、実行時間は最大 300 秒以内というのはちょっと足りない気がします。VPC 対応したら Amazon RDS にも繫げるようになるので活躍の幅は広がりそうだと思っていますが、1 日に 1 回 mysqldump するみたいなことは、この制限によって難しそうな雰囲気がします。&lt;/p&gt;
 
-&lt;h2 id=&#34;スケジュール実行が-5-個しか指定できない:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;スケジュール実行が 5 個しか指定できない&lt;/h2&gt;
+&lt;h2 id=&#34;スケジュール実行が-5-個しか指定できない&#34;&gt;スケジュール実行が 5 個しか指定できない&lt;/h2&gt;
 
 &lt;p&gt;せっかく登場したスケジュール実行ですが、&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/getting-started-scheduled-events.html&#34;&gt;AWS アカウント毎に、最大 5 つまでの指定&lt;/a&gt; しかできないようです。これはそのうち緩和されることを願うばかり&amp;hellip;。&lt;/p&gt;
 
-&lt;h2 id=&#34;関数ごとの同時実行数を制限できない:3fa66c72fb0fb7e4fa48dd1888454174&#34;&gt;関数ごとの同時実行数を制限できない&lt;/h2&gt;
+&lt;h2 id=&#34;関数ごとの同時実行数を制限できない&#34;&gt;関数ごとの同時実行数を制限できない&lt;/h2&gt;
 
 &lt;p&gt;並列に実行してくれるのは Lambda のいいとこではありますが、例えば何かのイベントをトリガーに DB や Redis に書き込みをするようなケースでは、逆に同時実行数を制限したいケースも出てきそうです。工夫すれば色々と方法はありそうですが、スロットリングしたときにイベントを捨てるのか、何回かリトライするのかを含めて、Lambda の設定だけでできると嬉しい気がします。&lt;/p&gt;
 

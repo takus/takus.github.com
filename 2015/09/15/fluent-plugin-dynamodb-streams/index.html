@@ -42,7 +42,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams/" />
 
@@ -140,7 +140,7 @@
 
 <p><a href="https://github.com/takus/fluent-plugin-dynamodb-streams">takus/fluent-plugin-dynamodb-streams</a></p>
 
-<h2 id="使い方:85108b4d7d02550fdd8c71a7f2e81632">使い方</h2>
+<h2 id="使い方">使い方</h2>
 
 <p><a href="https://github.com/takus/fluent-plugin-dynamodb-streams/blob/master/README.md">README</a> に書いてある通りですが、こんな設定でお使いいただけます。他の Fluentd のプラグインと組み合わせることで、<a href="https://aws.amazon.com/jp/blogs/aws/new-logstash-plugin-search-dynamodb-content-using-elasticsearch/">AWS Official Blog</a> にある、Logstash + Elasticsearch のような用途にもお使いいただけるのではないかと思います。</p>
 
@@ -180,7 +180,7 @@
 &lt;/match&gt;
 </code></pre>
 
-<h2 id="そのほか:85108b4d7d02550fdd8c71a7f2e81632">そのほか</h2>
+<h2 id="そのほか">そのほか</h2>
 
 <p><a href="http://docs.aws.amazon.com/ja_jp/kinesis/latest/dev/developing-consumers-with-kcl.html">Amazon KCL (Kinesis Client Library)</a> では、DynamoDB に Checkpoint を保持して耐障害性をあげていたり、ワーカーが並列にレコードを取得することで性能を稼いでいたりしますが、とりあえず自分の要件を満たすのには不要なので実装しておらず、若干不十分なところもありますのでご注意くださいませ。Issue / PR もお待ちしております。</p>
 

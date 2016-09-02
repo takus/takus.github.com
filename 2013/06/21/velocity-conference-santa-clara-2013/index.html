@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/" />
 
@@ -138,7 +138,7 @@
 
 <p><img src="http://farm6.staticflickr.com/5448/9083213242_27feaaaca5_z.jpg"></p>
 
-<h2 id="my-ignite-talk:07cfc048da731ec3d89542953618ac9f">My Ignite Talk</h2>
+<h2 id="my-ignite-talk">My Ignite Talk</h2>
 
 <p><a href="http://www.amazon.co.jp/exec/obidos/ASIN/4532318955/takus-22/ref=nosim">&ldquo;不格好経営&rdquo;</a>にも載ってる DeNA の創業者である南場さんの言葉に、<em>&ldquo;これから会社がどんなに長生きしようとも、地球や宇宙の時間のなかでほんの瞬間の存在になる。けれどもなにか宇宙に引っ掻きキズみたいな証を残したい。&rdquo;</em> というものがあります。そこで、Velocity への参加が決まってから、DeNA 社員として何か引っ掻きキズを残せないか考えていたところ、<a href="http://velocityconf.com/velocity2013/public/schedule/detail/29483">Ignite Velocity</a> という LT のセッションを見つけたので、abstract 書いて応募したところ accept されたので LT してきました。</p>
 
@@ -152,9 +152,9 @@
 
 <p>LT は <a href="https://speakerdeck.com/takus/3-popular-ops-tools-in-japan">3 Pupular Ops Tool in Japan</a> という、(popular がかなり主観ですが) serverspec と GrowthForecast と Fluentd について簡単に紹介するような話で、日本の皆様にはお馴染みの内容ですが、海外の人にとってはちょっとは役立つんじゃないかと思ってこの内容にしました。</p>
 
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/sethvargo/status/347198222206386178"></a></blockquote>
+<blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/sethvargo/status/347198222206386178"></a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
+
 
 <p>トーク後に fluentd について聞きに来てくれた人がいたり、色んな人から good job とか interesting みたいなお褒めの言葉をいただいたり、以下のようなツイートを頂けたので、小さいながらも引っ掻きキズを残してこれたんじゃないかと思います。</p>
 
@@ -162,47 +162,47 @@
 
 <p>そして、色々と声かけてもらった中でも、<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4873114934/takus-22/ref=nosim">&ldquo;Web Operations&rdquo;</a> の著者で、Velocity の Program Chair でもある @allspaw が自分のこと覚えててくれて、excellent って言ってくれたのには痺れました(お世辞だと分かっててもw)</p>
 
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/takus/status/347527386927083520"></a></blockquote>
+<blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/takus/status/347527386927083520"></a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
 
-<h2 id="awesome-people:07cfc048da731ec3d89542953618ac9f">Awesome People</h2>
+
+<h2 id="awesome-people">Awesome People</h2>
 
 <p><img src="http://farm8.staticflickr.com/7406/9081005095_6f9e32e1e8_z.jpg"></p>
 
 <p>Velocity ではほんとに色んな人に優しくしてもらいました。ホテルでチップ用の紙幣なくて両替しようとしたら $5 にしか変えれないと言われて困ってたら、通りかかった人が、&rdquo;一昨日のトークよかったよ。あとモバゲーのゲームもやったことあるんだ&rdquo; って言って 3 ドルくれたり（失礼ながら名前聞くの忘れてしまった&hellip;)、Closing Party で Adobe で働いてるジェラール・ピケ似のイケメンと喋ってたらビール奢ってくれたり、思い返すとそんなエピソードばかりでほんとに参加者が素晴らしかったです！</p>
 
-<h2 id="awesome-talks:07cfc048da731ec3d89542953618ac9f">Awesome Talks</h2>
+<h2 id="awesome-talks">Awesome Talks</h2>
 
 <p>素晴らしいトークがたくさんありましたが、全部紹介しきれないので印象深いものだけ簡単にまとめておきます。もうちょっと踏み込んだものはまた後日&hellip;。</p>
 
 <p><img src="http://farm6.staticflickr.com/5527/9087254909_301923410e_z.jpg"></p>
 
-<h3 id="avoiding-performance-regression-at-twitter:07cfc048da731ec3d89542953618ac9f">Avoiding Performance Regression at Twitter</h3>
+<h3 id="avoiding-performance-regression-at-twitter">Avoiding Performance Regression at Twitter</h3>
 
 <p>機能追加やバグフィックスを反映するたびに性能劣化が起きてしまうのをどのように防ぐかといった内容で、<a href="http://webpagetest.org">WebPageTest</a>、<a href="http://phantomjs.org">PhantomJS</a>、<a href="http://showslow.com">ShowSlow</a> といったツールを使って、branch 毎の TTFT (最初のツイートが表示されるまでの時間) を Jenkins でテストしているそうです。性能が劣化するようなら merge させないといった仕組みなので、性能向上はあっても性能劣化は起きないような仕組みが自動で回るようになっている点がスバラシイですね。</p>
 
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/marcelduran/status/348150304862240768"></a></blockquote>
+<blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/marcelduran/status/348150304862240768"></a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
+
 
 <p>ちなみに、この話すごくよかったのでスピーカーの @marcelduran にリプライしたら、返ってきたリプライまで素晴らしくてさらに感銘を受けました。犯人捜しするのでなく、犯人を作らないような仕組みを考えられる人になりたいですね。</p>
 
-<h3 id="bring-the-noise-making-effective-use-of-a-quarter-million-metrics:07cfc048da731ec3d89542953618ac9f">Bring the Noise: Making Effective Use of a Quarter Million Metrics</h3>
+<h3 id="bring-the-noise-making-effective-use-of-a-quarter-million-metrics">Bring the Noise: Making Effective Use of a Quarter Million Metrics</h3>
 
 <p>Etsy といえば、<em>&ldquo;Graph everything&rdquo;</em> とか <em>&ldquo;If it moves, graph it&rdquo;</em> に代表されるようにとにかく何でもグラフにしてることでお馴染みですが、&rdquo;たとえグラフの波形が乱れても、誰も見てなかったらそれはスパイクと言えるんだろうか？&rdquo; というところから、リアルタイム異常検知とそれに似たグラフを自動で見つける <a href="http://codeascraft.com/2013/06/11/introducing-kale/">Kale</a> の話でした。トークの中で出てきた<a href="https://twitter.com/DEVOPS_BORAT/status/281242898165538818">このツイート</a>でも言ってるように、不味そうな兆候って後で致命的な問題を招くわけで、先ほどの Twitter の話と同じく、問題が小さいうちに対処できるようにしていく部分に Velocity のカルチャーを感じました。</p>
 
-<h3 id="configuration-management-anti-patterns:07cfc048da731ec3d89542953618ac9f">Configuration Management Anti-patterns</h3>
+<h3 id="configuration-management-anti-patterns">Configuration Management Anti-patterns</h3>
 
 <p><em>&ldquo;Stop putting upstream modules and cookbooks into your repos&rdquo;</em> という berkshelf とか librarian-chef とか使って使いたいバージョン固定すれば、勝手にバージョンアップされてりしても安心だよねって話が印象に残りました。DeNA のように大規模に色々なシステムが動くような環境で DRY に則って共通化すると、ある環境のために加えた変更が、他の環境に影響を及ぼしてしまうことがたびたびありますが、使う環境毎にきちんとバージョン固定しておけば、そういう苦しみから解放されて、共通化を進めやすくなり、みんなハッピーになれそうだと思いました。</p>
 
-<h2 id="future:07cfc048da731ec3d89542953618ac9f">Future</h2>
+<h2 id="future">Future</h2>
 
 <p>Velocity に行って日本のエンジニアのレベルはやっぱ高いんだなと感じました。例えば 3 日目に聞いた MHA のトークはチュートリアル的な内容に留まっていたので、じゃあ DeNA でどのように MHA を運用してるのかって話なんかは当然喋らせてもらえそうで、DeNA のようにグローバルカンパニーを自負する会社や、日頃から素晴らしいツール・ライブラリを公開してるエンジニアの方々はどんどん海外のカンファレンスで喋っていったらいいんじゃないでしょうか！</p>
 
 <p>自分自身については、エンジニアとしてまだまだ半人前の存在だと再認識しながらも、Velocity の本セッションもそんなに遠い場所でないという感触は掴めたので、いつかは本セッションでトークできるように日頃から精進していきたいと思います:D</p>
 
-<h2 id="acknowledgments:07cfc048da731ec3d89542953618ac9f">Acknowledgments</h2>
+<h2 id="acknowledgments">Acknowledgments</h2>
 
 <p>最後になりましたが、Velocity に参加するための手配を色々と整えてくれたスーパーヘルパー様と、自分がするべきだった仕事を代わりに引き受けてくださった部署の皆様に心から感謝してます。@katemats が <a href="http://www.youtube.com/watch?v=RGFGdFS_3Cc">If You Don&rsquo;t Understand People, You Don&rsquo;t Understand Ops</a> というトークで <em>You get what you give.</em> って言ってましたが、今回与えてもらった分は必ずお返しします。本当にありがとうございました！</p>
 

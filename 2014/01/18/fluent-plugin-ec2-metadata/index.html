@@ -42,7 +42,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/" />
 
@@ -143,7 +143,7 @@
 <p>プラグインの書き方は @tagomoris 先生の <a href="http://d.hatena.ne.jp/tagomoris/20120221/1329815126">&ldquo;fluentdのためのプラグインをイチから書く手順(bundler版)&rdquo;</a> が大変参考になったので、プラグインを書いてみたい人は見るとよさそうです。
 あとは、@sonots 先生の <a href="https://github.com/sonots/fluent-plugin-record-reformer">fluent-plugin-record-reformer</a> をかなり参考にさせていただいたのと、Ruby 初心者なので<a href="http://www.amazon.co.jp/exec/obidos/ASIN/4774158798/takus-22/ref=nosim">&ldquo;パーフェクトRuby&rdquo;</a>にもお世話になりました。</p>
 
-<h2 id="なにをするプラグインか:31f28648f8773a34e9151cf50e0cfeb3">なにをするプラグインか？</h2>
+<h2 id="なにをするプラグインか">なにをするプラグインか？</h2>
 
 <pre><code class="language-javascript">### Input
 foo.bar {&quot;message&quot;:&quot;hello ec2!&quot;}
@@ -183,7 +183,7 @@ EC2 のタギング機能を使ってサーバの属性を記述し、識別す�
 <p>@stanaka さんのブログにも上記のような内容が書いてあり、
 AWS 上で fluentd を使っていて EC2 のタグ毎に集計したい場合は役に立つプラグインなのではないかと思っています。</p>
 
-<h2 id="設定ファイル:31f28648f8773a34e9151cf50e0cfeb3">設定ファイル</h2>
+<h2 id="設定ファイル">設定ファイル</h2>
 
 <p>設定ファイルは下記のような感じで、<a href="http://y-ken.hatenablog.com/entry/fluentd-how-to-use-tag_parts-placeholder">タグの書き換えに便利な tag_parts</a> もサポートしております。
 EC2 のタグのプレースホルダー名は若干悩んだところですが、aws-sdk で返ってくるフィールド名に合わせて <code>tagset_xxx</code> にしました。</p>
@@ -203,7 +203,7 @@ EC2 のタグのプレースホルダー名は若干悩んだところですが�
 &lt;/match&gt;
 </code></pre>
 
-<h2 id="今後について:31f28648f8773a34e9151cf50e0cfeb3">今後について</h2>
+<h2 id="今後について">今後について</h2>
 
 <p>テストコードが EC2 に依存していて TravisCI ではテストできないので、どうしようか考え中です。
 CircleCI だと<a href="http://d.hatena.ne.jp/naoya/20131215/1387090668">こんなカンジ</a>で EC2 にインスタンス立ち上げてよしなにテストしてくれるようなことができそうなので、その辺りを調べてみようかと思っていますが、

@@ -22,14 +22,14 @@
 先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
 自分が知ってる &lt;strong&gt;Dogstatsd&lt;/strong&gt; を使う方法をシェアします。&lt;/p&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/datadog_http_graph.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;これはあるサービスの Nginx のアクセスログとエラーログを、
 Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
@@ -44,23 +44,23 @@ Fluentd 経由で Datadog にカスタムメトリクスとして送って可視
 
 &lt;p&gt;といったグラフになっています。このポストではこんなグラフを作る方法を説明します。&lt;/p&gt;
 
-&lt;h2 id=&#34;dogstatsd-とは:5a525c628f468fdda11fe314266c3265&#34;&gt;Dogstatsd とは？&lt;/h2&gt;
+&lt;h2 id=&#34;dogstatsd-とは&#34;&gt;Dogstatsd とは？&lt;/h2&gt;
 
-&lt;p&gt;
+
 &lt;figure &gt;
     
         &lt;img src=&#34;http://blog.takus.me/images/dogstatsd.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
 一言で何物か説明すると Datadog 用に拡張された &lt;a href=&#34;https://github.com/etsy/statsd&#34;&gt;StatsD&lt;/a&gt; です。(StatsD をご存知ない方はググってみてください)
 これは Datadog の監視エージェント (dd-agent) に含まれているので、Datadog を使うなら特に設定なしで使えます。
 詳しい説明は &lt;a href=&#34;http://docs.datadoghq.com/guides/dogstatsd/&#34;&gt;公式ドキュメント&lt;/a&gt; を読むといいでしょう。&lt;/p&gt;
 
-&lt;h2 id=&#34;アプリケーションから直接送る方法:5a525c628f468fdda11fe314266c3265&#34;&gt;アプリケーションから直接送る方法&lt;/h2&gt;
+&lt;h2 id=&#34;アプリケーションから直接送る方法&#34;&gt;アプリケーションから直接送る方法&lt;/h2&gt;
 
 &lt;p&gt;これは上で紹介したドキュメントにも &amp;ldquo;The easiest way&amp;rdquo; と紹介されているやり方になります。
 &lt;a href=&#34;http://docs.datadoghq.com/libraries/&#34;&gt;Datadog Docs - Libraries&lt;/a&gt; に各言語用のライブラリが紹介されているので、
@@ -74,7 +74,7 @@ statsd = Statsd.new(&#39;localhost&#39;, 8125)
 statsd.increment(&#39;page.views&#39;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;fluentd-を経由して送る方法:5a525c628f468fdda11fe314266c3265&#34;&gt;Fluentd を経由して送る方法&lt;/h2&gt;
+&lt;h2 id=&#34;fluentd-を経由して送る方法&#34;&gt;Fluentd を経由して送る方法&lt;/h2&gt;
 
 &lt;p&gt;アプリケーションから直接送る方法は簡単に使える一方で、
 Datadog 以外のシステムにメトリクスやアラートを送るのに別の手段が必要になったり、
@@ -87,7 +87,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 もし仮に監視システムを入れ替えるようなことがあっても、最小限の労力で入れ替えが可能になったり、
 複数のシステムにメトリクスを送ることも簡単にできます。&lt;/p&gt;
 
-&lt;h3 id=&#34;設定ファイルの例:5a525c628f468fdda11fe314266c3265&#34;&gt;設定ファイルの例&lt;/h3&gt;
+&lt;h3 id=&#34;設定ファイルの例&#34;&gt;設定ファイルの例&lt;/h3&gt;
 
 &lt;p&gt;よくありそうな例として Nginx のアクセスログから、ステータスコード集計とレスポンスタイム統計を取得する方法について説明します。
 全体的な流れとしては、&lt;/p&gt;
@@ -108,7 +108,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 └── td-agent.conf.erb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;td-agent-conf-erb:5a525c628f468fdda11fe314266c3265&#34;&gt;td-agent.conf.erb&lt;/h3&gt;
+&lt;h3 id=&#34;td-agent-conf-erb&#34;&gt;td-agent.conf.erb&lt;/h3&gt;
 
 &lt;p&gt;他の設定ファイルを include するだけです。
 &lt;a href=&#34;https://www.datadoghq.com/blog/monitor-fluentd-datadog/&#34;&gt;拙作の Datadog エージェントによるバッファ監視&lt;/a&gt;を入れると捗るので monitor_agent の設定も入れておきます。&lt;/p&gt;
@@ -121,7 +121,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 @include conf.d/dogstatsd.conf
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;conf-d-nginx-conf-erb:5a525c628f468fdda11fe314266c3265&#34;&gt;conf.d/nginx.conf.erb&lt;/h3&gt;
+&lt;h3 id=&#34;conf-d-nginx-conf-erb&#34;&gt;conf.d/nginx.conf.erb&lt;/h3&gt;
 
 &lt;p&gt;本筋とそれますが Fluentd v0.12 から使えるようになった&lt;a href=&#34;http://qiita.com/sonots/items/a01d2233210b7b059967&#34;&gt;ラベル機能&lt;/a&gt;はすごい便利なので、
 未だにタグ書き換えで消耗してる人は、ラベルに置き換えると幸福度が増すと思います。&lt;/p&gt;
@@ -208,7 +208,7 @@ Datadog 以外のシステムにメトリクスやアラートを送るのに別
 &amp;lt;/label&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;conf-d-dogstatsd-conf:5a525c628f468fdda11fe314266c3265&#34;&gt;conf.d/dogstatsd.conf&lt;/h2&gt;
+&lt;h2 id=&#34;conf-d-dogstatsd-conf&#34;&gt;conf.d/dogstatsd.conf&lt;/h2&gt;
 
 &lt;p&gt;@dogstatsd に投げられたレコードを dogstatsd に投げます。&lt;/p&gt;
 
@@ -276,7 +276,7 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
 &lt;p&gt;あとは Datadog でダッシュボードを作るなり、アラートを作るなり好きにしてください。
 ちょっと雑な説明なので分からないことがあれば twitter などで聞いて下さい。&lt;/p&gt;
 
-&lt;h2 id=&#34;おわりに:5a525c628f468fdda11fe314266c3265&#34;&gt;おわりに&lt;/h2&gt;
+&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
 
 &lt;p&gt;これも木曜に出てきたのですが「Datadog の情報ってインターネットにあまり出てなくないですか」というのがありました。
 確かに言われてみればそんな気もするので自分の持ってる知見は積極的に出していけたらなと思います。&lt;/p&gt;

@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2013/08/06/nagira-nagios-restful-api/" />
 
@@ -139,7 +139,7 @@
 
 <p>ちなみに <code>nagira</code> は <code>NAGIos Restful Api</code> を意味しているようです。</p>
 
-<h2 id="インストール:3e91c821535235dc88251bb48262e093">インストール</h2>
+<h2 id="インストール">インストール</h2>
 
 <p><code>nagira</code> は <code>Sinatra</code> なアプリなので、<code>bundler</code> で適当な場所にインストールします。</p>
 
@@ -229,7 +229,7 @@ NAGIRA_BG_PARSING=1
 NAGIOS_CFG_FILE=/path/to/nagios.cfg
 </code></pre>
 
-<h2 id="出力例:3e91c821535235dc88251bb48262e093">出力例</h2>
+<h2 id="出力例">出力例</h2>
 
 <p>こんな感じで監視してるホストの一覧とか、サービスの状態が json で取得できるので色々と捗りそうです。ちなみに API は<a href="https://github.com/dmytro/nagira/blob/master/docs/API.md">この辺り</a>に載っています。また、<code>| python -mjson.tool</code> で json 渡すとよしなにやってくれることを昨日知りました。情弱ですいません。</p>
 
@@ -304,7 +304,7 @@ curl -s http://nagios.example.com:4567/_status/host0001/_services | python -mjso
     },
 </code></pre>
 
-<h2 id="まとめ:3e91c821535235dc88251bb48262e093">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 
 <p>Nagios 自体がこの機能を提供してよと思うところもありますが、とりあえずこれでやりたいことは実現できそうなので、もう少し実践的な場面で試していきたい所存です。</p>
 

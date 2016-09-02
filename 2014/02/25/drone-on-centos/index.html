@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2014/02/25/drone-on-centos/" />
 
@@ -136,7 +136,7 @@
 
 <p><img src="http://farm6.staticflickr.com/5530/12768732363_934e22c97b_z.jpg"></p>
 
-<h2 id="docker-のインストール:d3f5d5890557b8401cc1422e49896ad9">Docker のインストール</h2>
+<h2 id="docker-のインストール">Docker のインストール</h2>
 
 <p>CentOS 6.5 なら簡単にインストールできるので特にハマりどころはありませんでした。</p>
 
@@ -149,7 +149,7 @@ docker run centos /bin/echo &quot;Hello World&quot;
 Hello World
 </code></pre>
 
-<h2 id="drone-のビルド:d3f5d5890557b8401cc1422e49896ad9">Drone のビルド</h2>
+<h2 id="drone-のビルド">Drone のビルド</h2>
 
 <p>Makefile がリポジトリに入ってるので、Makefile でビルドしてあげます。<code>make deps</code> でこける場合は適宜、依存を解決してあげれば OK です。
 golang 素人すぎて適当にやってしまいましたが、こうすべきみたいのがあれば優しく教えていただけると助かります。</p>
@@ -168,16 +168,16 @@ make &amp;&amp; make test &amp;&amp; make install
 droned
 </code></pre>
 
-<h2 id="drone-で-github-enterprise-のリポジトリをテストする:d3f5d5890557b8401cc1422e49896ad9">Drone で Github Enterprise のリポジトリをテストする</h2>
+<h2 id="drone-で-github-enterprise-のリポジトリをテストする">Drone で Github Enterprise のリポジトリをテストする</h2>
 
 <p>後は <a href="http://yosssi.hatenablog.com/entry/2014/02/08/161500">Droneのオープンソース版を試してみました。</a> に従ってセットアップしていけばいいのですが、Github Enterprise のリポジトリを CI する場合はちょっとだけ対応が必要でした。</p>
 
-<h3 id="1-github-api-の-url-変更:d3f5d5890557b8401cc1422e49896ad9">1. Github API の URL 変更</h3>
+<h3 id="1-github-api-の-url-変更">1. Github API の URL 変更</h3>
 
 <p><a href="http://DRONE_HOST/account/admin/settings">http://DRONE_HOST/account/admin/settings</a> の &ldquo;GitHub Settings&rdquo; で API の URL の変更します。
 Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/api/v3">https://GITHUB_DOMAIN/api/v3</a> のように修正すればよさそうです。</p>
 
-<h3 id="2-リポジトリの-clone-方法の変更:d3f5d5890557b8401cc1422e49896ad9">2. リポジトリの clone 方法の変更</h3>
+<h3 id="2-リポジトリの-clone-方法の変更">2. リポジトリの clone 方法の変更</h3>
 
 <p><a href="https://github.com/drone/drone/issues/91">GitHub Enterprise &amp; Private Mode #91</a> にあるように、GitHub Enterprise を private mode で運用してる場合、<code>git://</code> プロトコルが使えないので、リポジトリの clone に失敗してしまっていました。Issue にあがってるくらいなのでそのうち解決されるかと思いますが、ワークアラウンドとして下記のようにソースを修正してビルドし直して使ってます。</p>
 
@@ -194,13 +194,13 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
         bitbucketRepoPatternPrivate = &quot;git@bitbucket.org:%s/%s.git&quot;
 </code></pre>
 
-<h3 id="3-github-リポジトリにデプロイキーを登録:d3f5d5890557b8401cc1422e49896ad9">3. Github リポジトリにデプロイキーを登録</h3>
+<h3 id="3-github-リポジトリにデプロイキーを登録">3. Github リポジトリにデプロイキーを登録</h3>
 
 <p>これで万事解決と思いきや、今度は <code>git@</code> で clone してるにも関わらず、git clone に失敗する現象に遭遇しました。Drone のログをみてるとコンテナの初期化する際にリポジトリ毎の秘密鍵をおいているようで、Settings の Key Pairs にある公開鍵を Github リポジトリのデプロイキーに登録してあげたところ、無事に Clone できるようになりました。</p>
 
 <p><img src="http://farm6.staticflickr.com/5475/12768591305_b2c6f232ee_z.jpg"></p>
 
-<h2 id="まとめ:d3f5d5890557b8401cc1422e49896ad9">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 
 <p>ということで、無事に Drone 使えるようになったので、あとは各バージョンの perlbrew とか rbenv とか nodebrew を持ったイメージを作っておいて、それ毎にバージョン跨ぐテストしていくような感じにしていけばよさそうな雰囲気です。ざっと設定画面とコードを眺めたところ、Jenkins の Master/Slave みたいな仕組みがないので、数が増えていったらある程度 Drone を分けるしかなさそうですが、とりあえずはチーム毎とかそういう単位で Drone を用意してあげればいいのかなと思ってます。 Enjoy your test with Drone :D</p>
 

@@ -50,7 +50,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/" />
 
@@ -154,17 +154,17 @@
 
 <p>この記事は <a href="http://qiita.com/advent-calendar/2015/circleci">CircleCI Advent Calendar 2015 - Qiita</a> の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&rdquo;CircleCIでサクッとビルドチェーンを実現する&rdquo;お話でした。</p>
 
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/stormcat24/status/671486430548393985"></a></blockquote>
+<blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/stormcat24/status/671486430548393985"></a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
+
 
 <p>というわけで、2 日目は、<a href="http://blog.takus.me/2015/10/09/livesense-technight/">SmartNews&rsquo;s Journey into Microservices という LT をしてきました</a> のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。</p>
 
-<h2 id="背景:9b9582904af9ec673f21bb242d6fadf5">背景</h2>
+<h2 id="背景">背景</h2>
 
 <p>僕が所属しているスマートニュースという会社では、Java でアプリケーションが書かれていることが多いため、JAR/WAR を持ってきて実行するようなことを CodeDeploy を使った Pull 型デプロイでやっています。一方で、一部のアプリケーションは依存ライブラリの関係などから C++ で書かれているので、 Docker を使うことで C++ のアプリを JAR/WAR と同じデプロイフローに載せて運用できるようにする目的で、この仕組みを用意した形になります。</p>
 
-<h2 id="設定方法:9b9582904af9ec673f21bb242d6fadf5">設定方法</h2>
+<h2 id="設定方法">設定方法</h2>
 
 <p>アプリケーションのリポジトリは下記のような構造にします。</p>
 
@@ -178,7 +178,7 @@
 └── src
 </code></pre>
 
-<h3 id="circle-yml:9b9582904af9ec673f21bb242d6fadf5">circle.yml</h3>
+<h3 id="circle-yml">circle.yml</h3>
 
 <p><code>dependencies</code> セクションで、<code>src</code> ディレクトリ内のソースコードをコンテナ内でコンパイルして、それを <code>docker save</code> コマンドで <code>docker</code> ディレクトリ内に書き出しています。</p>
 
@@ -219,7 +219,7 @@ deployment:
         deployment_config: CodeDeployDefault.OneAtATime
 </code></pre>
 
-<h3 id="appspec-yml:9b9582904af9ec673f21bb242d6fadf5">appspec.yml</h3>
+<h3 id="appspec-yml">appspec.yml</h3>
 
 <p><code>files</code> セクションでは S3 からダウンロードした docker イメージを <code>/tmp</code> 下に配置するようにしておき、 <code>hooks</code> セクションの ApplicationStart の中で <code>docker load</code> コマンドを使って読み込むような形です。</p>
 
@@ -259,20 +259,20 @@ sleep 5
 docker rm -f yourapp || true
 </code></pre>
 
-<h3 id="slack:9b9582904af9ec673f21bb242d6fadf5">Slack</h3>
+<h3 id="slack">Slack</h3>
 
 <p>後は Slack 通知を設定しておくと、デプロイの成功や失敗を通知してくれるようになるので、デプロイの失敗を自分でトラッキングする必要がなくなるのでオススメです。</p>
 
-<p>
+
 <figure >
     
         <img src="http://blog.takus.me/images/slack-circleci.png" />
     
     
 </figure>
-</p>
 
-<h2 id="まとめ:9b9582904af9ec673f21bb242d6fadf5">まとめ</h2>
+
+<h2 id="まとめ">まとめ</h2>
 
 <p><a href="https://aws.amazon.com/jp/ecr/">Amazon EC2 Container Registry</a> が出てきたら、そこに Push して運用しようかなと思ってますが、今のところは S3 にコンテナを置いて Pull 型デプロイするのは権限周りを考えるとリーズナブルなのではないかと思っています。</p>
 

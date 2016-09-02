@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2013/03/28/riak-install/" />
 
@@ -134,11 +134,11 @@
 
 <p>最近、社内 TechTalk で何か話せという依頼があり、ちょうど <a href="http://www.zusaar.com/event/563010">Riak Serious Talk</a> もあるので、<a href="http://docs.basho.com/riak/latest/">Riak</a> についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。</p>
 
-<h2 id="インストール:3da2e91d05a6f28e6fc0216287013b9b">インストール</h2>
+<h2 id="インストール">インストール</h2>
 
 <p><a href="http://www.vagrantbox.es/">Vagrantbox.es</a> から <a href="http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20130309.box">CentOS 6.4 x86_64 Minimal</a> を持ってきてテストサーバを用意。起動後にひとまず iptables だけ停止。Vagrant の操作などは割愛します。</p>
 
-<h3 id="依存パッケージ導入:3da2e91d05a6f28e6fc0216287013b9b">依存パッケージ導入</h3>
+<h3 id="依存パッケージ導入">依存パッケージ導入</h3>
 
 <p>Erlang をインストールするのに必要なパッケージをインストールします。</p>
 
@@ -150,7 +150,7 @@ wget https://elearning.erlang-solutions.com/couchdb//rbingen_adapter//package_R1
 sudo rpm -ivh esl-erlang-R15B01-1.x86_64.rpm
 </code></pre>
 
-<h3 id="riak-をインストール:3da2e91d05a6f28e6fc0216287013b9b">Riak をインストール</h3>
+<h3 id="riak-をインストール">Riak をインストール</h3>
 
 <p>とりあえず make まで。ソースは <a href="http://docs.basho.com/riak/latest/downloads/">Basho のサイト</a>から入手できます。</p>
 
@@ -160,7 +160,7 @@ cd riak-1.3.0
 make devrel
 </code></pre>
 
-<h3 id="riak-を起動してみる:3da2e91d05a6f28e6fc0216287013b9b">Riak を起動してみる</h3>
+<h3 id="riak-を起動してみる">Riak を起動してみる</h3>
 
 <p>4 ノードを起動。ulimit しているのはなしだと警告が出るので一応。</p>
 
@@ -178,7 +178,7 @@ dev/dev3/bin/riak-admin cluster join dev1@127.0.0.1
 dev/dev4/bin/riak-admin cluster join dev1@127.0.0.1
 </code></pre>
 
-<h2 id="data-riak-fast-で操作してみる:3da2e91d05a6f28e6fc0216287013b9b">Data::Riak::Fast で操作してみる</h2>
+<h2 id="data-riak-fast-で操作してみる">Data::Riak::Fast で操作してみる</h2>
 
 <p>Perl のクライアントとして、<a href="http://search.cpan.org/~franckc/Net-Riak/">Net::Riak</a> が以前からありますが、<a href="https://gist.github.com/myfinder/5232845">ベンチマーク</a>すると遅いらしいです。@myfinder さんが <a href="https://github.com/myfinder/p5-riak-lite">Riak::Lite</a>、<a href="https://github.com/myfinder/p5-data-riak-fast">Data::Riak::Fast</a> を作ってくれているので、Data::Riak::Fast を使って操作してみます。</p>
 
@@ -211,11 +211,11 @@ $bucket-&gt;add('foo', 'bar');
 my $foo = $bucket-&gt;get('foo');
 </code></pre>
 
-<h2 id="まとめ:3da2e91d05a6f28e6fc0216287013b9b">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 
 <p>Riak の利用例みてたら node.js + Riak + Redis で <a href="http://clipboard.com/">clipboard.com</a> を作ってるとか、色々と面白そうな使い方してる例が多そうで、特に <a href="https://speakerdeck.com/jnewland/github-pages-on-riak-and-webmachine">GitHub Pages のホスティングの話</a> がよさげだったので、同じような仕組み作ってみたいとか思ってる次第です。</p>
 
-<h2 id="参考等:3da2e91d05a6f28e6fc0216287013b9b">参考等</h2>
+<h2 id="参考等">参考等</h2>
 
 <ul>
 <li><a href="https://speakerdeck.com/kuenishi/riak-and-and-riak-cs">Riak &amp;&amp; Riak CS</a></li>

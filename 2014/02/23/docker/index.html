@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2014/02/23/docker/" />
 
@@ -136,21 +136,21 @@
 
 <p>@muddydixon さんや @yosuke_furukawa さんが <a href="http://blog.drone.io/">drone</a> を触ってたのに比べてだいぶ素人丸出しな感じですが、Docker 童貞からは脱却できたので、次は &ldquo;<a href="http://blog.tmtk.net/2013/09/28/docker-jenkins-serverspec-puppet.ja.html">Docker + Jenkins + serverspecでpuppetのmanifestをCIする</a>&rdquo; あたりに取り組んでみたいと思いました。</p>
 
-<h2 id="公式チュートリアル:69e60651f42783a7df723575c4088b5b">公式チュートリアル</h2>
+<h2 id="公式チュートリアル">公式チュートリアル</h2>
 
 <p>まず、<a href="https://www.docker.io/gettingstarted/">公式サイトのチュートリアル</a>で一通り使い方を学びました。</p>
 
-<h2 id="docker-on-digitalocean:69e60651f42783a7df723575c4088b5b">Docker on DigitalOcean</h2>
+<h2 id="docker-on-digitalocean">Docker on DigitalOcean</h2>
 
 <p>DigitalOcean は 1GB メモリのサーバが 1 時間 $0.015 で使える格安の VPS サーバで、手元で VM 動かしたくなかったので使ってみました。Docker は &ldquo;<a href="http://blog.glidenote.com/blog/2013/12/20/vagrant-docker-digitalocean/">MacからVagrantコマンド一発でSSDなVPS(DigitalOcean)上にCentOS6.5+Docker環境を構築する</a>&rdquo; を参考に入れます。</p>
 
 <p>最初は CentOS 6.4 に Docker をインストールして docker build していましたが、メモリ枯渇して OOMKiller 発動したり不安定だったので、公式サポートされてるという CentOS 6.5 にしました。ちなみに IPv6 が有効になってると <code>docker run -p</code> したときに IPv4 のアドレスを bind してくれなかったので無効にしてます。</p>
 
-<h2 id="ukigumo-server-on-docker:69e60651f42783a7df723575c4088b5b">Ukigumo-Server on Docker</h2>
+<h2 id="ukigumo-server-on-docker">Ukigumo-Server on Docker</h2>
 
 <p>Docker が動くようになったので、@kazeburo 先生の &ldquo;<a href="http://blog.nomadscafe.jp/2013/12/centos-65dockergrowthforecast.html">CentOS 6.5にDockerいれてGrowthForecastを動かしてみた</a>&rdquo; を参考に Ukigumo-Server の image を作ってみました。</p>
 
-<h3 id="dockerfile:69e60651f42783a7df723575c4088b5b">Dockerfile</h3>
+<h3 id="dockerfile">Dockerfile</h3>
 
 <p>元の Dockerfile では <code>EXEC</code> してましたが、 <code>EXEC</code> 使うより <code>ENTRYPOINT</code> で引数渡せるようにした方が <code>docker run</code> するときに引数指定できて便利そうだったのでそうしてます。Dockerfile のコマンドについては、<a href="http://docs.docker.io/en/latest/reference/builder/">公式ドキュメント</a> が参考になりました。</p>
 
@@ -165,7 +165,7 @@ EXPOSE 2828
 ENTRYPOINT [&quot;/opt/perl-5.18/bin/ukigumo-server&quot;]
 </code></pre>
 
-<h3 id="image-を-build-して-docker-repository-に-push:69e60651f42783a7df723575c4088b5b">image を build して docker repository に push</h3>
+<h3 id="image-を-build-して-docker-repository-に-push">image を build して docker repository に push</h3>
 
 <p>image を作って push してみました。push した image は<a href="https://index.docker.io/u/takus/ukigumo-server/">コチラ</a>にあります。</p>
 
@@ -191,7 +191,7 @@ Pushing tag for rev [d4fc918d1e82] on {https://registry-1.docker.io/v1/repositor
 
 </code></pre>
 
-<h3 id="他の人が作った-image-をもってきてみる:69e60651f42783a7df723575c4088b5b">他の人が作った image をもってきてみる</h3>
+<h3 id="他の人が作った-image-をもってきてみる">他の人が作った image をもってきてみる</h3>
 
 <p>試しに @sonots さんの growthforecast の image をもってきて動かしてみました。</p>
 

@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/" />
 
@@ -134,41 +134,41 @@
 
 <p>金曜日にヒカリエで開催された <a href="https://gist.github.com/studio3104/5417631">Provisioning Frameworks Casual Talks vol.1</a> に参加 &amp; 少しだけお手伝いしてきたのでまとめ。@zabbiozabbio さんと一緒に 27F のエレベーターホールで待ち受けていたのが自分です。</p>
 
-<h2 id="serverspec-の話:28ed84ead86af62501ab6d3156fbf284">serverspec の話</h2>
+<h2 id="serverspec-の話">serverspec の話</h2>
 
 <p>chef + puppet の話というよりも chef 使うにしても、puppet 使うにしても、(Touryo 使うにしても)、serverspec 使って構成管理ツールとは別にサーバの構成をテストすべきだよねという話が印象に残っていて、どの構成管理ツール使うか検討している間に、まずは serverspec でテストするようにしておくのがよさそうかなと思いました。</p>
 
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/gosukenator/status/332845805079785472"></a></blockquote>
+<blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/gosukenator/status/332845805079785472"></a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
 
-<h2 id="で-attribute-config-の管理方法の話:28ed84ead86af62501ab6d3156fbf284">で、attribute(config) の管理方法の話</h2>
 
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/takus/status/325125339460296704"></a></blockquote>
+<h2 id="で-attribute-config-の管理方法の話">で、attribute(config) の管理方法の話</h2>
+
+<blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/takus/status/325125339460296704"></a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
+
 
 <p>serverspec 自体は出たときからよさそうだなとは思っていたものの、attribute に入れた内容が設定ファイルに反映されているかみたいなテストをしようとすると上記のような疑問にぶち当たって、serverspec が構成管理ツールに依存するのイケてないなーとか思っていましたが、家に帰って twitter 眺めてたら @riywo 先生がボソっといいことつぶやいてました。</p>
 
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/riywo/status/332926378683006977"></a></blockquote>
+<blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/riywo/status/332926378683006977"></a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
+
 
 <p>弊社でいえば、たとえば admintool 的なツールが attribute 持っていて、provision と test の両方から参照できるみたいになっていれば、なんとなく上記の問題も解決できそうで、chef-solo -j URL で URL 指定して json 取ってこれると言ってた気がするので、なんかこの辺りうまくやれるツールがあるとよさそうですね:D</p>
 
-<h3 id="2013-05-12-23-34-追記:28ed84ead86af62501ab6d3156fbf284">2013/05/12 23:34 追記</h3>
+<h3 id="2013-05-12-23-34-追記">2013/05/12 23:34 追記</h3>
 
 <p><a href="http://mizzy.org/blog/2013/05/12/2/">serverspec でホスト固有の属性値を扱う方法</a> で参考になりそうな仕組みが提案されてたので参考にしたいところです。</p>
 
-<h2 id="自動更新の話:28ed84ead86af62501ab6d3156fbf284">自動更新の話</h2>
+<h2 id="自動更新の話">自動更新の話</h2>
 
 <p><a href="http://blog.livedoor.jp/sonots/archives/26810152.html">@sonots さんのブログ</a> にまとまってる話。自分は自動更新は怖い派ですが、実現できないか考える余地は色々とありそうだと思いました。話に出ていた staging はもちろん @sethvargo 先生がお話していた、environments を使えば production の一部のサーバだけ更新するみたいなこともできそうで、staging → production の一部 →production 全部 (or ブルー・グルーン・デプロイで新しいクラスタにだけ) といったように反映しつつテスト回せば、取り返しがつかなくなる前に気づくことも可能なのかもしれないとか思いました。(話聞いた印象なだけで裏取ったりはしてないですが&hellip;）</p>
 
-<h2 id="大規模-数百-10-000台-なら-chef-server-一択:28ed84ead86af62501ab6d3156fbf284">大規模(数百〜10,000台)なら chef-server 一択？</h2>
+<h2 id="大規模-数百-10-000台-なら-chef-server-一択">大規模(数百〜10,000台)なら chef-server 一択？</h2>
 
 <p>こちらも <a href="http://blog.livedoor.jp/sonots/archives/26810152.html">@sonots さんのブログ</a> の話ですが、admintool あるので、弊社では chef-solo で十分じゃないかと思ってます。現状でも admintool + touryo で数百~千台くらいのサーバ構成管理はある程度実現できていて、それが admintool + chef-solo + serverspec になってもそれで十分機能するんじゃないかと思います。(あくまで個人的な見解です)</p>
 
-<h2 id="まとめ:28ed84ead86af62501ab6d3156fbf284">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 
 <p>弊社は今のところ Touryo 使っていますが、chef や puppet も着実に進化しているので、そうったツールと比較検討した上で使い続けるなり、乗り換えるなりをする必要はあって、そういう意味では色々と構成管理ツールについて考えるいい機会になりました。主催者及び発表者のみなさま、ありがとうございました。</p>
 

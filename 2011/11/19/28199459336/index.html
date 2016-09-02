@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2011/11/19/28199459336/" />
 
@@ -134,7 +134,7 @@
 
 <p>最近，<a href="http://my365.in">My365</a> という iPhone アプリのサーバサイドを担当することになり，全然使ったことのなかった <a href="http://aws.amazon.com/jp/">Amazon Web Service</a> をほげほげしてるので，その辺のネタの一部を紹介. さくら VPS から Amazon EC2 への移行話もそのうちまとめたいと思います.</p>
 
-<h2 id="s3fs-とは:10b562510d9b01bdeabeaa8732b4e679">s3fs とは？</h2>
+<h2 id="s3fs-とは">s3fs とは？</h2>
 
 <blockquote>
 <p>FUSE-based file system backed by Amazon S3. Mount a bucket as a local file system read/write. Store files/folders natively and transparently. ―<a href="http://code.google.com/p/s3fs/">s3fs</a></p>
@@ -142,16 +142,16 @@
 
 <p>というわけで，S3 の bucket をファイルシステムとしてマウントできてしまう便利なツールです. EC2 のインスタンスをターミネートすると基本的に全てのデータが失われてしまうので，全てのサーバが起動時に S3 の bucket をマウントしておくようにし，アプリケーションのログなどは日次で S3 に mv しておき，ターミネートする前にログを S3 に待避するようにしておくと幸せになれます. ((他にいいログ管理ソリューションがあれば教えてください))</p>
 
-<h2 id="インストール:10b562510d9b01bdeabeaa8732b4e679">インストール</h2>
+<h2 id="インストール">インストール</h2>
 
 <p>こんな感じのスクリプトを使ってあげれば，サクッとインストールできるんじゃないかと思います. エラーチェック等はしてないですのであしからず. インストール後に書き込みを行うと，S3 へファイルが作成されていることが確認できます.</p>
 
-<p><script type="text/javascript" src="http://gist.github.com/3217044.js"></script>
-</p>
+<script type="text/javascript" src="http://gist.github.com/3217044.js"></script>
+
 
 <p>ほかにも，<a href="http://code.google.com/p/s3fs/wiki/FuseOverAmazon">ローカルキャッシュを使って転送量を減らすこと</a>もできるみたいですね．</p>
 
-<h2 id="s3fs-まとめ:10b562510d9b01bdeabeaa8732b4e679">s3fs まとめ</h2>
+<h2 id="s3fs-まとめ">s3fs まとめ</h2>
 
 <ul>
 <li>s3fs を使えば，Linux 上に S3 の bucket をマウントできる</li>

@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2013/08/11/mysql_secure_installation/" />
 
@@ -134,33 +134,33 @@
 
 <p>単純に気になったので。5.1 系のソース眺めただけです。</p>
 
-<h2 id="root-ユーザのパスワード文字列を設定:f96aa27914072b9cd4a219516e901ab3">root ユーザのパスワード文字列を設定</h2>
+<h2 id="root-ユーザのパスワード文字列を設定">root ユーザのパスワード文字列を設定</h2>
 
 <pre><code># Set the root password
 UPDATE mysql.user SET Password=PASSWORD('password') WHERE User='root';
 </code></pre>
 
-<h2 id="anonymous-ユーザを削除:f96aa27914072b9cd4a219516e901ab3">anonymous ユーザを削除</h2>
+<h2 id="anonymous-ユーザを削除">anonymous ユーザを削除</h2>
 
 <pre><code># Remove anonymous users
 DELETE FROM mysql.user WHERE User='';
 </code></pre>
 
-<h2 id="リモートからの-root-ログインを禁止する:f96aa27914072b9cd4a219516e901ab3">リモートからの root ログインを禁止する</h2>
+<h2 id="リモートからの-root-ログインを禁止する">リモートからの root ログインを禁止する</h2>
 
 <pre><code># Disallow remote root login
 DELETE FROM mysql.user
 WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
 </code></pre>
 
-<h2 id="test-データベースを削除する:f96aa27914072b9cd4a219516e901ab3">test データベースを削除する</h2>
+<h2 id="test-データベースを削除する">test データベースを削除する</h2>
 
 <pre><code># Remove test database
 DROP DATABASE test;
 DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
 </code></pre>
 
-<h2 id="権限を再読み出しする:f96aa27914072b9cd4a219516e901ab3">権限を再読み出しする</h2>
+<h2 id="権限を再読み出しする">権限を再読み出しする</h2>
 
 <pre><code># Reload privilege tables
 FLUSH PRIVILEGES;`

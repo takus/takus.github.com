@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2015/10/09/livesense-technight/" />
 
@@ -132,8 +132,8 @@
     <section class="post-content">
       <p>先週の火曜日の話になりますが <a href="http://made.livesense.co.jp/blogs/431">Livesense TechNight</a> というイベントで &ldquo;SmartNews&rsquo;s Journey into Microservices&rdquo; という LT をしてきました。</p>
 
-<p><iframe src="//www.slideshare.net/slideshow/embed_code/key/ksF1CkWTC5a4UT" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
-</p>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/ksF1CkWTC5a4UT" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
 
 <p>SmartNews のバックエンドは、ニュース記事のクローラー、その記事の意味を解釈するサービス、サムネイル画像の品質判定をするサービス、記事の閲覧履歴を元に準リアルタイムにランキングを調整するサービス、アプリから記事情報を取得するための API Gateway などの多種多様なサービスで構成される Microservices 的なアプローチを取っていますが、資料の前半でそのあたりに至った背景を説明しつつ、後半は Microservices 化のための施策の一つである <a href="https://aws.amazon.com/jp/codedeploy/">AWS CodeDeploy</a> によるデプロイ自動化について説明しました。</p>
 
@@ -141,9 +141,9 @@
 
 <p>また、スライドを公開したところ AWS の Chief Evangelist である Jeff Barr さんが twitter で言及してくれて、今後も定期的に情報発信をしていこうかなというモチベーションが湧いたのも個人的にはよかったです。</p>
 
-<p><blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/jeffbarr/status/649575575787454464"></a></blockquote>
+<blockquote class="twitter-tweet" lang="ja"><a href="https://twitter.com/jeffbarr/status/649575575787454464"></a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-</p>
+
 
 <p>ちなみに、デプロイ自動化の話に関しては <a href="http://developer.smartnews.com/blog/2015/10/01/20151001itamae-autoscaling-codedeploy/">Itamae / Auto Scaling / CodeDeploy を用いて deploy フローを刷新した話。そして板前を provisioning した話。 | SmartNews 開発者ブログ</a> にも解説があるので興味がある方がいましたらご覧くださいませ。</p>
 

@@ -40,7 +40,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.14" />
+    <meta name="generator" content="Hugo 0.16" />
 
     <link rel="canonical" href="http://blog.takus.me/2014/11/12/reinvent-2014-day1/" />
 
@@ -136,7 +136,7 @@
 
 <p><img src="https://farm8.staticflickr.com/7545/15782079551_8690d5ac80_z.jpg"></p>
 
-<h2 id="keynote:d0538dcb99110c96961d7fbc97d14347">Keynote</h2>
+<h2 id="keynote">Keynote</h2>
 
 <p><a href="http://aws.typepad.com/aws_japan/2014/11/highly-scalable-mysql-compat-rds-db-engine.html">Amazon Aurora</a> は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、やっぱり既存のものをクラウドに持ってくだけじゃ不十分ってことで、クラウドだからできることは何かを真剣に考えていくことでこういうものが生まれてくるのでしょう。</p>
 
@@ -144,15 +144,15 @@
 
 <p><a href="http://aws.typepad.com/aws_japan/2014/11/track-aws-with-config.html">AWS Config</a> は、簡単に説明すると AWS のリソース変更履歴を残してくれるもので、ウワサに聞くと任意のタイミングにロールバックなどもできる（ようになる？）だとかで、Route53 あたりも対応してくれるとかなり助かる感じなのではないかと。</p>
 
-<h2 id="how-dropbox-scales-massive-workloads-using-amazon-sqs:d0538dcb99110c96961d7fbc97d14347">How Dropbox Scales Massive Workloads Using Amazon SQS</h2>
+<h2 id="how-dropbox-scales-massive-workloads-using-amazon-sqs">How Dropbox Scales Massive Workloads Using Amazon SQS</h2>
 
 <p>ファイルの更新をフックに、そのファイルに関する様々な処理を行うフレームワークについて紹介するセッション。Livefill と呼ばれる非同期処理パイプラインをマネージするフレームワークを SQS を利用して実装していて、開発者は YAML で input/output するキューと処理を記述するだけで非同期処理を追加していけるようになっていてクール。当たり前ですが、パイプラインの可視化がかなり重要で、コードのバグや書き込み先の詰まりなどで容易にパイプラインが詰まることがあるので、この手のものには、可視化することで早期に発見して対策していける仕組みが不可欠ですね。</p>
 
-<h2 id="infrastructure-as-code:d0538dcb99110c96961d7fbc97d14347">Infrastructure as Code</h2>
+<h2 id="infrastructure-as-code">Infrastructure as Code</h2>
 
 <p>CloudFormation の話な感じだったが、やっぱりJSON はツラい気がした。<a href="https://www.simple.com/">Simple</a> の事例では Python のスクリプトで JSON 生成してるようだったが、もし使うならなんらかのラッパーが必要そうだなという印象。</p>
 
-<h2 id="netflix-s-next-generation-big-data-platform:d0538dcb99110c96961d7fbc97d14347">Netflix&rsquo;s Next Generation Big Data Platform</h2>
+<h2 id="netflix-s-next-generation-big-data-platform">Netflix&rsquo;s Next Generation Big Data Platform</h2>
 
 <p>Netflix がいわゆるビッグデータ周りをどのように運用しているかについて、利用しているツール、それを選んだ理由、既存手法とのベンチマーク比較、導入する上での OSS への貢献などについて話をしていました。やはり 2000 台の EMR クラスタみたいな話があったり、規模感が相変わらずすごいです。</p>
 
@@ -160,21 +160,21 @@
 
 <p>話を聞いていて、アプリケーションとストレージをできるだけ分離しておくことはかなり大切で、例えば Netflix のように基本的にデータを S3 に置くような運用していると、Hadoop v1 と v2 を並行稼働みたいなことが実現できて、バージョンアップ対応とか再起動祭りへの対応負荷がかなり下がりそうなので、この辺りは心がけていきたいですね。</p>
 
-<h2 id="aws-re-invent-central:d0538dcb99110c96961d7fbc97d14347">AWS re:Invent Central</h2>
+<h2 id="aws-re-invent-central">AWS re:Invent Central</h2>
 
 <p>スポンサー企業がブースを出展していて、普段使ってるサービスの開発者やサポートの人と直接会えたり、色々な企業のノベルティ貰えたりととても楽しい場所でした。</p>
 
-<h3 id="datadog:d0538dcb99110c96961d7fbc97d14347">Datadog</h3>
+<h3 id="datadog">Datadog</h3>
 
 <p>1 年半前に <a href="http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity Conference に参加したとき</a>は、会場の隅に小さいブースを持ってるだけだったのですが、この 1 年半で大きく成長したようで、入り口近くにかなり大きなブースを構えるようになっていて、3 年くらい前から密かに Datadog ファンをしていた自分としては嬉しかったです。また、ブースで話をしていたら、&rdquo;Are you Takumi? Coincidence!!&rdquo; みたいなノリでいつもメールでサポート対応してくれてる人と出会えて話ができたのもとても有意義でした。</p>
 
 <p>せっかくなので色々とディスカッションしてましたが、エージェントがメモリ使いすぎ問題について聞いたら、Golang でエージェント書いてるみたいな答えが返ってくるなど、こちらの課題感と同じ感覚をちゃんと持ってくれていて、この辺りが 1 年間ですごく成長してる理由の 1 つなのかなと勝手に思ってました。</p>
 
-<h3 id="chef:d0538dcb99110c96961d7fbc97d14347">Chef</h3>
+<h3 id="chef">Chef</h3>
 
 <p>「昔、Chef のベストプラクティスで、コミュニティクックブックをラップしろみたいなのがあったけど、あれは本気か」って聞いてみたところ、コミュニティクックブックはテンプレートとして使うのがいいよと中の人が言っていたので、スッキリしました。</p>
 
-<h2 id="おわり:d0538dcb99110c96961d7fbc97d14347">おわり</h2>
+<h2 id="おわり">おわり</h2>
 
 <p>ということで、2 日目がそろそろ終わるタイミングでの 1 日目のメモでした。</p>
 
