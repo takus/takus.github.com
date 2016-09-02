@@ -1,7 +1,7 @@
 #!/bin/sh
 # Install a Hugo, https://gohugo.io/
 
-HUGO_VERSION="0.14"
+HUGO_VERSION="0.16"
 HUGO_DIR=${HUGO_DIR:="$HOME/hugo"}
 
 set -e
