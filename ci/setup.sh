@@ -6,12 +6,12 @@ HUGO_DIR=${HUGO_DIR:="$HOME/hugo"}
 
 set -e
 
-CACHED_DOWNLOAD="${HOME}/cache/hugo_${HUGO_VERSION}_linux_amd64.tar.gz"
+CACHED_DOWNLOAD="${HOME}/cache/hugo_${HUGO_VERSION}_linux-64bit.tgz"
 mkdir -p "${HUGO_DIR}"
 wget --continue \
 	--output-document "${CACHED_DOWNLOAD}" \
 	"https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-64bit.tgz"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HUGO_DIR}"
-ln -s "${HUGO_DIR}/hugo_${HUGO_VERSION}_linux_amd64" "${HOME}/bin/hugo"
+ln -s "${HUGO_DIR}/hugo" "${HOME}/bin/hugo"
 
 hugo version
