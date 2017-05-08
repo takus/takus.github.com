@@ -2,3 +2,4 @@ public/
 .envrc
 .DS_Store
 .!*
+.go-version
