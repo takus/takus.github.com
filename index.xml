@@ -7,8 +7,53 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
-    <lastBuildDate>Wed, 09 Dec 2015 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 08 May 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://blog.takus.me/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>プロダクトマネージャーとして Kaizen Platform にジョインした</title>
+      <link>http://blog.takus.me/2017/05/08/join-kaizen-platform/</link>
+      <pubDate>Mon, 08 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.takus.me/2017/05/08/join-kaizen-platform/</guid>
+      <description>
+
+&lt;p&gt;長らく Twitter も Blog もご無沙汰になっていた &lt;a href=&#34;https://twitter.com/takus_ja&#34;&gt;@takus&lt;/a&gt; です。&amp;rdquo;&lt;a href=&#34;https://twitter.com/glidenote/status/857816468095815680&#34;&gt;若手インフラ四天王&lt;/a&gt;&amp;rdquo; なのかはさておき&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;、5 月から &lt;a href=&#34;https://www.wantedly.com/companies/kaizenplatform/info&#34;&gt;Kaizen Platform&lt;/a&gt; にジョインしてプロダクトマネージャーとして働き始めました。&lt;/p&gt;
+
+&lt;h2 id=&#34;ジョブチェンジや入社の経緯&#34;&gt;ジョブチェンジや入社の経緯&lt;/h2&gt;
+
+&lt;p&gt;息子が生まれたりして色々と生活が変化していくのがキッカケとなり、これまでやってきたことや今後やっていきたいことを改めて考え直したりする中で、もっとプロダクトにコミットする比重を大きくしようと決めたのが大きな理由です。&lt;/p&gt;
+
+&lt;p&gt;Site Reliability Engineering / Data Engineering といった領域で活動してた人間が Product Manager というロールに転職するのは少し唐突な印象を受けるかもしれませんが、&lt;a href=&#34;http://press.forkwell.com/post/150381780957/interview-takus&#34;&gt;Forkwell Press のインタビュー記事&lt;/a&gt; でも「プロダクトを作ること」みたいな言及があったり、前の職場に入社する以前から選択肢の１つとして考えていたことではあったりします。&lt;/p&gt;
+
+&lt;p&gt;今までの活動領域は技術に寄った部分が多かったわけですが、個別の技術要素は Google や Amazon などのマネージドサービスや Datadog のように何かに特化した SaaS もたくさん提供されるようになり、得意なことは得意な会社・人に任せられるような世界になってきていると思っていて、その中の方向性としては、個別の技術を深掘りしていく or 色々とある技術要素を活用して新しい価値を生み出すプロダクトを作るというのがあり、自分がやっていきたいのは後者かなと考えました。&lt;/p&gt;
+
+&lt;p&gt;正直なところ、今までの仕事の延長をもうちょっとやるのか、思い切って新しいチャレンジをするのか、という点に関しては迷う部分もありましたが、&lt;strong&gt;やらないで後悔するよりは、やってみて後悔しよう&lt;/strong&gt; というのが自分の行動原則としてあり、それに則ってジョブチェンジすることに決めました。&lt;/p&gt;
+
+&lt;p&gt;そういった背景があり、社内外問わず色々な選択肢を検討させていただき&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;、最終的には Kaizen Platform に入社することを決めました。入社の決め手としては、Kaizen Platform というプロダクト自体の面白さ、エンジニアを含めてそれに関わっている優秀な方々の存在、そのプロダクトの大事な部分を自分のことを信頼して任せてくれるといった点が大きかったと思います&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;正しい道を選ぶのでなく-自分が選んだ道を正解にする&#34;&gt;正しい道を選ぶのでなく、自分が選んだ道を正解にする&lt;/h2&gt;
+
+&lt;p&gt;新しい職場で新しい職種というのは中々チャレンジングなわけで、この選択が正しい道なのかは分からないですが、この道を正解にできるかは自分次第というところもあるので、やっていくしかないかなと思ってます。&lt;/p&gt;
+
+&lt;p&gt;また、このようなチャレンジを受け止めて支援してくれている家族、Kaizen Platform の方々、そして暖かく送り出してくださった前職のみなさま、そうした方々に早く活躍してる姿を見せられるようにがんばっていきます。&lt;/p&gt;
+
+&lt;p&gt;今後ともよろしくお願いいたします！&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;四天王TLは遠くからそっと眺めていました
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;前職で相談を聞いてくれた方々、転職ドラフト経由でお会いした方々、本当に感謝です
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;もちろん待遇面のよさなど他の理由もいくつかあります
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Runscope で Web API を監視する</title>
@@ -1017,45 +1062,6 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
 &lt;p&gt;今回、紹介した場所はもちろん、その他にもバルセロナ市街を一望できるモンジュイックや、
 ピカソやミロを中心とした美術館、地中海をクルージングできるバルセロナ港など、
 とにかく見所満載でオススメな場所なので、夏休みに行ってみるのはいかがでしょうか？ということで終わりです。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>バルセロナでプリペイド SIM カードを購入する</title>
-      <link>http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/</link>
-      <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
-      
-      <guid>http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/</guid>
-      <description>
-
-&lt;p&gt;休暇でバルセロナに来てるわけですが、今回は現地でプリペイド SIM カードを買ってみたので買い方などをまとめておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7329/13922739997_155d5662b8_z.jpg&#34;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;購入方法&#34;&gt;購入方法&lt;/h2&gt;
-
-&lt;p&gt;エル・プラット国際空港のターミナル 1 の出口あたりで Lebara というキャリアの SIM が売っていて、他に買えそうな場所がなかったのでそこで買いました。
-購入の流れとしては、店員さんにプリペイド SIM カードをくださいと伝えるとパスポート見せろと言われるので、
-それを見せれば SIM カードと簡易なマニュアルが貰えるので、マニュアルに従って APN の設定等を済ませるだけです。
-今回の場合は、店員さんが丁寧に APN の設定等までやってくれる感じだったので、
-あらかじめ言語設定を英語にしておくとスムーズに設定してもらえるんじゃないかと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;料金&#34;&gt;料金&lt;/h2&gt;
-
-&lt;p&gt;契約した Lebara というキャリアの話になってしまいますが、€10 で 1GB のデータ通信がついてきて、足りない場合は €3 で 100MB づつ買い足していけるようです。今回はバルセロナに 8 日間ほど滞在していましたが、2 人でテザリングして 1GB 程度だったので、普通に使うのであれば €10 のプランで問題ないのではないかと思います。(あとは €25 で 3GB のプランもありました)&lt;/p&gt;
-
-&lt;h2 id=&#34;チャージ&#34;&gt;チャージ&lt;/h2&gt;
-
-&lt;p&gt;最初に購入した分を使い切ってしまったらチャージする必要があります。
-街中で Lebara のステッカーが貼ってあるお店を見つけて、電話番号を伝えてお金を払うとチャージできますが、
-単にチャージするだけではダメで、&lt;a href=&#34;http://www.lebara.es/passes/internet?isoCode=en_GB&#34;&gt;22233 に SMS で D100 というメッセージを送る必要があるようです&lt;/a&gt;。
-ちなみに &lt;a href=&#34;http://www.lebara.es/&#34;&gt;Lebara のサイト&lt;/a&gt;からクレジットカードでもチャージできるみたいですが、
-何度やっても上手くいかなかったので諦めました。&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;購入に少し手間はかかりますが、海外ローミングやモバイルルータを使うと 1 日 1000 円くらいかかるモバイル回線が、
-プリペイドの SIM を買うことで 100~200 円レベルになるのでバルセロナ (スペイン) に行く人がいれば検討するとよいと思います。&lt;/p&gt;
 </description>
     </item>
     

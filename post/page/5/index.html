@@ -140,6 +140,32 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
 	   
 <article class="post post">
     <header class="post-header">
+        <h2 class="post-title"><a href="http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/">Provisioning Frameworks Casual Talks vol.1 に行ってきた #pfcasual</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>金曜日にヒカリエで開催された Provisioning Frameworks Casual Talks vol.1 に参加 &amp; 少しだけお手伝いしてきたのでまとめ。@zabbiozabbio さんと一緒に 27F のエレベーターホールで待ち受けていたのが自分です。 serverspec の話 chef + puppet の話というよりも chef 使うにしても、puppet 使うにしても、(Touryo 使うにしても)、serverspec 使って構成管理ツールとは別にサーバの構成をテストすべきだよねという話が印象に残っていて、どの構成管理ツール使うか検討している間に、まずは serverspec でテストするようにしておくのがよさそうかなと思いました。 で、attribute(config) の管理方法の話 serverspec 自体は出たときからよさそうだなとは思っていたものの、attribute に入れた内容が設定ファイルに反映されているかみたいなテストをしようとすると上記のような疑問にぶち当たって、serverspec が構成管理ツールに依存するのイケてないなーとか思っていましたが、家に帰って twitter 眺めてたら @riywo 先生がボソっといいことつぶやいてました。 弊社でいえば、たとえば admintool 的なツールが attribute 持っていて、provision と test の両方から参照できるみたいになっていれば、なんとなく上記の問題も解決できそうで、chef-solo -j URL で URL 指定して json 取ってこれると言ってた気がするので、なんかこの辺りうまくやれるツールがあるとよさそうですね:D 2013/05/12 23:34 追記 serverspec でホスト固有の属性値を扱う方法 で参考になりそうな仕組みが提案されてたので参考にしたいところです。 自動更新の話 @sonots さんのブログ にまとまってる話。自分は自動更新は怖い派ですが、実現できないか考える余地は色々とありそうだと思いました。話に出ていた staging はもちろん @sethvargo 先生がお話していた、environments を使えば production の一部のサーバだけ更新するみたいなこともできそうで、staging → production の一部 <a class="read-more" href="http://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/">&raquo;</a></p>
+    </section>
+    <footer class="post-meta">
+        
+        
+
+        
+            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
+        
+        
+            Takumi Sakamoto
+        
+        
+        <time class="post-date" datetime="2013-05-12T00:00:00Z">
+            12 May 2013
+        </time>
+    </footer>
+</article>
+
+	
+	   
+<article class="post post">
+    <header class="post-header">
         <h2 class="post-title"><a href="http://blog.takus.me/2013/05/11/travel-to-los-angeles/">Los Angeles に行ってきた</a></h2>
     </header>
     <section class="post-excerpt">
@@ -366,32 +392,6 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         
         <time class="post-date" datetime="2012-07-24T00:00:00Z">
             24 Jul 2012
-        </time>
-    </footer>
-</article>
-
-	
-	   
-<article class="post post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="http://blog.takus.me/2012/06/18/28199466903/">Monitoring Casual Talk に行ってきた</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>サーバ・リソース監視に関するお話をする Monitoring Casual Talk #1 という勉強会に行って、ちょっとだけ喋らせてもらってきました。 自分の発表について すたじおなんとかさんがブログで「まわりには運用モンスターばかりで、小動物のようにボクは終始((((；ﾟДﾟ))))ｶﾞｸｶﾞｸﾌﾞﾙﾌﾞﾙでした。」と書かれていましたが、 僕も最初に参加者リスト見たときに「全然カジュアルじゃねぇ((((；ﾟДﾟ))))ｶﾞｸｶﾞｸﾌﾞﾙﾌﾞﾙ」と思い、ちょっと参加を躊躇いました。 でも、監視については自分で試行錯誤しながら色々やってきたので、他の人の監視の話を聞いて学びたいという好奇心の方が強くなってしまい、 なんか自分の持ちネタで話せそうなことないかなとあれこれ考えて、「多すぎるアラートをなんとかしたい」みたいな内容の話をしてきました。 内容は「依存関係とかちゃんと定義しましょうね」みたいな当たり前のこと過ぎて、 参加者の皆さんの参考になったとはいえないかもしれませんが、 若気の至りということで今回は大目にみていただけたらと思います。 次回はもっと面白いネタを仕入れて挑みますので&hellip;。 ほかのひとの発表を聞いた感想 あまり触ったことがない Zabbix や Cacti の話をはじめ、全体的に勉強になることが多くて、参加してほんとによかったです。 特に @lamanotrama さんの『Nagios運用例(on AWS)』は、自分も前職で同じようなことをやっていたので、すごく参考になり、半年前にこれ見たかったというのが正直な感想です。 コンフィグの自動生成スクリプトなんかは同じようなもの を昔作ってましたが、Diff 取ったり、AWS のコンソールから監視除外にできたりで、やっぱペパポさんのツール方がイケてますね…。 他にも話を聞いてると、どこの会社でも同じようなところで悩んでることが多くあるような印象を受けて、 こういう勉強会を通じて情報交換しながら、サービス監視してるエンジニアがみんなハッピーになっていけばいいし、 そこに自分が貢献していければなーとか思ったので、がんばっていきたいと思いマス。 参考リンク Monitoring Casual Talks #1 を開催してきた話 当日の様子 on toggeter <a class="read-more" href="http://blog.takus.me/2012/06/18/28199466903/">&raquo;</a></p>
-    </section>
-    <footer class="post-meta">
-        
-        
-
-        
-            <img class="author-thumb" src="http://blog.takus.me/favicon.ico" alt="Author image" nopin="nopin" />
-        
-        
-            Takumi Sakamoto
-        
-        
-        <time class="post-date" datetime="2012-06-18T00:00:00Z">
-            18 Jun 2012
         </time>
     </footer>
 </article>
