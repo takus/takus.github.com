@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Datadog on takus&#39;s blog</title>
-    <link>http://blog.takus.me/tags/datadog/</link>
+    <link>https://blog.takus.me/tags/datadog/</link>
     <description>Recent content in Datadog on takus&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Sat, 10 Oct 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://blog.takus.me/tags/datadog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.takus.me/tags/datadog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜</title>
-      <link>http://blog.takus.me/2015/10/10/datadog-with-fluentd/</link>
+      <link>https://blog.takus.me/2015/10/10/datadog-with-fluentd/</link>
       <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2015/10/10/datadog-with-fluentd/</guid>
+      <guid>https://blog.takus.me/2015/10/10/datadog-with-fluentd/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://datadoghq.com&#34;&gt;Datadog&lt;/a&gt; というシステム監視 SaaS のネタです。
@@ -25,7 +25,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/datadog_http_graph.jpg&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/datadog_http_graph.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -49,7 +49,7 @@ Fluentd 経由で Datadog にカスタムメトリクスとして送って可視
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/dogstatsd.jpg&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/dogstatsd.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;

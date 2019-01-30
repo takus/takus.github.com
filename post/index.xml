@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on takus&#39;s blog</title>
-    <link>http://blog.takus.me/post/</link>
+    <link>https://blog.takus.me/post/</link>
     <description>Recent content in Posts on takus&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Mon, 08 May 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://blog.takus.me/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.takus.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>プロダクトマネージャーとして Kaizen Platform にジョインした</title>
-      <link>http://blog.takus.me/2017/05/08/join-kaizen-platform/</link>
+      <link>https://blog.takus.me/2017/05/08/join-kaizen-platform/</link>
       <pubDate>Mon, 08 May 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2017/05/08/join-kaizen-platform/</guid>
+      <guid>https://blog.takus.me/2017/05/08/join-kaizen-platform/</guid>
       <description>
 
 &lt;p&gt;長らく Twitter も Blog もご無沙汰になっていた &lt;a href=&#34;https://twitter.com/takus_ja&#34;&gt;@takus&lt;/a&gt; です。&amp;rdquo;&lt;a href=&#34;https://twitter.com/glidenote/status/857816468095815680&#34;&gt;若手インフラ四天王&lt;/a&gt;&amp;rdquo; なのかはさておき&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;、5 月から &lt;a href=&#34;https://www.wantedly.com/companies/kaizenplatform/info&#34;&gt;Kaizen Platform&lt;/a&gt; にジョインしてプロダクトマネージャーとして働き始めました。&lt;/p&gt;
@@ -57,10 +57,10 @@
     
     <item>
       <title>Runscope で Web API を監視する</title>
-      <link>http://blog.takus.me/2015/12/09/runscope/</link>
+      <link>https://blog.takus.me/2015/12/09/runscope/</link>
       <pubDate>Wed, 09 Dec 2015 00:00:00 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/12/09/runscope/</guid>
+      <guid>https://blog.takus.me/2015/12/09/runscope/</guid>
       <description>
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/web_api&#34;&gt;Web API Advent Calendar 2015 - Qiita&lt;/a&gt; の 9 日目の記事です。&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; という Web API 監視サービスについて紹介したいと思います。&lt;/p&gt;
@@ -88,7 +88,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/runscope-overview.png&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/runscope-overview.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -101,7 +101,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/runscope-configuration.png&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/runscope-configuration.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -116,7 +116,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/runscope-assertion.png&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/runscope-assertion.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -129,7 +129,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/runscope-integration.png&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/runscope-integration.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -159,10 +159,10 @@
     
     <item>
       <title>AWS Lambda のココが惜しい</title>
-      <link>http://blog.takus.me/2015/12/07/requests-for-aws-lambda/</link>
+      <link>https://blog.takus.me/2015/12/07/requests-for-aws-lambda/</link>
       <pubDate>Mon, 07 Dec 2015 00:00:00 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/12/07/requests-for-aws-lambda/</guid>
+      <guid>https://blog.takus.me/2015/12/07/requests-for-aws-lambda/</guid>
       <description>
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
@@ -187,10 +187,10 @@
     
     <item>
       <title>AWS CodeDeploy と AutoScaling の組み合わせで気をつけたいこと</title>
-      <link>http://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</link>
+      <link>https://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</link>
       <pubDate>Thu, 03 Dec 2015 00:00:00 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</guid>
+      <guid>https://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</guid>
       <description>
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/aws&#34;&gt;AWS Advent Calendar 2015 - Qiita&lt;/a&gt; の 3 日目の記事です。昨日は &amp;ldquo;&lt;a href=&#34;http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/&#34;&gt;AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ&lt;/a&gt;&amp;rdquo; という記事を書きましたが、それに引き続き &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; ネタです。&lt;/p&gt;
@@ -238,10 +238,10 @@ service codedeploy-agent start
     
     <item>
       <title>AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ</title>
-      <link>http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</link>
+      <link>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</link>
       <pubDate>Wed, 02 Dec 2015 00:00:00 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
+      <guid>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
       <description>
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
@@ -358,7 +358,7 @@ docker rm -f yourapp || true
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/slack-circleci.png&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/slack-circleci.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -372,10 +372,10 @@ docker rm -f yourapp || true
     
     <item>
       <title>良いディフェンダーはタックルをしないし、良いエンジニアは障害対応をしない</title>
-      <link>http://blog.takus.me/2015/11/08/the-numbers-game/</link>
+      <link>https://blog.takus.me/2015/11/08/the-numbers-game/</link>
       <pubDate>Sun, 08 Nov 2015 17:22:05 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/11/08/the-numbers-game/</guid>
+      <guid>https://blog.takus.me/2015/11/08/the-numbers-game/</guid>
       <description>
 
 &lt;p&gt;Amazon のオススメ本に出てきた「 &lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B00R5Z9EU0/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00R5Z9EU0&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;サッカー　データ革命　ロングボールは時代遅れか&lt;/a&gt;
@@ -440,10 +440,10 @@ docker rm -f yourapp || true
     
     <item>
       <title>Dogstatsd で Datadog にカスタムメトリクスを送る方法 〜Fluentd との連携を添えて〜</title>
-      <link>http://blog.takus.me/2015/10/10/datadog-with-fluentd/</link>
+      <link>https://blog.takus.me/2015/10/10/datadog-with-fluentd/</link>
       <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2015/10/10/datadog-with-fluentd/</guid>
+      <guid>https://blog.takus.me/2015/10/10/datadog-with-fluentd/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://datadoghq.com&#34;&gt;Datadog&lt;/a&gt; というシステム監視 SaaS のネタです。
@@ -453,7 +453,7 @@ docker rm -f yourapp || true
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/datadog_http_graph.jpg&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/datadog_http_graph.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -477,7 +477,7 @@ Fluentd 経由で Datadog にカスタムメトリクスとして送って可視
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/dogstatsd.jpg&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/dogstatsd.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -713,10 +713,10 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
     
     <item>
       <title>SmartNews&#39;s Journey into Microservices という LT をしてきました</title>
-      <link>http://blog.takus.me/2015/10/09/livesense-technight/</link>
+      <link>https://blog.takus.me/2015/10/09/livesense-technight/</link>
       <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2015/10/09/livesense-technight/</guid>
+      <guid>https://blog.takus.me/2015/10/09/livesense-technight/</guid>
       <description>&lt;p&gt;先週の火曜日の話になりますが &lt;a href=&#34;http://made.livesense.co.jp/blogs/431&#34;&gt;Livesense TechNight&lt;/a&gt; というイベントで &amp;ldquo;SmartNews&amp;rsquo;s Journey into Microservices&amp;rdquo; という LT をしてきました。&lt;/p&gt;
 
 &lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/ksF1CkWTC5a4UT&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
@@ -740,10 +740,10 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
     
     <item>
       <title>fluent-plugin-dynamodb-streams を作った</title>
-      <link>http://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams/</link>
+      <link>https://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams/</link>
       <pubDate>Tue, 15 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams/</guid>
+      <guid>https://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams/</guid>
       <description>
 
 &lt;p&gt;Amazon DynamoDB Streams のレコードを Fluentd で扱いたい要件があり、ググっても見当たらなかったのでプラグインを実装してみました。&lt;/p&gt;
@@ -798,10 +798,10 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
     
     <item>
       <title>Datadog ユーザの集い #dd_sushi を開催しました</title>
-      <link>http://blog.takus.me/2015/02/26/dd-sushi/</link>
+      <link>https://blog.takus.me/2015/02/26/dd-sushi/</link>
       <pubDate>Thu, 26 Feb 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2015/02/26/dd-sushi/</guid>
+      <guid>https://blog.takus.me/2015/02/26/dd-sushi/</guid>
       <description>
 
 &lt;p&gt;こんにちは。スマートニュースの &lt;a href=&#34;https://twitter.com/takus&#34;&gt;@takus&lt;/a&gt; です。
@@ -850,10 +850,10 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
     
     <item>
       <title>AWS re:Invent 2014 day1 のまとめ</title>
-      <link>http://blog.takus.me/2014/11/12/reinvent-2014-day1/</link>
+      <link>https://blog.takus.me/2014/11/12/reinvent-2014-day1/</link>
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2014/11/12/reinvent-2014-day1/</guid>
+      <guid>https://blog.takus.me/2014/11/12/reinvent-2014-day1/</guid>
       <description>
 
 &lt;p&gt;AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。&lt;code&gt;@suzu_v&lt;/code&gt; 先生が&lt;a href=&#34;http://suzuken.hatenablog.jp/entry/2014/11/13/112730&#34;&gt;メモ書き&lt;/a&gt;をしていたので、自分も簡単ながらメモを残しておこうと思います。&lt;/p&gt;
@@ -906,10 +906,10 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
     
     <item>
       <title>YAPC::Asia 2014 にいってきた #yapcasia</title>
-      <link>http://blog.takus.me/2014/08/31/yapc-asia-2014/</link>
+      <link>https://blog.takus.me/2014/08/31/yapc-asia-2014/</link>
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2014/08/31/yapc-asia-2014/</guid>
+      <guid>https://blog.takus.me/2014/08/31/yapc-asia-2014/</guid>
       <description>&lt;p&gt;ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。&lt;/p&gt;
 
 &lt;p&gt;初めて&lt;a href=&#34;http://yapcasia.org/2014/individual_sponsors/&#34;&gt;個人スポンサー&lt;/a&gt;として参加させていただきましたが、
@@ -926,13 +926,13 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
     
     <item>
       <title>スマートニュースにジョインしました</title>
-      <link>http://blog.takus.me/2014/08/01/join-smartnews/</link>
+      <link>https://blog.takus.me/2014/08/01/join-smartnews/</link>
       <pubDate>Fri, 01 Aug 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2014/08/01/join-smartnews/</guid>
+      <guid>https://blog.takus.me/2014/08/01/join-smartnews/</guid>
       <description>&lt;p&gt;様々な大物な方々の人事ニュースが飛び交う中で恐縮ですが、スマートニュース株式会社にジョインしたことをこの場を借りて報告させていただきます。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.takus.me/images/smartnews.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.takus.me/images/smartnews.png&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;会社は、同じタイミングで入社することになった &lt;code&gt;@komiya_atsushi&lt;/code&gt; さんの&lt;a href=&#34;http://life.k11i.biz/post/93450605375&#34;&gt;入社エントリ&lt;/a&gt;や &lt;a href=&#34;http://blog.kushii.net/archives/1869405.html&#34;&gt;941::blog の行ってきたシリーズ&lt;/a&gt;で詳しく紹介されていますが、働くメンバー、オフィス環境、福利厚生のどれも素晴らしく、よいプロダクトを作ることに集中できる素晴らしい環境が整っている一方で、&lt;a href=&#34;https://www.youtube.com/watch?v=b2ukMvyDlRQ&#34;&gt;すもうとにゅーす&lt;/a&gt; の CM が &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt; から始まったり、&lt;a href=&#34;https://www.youtube.com/watch?v=b2ukMvyDlRQ&#34;&gt;北米版のリリース&lt;/a&gt;が控えていたり、会社としても非常に面白いフェーズで、今のタイミングでジョインして色々なことに携わっていくことに大きな魅力を感じたことが入社理由の 1 つです。&lt;/p&gt;
 
@@ -944,10 +944,10 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
     
     <item>
       <title>結婚しました &amp; 退職しました</title>
-      <link>http://blog.takus.me/2014/07/31/got-married-and-leave-dena/</link>
+      <link>https://blog.takus.me/2014/07/31/got-married-and-leave-dena/</link>
       <pubDate>Thu, 31 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2014/07/31/got-married-and-leave-dena/</guid>
+      <guid>https://blog.takus.me/2014/07/31/got-married-and-leave-dena/</guid>
       <description>&lt;p&gt;一部の方には既に報告させていただいてますが &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;22&lt;/sub&gt; に入籍しました。&lt;/p&gt;
 
 &lt;p&gt;ちなみに &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;22&lt;/sub&gt; は 天赦日 (てんしゃび) といって、日本の暦の上で最上の吉日とされているそうです (&lt;a href=&#34;https://www.richerie.jp/blog/best-marriage-day-2014/&#34;&gt;参考&lt;/a&gt;)。嫁さんとは高校時代から 8 年以上の付き合いで、すでに何年も一緒に住んでる上に、挙式もこれからのため、あまり実感が湧いてきてない状態ではありますが、よい家庭を築けるように二人でがんばっていきたいと思います。&lt;/p&gt;
@@ -968,10 +968,10 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
     
     <item>
       <title>バルセロナにいってきた</title>
-      <link>http://blog.takus.me/2014/05/16/travel-to-barcelona/</link>
+      <link>https://blog.takus.me/2014/05/16/travel-to-barcelona/</link>
       <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://blog.takus.me/2014/05/16/travel-to-barcelona/</guid>
+      <guid>https://blog.takus.me/2014/05/16/travel-to-barcelona/</guid>
       <description>
 
 &lt;p&gt;去年の「&lt;a href=&#34;http://blog.takus.me/2013/05/11/travel-to-los-angeles/&#34;&gt;Los Angeles に行ってきた&lt;/a&gt;」と

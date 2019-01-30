@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Circleci on takus&#39;s blog</title>
-    <link>http://blog.takus.me/tags/circleci/</link>
+    <link>https://blog.takus.me/tags/circleci/</link>
     <description>Recent content in Circleci on takus&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Wed, 02 Dec 2015 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://blog.takus.me/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.takus.me/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ</title>
-      <link>http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</link>
+      <link>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</link>
       <pubDate>Wed, 02 Dec 2015 00:00:00 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
+      <guid>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
       <description>
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
@@ -132,7 +132,7 @@ docker rm -f yourapp || true
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/slack-circleci.png&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/slack-circleci.png&#34; /&gt;
     
     
 &lt;/figure&gt;

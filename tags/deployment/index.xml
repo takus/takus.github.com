@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deployment on takus&#39;s blog</title>
-    <link>http://blog.takus.me/tags/deployment/</link>
+    <link>https://blog.takus.me/tags/deployment/</link>
     <description>Recent content in Deployment on takus&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Mon, 07 Dec 2015 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://blog.takus.me/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.takus.me/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>AWS Lambda のココが惜しい</title>
-      <link>http://blog.takus.me/2015/12/07/requests-for-aws-lambda/</link>
+      <link>https://blog.takus.me/2015/12/07/requests-for-aws-lambda/</link>
       <pubDate>Mon, 07 Dec 2015 00:00:00 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/12/07/requests-for-aws-lambda/</guid>
+      <guid>https://blog.takus.me/2015/12/07/requests-for-aws-lambda/</guid>
       <description>
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
@@ -40,10 +40,10 @@
     
     <item>
       <title>AWS CodeDeploy と AutoScaling の組み合わせで気をつけたいこと</title>
-      <link>http://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</link>
+      <link>https://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</link>
       <pubDate>Thu, 03 Dec 2015 00:00:00 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</guid>
+      <guid>https://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</guid>
       <description>
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/aws&#34;&gt;AWS Advent Calendar 2015 - Qiita&lt;/a&gt; の 3 日目の記事です。昨日は &amp;ldquo;&lt;a href=&#34;http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/&#34;&gt;AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ&lt;/a&gt;&amp;rdquo; という記事を書きましたが、それに引き続き &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; ネタです。&lt;/p&gt;
@@ -91,10 +91,10 @@ service codedeploy-agent start
     
     <item>
       <title>AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ</title>
-      <link>http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</link>
+      <link>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</link>
       <pubDate>Wed, 02 Dec 2015 00:00:00 +0900</pubDate>
       
-      <guid>http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
+      <guid>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
       <description>
 
 &lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
@@ -211,7 +211,7 @@ docker rm -f yourapp || true
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://blog.takus.me/images/slack-circleci.png&#34; /&gt;
+        &lt;img src=&#34;https://blog.takus.me/images/slack-circleci.png&#34; /&gt;
     
     
 &lt;/figure&gt;
