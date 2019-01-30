@@ -6,7 +6,7 @@ HUGO_DIR=${HUGO_DIR:="$HOME/hugo"}
 
 set -e
 
-CACHED_DOWNLOAD="${HOME}/cache/hugo_${HUGO_VERSION}_linux-64bit.tgz"
+CACHED_DOWNLOAD="${HOME}/cache/hugo_${HUGO_VERSION}_linux-64bit.tar.gz"
 mkdir -p "${HUGO_DIR}"
 wget --continue \
 	--output-document "${CACHED_DOWNLOAD}" \
