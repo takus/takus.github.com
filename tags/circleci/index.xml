@@ -8,7 +8,9 @@
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Wed, 02 Dec 2015 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://blog.takus.me/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://blog.takus.me/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ</title>
@@ -16,132 +18,13 @@
       <pubDate>Wed, 02 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
-      <description>
-
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
 
 &lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/stormcat24/status/671486430548393985&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;というわけで、2 日目は、&lt;a href=&#34;http://blog.takus.me/2015/10/09/livesense-technight/&#34;&gt;SmartNews&amp;rsquo;s Journey into Microservices という LT をしてきました&lt;/a&gt; のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
-
-&lt;p&gt;僕が所属しているスマートニュースという会社では、Java でアプリケーションが書かれていることが多いため、JAR/WAR を持ってきて実行するようなことを CodeDeploy を使った Pull 型デプロイでやっています。一方で、一部のアプリケーションは依存ライブラリの関係などから C++ で書かれているので、 Docker を使うことで C++ のアプリを JAR/WAR と同じデプロイフローに載せて運用できるようにする目的で、この仕組みを用意した形になります。&lt;/p&gt;
-
-&lt;h2 id=&#34;設定方法&#34;&gt;設定方法&lt;/h2&gt;
-
-&lt;p&gt;アプリケーションのリポジトリは下記のような構造にします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ tree . -L 1
-.
-├── Dockerfile
-├── appspec.yml
-├── circle.yml
-├── docker
-├── scripts
-└── src
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;circle-yml&#34;&gt;circle.yml&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;dependencies&lt;/code&gt; セクションで、&lt;code&gt;src&lt;/code&gt; ディレクトリ内のソースコードをコンテナ内でコンパイルして、それを &lt;code&gt;docker save&lt;/code&gt; コマンドで &lt;code&gt;docker&lt;/code&gt; ディレクトリ内に書き出しています。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;deployment&lt;/code&gt; セクションでは &lt;a href=&#34;https://circleci.com/docs/continuous-deployment-with-aws-codedeploy&#34;&gt;CircleCI の CodeDeploy 連携&lt;/a&gt; を利用することで、 新しいコミットが master に push された場合のみ、ビルドしたイメージを S3 にあげて、それを CodeDeploy でデプロイする設定を下記のように書けます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;general:
-  artifacts:
-    - docker
-
-machine:
-  services:
-    - docker
-
-dependencies:
-  override:
-    - docker info
-    - docker build -t yourapp .
-    - docker save yourapp | gzip -c &amp;gt; docker/yourapp_docker_image.tar.gz
-    - docker images
-
-test:
-  override:
-    - echo &#39;Test your application here&#39;
-
-deployment:
-  aws:
-    branch: master
-    codedeploy:
-      photoqual:
-        application_root: /
-        revision_location:
-          revision_type: S3
-          s3_location:
-            bucket: yourbucket
-            key_pattern: yourapp/{SHORT_COMMIT}-{BUILD_NUM}.tar.gz
-        region: ap-northeast-1
-        deployment_group: production
-        deployment_config: CodeDeployDefault.OneAtATime
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;appspec-yml&#34;&gt;appspec.yml&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;files&lt;/code&gt; セクションでは S3 からダウンロードした docker イメージを &lt;code&gt;/tmp&lt;/code&gt; 下に配置するようにしておき、 &lt;code&gt;hooks&lt;/code&gt; セクションの ApplicationStart の中で &lt;code&gt;docker load&lt;/code&gt; コマンドを使って読み込むような形です。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;version: 0.0
-os: linux
-files:
-  - source: docker/yourapp_docker_image.tar.gz
-    destination: /tmp
-hooks:
-  ApplicationStop:
-    - location: scripts/deregister.sh
-      timeout: 60
-    - location: scripts/stop.sh
-      timeout: 60
-  ApplicationStart:
-    - location: scripts/start.sh
-      timeout: 60
-    - location: scripts/register.sh
-      timeout: 60
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;hooks の中で使っている &lt;code&gt;deregister.sh&lt;/code&gt; や &lt;code&gt;register.sh&lt;/code&gt; は AutoScaling Group で状態を standby に変更したり、 ELB 操作を行うためのスクリプトになっていて、 &lt;a href=&#34;https://github.com/awslabs/aws-codedeploy-samples/tree/master/load-balancing/elb&#34;&gt;awslabs/aws-codedeploy-samples&lt;/a&gt; の中のスクリプトを参考に作ります。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;scripts/start.sh&lt;/code&gt; は &lt;code&gt;docker load&lt;/code&gt; で読み込んだイメージを &lt;code&gt;docker run&lt;/code&gt; で走らせるために下記のようにします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-set -e
-docker load -i /tmp/yourapp_docker_image.tar.gz
-docker run -d --name yourapp -p 8080:80 yourapp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;scripts/stop.sh&lt;/code&gt; は ELB から切り離した後に、 Docker コンテナを削除するような形にしています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-set -e
-sleep 5
-docker rm -f yourapp || true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;slack&#34;&gt;Slack&lt;/h3&gt;
-
-&lt;p&gt;後は Slack 通知を設定しておくと、デプロイの成功や失敗を通知してくれるようになるので、デプロイの失敗を自分でトラッキングする必要がなくなるのでオススメです。&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/slack-circleci.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/jp/ecr/&#34;&gt;Amazon EC2 Container Registry&lt;/a&gt; が出てきたら、そこに Push して運用しようかなと思ってますが、今のところは S3 にコンテナを置いて Pull 型デプロイするのは権限周りを考えるとリーズナブルなのではないかと思っています。&lt;/p&gt;
-</description>
+&lt;p&gt;というわけで、2 日目は、&lt;a href=&#34;http://blog.takus.me/2015/10/09/livesense-technight/&#34;&gt;SmartNews&amp;rsquo;s Journey into Microservices という LT をしてきました&lt;/a&gt; のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -8,7 +8,9 @@
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Mon, 07 Dec 2015 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://blog.takus.me/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://blog.takus.me/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>AWS Lambda のココが惜しい</title>
@@ -16,26 +18,9 @@
       <pubDate>Mon, 07 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/07/requests-for-aws-lambda/</guid>
-      <description>
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
 
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
-
-&lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;
-
-&lt;h2 id=&#34;各種リソース使用量の制限&#34;&gt;各種リソース使用量の制限&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/limits.html&#34;&gt;AWS Lambda の制限&lt;/a&gt;に色々と書いてありますが、一時ディスク容量 500 MB 以内、実行時間は最大 300 秒以内というのはちょっと足りない気がします。VPC 対応したら Amazon RDS にも繫げるようになるので活躍の幅は広がりそうだと思っていますが、1 日に 1 回 mysqldump するみたいなことは、この制限によって難しそうな雰囲気がします。&lt;/p&gt;
-
-&lt;h2 id=&#34;スケジュール実行が-5-個しか指定できない&#34;&gt;スケジュール実行が 5 個しか指定できない&lt;/h2&gt;
-
-&lt;p&gt;せっかく登場したスケジュール実行ですが、&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/getting-started-scheduled-events.html&#34;&gt;AWS アカウント毎に、最大 5 つまでの指定&lt;/a&gt; しかできないようです。これはそのうち緩和されることを願うばかり&amp;hellip;。&lt;/p&gt;
-
-&lt;h2 id=&#34;関数ごとの同時実行数を制限できない&#34;&gt;関数ごとの同時実行数を制限できない&lt;/h2&gt;
-
-&lt;p&gt;並列に実行してくれるのは Lambda のいいとこではありますが、例えば何かのイベントをトリガーに DB や Redis に書き込みをするようなケースでは、逆に同時実行数を制限したいケースも出てきそうです。工夫すれば色々と方法はありそうですが、スロットリングしたときにイベントを捨てるのか、何回かリトライするのかを含めて、Lambda の設定だけでできると嬉しい気がします。&lt;/p&gt;
-
-&lt;p&gt;ということで、投稿が遅れた上に内容が少なめですが、まずは上記の 3 点が解決されると個人的には嬉しいです。AWS サンタさん、よろしくお願いいたします。&lt;/p&gt;
-</description>
+&lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -8,7 +8,9 @@
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Mon, 07 Dec 2015 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://blog.takus.me/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://blog.takus.me/tags/deployment/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>AWS Lambda のココが惜しい</title>
@@ -16,26 +18,9 @@
       <pubDate>Mon, 07 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/07/requests-for-aws-lambda/</guid>
-      <description>
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
 
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
-
-&lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;
-
-&lt;h2 id=&#34;各種リソース使用量の制限&#34;&gt;各種リソース使用量の制限&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/limits.html&#34;&gt;AWS Lambda の制限&lt;/a&gt;に色々と書いてありますが、一時ディスク容量 500 MB 以内、実行時間は最大 300 秒以内というのはちょっと足りない気がします。VPC 対応したら Amazon RDS にも繫げるようになるので活躍の幅は広がりそうだと思っていますが、1 日に 1 回 mysqldump するみたいなことは、この制限によって難しそうな雰囲気がします。&lt;/p&gt;
-
-&lt;h2 id=&#34;スケジュール実行が-5-個しか指定できない&#34;&gt;スケジュール実行が 5 個しか指定できない&lt;/h2&gt;
-
-&lt;p&gt;せっかく登場したスケジュール実行ですが、&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/getting-started-scheduled-events.html&#34;&gt;AWS アカウント毎に、最大 5 つまでの指定&lt;/a&gt; しかできないようです。これはそのうち緩和されることを願うばかり&amp;hellip;。&lt;/p&gt;
-
-&lt;h2 id=&#34;関数ごとの同時実行数を制限できない&#34;&gt;関数ごとの同時実行数を制限できない&lt;/h2&gt;
-
-&lt;p&gt;並列に実行してくれるのは Lambda のいいとこではありますが、例えば何かのイベントをトリガーに DB や Redis に書き込みをするようなケースでは、逆に同時実行数を制限したいケースも出てきそうです。工夫すれば色々と方法はありそうですが、スロットリングしたときにイベントを捨てるのか、何回かリトライするのかを含めて、Lambda の設定だけでできると嬉しい気がします。&lt;/p&gt;
-
-&lt;p&gt;ということで、投稿が遅れた上に内容が少なめですが、まずは上記の 3 点が解決されると個人的には嬉しいです。AWS サンタさん、よろしくお願いいたします。&lt;/p&gt;
-</description>
+&lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,49 +29,9 @@
       <pubDate>Thu, 03 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</guid>
-      <description>
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/aws&#34;&gt;AWS Advent Calendar 2015 - Qiita&lt;/a&gt; の 3 日目の記事です。昨日は &amp;ldquo;&lt;a href=&#34;http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/&#34;&gt;AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ&lt;/a&gt;&amp;rdquo; という記事を書きましたが、それに引き続き &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; ネタです。&lt;/p&gt;
 
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/aws&#34;&gt;AWS Advent Calendar 2015 - Qiita&lt;/a&gt; の 3 日目の記事です。昨日は &amp;ldquo;&lt;a href=&#34;http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/&#34;&gt;AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ&lt;/a&gt;&amp;rdquo; という記事を書きましたが、それに引き続き &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; ネタです。&lt;/p&gt;
-
-&lt;p&gt;Fabric や Capistrano などのデプロイツールを利用していると、AutoScaling によって起動してくるインスタンスへのアプリケーションのデプロイをどうするかというのは悩みの種ですが、 AWS CodeDeploy を利用すると、最後にデプロイに成功したリビジョンを起動時にデプロイしてくれるので非常に助かります。その一方で、 AutoScaling と連携して使うときに気をつけておくべきいいポイントがいくつかあるので、それについて書きます。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-user-data-でのプロビジョニングに注意&#34;&gt;1. User Data でのプロビジョニングに注意&lt;/h2&gt;
-
-&lt;p&gt;プロビジョニングも AWS CodeDeploy の hook スクリプトでやることもできますが、アプリケーションのデプロイとプロビジョニングは分けておきたいケースもあります。その場合は User Data にシェルスクリプトを入れて起動時に実行する形にするかと思いますが、2 つほど気をつけた方がいいことがあります。&lt;/p&gt;
-
-&lt;p&gt;1 つ目は、EC2 のタグが付与されるタイミングです。Auto Scaling Group でタグを設定しておくと、グループ内のインスタンスにタグをつけてくれるので、タグに応じてプロビジョニングするといった運用ができるのですが、AWS CodeDeploy と AutoScaling を組み合わせる場合、デプロイが終わったあとでないとタグが付与されません。このためタグをベースにプロビジョニングを行う場合は User Data の最初で自身にタグをつけるといったことが必要になります。&lt;/p&gt;
-
-&lt;p&gt;2 つ目は CodeDeploy エージェントの起動順序についてです。&amp;rdquo;User Data の実行&amp;rdquo; と &amp;ldquo;CodeDeploy の実行&amp;rdquo; は特に順序制御の仕組みがないので、AMI に CodeDeploy Agent をインストールして自動起動をしていると、プロビジョニングが終わる前にデプロイされて ELB に追加されてしまう可能性があります。このため、プロビジョニングの最後に CodeDeploy エージェントを起動するようにした方がよいです。&lt;/p&gt;
-
-&lt;p&gt;これらを踏まえると User Data は下記のようなスクリプトにしておくのが望ましいかと思います。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
-
-## Role タグと Env タグを付与
-aws ec2 create-tags \
-  --resources $(wget -q -O - http://169.254.169.254/latest/meta-data/instance-id) \
-  --tags Key=Role,Value=api Key=Env,Value=production
-
-## プロビジョニングする (Chef, Puppet, Ansible, Itamae)
-aws s3 sync s3://itamae-repo/ /path/to/itamae-repo/ --delete
-cd /path/to/itamae-repo &amp;amp;&amp;amp; itamae local bootstrap.rb --ohai
-
-## CodeDeploy Agent は最後に起動する
-service codedeploy-agent start
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;2-スケーリング中のデプロイに注意&#34;&gt;2. スケーリング中のデプロイに注意&lt;/h2&gt;
-
-&lt;p&gt;AutoScaling によるスケールアウト中に、新たに CodeDeploy のデプロイメント作成を行うと、スケーリングによって新たに追加されたインスタンスへは、最新のリビジョンがデプロイされずにスキップされることがあります。方法は色々と考えられますが、何らかの排他制御をしておく方が安全な気がします。&lt;/p&gt;
-
-&lt;p&gt;一方、AutoScaling によるスケールインにも注意が必要で、ログ回収などの終了処理のために自前の LifeCycle Hook を &lt;code&gt;autoscaling:EC2_INSTANCE_TERMINATING&lt;/code&gt; などに仕込んでいる場合に、この終了処理をしているインスタンスへデプロイするところでデプロイの進捗が止まってしまうことがあります。こちらも排他制御をするか、終了処理はできるだけすぐ終わるようにしておくとよさそうです。&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;ということで、 AWS CodeDeploy を使う上でいくつか気をつけたい点について説明しました。もうちょっと CodeDeploy さんが賢くやってくれればと思ったりもしますが、&lt;/p&gt;
-
-&lt;p&gt;最後になりますが、紹介したもののいくつかは、&lt;a href=&#34;https://blogs.aws.amazon.com/application-management/post/Tx1NRS217K1YOPJ/Under-the-Hood-AWS-CodeDeploy-and-Auto-Scaling-Integration&#34;&gt;Under the Hood: AWS CodeDeploy and Auto Scaling Integration&lt;/a&gt; という AWS のブログで、Best Practices として書かれていたりもするので、 AWS Code Deploy を使う前には一読をオススメいたします。&lt;/p&gt;
-</description>
+&lt;p&gt;Fabric や Capistrano などのデプロイツールを利用していると、AutoScaling によって起動してくるインスタンスへのアプリケーションのデプロイをどうするかというのは悩みの種ですが、 AWS CodeDeploy を利用すると、最後にデプロイに成功したリビジョンを起動時にデプロイしてくれるので非常に助かります。その一方で、 AutoScaling と連携して使うときに気をつけておくべきいいポイントがいくつかあるので、それについて書きます。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -95,132 +40,13 @@ service codedeploy-agent start
       <pubDate>Wed, 02 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
-      <description>
-
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
 
 &lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/stormcat24/status/671486430548393985&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;というわけで、2 日目は、&lt;a href=&#34;http://blog.takus.me/2015/10/09/livesense-technight/&#34;&gt;SmartNews&amp;rsquo;s Journey into Microservices という LT をしてきました&lt;/a&gt; のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
-
-&lt;p&gt;僕が所属しているスマートニュースという会社では、Java でアプリケーションが書かれていることが多いため、JAR/WAR を持ってきて実行するようなことを CodeDeploy を使った Pull 型デプロイでやっています。一方で、一部のアプリケーションは依存ライブラリの関係などから C++ で書かれているので、 Docker を使うことで C++ のアプリを JAR/WAR と同じデプロイフローに載せて運用できるようにする目的で、この仕組みを用意した形になります。&lt;/p&gt;
-
-&lt;h2 id=&#34;設定方法&#34;&gt;設定方法&lt;/h2&gt;
-
-&lt;p&gt;アプリケーションのリポジトリは下記のような構造にします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ tree . -L 1
-.
-├── Dockerfile
-├── appspec.yml
-├── circle.yml
-├── docker
-├── scripts
-└── src
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;circle-yml&#34;&gt;circle.yml&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;dependencies&lt;/code&gt; セクションで、&lt;code&gt;src&lt;/code&gt; ディレクトリ内のソースコードをコンテナ内でコンパイルして、それを &lt;code&gt;docker save&lt;/code&gt; コマンドで &lt;code&gt;docker&lt;/code&gt; ディレクトリ内に書き出しています。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;deployment&lt;/code&gt; セクションでは &lt;a href=&#34;https://circleci.com/docs/continuous-deployment-with-aws-codedeploy&#34;&gt;CircleCI の CodeDeploy 連携&lt;/a&gt; を利用することで、 新しいコミットが master に push された場合のみ、ビルドしたイメージを S3 にあげて、それを CodeDeploy でデプロイする設定を下記のように書けます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;general:
-  artifacts:
-    - docker
-
-machine:
-  services:
-    - docker
-
-dependencies:
-  override:
-    - docker info
-    - docker build -t yourapp .
-    - docker save yourapp | gzip -c &amp;gt; docker/yourapp_docker_image.tar.gz
-    - docker images
-
-test:
-  override:
-    - echo &#39;Test your application here&#39;
-
-deployment:
-  aws:
-    branch: master
-    codedeploy:
-      photoqual:
-        application_root: /
-        revision_location:
-          revision_type: S3
-          s3_location:
-            bucket: yourbucket
-            key_pattern: yourapp/{SHORT_COMMIT}-{BUILD_NUM}.tar.gz
-        region: ap-northeast-1
-        deployment_group: production
-        deployment_config: CodeDeployDefault.OneAtATime
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;appspec-yml&#34;&gt;appspec.yml&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;files&lt;/code&gt; セクションでは S3 からダウンロードした docker イメージを &lt;code&gt;/tmp&lt;/code&gt; 下に配置するようにしておき、 &lt;code&gt;hooks&lt;/code&gt; セクションの ApplicationStart の中で &lt;code&gt;docker load&lt;/code&gt; コマンドを使って読み込むような形です。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;version: 0.0
-os: linux
-files:
-  - source: docker/yourapp_docker_image.tar.gz
-    destination: /tmp
-hooks:
-  ApplicationStop:
-    - location: scripts/deregister.sh
-      timeout: 60
-    - location: scripts/stop.sh
-      timeout: 60
-  ApplicationStart:
-    - location: scripts/start.sh
-      timeout: 60
-    - location: scripts/register.sh
-      timeout: 60
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;hooks の中で使っている &lt;code&gt;deregister.sh&lt;/code&gt; や &lt;code&gt;register.sh&lt;/code&gt; は AutoScaling Group で状態を standby に変更したり、 ELB 操作を行うためのスクリプトになっていて、 &lt;a href=&#34;https://github.com/awslabs/aws-codedeploy-samples/tree/master/load-balancing/elb&#34;&gt;awslabs/aws-codedeploy-samples&lt;/a&gt; の中のスクリプトを参考に作ります。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;scripts/start.sh&lt;/code&gt; は &lt;code&gt;docker load&lt;/code&gt; で読み込んだイメージを &lt;code&gt;docker run&lt;/code&gt; で走らせるために下記のようにします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-set -e
-docker load -i /tmp/yourapp_docker_image.tar.gz
-docker run -d --name yourapp -p 8080:80 yourapp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;scripts/stop.sh&lt;/code&gt; は ELB から切り離した後に、 Docker コンテナを削除するような形にしています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-set -e
-sleep 5
-docker rm -f yourapp || true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;slack&#34;&gt;Slack&lt;/h3&gt;
-
-&lt;p&gt;後は Slack 通知を設定しておくと、デプロイの成功や失敗を通知してくれるようになるので、デプロイの失敗を自分でトラッキングする必要がなくなるのでオススメです。&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/slack-circleci.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/jp/ecr/&#34;&gt;Amazon EC2 Container Registry&lt;/a&gt; が出てきたら、そこに Push して運用しようかなと思ってますが、今のところは S3 にコンテナを置いて Pull 型デプロイするのは権限周りを考えるとリーズナブルなのではないかと思っています。&lt;/p&gt;
-</description>
+&lt;p&gt;というわけで、2 日目は、&lt;a href=&#34;http://blog.takus.me/2015/10/09/livesense-technight/&#34;&gt;SmartNews&amp;rsquo;s Journey into Microservices という LT をしてきました&lt;/a&gt; のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。&lt;/p&gt;</description>
     </item>
     
   </channel>

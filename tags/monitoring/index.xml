@@ -8,7 +8,9 @@
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Wed, 09 Dec 2015 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://blog.takus.me/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://blog.takus.me/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Runscope で Web API を監視する</title>
@@ -16,100 +18,7 @@
       <pubDate>Wed, 09 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/09/runscope/</guid>
-      <description>
-
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/web_api&#34;&gt;Web API Advent Calendar 2015 - Qiita&lt;/a&gt; の 9 日目の記事です。&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; という Web API 監視サービスについて紹介したいと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
-
-&lt;p&gt;マイクロサービス化によって、システム全体が API を通して処理をするようになっていく中で、各 API が正しく動いているかどうかを監視したいという要求が出てくるかと思います。&lt;/p&gt;
-
-&lt;p&gt;よくある監視として、&lt;code&gt;/health&lt;/code&gt; といったエンドポイントでアプリケーションを死活監視するといったことをしますが、 実際にはもう少し複雑な条件な監視をしたいケースはよくあります。例えば、あるニュースアプリの記事リストを取得する API があったときに、下記のような監視が手軽に行えると、どうなるでしょう？&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;HTTP ステータスは 200 である&lt;/li&gt;
-&lt;li&gt;レスポンスタイムは 200ms 以内である&lt;/li&gt;
-&lt;li&gt;レスポンスの記事リストは、記事が xx 件以上含まれている&lt;/li&gt;
-&lt;li&gt;レスポンスの各記事は、xx 以上のカテゴリから編成される&lt;/li&gt;
-&lt;li&gt;レスポンスの各記事は、直近 xx 時間以内に作られている&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;この API にバグが入って特定のカテゴリの記事しか返さなくなったり、バックエンドのクローラーが止まっていて記事リストが更新されていなかったり、記事のカテゴリ分類のモデルが壊れていたり、という問題が起きたとしても、最終的に生成される API のレスポンスを監視することで問題が起きていることに気づきやすくなる気がしませんか？&lt;/p&gt;
-
-&lt;p&gt;そうした監視を簡単に実現できる SaaS として、&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; というサービスを見つけたので、紹介したいと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;runscope-について&#34;&gt;Runscope について&lt;/h2&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/runscope-overview.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Runscope は Web API の監視サービスで、指定したリクエストヘッダやパラメータをつけて Web API を叩き、その結果に対してバリデーションをかけ、問題があれば通知するような SaaS になります。 Public API については、&lt;a href=&#34;https://www.runscope.com/docs/api-testing/locations#on-premises-agents&#34;&gt;世界 12 ヶ所 のロケーション(ほとんど AWS region)&lt;/a&gt; から監視ができ、Private API についても、&lt;code&gt;radar&lt;/code&gt; と呼ばれるエージェントを AWS であれば VPC 内に立てることで、外には公開してない API も監視することができます。&lt;/p&gt;
-
-&lt;h3 id=&#34;api-リクエストの設定&#34;&gt;API リクエストの設定&lt;/h3&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/runscope-configuration.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;監視の設定画面はこのような形になっていて、初めての人でも簡単に使いこなせるようになるかと思います。API のエンドポイントやリクエストヘッダなどの設定をチョロッとするだけです。たくさん API があって大変な人のために、&lt;a href=&#34;http://blog.runscope.com/posts/new-import-feature-support-for-swagger-postman&#34;&gt;Swagger  の設定をエクスポートして監視定義を作る機能&lt;/a&gt; があるので、もし Swagger を使っていれば楽に設定できます。&lt;/p&gt;
-
-&lt;h3 id=&#34;api-レスポンスのアサーション&#34;&gt;API レスポンスのアサーション&lt;/h3&gt;
-
-&lt;p&gt;レスポンスコード、レスポンスタイム、レスポンスサイズ、レスポンスヘッダ、レスポンスにある文字列が含まれるかなどの単純なアサーションなら、API リクエスト時の設定フォームみたいなところで簡単に設定できます。&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/runscope-assertion.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;背景で説明したようなちょっとリッチなアサーションをする場合、上記の図のように Javascript でアサーションを書けるので、「記事リストに記事が xx 件以上含まれている」とか「各記事は、直近 xx 時間以内に作られている」といったアサーションを記述することができます。&lt;/p&gt;
-
-&lt;h3 id=&#34;各種-saas-との連携&#34;&gt;各種 SaaS との連携&lt;/h3&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/runscope-integration.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;各アサーションの結果は PagerDuty、Datadog、Slack などに通知できるので、production の API に異常があれば PagerDuty でコールする、staging の API に異常があれば Slack に通知する、といった連携が簡単にできます。&lt;/p&gt;
-
-&lt;p&gt;また、もし &lt;a href=&#34;https://www.datadoghq.com/&#34;&gt;Datadog&lt;/a&gt;  を使っていたら、リージョン毎のレスポンスタイムなどが Datadog に記録されていくので、サーバやデータベースのメトリクスと並べて比較ができて、より捗ります。&lt;/p&gt;
-
-&lt;h3 id=&#34;価格&#34;&gt;価格&lt;/h3&gt;
-
-&lt;p&gt;で、気になるお値段ですが、&lt;a href=&#34;https://www.runscope.com/pricing-and-plans&#34;&gt;価格表&lt;/a&gt;はちゃんと公開されていて、Medium プランだと、$199.0 で月に 100 万回のチェックが行えます。毎分これを走らせることを考えると、23 並列なのでちょっと物足りない感じですが、本番系のクリティカルなところは 1 分単位でチェックして、Staging などの API は 1 時間おきとか、API を更新するタイミングで実行するといった形に融通すれば、この回数に収まる会社が多いのではないでしょうか？&lt;/p&gt;
-
-&lt;h3 id=&#34;信頼性&#34;&gt;信頼性&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://status.runscope.com/history&#34;&gt;Runscope Status - Incident History&lt;/a&gt; を見ると、月に一回くらいは軽微な障害が起きている雰囲気ですが、価格を考えるとこのくらいは妥当なラインな気がします。&lt;/p&gt;
-
-&lt;h3 id=&#34;そのほか&#34;&gt;そのほか&lt;/h3&gt;
-
-&lt;p&gt;さらに、まだ試してないですが、ある  API リクエストによって受け取ったレスポンスの一部を変数に入れて、その次のリクエストに利用するといったこともできるみたいです。これを使うことで、サインアップや商品購入みたいな一連の API の動作もテストすることもできそうな気がします。（監視に対する DB の更新をどうハンドルするかといった問題はありますが。)&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;AWS Lambda をなどをうまく使えば独自ソリューションで安価に同じようなこともできそうですが、このくらいの価格で使えるのであれば、とりあえず使い始めてしまうのも全然ありかなと思います。ということで、 Runscope という SaaS についての紹介でした。&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/web_api&#34;&gt;Web API Advent Calendar 2015 - Qiita&lt;/a&gt; の 9 日目の記事です。&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; という Web API 監視サービスについて紹介したいと思います。&lt;/p&gt;</description>
     </item>
     
   </channel>

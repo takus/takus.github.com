@@ -37,7 +37,7 @@
         <link href="https://blog.takus.me/post/index.xml" rel="alternate" type="application/rss+xml" title="Posts &middot; takus&#39;s blog" />
       
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.53" />
 
     <link rel="canonical" href="https://blog.takus.me/post/" />
 
@@ -159,7 +159,9 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/11/10/roadworker/">Roadworker - The Best Way to Manage Your Amazon Route53 Records</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>What is Roadworker? According to @sgwr_dts (the author of roadworker), Roadworker is a tool to manage Amazon Route53. It defines the state of Route53 using DSL, and updates Route53 according to DSL. Why we should avoid using Route53&rsquo;s web console? Definitely, Amazon Route53 is one of the best DNS hosting service. Highly Available SLA 100%!! Cost-Effective basically $0.50 per hosted zone / $0.500 per million queries Simple You can start to use within minutes But Managing Route53 via its web console is slightly painful. <a class="read-more" href="https://blog.takus.me/2013/11/10/roadworker/">&raquo;</a></p>
+        <p>What is Roadworker? According to @sgwr_dts (the author of roadworker), Roadworker is a tool to manage Amazon Route53. It defines the state of Route53 using DSL, and updates Route53 according to DSL.
+Why we should avoid using Route53&rsquo;s web console? Definitely, Amazon Route53 is one of the best DNS hosting service.
+ Highly Available  SLA 100%!!  Cost-Effective  basically $0.50 per hosted zone / $0.500 per million queries  Simple  You can start to use within minutes   But Managing Route53 via its web console is slightly painful. <a class="read-more" href="https://blog.takus.me/2013/11/10/roadworker/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -185,7 +187,11 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/11/02/daemontools-setuidgid/">daemontools の setuidgid が supplementary groups 権限をつけてくれない件</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>『daemontools の setuidgid』や 『補助グループ権限もつけてくれるsetuidgidのようなもの』のところに書いてある話なんですが、daemontools の setuidgid は 補助グループ権限をつけてくれません。 どういうことかというと、sysadmin グループに属する admin ユーザがいて、下記のような設定になってるときに、 $ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin),2501(sysadmin) $ ls -l /home/admin/password.pl -rw-r----- 1 root sysadmin 584 Jul 24 22:47 /home/admin/password.pl 下記のような run ファイルで daemon を起動したところ、password.pl が読めないというエラーが出ました。 #!/bin/sh exec 2&gt;&amp;1 exec setuidgid admin /path/to/oreno_daemon 一見すると、admin ユーザは sysadmin ユーザに含まれているため権限は問題ないように思えて、実際にコンソールから実行すると読むことができるのですが、前述の通り setuidgid は補助グループ権限をつけてくれないため、setuidgid で指定した admin ユーザは下記のようなユーザとみなされ、password.pl を読むことができないというオチでした。 $ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin) 解決策は、『補助グループ権限もつけてくれるsetuidgidのようなもの』にまとまってますが、この辺りを使うのがいいのではないかと思ってる次第です。 <a class="read-more" href="https://blog.takus.me/2013/11/02/daemontools-setuidgid/">&raquo;</a></p>
+        <p>『daemontools の setuidgid』や 『補助グループ権限もつけてくれるsetuidgidのようなもの』のところに書いてある話なんですが、daemontools の setuidgid は 補助グループ権限をつけてくれません。
+どういうことかというと、sysadmin グループに属する admin ユーザがいて、下記のような設定になってるときに、
+$ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin),2501(sysadmin) $ ls -l /home/admin/password.pl -rw-r----- 1 root sysadmin 584 Jul 24 22:47 /home/admin/password.pl  下記のような run ファイルで daemon を起動したところ、password.pl が読めないというエラーが出ました。
+#!/bin/sh exec 2&gt;&amp;1 exec setuidgid admin /path/to/oreno_daemon  一見すると、admin ユーザは sysadmin ユーザに含まれているため権限は問題ないように思えて、実際にコンソールから実行すると読むことができるのですが、前述の通り setuidgid は補助グループ権限をつけてくれないため、setuidgid で指定した admin ユーザは下記のようなユーザとみなされ、password.pl を読むことができないというオチでした。
+$ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin)  解決策は、『補助グループ権限もつけてくれるsetuidgidのようなもの』にまとまってますが、この辺りを使うのがいいのではないかと思ってる次第です。 <a class="read-more" href="https://blog.takus.me/2013/11/02/daemontools-setuidgid/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -211,7 +217,14 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/10/18/yapc-devopsday-wakateweb/">#yapcasia と #devopsday と #wakateweb の話</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>9 月後半から 10 月前半にかけて、#yapcasia と #depopsday と #wakateweb といったイベントに参加させていただきましたが、全くブログに書いてなかったので簡単にまとめておきます。 YAPC::ASIA 2013 今回の YAPC も最高に楽しい 3 日間でした。会場が日吉ということで、なんだか学生時代に戻ったような気分で参加していた気がします。 Rubyの良いところ語ってください 〜そんなPerlで大丈夫か？〜 Perl が盛大に dis られる座談会なのかと思っていましたがそんなこともなく、卜部さんのブログに書いてあること が全てな印象でした。流行りと廃りはどんな言語・技術にもあるもので、トレンドの変化が起きた時に移行すべきなのにできないというように、何かに固執する (固執せざるを得なくなる) のがほんとのリスクじゃないでしょうか。 フルテストも50msで終わらせたい 〜FreakOutの取り組み〜 このトークで印象に残ってるのが、「テストを爆速にした結果、手元でやるより push したほうが速くて、みんな push しだした」という部分で、これによって他の人の開発アクティビティが見えやすくなったとおっしゃっていましたが、まさしくツールで文化を変えていくような例でスバラシイと思いました。組織で何かに取り組もうとしたときに、こうしましょうって決めても、人によって温度感がバラバラでなかなか浸透しなかったりなんてことはよくあるので、気持ちよく走れるレールを敷いてあげて、自然にいい方向に持ってけれるような仕事の仕方をしていけるといいですね！ さいごに 1 日目の夜に Facebook で @nekokak さんが「喋りたくなったから喋る」みたいなこと書いてるの見て、そういえば去年の YAPC のブログでも次は発表したいとか書いてたなって思い出して、LT に応募して喋ってきました。時間ないから 3 分でと言われて早口で喋ってたのでだいぶ微妙な感じでしたが、やらないよりはやって失敗して学んでいくタイプなので次回にご期待ください&hellip;。 最後に、今回の YAPC を最後に櫛井さんと牧さんが運営から離れるとのことでしたが、今まで本当にお疲れさまでした。自分が参加させていただいた 3 回の YAPC はどれもほんとに楽しくて、勉強になって、素晴らしい時間を過ごすことができました。この場を借りて、お礼を言わせていただきたいです。本当にありがとうございました！！！ DevOpsDay Tokyo 2013 Github の @johndbritton さんが Ops for Everyone の中で、「Hubot は全員のターミナルをシェアするみたいな考え方で、オペレーションの可視化を実現している」といったことを言っていて、うんうんって思いながら聞いていました。新しく入ってきた人はそれ見ながらどういう操作すればいいか勉強できるし、いま各々がどういうことやっているかも把握しやすくなりそうだし、Hubot を中心にしたオペレーションはかなりアリなんじゃないかと思います。 余談ですが、/graph me でグラフ出せる機能を拡張して、/graph me 呼んだときに GrowthForecast(RRD) <a class="read-more" href="https://blog.takus.me/2013/10/18/yapc-devopsday-wakateweb/">&raquo;</a></p>
+        <p>9 月後半から 10 月前半にかけて、#yapcasia と #depopsday と #wakateweb といったイベントに参加させていただきましたが、全くブログに書いてなかったので簡単にまとめておきます。
+YAPC::ASIA 2013 今回の YAPC も最高に楽しい 3 日間でした。会場が日吉ということで、なんだか学生時代に戻ったような気分で参加していた気がします。
+Rubyの良いところ語ってください 〜そんなPerlで大丈夫か？〜 Perl が盛大に dis られる座談会なのかと思っていましたがそんなこともなく、卜部さんのブログに書いてあること が全てな印象でした。流行りと廃りはどんな言語・技術にもあるもので、トレンドの変化が起きた時に移行すべきなのにできないというように、何かに固執する (固執せざるを得なくなる) のがほんとのリスクじゃないでしょうか。
+フルテストも50msで終わらせたい 〜FreakOutの取り組み〜 このトークで印象に残ってるのが、「テストを爆速にした結果、手元でやるより push したほうが速くて、みんな push しだした」という部分で、これによって他の人の開発アクティビティが見えやすくなったとおっしゃっていましたが、まさしくツールで文化を変えていくような例でスバラシイと思いました。組織で何かに取り組もうとしたときに、こうしましょうって決めても、人によって温度感がバラバラでなかなか浸透しなかったりなんてことはよくあるので、気持ちよく走れるレールを敷いてあげて、自然にいい方向に持ってけれるような仕事の仕方をしていけるといいですね！
+さいごに 1 日目の夜に Facebook で @nekokak さんが「喋りたくなったから喋る」みたいなこと書いてるの見て、そういえば去年の YAPC のブログでも次は発表したいとか書いてたなって思い出して、LT に応募して喋ってきました。時間ないから 3 分でと言われて早口で喋ってたのでだいぶ微妙な感じでしたが、やらないよりはやって失敗して学んでいくタイプなので次回にご期待ください&hellip;。
+最後に、今回の YAPC を最後に櫛井さんと牧さんが運営から離れるとのことでしたが、今まで本当にお疲れさまでした。自分が参加させていただいた 3 回の YAPC はどれもほんとに楽しくて、勉強になって、素晴らしい時間を過ごすことができました。この場を借りて、お礼を言わせていただきたいです。本当にありがとうございました！！！
+DevOpsDay Tokyo 2013 Github の @johndbritton さんが Ops for Everyone の中で、「Hubot は全員のターミナルをシェアするみたいな考え方で、オペレーションの可視化を実現している」といったことを言っていて、うんうんって思いながら聞いていました。新しく入ってきた人はそれ見ながらどういう操作すればいいか勉強できるし、いま各々がどういうことやっているかも把握しやすくなりそうだし、Hubot を中心にしたオペレーションはかなりアリなんじゃないかと思います。
+余談ですが、/graph me でグラフ出せる機能を拡張して、/graph me 呼んだときに GrowthForecast(RRD) のグラフを 社内 Gyazo とかにあげて、そのリンクを IRC にポストしてくれたりすると、後で IRC のログ振り返るときにそのとき見てたグラフが表示できて捗りそうかなーとか思いました。(RRD は後で見ようと思っても丸められてしまうので） <a class="read-more" href="https://blog.takus.me/2013/10/18/yapc-devopsday-wakateweb/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -237,7 +250,8 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/08/11/mysql_secure_installation/">mysql_secure_installation の中身</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>単純に気になったので。5.1 系のソース眺めただけです。 root ユーザのパスワード文字列を設定 # Set the root password UPDATE mysql.user SET Password=PASSWORD('password') WHERE User='root'; anonymous ユーザを削除 # Remove anonymous users DELETE FROM mysql.user WHERE User=''; リモートからの root ログインを禁止する # Disallow remote root login DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1'); test データベースを削除する # Remove test database DROP DATABASE test; DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'; 権限を再読み出しする # Reload privilege tables FLUSH PRIVILEGES;` <a class="read-more" href="https://blog.takus.me/2013/08/11/mysql_secure_installation/">&raquo;</a></p>
+        <p> 単純に気になったので。5.1 系のソース眺めただけです。
+root ユーザのパスワード文字列を設定 # Set the root password UPDATE mysql.user SET Password=PASSWORD('password') WHERE User='root';  anonymous ユーザを削除 # Remove anonymous users DELETE FROM mysql.user WHERE User='';  リモートからの root ログインを禁止する # Disallow remote root login DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');  test データベースを削除する # Remove test database DROP DATABASE test; DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';  権限を再読み出しする # Reload privilege tables FLUSH PRIVILEGES;`   <a class="read-more" href="https://blog.takus.me/2013/08/11/mysql_secure_installation/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -264,8 +278,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
     </header>
     <section class="post-excerpt">
         <p><p>オートスケーリングみたいなことをしようとする場合、サービスインする前に監視が全て OK になっているかチェック
-しておきたいみたいな需要がありますが、みんな大好き Nagios でこれをやろうとするとちょっと面倒だったりします。</p>
- <a class="read-more" href="https://blog.takus.me/2013/08/06/nagira-nagios-restful-api/">&raquo;</a></p>
+しておきたいみたいな需要がありますが、みんな大好き Nagios でこれをやろうとするとちょっと面倒だったりします。</p> <a class="read-more" href="https://blog.takus.me/2013/08/06/nagira-nagios-restful-api/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -291,7 +304,10 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">Velocity 2013 に参加 &amp; LT してきました！！</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>6&frasl;18 ~ 6&frasl;20 に Santa Clara で開催された Velocity 2013 に参加して来ました。Velocity は Web Performance や Web Operation などが主なテーマで、Google、Facebook、Twitter、Amazon、Yahoo! などをはじめとした様々な企業から 1,000 人以上が参加する大規模なカンファレンスです。いまやよく耳にする DevOps というキーワードも 10+ Deploys Per Day: Dev and Ops Cooperation at Flickr という Velocity 2009 のトークで有名になった言葉ですね。 参加するにあたって、@xaicron さんの 勝手に YAPC::NA 2013 に行ってきた！！ と同じく、会社が渡航費、宿泊費、参加費等の全ての費用を負担してくれました！！新卒入社 2 年目の自分をこのような素晴らしいカンファレンスに快く派遣してくれた DeNA++ です。 My Ignite Talk &ldquo;不格好経営&rdquo;にも載ってる DeNA の創業者である南場さんの言葉に、&ldquo;これから会社がどんなに長生きしようとも、地球や宇宙の時間のなかでほんの瞬間の存在になる。けれどもなにか宇宙に引っ掻きキズみたいな証を残したい。&rdquo; というものがあります。そこで、Velocity への参加が決まってから、DeNA 社員として何か引っ掻きキズを残せないか考えていたところ、Ignite Velocity という LT のセッションを見つけたので、abstract 書いて応募したところ accept されたので LT してきました。 ご存知ない方のために紹介しておくと Ignite は 20 枚のスライドを 15 秒づつ流して、5 分間のプレゼンをするというプレゼン形式で、Velocity 2012 では DevOps に関する話 等が Youtube にあがってます。 Ignite が近づくにつれてかなり緊張が高まって、スラダンのミッチー並みにトイレに行ってたのですが、さらに始まる直前になって上の写真のような会場だと分かり、「あ、これ無理だ」と思って、ドラゴンボール Z のミスター・サタンみたいに腹痛起こそうか悩んでたわけですが、Citrix のナイスガイが「みんな酒飲んでるし、ミスったって誰も覚えてないよー」的な話してくれたおかげでだいぶ緊張がほぐれて、自分のトークはリラックスして臨めました。 LT は 3 Pupular Ops Tool in Japan という、(popular がかなり主観ですが) serverspec と GrowthForecast と Fluentd について簡単に紹介するような話で、日本の皆様にはお馴染みの内容ですが、海外の人にとってはちょっとは役立つんじゃないかと思ってこの内容にしました。 トーク後に fluentd について聞きに来てくれた人がいたり、色んな人から good job とか interesting みたいなお褒めの言葉をいただいたり、以下のようなツイートを頂けたので、小さいながらも引っ掻きキズを残してこれたんじゃないかと思います。 そして、色々と声かけてもらった中でも、&ldquo;Web Operations&rdquo; の著者で、Velocity の Program Chair でもある @allspaw が自分のこと覚えててくれて、excellent って言ってくれたのには痺れました(お世辞だと分かっててもw) Awesome People Velocity ではほんとに色んな人に優しくしてもらいました。ホテルでチップ用の紙幣なくて両替しようとしたら $5 にしか変えれないと言われて困ってたら、通りかかった人が、&rdquo;一昨日のトークよかったよ。あとモバゲーのゲームもやったことあるんだ&rdquo; って言って 3 ドルくれたり（失礼ながら名前聞くの忘れてしまった&hellip;)、Closing Party で Adobe で働いてるジェラール・ピケ似のイケメンと喋ってたらビール奢ってくれたり、思い返すとそんなエピソードばかりでほんとに参加者が素晴らしかったです！ Awesome Talks 素晴らしいトークがたくさんありましたが、全部紹介しきれないので印象深いものだけ簡単にまとめておきます。もうちょっと踏み込んだものはまた後日&hellip;。 Avoiding Performance Regression at Twitter 機能追加やバグフィックスを反映するたびに性能劣化が起きてしまうのをどのように防ぐかといった内容で、WebPageTest、PhantomJS、ShowSlow といったツールを使って、branch 毎の TTFT (最初のツイートが表示されるまでの時間) を Jenkins でテストしているそうです。性能が劣化するようなら merge させないといった仕組みなので、性能向上はあっても性能劣化は起きないような仕組みが自動で回るようになっている点がスバラシイですね。 ちなみに、この話すごくよかったのでスピーカーの @marcelduran にリプライしたら、返ってきたリプライまで素晴らしくてさらに感銘を受けました。犯人捜しするのでなく、犯人を作らないような仕組みを考えられる人になりたいですね。 Bring the Noise: Making Effective Use of a Quarter Million Metrics Etsy といえば、&ldquo;Graph everything&rdquo; とか &ldquo;If it moves, graph it&rdquo; に代表されるようにとにかく何でもグラフにしてることでお馴染みですが、&rdquo;たとえグラフの波形が乱れても、誰も見てなかったらそれはスパイクと言えるんだろうか？&rdquo; というところから、リアルタイム異常検知とそれに似たグラフを自動で見つける Kale の話でした。トークの中で出てきたこのツイートでも言ってるように、不味そうな兆候って後で致命的な問題を招くわけで、先ほどの Twitter の話と同じく、問題が小さいうちに対処できるようにしていく部分に Velocity のカルチャーを感じました。 Configuration Management Anti-patterns &ldquo;Stop putting upstream modules and cookbooks into your repos&rdquo; という berkshelf とか librarian-chef とか使って使いたいバージョン固定すれば、勝手にバージョンアップされてりしても安心だよねって話が印象に残りました。DeNA のように大規模に色々なシステムが動くような環境で DRY に則って共通化すると、ある環境のために加えた変更が、他の環境に影響を及ぼしてしまうことがたびたびありますが、使う環境毎にきちんとバージョン固定しておけば、そういう苦しみから解放されて、共通化を進めやすくなり、みんなハッピーになれそうだと思いました。 Future Velocity に行って日本のエンジニアのレベルはやっぱ高いんだなと感じました。例えば 3 日目に聞いた MHA のトークはチュートリアル的な内容に留まっていたので、じゃあ DeNA でどのように MHA を運用してるのかって話なんかは当然喋らせてもらえそうで、DeNA のようにグローバルカンパニーを自負する会社や、日頃から素晴らしいツール・ライブラリを公開してるエンジニアの方々はどんどん海外のカンファレンスで喋っていったらいいんじゃないでしょうか！ 自分自身については、エンジニアとしてまだまだ半人前の存在だと再認識しながらも、Velocity の本セッションもそんなに遠い場所でないという感触は掴めたので、いつかは本セッションでトークできるように日頃から精進していきたいと思います:D Acknowledgments 最後になりましたが、Velocity に参加するための手配を色々と整えてくれたスーパーヘルパー様と、自分がするべきだった仕事を代わりに引き受けてくださった部署の皆様に心から感謝してます。@katemats が If You Don&rsquo;t Understand People, You Don&rsquo;t Understand Ops というトークで You get what you give. <a class="read-more" href="https://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">&raquo;</a></p>
+        <p>6&frasl;18 ~ 6&frasl;20 に Santa Clara で開催された Velocity 2013 に参加して来ました。Velocity は Web Performance や Web Operation などが主なテーマで、Google、Facebook、Twitter、Amazon、Yahoo! などをはじめとした様々な企業から 1,000 人以上が参加する大規模なカンファレンスです。いまやよく耳にする DevOps というキーワードも 10+ Deploys Per Day: Dev and Ops Cooperation at Flickr という Velocity 2009 のトークで有名になった言葉ですね。
+参加するにあたって、@xaicron さんの 勝手に YAPC::NA 2013 に行ってきた！！ と同じく、会社が渡航費、宿泊費、参加費等の全ての費用を負担してくれました！！新卒入社 2 年目の自分をこのような素晴らしいカンファレンスに快く派遣してくれた DeNA++ です。
+My Ignite Talk &ldquo;不格好経営&rdquo;にも載ってる DeNA の創業者である南場さんの言葉に、&ldquo;これから会社がどんなに長生きしようとも、地球や宇宙の時間のなかでほんの瞬間の存在になる。けれどもなにか宇宙に引っ掻きキズみたいな証を残したい。&rdquo; というものがあります。そこで、Velocity への参加が決まってから、DeNA 社員として何か引っ掻きキズを残せないか考えていたところ、Ignite Velocity という LT のセッションを見つけたので、abstract 書いて応募したところ accept されたので LT してきました。
+ご存知ない方のために紹介しておくと Ignite は 20 枚のスライドを 15 秒づつ流して、5 分間のプレゼンをするというプレゼン形式で、Velocity 2012 では DevOps に関する話 等が Youtube にあがってます。 <a class="read-more" href="https://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -317,7 +333,10 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/06/06/code-simplicity/">Code Simplicity</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>This blog post reminds me of the book I read six months ago. Code Simplicity Altough I don&rsquo;t remember the exact sentences in the book, the author wrote something like that: The ultimate goal of software is to help people, and great software is a software that will continue to help people. However, continuing to help people is really difficult because the environment around our software is going to change. As a result, we must maintain our software for continuing to help people. <a class="read-more" href="https://blog.takus.me/2013/06/06/code-simplicity/">&raquo;</a></p>
+        <p>This blog post reminds me of the book I read six months ago.
+Code Simplicity
+Altough I don&rsquo;t remember the exact sentences in the book, the author wrote something like that:
+ The ultimate goal of software is to help people, and great software is a software that will continue to help people. However, continuing to help people is really difficult because the environment around our software is going to change. <a class="read-more" href="https://blog.takus.me/2013/06/06/code-simplicity/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -343,7 +362,8 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/06/03/rsync-ssh-maxstartups/">rsync が &#39;ssh_exchange_identification: Connection closed by remote host&#39; で失敗するときの対処法</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>rsync したときに下記のようなエラーでファイル転送が失敗する事案があったので、 /etc/sshd_config の LogLevel を DEBUG 2 に変更して再実行したところ、drop connection されていました。 $ deploy-tool . . . err:host0001:65280 ssh_exchange_identification: Connection closed by remote host rsync: connection unexpectedly closed (0 bytes received so far) [sender] rsync error: unexplained error (code 255) at io.c(600) [sender=3.0.6] $ sudo tail -f /var/log/secure | grep 'drop connection' Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10 Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10 man を見ると /etc/sshd_config の MaxStartUps が作用してそうだったので MaxStartups を大きな値にして回避しました。 外部から攻撃される可能性がないサーバなら大きな値にしておくとよさそうです。 $ man sshd_config MaxStartups Specifies the maximum number of concurrent unauthenticated connections to the SSH daemon. <a class="read-more" href="https://blog.takus.me/2013/06/03/rsync-ssh-maxstartups/">&raquo;</a></p>
+        <p>rsync したときに下記のようなエラーでファイル転送が失敗する事案があったので、 /etc/sshd_config の LogLevel を DEBUG 2 に変更して再実行したところ、drop connection されていました。
+$ deploy-tool . . . err:host0001:65280 ssh_exchange_identification: Connection closed by remote host rsync: connection unexpectedly closed (0 bytes received so far) [sender] rsync error: unexplained error (code 255) at io.c(600) [sender=3.0.6]  $ sudo tail -f /var/log/secure | grep 'drop connection' Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10 Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10  man を見ると /etc/sshd_config の MaxStartUps が作用してそうだったので MaxStartups を大きな値にして回避しました。 外部から攻撃される可能性がないサーバなら大きな値にしておくとよさそうです。 <a class="read-more" href="https://blog.takus.me/2013/06/03/rsync-ssh-maxstartups/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -369,7 +389,8 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj/">CentOS 6 に /dev/sdf としてアタッチした EBS ボリュームが /dev/xvdj として認識される件</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>インスタンスガチャなのかなんなのか、同じくらいの負荷与えてる EBS ボリュームのうち 1 台だけ性能劣化することがあって、ひとまず EC2 の問題なのか EBS の問題なのか切り分けるために EBS ボリュームを作って、AWS のマネジメントコンソールから CentOS 6 のサーバに /dev/sdf としてアタッチしたのに一向にデバイス認識されず、おかしいなと思って調べていたらアタッチしたボリュームと同じサイズのデバイスがあって、ググったら RHEL 6 や CentOS 6 でデバイス名がズレてしまうバグが存在するというオチでした。 # fdisk -l . . . Disk /dev/xvdj: 429.5 GB, 429496729600 bytes 255 heads, 63 sectors/track, 52216 cylinders Units = cylinders of 16065 * 512 = 8225280 bytes Sector size (logical/physical): 512 bytes / 512 bytes I/O size (minimum/optimal): 512 bytes / 512 bytes Disk identifier: 0x00000000 <a class="read-more" href="https://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj/">&raquo;</a></p>
+        <p>インスタンスガチャなのかなんなのか、同じくらいの負荷与えてる EBS ボリュームのうち 1 台だけ性能劣化することがあって、ひとまず EC2 の問題なのか EBS の問題なのか切り分けるために EBS ボリュームを作って、AWS のマネジメントコンソールから CentOS 6 のサーバに /dev/sdf としてアタッチしたのに一向にデバイス認識されず、おかしいなと思って調べていたらアタッチしたボリュームと同じサイズのデバイスがあって、ググったら RHEL 6 や CentOS 6 でデバイス名がズレてしまうバグが存在するというオチでした。
+# fdisk -l . . . Disk /dev/xvdj: 429.5 GB, 429496729600 bytes 255 heads, 63 sectors/track, 52216 cylinders Units = cylinders of 16065 * 512 = 8225280 bytes Sector size (logical/physical): 512 bytes / 512 bytes I/O size (minimum/optimal): 512 bytes / 512 bytes Disk identifier: 0x00000000 Disk /dev/xvdj doesn't contain a valid partition table  参考リンク  CentOS6. <a class="read-more" href="https://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         
@@ -395,7 +416,16 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         <h2 class="post-title"><a href="https://blog.takus.me/2013/05/12/travel-to-new-york/">New York に行ってきた</a></h2>
     </header>
     <section class="post-excerpt">
-        <p>前回の&rdquo;Los Angeles に行ってきた&ldquo;の続きです。New York 編。 Tips Unlimited Ride MetroCard 市内であれば、ほとんどの場所に地下鉄で行けるので地下鉄の乗り放題パスを買うと捗ります。7 日間乗り放題で $30 と無駄に期間が長くて使い切れないですが、すぐに元取れます。 NEW YORK CityPASS とりあえず初めて NY 行く人はこれを買っておくといいと思います。エンパイアステートビル展望台、メトロポリタン美術館、アメリカ自然史博物館、トップオブザロック展望台、近代美術館、自由の女神周辺のフェリー観光ができて、$106 は個別にチケットを買うよりはかなりお得です。旅行行く前にオンラインで支払って、バーコード入りのチケットを印刷して持って行けば OK です。 Statue of Liverty フェリーで自由の女神からブルックリン橋まで Manhattan 島の南部を全体的に回ってくれてだいぶ満足できるツアーになってます。 911 Memorial すでに One World Trade Center と呼ばれる新しいビルが天空高くそびえ立っていましたが、こんなビルが跡形もなく崩れ去るなんてとても想像できないわけで、自分の中での 9&frasl;11 に対する見方が変わって、遠い国の出来事から急にすごくリアルな出来事に思えるようになりました。 Brooklyn Bridge 全長 2km くらいなので歩いて渡ると楽しめます。Manhattan 側から歩いていき、Brooklyn 側の公園でアイスを食べながら一休みして地下鉄で帰りました。 Yankee Stadium せっかくなのでメジャーリーグも見てきました。オンラインでチケット買ってくこともできますが、人気カードでない限り当日スタジアム行って買えば問題ないです。$50 くらいのチケット買いましたが、球場内の移動が割と自由で写真のように内野席の後ろとか入れて立ち見できるので、一番安いチケット買って歩き回るのがベストなんじゃないかと思います。 Top of The Rock &amp; Empire State Buinding New York の町を一望できる場所として、この 2 箇所がありますが、夜景を楽しむなら Empire State Building のライトアップを見れる Top of The Rock <a class="read-more" href="https://blog.takus.me/2013/05/12/travel-to-new-york/">&raquo;</a></p>
+        <p>前回の&rdquo;Los Angeles に行ってきた&ldquo;の続きです。New York 編。
+Tips Unlimited Ride MetroCard
+市内であれば、ほとんどの場所に地下鉄で行けるので地下鉄の乗り放題パスを買うと捗ります。7 日間乗り放題で $30 と無駄に期間が長くて使い切れないですが、すぐに元取れます。
+NEW YORK CityPASS
+とりあえず初めて NY 行く人はこれを買っておくといいと思います。エンパイアステートビル展望台、メトロポリタン美術館、アメリカ自然史博物館、トップオブザロック展望台、近代美術館、自由の女神周辺のフェリー観光ができて、$106 は個別にチケットを買うよりはかなりお得です。旅行行く前にオンラインで支払って、バーコード入りのチケットを印刷して持って行けば OK です。
+Statue of Liverty フェリーで自由の女神からブルックリン橋まで Manhattan 島の南部を全体的に回ってくれてだいぶ満足できるツアーになってます。
+911 Memorial すでに One World Trade Center と呼ばれる新しいビルが天空高くそびえ立っていましたが、こんなビルが跡形もなく崩れ去るなんてとても想像できないわけで、自分の中での 9&frasl;11 に対する見方が変わって、遠い国の出来事から急にすごくリアルな出来事に思えるようになりました。
+Brooklyn Bridge 全長 2km くらいなので歩いて渡ると楽しめます。Manhattan 側から歩いていき、Brooklyn 側の公園でアイスを食べながら一休みして地下鉄で帰りました。
+Yankee Stadium せっかくなのでメジャーリーグも見てきました。オンラインでチケット買ってくこともできますが、人気カードでない限り当日スタジアム行って買えば問題ないです。$50 くらいのチケット買いましたが、球場内の移動が割と自由で写真のように内野席の後ろとか入れて立ち見できるので、一番安いチケット買って歩き回るのがベストなんじゃないかと思います。
+Top of The Rock &amp; Empire State Buinding New York の町を一望できる場所として、この 2 箇所がありますが、夜景を楽しむなら Empire State Building のライトアップを見れる Top of The Rock に行くのが正解です。 <a class="read-more" href="https://blog.takus.me/2013/05/12/travel-to-new-york/">&raquo;</a></p>
     </section>
     <footer class="post-meta">
         

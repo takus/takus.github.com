@@ -39,7 +39,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.53" />
 
     <link rel="canonical" href="https://blog.takus.me/2013/08/06/nagira-nagios-restful-api/" />
 
@@ -151,9 +151,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
     </header>
 
     <section class="post-content">
-      
-
-<p>オートスケーリングみたいなことをしようとする場合、サービスインする前に監視が全て OK になっているかチェック
+      <p>オートスケーリングみたいなことをしようとする場合、サービスインする前に監視が全て OK になっているかチェック
 しておきたいみたいな需要がありますが、みんな大好き Nagios でこれをやろうとするとちょっと面倒だったりします。</p>
 
 <p><a href="http://search.cpan.org/~duncs/Nagios-Object-0.21.18/lib/Nagios/StatusLog.pm">Nagios::StatusLog</a> のようなものを使って <code>status.dat</code> をパースする方法がお手軽ですが、監視するホストが数千台みたいな環境だと <code>status.dat</code> が結構な大きさになってしまい、必要なたびにパースしてると Nagios が動いてるホストが結構なメモリを喰って swap に入ってしまったり、他のホストに転送してパースするにしてもそれなりに帯域喰ってしまうので、Nagios のホスト上で <code>status.dat</code> をパースして一定期間キャッシュし、HTTP でよしなに JSON を返してくれればいいなとか思っていたら、<a href="https://github.com/dmytro/nagira">nagira</a> でそれが実現できそうだったので試してみました。</p>
@@ -328,7 +326,6 @@ curl -s http://nagios.example.com:4567/_status/host0001/_services | python -mjso
 <h2 id="まとめ">まとめ</h2>
 
 <p>Nagios 自体がこの機能を提供してよと思うところもありますが、とりあえずこれでやりたいことは実現できそうなので、もう少し実践的な場面で試していきたい所存です。</p>
-
     </section>
 
 

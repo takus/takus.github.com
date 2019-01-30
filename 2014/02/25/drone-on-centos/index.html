@@ -39,7 +39,7 @@
       
       
     
-    <meta name="generator" content="Hugo 0.16" />
+    <meta name="generator" content="Hugo 0.53" />
 
     <link rel="canonical" href="https://blog.takus.me/2014/02/25/drone-on-centos/" />
 
@@ -151,9 +151,7 @@ h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
     </header>
 
     <section class="post-content">
-      
-
-<p>&ldquo;Docker 使うなら Ubuntu だろ jk&rdquo; とか言われそうですが CentOS 6.5 で使いたかったので試してみました。<a href="https://www.docker.io/gettingstarted/">Docker の公式サイトには &ldquo;Our recommended installation path is for Ubuntu linux, because we develop Docker on Ubuntu and our installation package will do most of the work for you.&rdquo; と書いてあったり</a>、<a href="https://github.com/drone/drone">Drone は Ubuntu 用のパッケージしかなかったり</a>するので、深淵な理由がなければ Ubuntu 使うのがいいんじゃないかと思います。</p>
+      <p>&ldquo;Docker 使うなら Ubuntu だろ jk&rdquo; とか言われそうですが CentOS 6.5 で使いたかったので試してみました。<a href="https://www.docker.io/gettingstarted/">Docker の公式サイトには &ldquo;Our recommended installation path is for Ubuntu linux, because we develop Docker on Ubuntu and our installation package will do most of the work for you.&rdquo; と書いてあったり</a>、<a href="https://github.com/drone/drone">Drone は Ubuntu 用のパッケージしかなかったり</a>するので、深淵な理由がなければ Ubuntu 使うのがいいんじゃないかと思います。</p>
 
 <p><img src="http://farm6.staticflickr.com/5530/12768732363_934e22c97b_z.jpg"></p>
 
@@ -224,7 +222,6 @@ Github Enterprise の場合は GITHUB_DOMAIN / <a href="https://GITHUB_DOMAIN/ap
 <h2 id="まとめ">まとめ</h2>
 
 <p>ということで、無事に Drone 使えるようになったので、あとは各バージョンの perlbrew とか rbenv とか nodebrew を持ったイメージを作っておいて、それ毎にバージョン跨ぐテストしていくような感じにしていけばよさそうな雰囲気です。ざっと設定画面とコードを眺めたところ、Jenkins の Master/Slave みたいな仕組みがないので、数が増えていったらある程度 Drone を分けるしかなさそうですが、とりあえずはチーム毎とかそういう単位で Drone を用意してあげればいいのかなと思ってます。 Enjoy your test with Drone :D</p>
-
     </section>
 
 

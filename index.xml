@@ -8,7 +8,9 @@
     <language>ja-jp</language>
     <copyright>Copyright (C) 2011- Takumi Sakamoto All Right Reserved.</copyright>
     <lastBuildDate>Mon, 08 May 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://blog.takus.me/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://blog.takus.me/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>プロダクトマネージャーとして Kaizen Platform にジョインした</title>
@@ -16,43 +18,7 @@
       <pubDate>Mon, 08 May 2017 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2017/05/08/join-kaizen-platform/</guid>
-      <description>
-
-&lt;p&gt;長らく Twitter も Blog もご無沙汰になっていた &lt;a href=&#34;https://twitter.com/takus_ja&#34;&gt;@takus&lt;/a&gt; です。&amp;rdquo;&lt;a href=&#34;https://twitter.com/glidenote/status/857816468095815680&#34;&gt;若手インフラ四天王&lt;/a&gt;&amp;rdquo; なのかはさておき&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;、5 月から &lt;a href=&#34;https://www.wantedly.com/companies/kaizenplatform/info&#34;&gt;Kaizen Platform&lt;/a&gt; にジョインしてプロダクトマネージャーとして働き始めました。&lt;/p&gt;
-
-&lt;h2 id=&#34;ジョブチェンジや入社の経緯&#34;&gt;ジョブチェンジや入社の経緯&lt;/h2&gt;
-
-&lt;p&gt;息子が生まれたりして色々と生活が変化していくのがキッカケとなり、これまでやってきたことや今後やっていきたいことを改めて考え直したりする中で、もっとプロダクトにコミットする比重を大きくしようと決めたのが大きな理由です。&lt;/p&gt;
-
-&lt;p&gt;Site Reliability Engineering / Data Engineering といった領域で活動してた人間が Product Manager というロールに転職するのは少し唐突な印象を受けるかもしれませんが、&lt;a href=&#34;http://press.forkwell.com/post/150381780957/interview-takus&#34;&gt;Forkwell Press のインタビュー記事&lt;/a&gt; でも「プロダクトを作ること」みたいな言及があったり、前の職場に入社する以前から選択肢の１つとして考えていたことではあったりします。&lt;/p&gt;
-
-&lt;p&gt;今までの活動領域は技術に寄った部分が多かったわけですが、個別の技術要素は Google や Amazon などのマネージドサービスや Datadog のように何かに特化した SaaS もたくさん提供されるようになり、得意なことは得意な会社・人に任せられるような世界になってきていると思っていて、その中の方向性としては、個別の技術を深掘りしていく or 色々とある技術要素を活用して新しい価値を生み出すプロダクトを作るというのがあり、自分がやっていきたいのは後者かなと考えました。&lt;/p&gt;
-
-&lt;p&gt;正直なところ、今までの仕事の延長をもうちょっとやるのか、思い切って新しいチャレンジをするのか、という点に関しては迷う部分もありましたが、&lt;strong&gt;やらないで後悔するよりは、やってみて後悔しよう&lt;/strong&gt; というのが自分の行動原則としてあり、それに則ってジョブチェンジすることに決めました。&lt;/p&gt;
-
-&lt;p&gt;そういった背景があり、社内外問わず色々な選択肢を検討させていただき&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;、最終的には Kaizen Platform に入社することを決めました。入社の決め手としては、Kaizen Platform というプロダクト自体の面白さ、エンジニアを含めてそれに関わっている優秀な方々の存在、そのプロダクトの大事な部分を自分のことを信頼して任せてくれるといった点が大きかったと思います&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;。&lt;/p&gt;
-
-&lt;h2 id=&#34;正しい道を選ぶのでなく-自分が選んだ道を正解にする&#34;&gt;正しい道を選ぶのでなく、自分が選んだ道を正解にする&lt;/h2&gt;
-
-&lt;p&gt;新しい職場で新しい職種というのは中々チャレンジングなわけで、この選択が正しい道なのかは分からないですが、この道を正解にできるかは自分次第というところもあるので、やっていくしかないかなと思ってます。&lt;/p&gt;
-
-&lt;p&gt;また、このようなチャレンジを受け止めて支援してくれている家族、Kaizen Platform の方々、そして暖かく送り出してくださった前職のみなさま、そうした方々に早く活躍してる姿を見せられるようにがんばっていきます。&lt;/p&gt;
-
-&lt;p&gt;今後ともよろしくお願いいたします！&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;四天王TLは遠くからそっと眺めていました
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;前職で相談を聞いてくれた方々、転職ドラフト経由でお会いした方々、本当に感謝です
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:3&#34;&gt;もちろん待遇面のよさなど他の理由もいくつかあります
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
+      <description>&lt;p&gt;長らく Twitter も Blog もご無沙汰になっていた &lt;a href=&#34;https://twitter.com/takus_ja&#34;&gt;@takus&lt;/a&gt; です。&amp;rdquo;&lt;a href=&#34;https://twitter.com/glidenote/status/857816468095815680&#34;&gt;若手インフラ四天王&lt;/a&gt;&amp;rdquo; なのかはさておき&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;、5 月から &lt;a href=&#34;https://www.wantedly.com/companies/kaizenplatform/info&#34;&gt;Kaizen Platform&lt;/a&gt; にジョインしてプロダクトマネージャーとして働き始めました。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -61,100 +27,7 @@
       <pubDate>Wed, 09 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/09/runscope/</guid>
-      <description>
-
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/web_api&#34;&gt;Web API Advent Calendar 2015 - Qiita&lt;/a&gt; の 9 日目の記事です。&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; という Web API 監視サービスについて紹介したいと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
-
-&lt;p&gt;マイクロサービス化によって、システム全体が API を通して処理をするようになっていく中で、各 API が正しく動いているかどうかを監視したいという要求が出てくるかと思います。&lt;/p&gt;
-
-&lt;p&gt;よくある監視として、&lt;code&gt;/health&lt;/code&gt; といったエンドポイントでアプリケーションを死活監視するといったことをしますが、 実際にはもう少し複雑な条件な監視をしたいケースはよくあります。例えば、あるニュースアプリの記事リストを取得する API があったときに、下記のような監視が手軽に行えると、どうなるでしょう？&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;HTTP ステータスは 200 である&lt;/li&gt;
-&lt;li&gt;レスポンスタイムは 200ms 以内である&lt;/li&gt;
-&lt;li&gt;レスポンスの記事リストは、記事が xx 件以上含まれている&lt;/li&gt;
-&lt;li&gt;レスポンスの各記事は、xx 以上のカテゴリから編成される&lt;/li&gt;
-&lt;li&gt;レスポンスの各記事は、直近 xx 時間以内に作られている&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;この API にバグが入って特定のカテゴリの記事しか返さなくなったり、バックエンドのクローラーが止まっていて記事リストが更新されていなかったり、記事のカテゴリ分類のモデルが壊れていたり、という問題が起きたとしても、最終的に生成される API のレスポンスを監視することで問題が起きていることに気づきやすくなる気がしませんか？&lt;/p&gt;
-
-&lt;p&gt;そうした監視を簡単に実現できる SaaS として、&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; というサービスを見つけたので、紹介したいと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;runscope-について&#34;&gt;Runscope について&lt;/h2&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/runscope-overview.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Runscope は Web API の監視サービスで、指定したリクエストヘッダやパラメータをつけて Web API を叩き、その結果に対してバリデーションをかけ、問題があれば通知するような SaaS になります。 Public API については、&lt;a href=&#34;https://www.runscope.com/docs/api-testing/locations#on-premises-agents&#34;&gt;世界 12 ヶ所 のロケーション(ほとんど AWS region)&lt;/a&gt; から監視ができ、Private API についても、&lt;code&gt;radar&lt;/code&gt; と呼ばれるエージェントを AWS であれば VPC 内に立てることで、外には公開してない API も監視することができます。&lt;/p&gt;
-
-&lt;h3 id=&#34;api-リクエストの設定&#34;&gt;API リクエストの設定&lt;/h3&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/runscope-configuration.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;監視の設定画面はこのような形になっていて、初めての人でも簡単に使いこなせるようになるかと思います。API のエンドポイントやリクエストヘッダなどの設定をチョロッとするだけです。たくさん API があって大変な人のために、&lt;a href=&#34;http://blog.runscope.com/posts/new-import-feature-support-for-swagger-postman&#34;&gt;Swagger  の設定をエクスポートして監視定義を作る機能&lt;/a&gt; があるので、もし Swagger を使っていれば楽に設定できます。&lt;/p&gt;
-
-&lt;h3 id=&#34;api-レスポンスのアサーション&#34;&gt;API レスポンスのアサーション&lt;/h3&gt;
-
-&lt;p&gt;レスポンスコード、レスポンスタイム、レスポンスサイズ、レスポンスヘッダ、レスポンスにある文字列が含まれるかなどの単純なアサーションなら、API リクエスト時の設定フォームみたいなところで簡単に設定できます。&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/runscope-assertion.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;背景で説明したようなちょっとリッチなアサーションをする場合、上記の図のように Javascript でアサーションを書けるので、「記事リストに記事が xx 件以上含まれている」とか「各記事は、直近 xx 時間以内に作られている」といったアサーションを記述することができます。&lt;/p&gt;
-
-&lt;h3 id=&#34;各種-saas-との連携&#34;&gt;各種 SaaS との連携&lt;/h3&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/runscope-integration.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;各アサーションの結果は PagerDuty、Datadog、Slack などに通知できるので、production の API に異常があれば PagerDuty でコールする、staging の API に異常があれば Slack に通知する、といった連携が簡単にできます。&lt;/p&gt;
-
-&lt;p&gt;また、もし &lt;a href=&#34;https://www.datadoghq.com/&#34;&gt;Datadog&lt;/a&gt;  を使っていたら、リージョン毎のレスポンスタイムなどが Datadog に記録されていくので、サーバやデータベースのメトリクスと並べて比較ができて、より捗ります。&lt;/p&gt;
-
-&lt;h3 id=&#34;価格&#34;&gt;価格&lt;/h3&gt;
-
-&lt;p&gt;で、気になるお値段ですが、&lt;a href=&#34;https://www.runscope.com/pricing-and-plans&#34;&gt;価格表&lt;/a&gt;はちゃんと公開されていて、Medium プランだと、$199.0 で月に 100 万回のチェックが行えます。毎分これを走らせることを考えると、23 並列なのでちょっと物足りない感じですが、本番系のクリティカルなところは 1 分単位でチェックして、Staging などの API は 1 時間おきとか、API を更新するタイミングで実行するといった形に融通すれば、この回数に収まる会社が多いのではないでしょうか？&lt;/p&gt;
-
-&lt;h3 id=&#34;信頼性&#34;&gt;信頼性&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://status.runscope.com/history&#34;&gt;Runscope Status - Incident History&lt;/a&gt; を見ると、月に一回くらいは軽微な障害が起きている雰囲気ですが、価格を考えるとこのくらいは妥当なラインな気がします。&lt;/p&gt;
-
-&lt;h3 id=&#34;そのほか&#34;&gt;そのほか&lt;/h3&gt;
-
-&lt;p&gt;さらに、まだ試してないですが、ある  API リクエストによって受け取ったレスポンスの一部を変数に入れて、その次のリクエストに利用するといったこともできるみたいです。これを使うことで、サインアップや商品購入みたいな一連の API の動作もテストすることもできそうな気がします。（監視に対する DB の更新をどうハンドルするかといった問題はありますが。)&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;AWS Lambda をなどをうまく使えば独自ソリューションで安価に同じようなこともできそうですが、このくらいの価格で使えるのであれば、とりあえず使い始めてしまうのも全然ありかなと思います。ということで、 Runscope という SaaS についての紹介でした。&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/web_api&#34;&gt;Web API Advent Calendar 2015 - Qiita&lt;/a&gt; の 9 日目の記事です。&lt;a href=&#34;https://www.runscope.com/&#34;&gt;Runscope&lt;/a&gt; という Web API 監視サービスについて紹介したいと思います。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -163,26 +36,9 @@
       <pubDate>Mon, 07 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/07/requests-for-aws-lambda/</guid>
-      <description>
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
 
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/lambda&#34;&gt;今年もやるよ！AWS Lambda縛り Advent Calendar 2015 - Qiita&lt;/a&gt; の 7 日目の記事です。8 日ですけど 7 日目の記事です。つまり書くのを忘れてしまってました。すいません。&lt;/p&gt;
-
-&lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;
-
-&lt;h2 id=&#34;各種リソース使用量の制限&#34;&gt;各種リソース使用量の制限&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/limits.html&#34;&gt;AWS Lambda の制限&lt;/a&gt;に色々と書いてありますが、一時ディスク容量 500 MB 以内、実行時間は最大 300 秒以内というのはちょっと足りない気がします。VPC 対応したら Amazon RDS にも繫げるようになるので活躍の幅は広がりそうだと思っていますが、1 日に 1 回 mysqldump するみたいなことは、この制限によって難しそうな雰囲気がします。&lt;/p&gt;
-
-&lt;h2 id=&#34;スケジュール実行が-5-個しか指定できない&#34;&gt;スケジュール実行が 5 個しか指定できない&lt;/h2&gt;
-
-&lt;p&gt;せっかく登場したスケジュール実行ですが、&lt;a href=&#34;https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/getting-started-scheduled-events.html&#34;&gt;AWS アカウント毎に、最大 5 つまでの指定&lt;/a&gt; しかできないようです。これはそのうち緩和されることを願うばかり&amp;hellip;。&lt;/p&gt;
-
-&lt;h2 id=&#34;関数ごとの同時実行数を制限できない&#34;&gt;関数ごとの同時実行数を制限できない&lt;/h2&gt;
-
-&lt;p&gt;並列に実行してくれるのは Lambda のいいとこではありますが、例えば何かのイベントをトリガーに DB や Redis に書き込みをするようなケースでは、逆に同時実行数を制限したいケースも出てきそうです。工夫すれば色々と方法はありそうですが、スロットリングしたときにイベントを捨てるのか、何回かリトライするのかを含めて、Lambda の設定だけでできると嬉しい気がします。&lt;/p&gt;
-
-&lt;p&gt;ということで、投稿が遅れた上に内容が少なめですが、まずは上記の 3 点が解決されると個人的には嬉しいです。AWS サンタさん、よろしくお願いいたします。&lt;/p&gt;
-</description>
+&lt;p&gt;今年の re:Invent 2015 では &lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/aws-lambda-update-python-vpc-increased-function-duration-scheduling-and-more/&#34;&gt;スケジュール実行、VPC サポート、実行時間の延長&lt;/a&gt; などが発表されて、実用段階が近づきつつある AWS Lambda ですが、汎用ジョブスケジューラーとして使うにはちょっと足りない点について、思いつくことを書いてみようと思います。(もし、それできるよみたいのがあればコッソリ教えてください&amp;hellip;)&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -191,49 +47,9 @@
       <pubDate>Thu, 03 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/03/aws-codedeploy-and-auto-scaling/</guid>
-      <description>
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/aws&#34;&gt;AWS Advent Calendar 2015 - Qiita&lt;/a&gt; の 3 日目の記事です。昨日は &amp;ldquo;&lt;a href=&#34;http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/&#34;&gt;AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ&lt;/a&gt;&amp;rdquo; という記事を書きましたが、それに引き続き &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; ネタです。&lt;/p&gt;
 
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/aws&#34;&gt;AWS Advent Calendar 2015 - Qiita&lt;/a&gt; の 3 日目の記事です。昨日は &amp;ldquo;&lt;a href=&#34;http://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/&#34;&gt;AWS CodeDeploy と CircleCI で Docker コンテナを自動デプロイ&lt;/a&gt;&amp;rdquo; という記事を書きましたが、それに引き続き &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; ネタです。&lt;/p&gt;
-
-&lt;p&gt;Fabric や Capistrano などのデプロイツールを利用していると、AutoScaling によって起動してくるインスタンスへのアプリケーションのデプロイをどうするかというのは悩みの種ですが、 AWS CodeDeploy を利用すると、最後にデプロイに成功したリビジョンを起動時にデプロイしてくれるので非常に助かります。その一方で、 AutoScaling と連携して使うときに気をつけておくべきいいポイントがいくつかあるので、それについて書きます。&lt;/p&gt;
-
-&lt;h2 id=&#34;1-user-data-でのプロビジョニングに注意&#34;&gt;1. User Data でのプロビジョニングに注意&lt;/h2&gt;
-
-&lt;p&gt;プロビジョニングも AWS CodeDeploy の hook スクリプトでやることもできますが、アプリケーションのデプロイとプロビジョニングは分けておきたいケースもあります。その場合は User Data にシェルスクリプトを入れて起動時に実行する形にするかと思いますが、2 つほど気をつけた方がいいことがあります。&lt;/p&gt;
-
-&lt;p&gt;1 つ目は、EC2 のタグが付与されるタイミングです。Auto Scaling Group でタグを設定しておくと、グループ内のインスタンスにタグをつけてくれるので、タグに応じてプロビジョニングするといった運用ができるのですが、AWS CodeDeploy と AutoScaling を組み合わせる場合、デプロイが終わったあとでないとタグが付与されません。このためタグをベースにプロビジョニングを行う場合は User Data の最初で自身にタグをつけるといったことが必要になります。&lt;/p&gt;
-
-&lt;p&gt;2 つ目は CodeDeploy エージェントの起動順序についてです。&amp;rdquo;User Data の実行&amp;rdquo; と &amp;ldquo;CodeDeploy の実行&amp;rdquo; は特に順序制御の仕組みがないので、AMI に CodeDeploy Agent をインストールして自動起動をしていると、プロビジョニングが終わる前にデプロイされて ELB に追加されてしまう可能性があります。このため、プロビジョニングの最後に CodeDeploy エージェントを起動するようにした方がよいです。&lt;/p&gt;
-
-&lt;p&gt;これらを踏まえると User Data は下記のようなスクリプトにしておくのが望ましいかと思います。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/bin/bash
-
-## Role タグと Env タグを付与
-aws ec2 create-tags \
-  --resources $(wget -q -O - http://169.254.169.254/latest/meta-data/instance-id) \
-  --tags Key=Role,Value=api Key=Env,Value=production
-
-## プロビジョニングする (Chef, Puppet, Ansible, Itamae)
-aws s3 sync s3://itamae-repo/ /path/to/itamae-repo/ --delete
-cd /path/to/itamae-repo &amp;amp;&amp;amp; itamae local bootstrap.rb --ohai
-
-## CodeDeploy Agent は最後に起動する
-service codedeploy-agent start
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;2-スケーリング中のデプロイに注意&#34;&gt;2. スケーリング中のデプロイに注意&lt;/h2&gt;
-
-&lt;p&gt;AutoScaling によるスケールアウト中に、新たに CodeDeploy のデプロイメント作成を行うと、スケーリングによって新たに追加されたインスタンスへは、最新のリビジョンがデプロイされずにスキップされることがあります。方法は色々と考えられますが、何らかの排他制御をしておく方が安全な気がします。&lt;/p&gt;
-
-&lt;p&gt;一方、AutoScaling によるスケールインにも注意が必要で、ログ回収などの終了処理のために自前の LifeCycle Hook を &lt;code&gt;autoscaling:EC2_INSTANCE_TERMINATING&lt;/code&gt; などに仕込んでいる場合に、この終了処理をしているインスタンスへデプロイするところでデプロイの進捗が止まってしまうことがあります。こちらも排他制御をするか、終了処理はできるだけすぐ終わるようにしておくとよさそうです。&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;ということで、 AWS CodeDeploy を使う上でいくつか気をつけたい点について説明しました。もうちょっと CodeDeploy さんが賢くやってくれればと思ったりもしますが、&lt;/p&gt;
-
-&lt;p&gt;最後になりますが、紹介したもののいくつかは、&lt;a href=&#34;https://blogs.aws.amazon.com/application-management/post/Tx1NRS217K1YOPJ/Under-the-Hood-AWS-CodeDeploy-and-Auto-Scaling-Integration&#34;&gt;Under the Hood: AWS CodeDeploy and Auto Scaling Integration&lt;/a&gt; という AWS のブログで、Best Practices として書かれていたりもするので、 AWS Code Deploy を使う前には一読をオススメいたします。&lt;/p&gt;
-</description>
+&lt;p&gt;Fabric や Capistrano などのデプロイツールを利用していると、AutoScaling によって起動してくるインスタンスへのアプリケーションのデプロイをどうするかというのは悩みの種ですが、 AWS CodeDeploy を利用すると、最後にデプロイに成功したリビジョンを起動時にデプロイしてくれるので非常に助かります。その一方で、 AutoScaling と連携して使うときに気をつけておくべきいいポイントがいくつかあるので、それについて書きます。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -242,132 +58,13 @@ service codedeploy-agent start
       <pubDate>Wed, 02 Dec 2015 00:00:00 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/12/02/docker-with-circleci-and-codedeploy/</guid>
-      <description>
-
-&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;http://qiita.com/advent-calendar/2015/circleci&#34;&gt;CircleCI Advent Calendar 2015 - Qiita&lt;/a&gt; の 2 日目の記事です。ちなみに 1 日目は @stormcat24 さんによる&amp;rdquo;CircleCIでサクッとビルドチェーンを実現する&amp;rdquo;お話でした。&lt;/p&gt;
 
 &lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/stormcat24/status/671486430548393985&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;というわけで、2 日目は、&lt;a href=&#34;http://blog.takus.me/2015/10/09/livesense-technight/&#34;&gt;SmartNews&amp;rsquo;s Journey into Microservices という LT をしてきました&lt;/a&gt; のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
-
-&lt;p&gt;僕が所属しているスマートニュースという会社では、Java でアプリケーションが書かれていることが多いため、JAR/WAR を持ってきて実行するようなことを CodeDeploy を使った Pull 型デプロイでやっています。一方で、一部のアプリケーションは依存ライブラリの関係などから C++ で書かれているので、 Docker を使うことで C++ のアプリを JAR/WAR と同じデプロイフローに載せて運用できるようにする目的で、この仕組みを用意した形になります。&lt;/p&gt;
-
-&lt;h2 id=&#34;設定方法&#34;&gt;設定方法&lt;/h2&gt;
-
-&lt;p&gt;アプリケーションのリポジトリは下記のような構造にします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ tree . -L 1
-.
-├── Dockerfile
-├── appspec.yml
-├── circle.yml
-├── docker
-├── scripts
-└── src
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;circle-yml&#34;&gt;circle.yml&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;dependencies&lt;/code&gt; セクションで、&lt;code&gt;src&lt;/code&gt; ディレクトリ内のソースコードをコンテナ内でコンパイルして、それを &lt;code&gt;docker save&lt;/code&gt; コマンドで &lt;code&gt;docker&lt;/code&gt; ディレクトリ内に書き出しています。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;deployment&lt;/code&gt; セクションでは &lt;a href=&#34;https://circleci.com/docs/continuous-deployment-with-aws-codedeploy&#34;&gt;CircleCI の CodeDeploy 連携&lt;/a&gt; を利用することで、 新しいコミットが master に push された場合のみ、ビルドしたイメージを S3 にあげて、それを CodeDeploy でデプロイする設定を下記のように書けます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;general:
-  artifacts:
-    - docker
-
-machine:
-  services:
-    - docker
-
-dependencies:
-  override:
-    - docker info
-    - docker build -t yourapp .
-    - docker save yourapp | gzip -c &amp;gt; docker/yourapp_docker_image.tar.gz
-    - docker images
-
-test:
-  override:
-    - echo &#39;Test your application here&#39;
-
-deployment:
-  aws:
-    branch: master
-    codedeploy:
-      photoqual:
-        application_root: /
-        revision_location:
-          revision_type: S3
-          s3_location:
-            bucket: yourbucket
-            key_pattern: yourapp/{SHORT_COMMIT}-{BUILD_NUM}.tar.gz
-        region: ap-northeast-1
-        deployment_group: production
-        deployment_config: CodeDeployDefault.OneAtATime
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;appspec-yml&#34;&gt;appspec.yml&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;files&lt;/code&gt; セクションでは S3 からダウンロードした docker イメージを &lt;code&gt;/tmp&lt;/code&gt; 下に配置するようにしておき、 &lt;code&gt;hooks&lt;/code&gt; セクションの ApplicationStart の中で &lt;code&gt;docker load&lt;/code&gt; コマンドを使って読み込むような形です。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;version: 0.0
-os: linux
-files:
-  - source: docker/yourapp_docker_image.tar.gz
-    destination: /tmp
-hooks:
-  ApplicationStop:
-    - location: scripts/deregister.sh
-      timeout: 60
-    - location: scripts/stop.sh
-      timeout: 60
-  ApplicationStart:
-    - location: scripts/start.sh
-      timeout: 60
-    - location: scripts/register.sh
-      timeout: 60
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;hooks の中で使っている &lt;code&gt;deregister.sh&lt;/code&gt; や &lt;code&gt;register.sh&lt;/code&gt; は AutoScaling Group で状態を standby に変更したり、 ELB 操作を行うためのスクリプトになっていて、 &lt;a href=&#34;https://github.com/awslabs/aws-codedeploy-samples/tree/master/load-balancing/elb&#34;&gt;awslabs/aws-codedeploy-samples&lt;/a&gt; の中のスクリプトを参考に作ります。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;scripts/start.sh&lt;/code&gt; は &lt;code&gt;docker load&lt;/code&gt; で読み込んだイメージを &lt;code&gt;docker run&lt;/code&gt; で走らせるために下記のようにします。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-set -e
-docker load -i /tmp/yourapp_docker_image.tar.gz
-docker run -d --name yourapp -p 8080:80 yourapp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;scripts/stop.sh&lt;/code&gt; は ELB から切り離した後に、 Docker コンテナを削除するような形にしています。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
-set -e
-sleep 5
-docker rm -f yourapp || true
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;slack&#34;&gt;Slack&lt;/h3&gt;
-
-&lt;p&gt;後は Slack 通知を設定しておくと、デプロイの成功や失敗を通知してくれるようになるので、デプロイの失敗を自分でトラッキングする必要がなくなるのでオススメです。&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/slack-circleci.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/jp/ecr/&#34;&gt;Amazon EC2 Container Registry&lt;/a&gt; が出てきたら、そこに Push して運用しようかなと思ってますが、今のところは S3 にコンテナを置いて Pull 型デプロイするのは権限周りを考えるとリーズナブルなのではないかと思っています。&lt;/p&gt;
-</description>
+&lt;p&gt;というわけで、2 日目は、&lt;a href=&#34;http://blog.takus.me/2015/10/09/livesense-technight/&#34;&gt;SmartNews&amp;rsquo;s Journey into Microservices という LT をしてきました&lt;/a&gt; のスライドで少しだけ触れている、Docker コンテナを AWS CodeDeploy + CircleCI でデプロイする話について、簡単に説明しようと思います。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -376,9 +73,7 @@ docker rm -f yourapp || true
       <pubDate>Sun, 08 Nov 2015 17:22:05 +0900</pubDate>
       
       <guid>https://blog.takus.me/2015/11/08/the-numbers-game/</guid>
-      <description>
-
-&lt;p&gt;Amazon のオススメ本に出てきた「 &lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B00R5Z9EU0/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00R5Z9EU0&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;サッカー　データ革命　ロングボールは時代遅れか&lt;/a&gt;
+      <description>&lt;p&gt;Amazon のオススメ本に出てきた「 &lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B00R5Z9EU0/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00R5Z9EU0&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;サッカー　データ革命　ロングボールは時代遅れか&lt;/a&gt;
 」を読んでみました。
 この本は、野球界における「 &lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B006Y44WJG/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B006Y44WJG&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;マネーボール&lt;/a&gt;
 」のように、
@@ -386,56 +81,7 @@ docker rm -f yourapp || true
 例えば、チームが負けているときに交代によって最大の効果を得るためには、
 1 人目の交代を後半 13 分、2 人目を後半 28 分、3 人目を後半 34 分までに行うべきとか、
 極端に能力の高い選手を獲得するのと弱点となる選手の穴を埋める補強はどちらがいいのかとか、
-統計を元にしたサッカーに関する興味深い考察が多かったのですが、その中に 1 つ引っかかる話があったのでそれについて書いてみます。&lt;/p&gt;
-
-&lt;h2 id=&#34;良いディフェンダーはタックルをしない&#34;&gt;良いディフェンダーはタックルをしない&lt;/h2&gt;
-
-&lt;p&gt;本書の中で、
-四半世紀に渡ってマンチェスター・ユナイテッドを率いた名将ファーガソンが、
-オランダ代表のディフェンダー、ヤープ・スタムを放出したことは、
-自らの長いキャリアの中で最大級のミスだったというエピソードがあります。&lt;/p&gt;
-
-&lt;p&gt;ファーガソンは、スタムのスライディングタックル数が減っていることに気づき、
-29 歳のディフェンダーが衰えはじめたと判断して移籍させてしまったのですが、
-経験を重ねて、優れたポジショニングや状況判断が身につき、
-タックルをしなくても済む場面が多くなっている可能性を見逃してしまっていたのです。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;多くの状況で、動物と人間は、何かの欠如や、何かが起こらなかったことによって生じた情報を知覚し、使うことを、驚くほど苦手としている。
-一般的に、出来事が起こらないことは、何かが起こることに比べ、重要性が低く、理解しにくく、記憶しにくいのだ。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;このことは、人が実際に起きたことを記憶し、過度に重視しようとしている心理的な傾向があるためだと、著者は述べています。
-タックルというのは最後の手段であって、望ましいプレーではないのですが、
-人は実際に起きたこと、つまり「タックルで相手を止めたこと」を過大評価しすぎてしまいます。&lt;/p&gt;
-
-&lt;p&gt;この心理的バイアスはゴールキーパーやディフェンダーの評価を低めに見積もり、チームの補強戦略をも狂わせます。
-本書に書かれている事実によると、&lt;strong&gt;統計的には無失点で試合を終えることは、2 点を取ることとほぼ等しい価値があるそうです&lt;/strong&gt;。
-ところが、人は、実際に起きたこと（ゴール）を記憶して、過度に重視しようとしている心理的な傾向のために、
-エースストライカーを獲得するのに大金を使ってしまうわけです。&lt;/p&gt;
-
-&lt;h2 id=&#34;良いエンジニアは障害対応をしない&#34;&gt;良いエンジニアは障害対応をしない&lt;/h2&gt;
-
-&lt;p&gt;この話は、エンジニアリングの世界に置き換えて考えるとどうなるでしょうか？
-フォワード陣をプロダクトチーム、ディフェンダー陣をインフラチームやセキュリティチームに当てはめるとしっくり来そうです。&lt;/p&gt;
-
-&lt;p&gt;プロダクトチームの評価は、インフラチームやセキュリティチームに比べると、非常に分かりやすいです。
-ダウンロード数、アクティブユーザ数、売上など、実際に起きたことを評価に使えます。&lt;/p&gt;
-
-&lt;p&gt;一方で、インフラチームやセキュリティチームの評価はディフェンダーの評価と同じように注意する必要があります。
-ディフェンダーが良い状況判断でタックルをしなくても済ませているように、
-この領域で良いエンジニアは重大な障害が起きる前に良い状況判断で障害の芽を摘み取っているのかもしれないわけです。&lt;/p&gt;
-
-&lt;p&gt;評価する側は、起きなかったことに対する評価にはバイアスがかかっていると認識した上で評価した方がよいのはもちろん、
-評価される側も、バイアスがあることを認識した上で成果をアピールしていく努力は必要なのかなと思いました。
-(誤解がないように書いておくと、今の会社は特別にアピールしなくてもすごく高く評価してくれてる気がします。)&lt;/p&gt;
-
-&lt;h2 id=&#34;とはいえ&#34;&gt;とはいえ&amp;hellip;&lt;/h2&gt;
-
-&lt;p&gt;メッシやクリロナのように、一人でゴールを決めちゃえるストライカーや、
-多少運用しづらくても大ヒットするプロダクトを作っちゃうエンジニアは、
-やっぱり素晴らしいと思いマス。&lt;/p&gt;
-</description>
+統計を元にしたサッカーに関する興味深い考察が多かったのですが、その中に 1 つ引っかかる話があったのでそれについて書いてみます。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -444,271 +90,9 @@ docker rm -f yourapp || true
       <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2015/10/10/datadog-with-fluentd/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://datadoghq.com&#34;&gt;Datadog&lt;/a&gt; というシステム監視 SaaS のネタです。
+      <description>&lt;p&gt;&lt;a href=&#34;https://datadoghq.com&#34;&gt;Datadog&lt;/a&gt; というシステム監視 SaaS のネタです。
 先週の木曜に「Datadog でカスタムメトリクス送るの面倒じゃない？どうやってるの？」とある人に質問されたので、
-自分が知ってる &lt;strong&gt;Dogstatsd&lt;/strong&gt; を使う方法をシェアします。&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/datadog_http_graph.jpg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;これはあるサービスの Nginx のアクセスログとエラーログを、
-Fluentd 経由で Datadog にカスタムメトリクスとして送って可視化した例になっていて、
-それぞれ、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;左上: ステータスコード別の集計グラフ&lt;/li&gt;
-&lt;li&gt;右上: 今日・昨日・一週間前のレスポンスタイムグラフ&lt;/li&gt;
-&lt;li&gt;左下: Fluentd の タグ毎の流量&lt;/li&gt;
-&lt;li&gt;右下: Fluentd の ホスト毎の流量&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といったグラフになっています。このポストではこんなグラフを作る方法を説明します。&lt;/p&gt;
-
-&lt;h2 id=&#34;dogstatsd-とは&#34;&gt;Dogstatsd とは？&lt;/h2&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://blog.takus.me/images/dogstatsd.jpg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;唐突に Dogstatsd というものが出てきますが、カスタムメトリクスを送る場合はコイツを使うのが鉄板です。
-一言で何物か説明すると Datadog 用に拡張された &lt;a href=&#34;https://github.com/etsy/statsd&#34;&gt;StatsD&lt;/a&gt; です。(StatsD をご存知ない方はググってみてください)
-これは Datadog の監視エージェント (dd-agent) に含まれているので、Datadog を使うなら特に設定なしで使えます。
-詳しい説明は &lt;a href=&#34;http://docs.datadoghq.com/guides/dogstatsd/&#34;&gt;公式ドキュメント&lt;/a&gt; を読むといいでしょう。&lt;/p&gt;
-
-&lt;h2 id=&#34;アプリケーションから直接送る方法&#34;&gt;アプリケーションから直接送る方法&lt;/h2&gt;
-
-&lt;p&gt;これは上で紹介したドキュメントにも &amp;ldquo;The easiest way&amp;rdquo; と紹介されているやり方になります。
-&lt;a href=&#34;http://docs.datadoghq.com/libraries/&#34;&gt;Datadog Docs - Libraries&lt;/a&gt; に各言語用のライブラリが紹介されているので、
-これらのライブラリを各アプリケーションに組み込むことで好きなように送ることができます。
-例えば Ruby のアプリケーションで Page View  を集計する場合は、&lt;a href=&#34;https://github.com/DataDog/dogstatsd-ruby&#34;&gt;DataDog/dogstatsd-ruby&lt;/a&gt; を下記のように使うだけです。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;require &#39;statsd&#39;
-# Create a stats instance.
-statsd = Statsd.new(&#39;localhost&#39;, 8125)
-# Increment a counter.
-statsd.increment(&#39;page.views&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;fluentd-を経由して送る方法&#34;&gt;Fluentd を経由して送る方法&lt;/h2&gt;
-
-&lt;p&gt;アプリケーションから直接送る方法は簡単に使える一方で、
-Datadog 以外のシステムにメトリクスやアラートを送るのに別の手段が必要になったり、
-ミドルウェアからカスタムメトリクスを送りたいような場合に手間がかかったりするため、
-自分は、Fluentd を経由する方法を利用することが多いです。&lt;/p&gt;
-
-&lt;p&gt;Fluentd を経由することで監視に介在するコンポーネントが増える懸念はありますが、
-ほとんどの場合は安定して動いてくれるので実用上の問題はなく、
-豊富なプラグインを利用することで、様々なミドルウェアや SaaS との連携が簡単で、
-もし仮に監視システムを入れ替えるようなことがあっても、最小限の労力で入れ替えが可能になったり、
-複数のシステムにメトリクスを送ることも簡単にできます。&lt;/p&gt;
-
-&lt;h3 id=&#34;設定ファイルの例&#34;&gt;設定ファイルの例&lt;/h3&gt;
-
-&lt;p&gt;よくありそうな例として Nginx のアクセスログから、ステータスコード集計とレスポンスタイム統計を取得する方法について説明します。
-全体的な流れとしては、&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.fluentd.org/articles/in_tail&#34;&gt;in_tail&lt;/a&gt; でログを読み込む&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/sonots/fluent-plugin-record-reformer&#34;&gt;out_record_reformer&lt;/a&gt; で好みの形式にレコードを整形する&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ryotarai/fluent-plugin-dogstatsd&#34;&gt;out_dogstatsd&lt;/a&gt; で dogstatsd にメトリクスを送信する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;となります。設定ファイルは下記のように配置するとして、それぞれの設定ファイルについて説明していきます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ tree /etc/td-agent
-/etc/td-agent
-├── conf.d
-│   ├── dogstatsd.conf.erb
-│   └── nginx.conf.erb
-└── td-agent.conf.erb
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;td-agent-conf-erb&#34;&gt;td-agent.conf.erb&lt;/h3&gt;
-
-&lt;p&gt;他の設定ファイルを include するだけです。
-&lt;a href=&#34;https://www.datadoghq.com/blog/monitor-fluentd-datadog/&#34;&gt;拙作の Datadog エージェントによるバッファ監視&lt;/a&gt;を入れると捗るので monitor_agent の設定も入れておきます。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;source&amp;gt;
-  type monitor_agent
-  port 24220
-&amp;lt;/source&amp;gt;
-@include conf.d/nginx.conf
-@include conf.d/dogstatsd.conf
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;conf-d-nginx-conf-erb&#34;&gt;conf.d/nginx.conf.erb&lt;/h3&gt;
-
-&lt;p&gt;本筋とそれますが Fluentd v0.12 から使えるようになった&lt;a href=&#34;http://qiita.com/sonots/items/a01d2233210b7b059967&#34;&gt;ラベル機能&lt;/a&gt;はすごい便利なので、
-未だにタグ書き換えで消耗してる人は、ラベルに置き換えると幸福度が増すと思います。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;## アクセスログを LTSV 形式で取り込む
-&amp;lt;source&amp;gt;
-  type     tail
-  format   ltsv
-  path     /path/to/access.log
-  pos_file /path/to/nginx.access.pos
-  tag      nginx.access
-&amp;lt;/source&amp;gt;
-
-&amp;lt;match nginx.access&amp;gt;
-  type copy
-
-  ## ログ流量監視をするために out_flowcounter にも送る
-  &amp;lt;store&amp;gt;
-    type       flowcounter
-    count_keys *
-    unit       second
-    aggregate  all
-    tag        fluentd.flowcounter.nginx.access
-    @label     @dogstatsd
-  &amp;lt;/store&amp;gt;
-
-  ## @nginx にルーティングする
-  &amp;lt;store&amp;gt;
-    type   relabel
-    @label @nginx
-  &amp;lt;/store&amp;gt;
-&amp;lt;/match&amp;gt;
-
-&amp;lt;label @nginx&amp;gt;
-  ## out_record_reformer で目的に応じてレコードを整形する
-  &amp;lt;match nginx.access&amp;gt;
-    type copy
-    ## ステータスコード集計用
-    &amp;lt;store&amp;gt;
-      type record_reformer
-      renew_record true
-      enable_ruby  true
-      tag dogstatsd.increment
-      &amp;lt;record&amp;gt;
-        type &amp;quot;increment&amp;quot;
-        key  ${%!nginx.status_#{status[0]}xx!}
-        nginx_proto ${forwardedproto}
-        nginx_vhost ${vhost}
-      &amp;lt;/record&amp;gt;
-    &amp;lt;/store&amp;gt;
-    ## レスポンスタイム集計用
-    &amp;lt;store&amp;gt;
-      type record_reformer
-      renew_record true
-      tag dogstatsd.histogram
-      &amp;lt;record&amp;gt;
-        type  &amp;quot;histogram&amp;quot;
-        key   &amp;quot;nginx.response_time&amp;quot;
-        value ${reqtime}
-        nginx_proto ${forwardedproto}
-        nginx_vhost ${vhost}
-      &amp;lt;/record&amp;gt;
-    &amp;lt;/store&amp;gt;
-    ## レスポンスサイズ集計用
-    &amp;lt;store&amp;gt;
-      type record_reformer
-      renew_record true
-      tag dogstatsd.histogram
-      &amp;lt;record&amp;gt;
-        type  &amp;quot;histogram&amp;quot;
-        key   &amp;quot;nginx.response_size&amp;quot;
-        value ${size}
-        nginx_proto ${forwardedproto}
-        nginx_vhost ${vhost}
-      &amp;lt;/record&amp;gt;
-    &amp;lt;/store&amp;gt;
-  &amp;lt;/match&amp;gt;
-
-  ## @dogstatsd にルーティングする
-  &amp;lt;match dogstatsd.**&amp;gt;
-    type   relabel
-    @label @dogstatsd
-  &amp;lt;/match&amp;gt;
-&amp;lt;/label&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;conf-d-dogstatsd-conf&#34;&gt;conf.d/dogstatsd.conf&lt;/h2&gt;
-
-&lt;p&gt;@dogstatsd に投げられたレコードを dogstatsd に投げます。&lt;/p&gt;
-
-&lt;p&gt;out_dogstatsd で &lt;code&gt;flat_tag true&lt;/code&gt; にすると type/key/value 以外のフィールドをメトリクスのタグにしてくれます。
-conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;nginx_vhost&lt;/code&gt; を入れているのはこの機能のためで、
-後で可視化やアラート設定するときにこれらのタグを利用して特定の Virtual Host のみのグラフを表示するといったことが可能になるので、
-用途に応じて設定することをオススメします。&lt;/p&gt;
-
-&lt;p&gt;またこれも本筋とはそれますが、out_dogstatsd で Datadog の Event も送れるので、
-エラーログに特定の文字列が現れたら Datadog に通知するとかも簡単にできて捗る感じです。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;label @dogstatsd&amp;gt;
-
-  ## flowcounter のログも record_reformer で整形する
-  &amp;lt;match fluentd.flowcounter.**&amp;gt;
-    type copy
-    &amp;lt;store&amp;gt;
-      type record_reformer
-      renew_record true
-      tag dogstatsd.count
-      &amp;lt;record&amp;gt;
-        key   &amp;quot;fluentd.flowcounter.bytes&amp;quot;
-        value ${bytes}
-        type  &amp;quot;count&amp;quot;
-        fluentd_source ${tag_suffix[2]}
-      &amp;lt;/record&amp;gt;
-    &amp;lt;/store&amp;gt;
-    &amp;lt;store&amp;gt;
-      type record_reformer
-      renew_record true
-      tag dogstatsd.count
-      &amp;lt;record&amp;gt;
-        key   &amp;quot;fluentd.flowcounter.count&amp;quot;
-        value ${count}
-        type  &amp;quot;count&amp;quot;
-        fluentd_source ${tag_suffix[2]}
-      &amp;lt;/record&amp;gt;
-    &amp;lt;/store&amp;gt;
-  &amp;lt;/match&amp;gt;
-
-  ## String として送られてくることがあるのでキャストしておく
-  &amp;lt;filter dogstatsd.count&amp;gt;
-    type  typecast
-    types value:integer
-  &amp;lt;/filter&amp;gt;
-  &amp;lt;filter dogstatsd.histogram&amp;gt;
-    type  typecast
-    types value:float
-  &amp;lt;/filter&amp;gt;
-
-  ## dogstatsd に送る
-  ## flat_tag true にすると type/key/value 以外のフィールドをメトリクスのタグにしてくれる
-  &amp;lt;match dogstatsd.**&amp;gt;
-    type copy
-    &amp;lt;store&amp;gt;
-      @id  dogstatsd
-      type dogstatsd
-      flat_tag true
-    &amp;lt;/store&amp;gt;
-  &amp;lt;/match&amp;gt;
-
-&amp;lt;/label&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;あとは Datadog でダッシュボードを作るなり、アラートを作るなり好きにしてください。
-ちょっと雑な説明なので分からないことがあれば twitter などで聞いて下さい。&lt;/p&gt;
-
-&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
-
-&lt;p&gt;これも木曜に出てきたのですが「Datadog の情報ってインターネットにあまり出てなくないですか」というのがありました。
-確かに言われてみればそんな気もするので自分の持ってる知見は積極的に出していけたらなと思います。&lt;/p&gt;
-</description>
+自分が知ってる &lt;strong&gt;Dogstatsd&lt;/strong&gt; を使う方法をシェアします。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -717,25 +101,7 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
       <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2015/10/09/livesense-technight/</guid>
-      <description>&lt;p&gt;先週の火曜日の話になりますが &lt;a href=&#34;http://made.livesense.co.jp/blogs/431&#34;&gt;Livesense TechNight&lt;/a&gt; というイベントで &amp;ldquo;SmartNews&amp;rsquo;s Journey into Microservices&amp;rdquo; という LT をしてきました。&lt;/p&gt;
-
-&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/ksF1CkWTC5a4UT&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
-
-
-&lt;p&gt;SmartNews のバックエンドは、ニュース記事のクローラー、その記事の意味を解釈するサービス、サムネイル画像の品質判定をするサービス、記事の閲覧履歴を元に準リアルタイムにランキングを調整するサービス、アプリから記事情報を取得するための API Gateway などの多種多様なサービスで構成される Microservices 的なアプローチを取っていますが、資料の前半でそのあたりに至った背景を説明しつつ、後半は Microservices 化のための施策の一つである &lt;a href=&#34;https://aws.amazon.com/jp/codedeploy/&#34;&gt;AWS CodeDeploy&lt;/a&gt; によるデプロイ自動化について説明しました。&lt;/p&gt;
-
-&lt;p&gt;その他に小ネタとして、Slack へのデプロイ通知とか &lt;a href=&#34;https://github.com/airbnb/interferon&#34;&gt;airbnb/interferon&lt;/a&gt; による Datadog アラートの自動生成とかの話も入れましたが、時間なくてほとんど説明しなかったので、このあたりはどこかで話す機会があったらいいなと思っています。&lt;/p&gt;
-
-&lt;p&gt;また、スライドを公開したところ AWS の Chief Evangelist である Jeff Barr さんが twitter で言及してくれて、今後も定期的に情報発信をしていこうかなというモチベーションが湧いたのも個人的にはよかったです。&lt;/p&gt;
-
-&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;a href=&#34;https://twitter.com/jeffbarr/status/649575575787454464&#34;&gt;&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;ちなみに、デプロイ自動化の話に関しては &lt;a href=&#34;http://developer.smartnews.com/blog/2015/10/01/20151001itamae-autoscaling-codedeploy/&#34;&gt;Itamae / Auto Scaling / CodeDeploy を用いて deploy フローを刷新した話。そして板前を provisioning した話。 | SmartNews 開発者ブログ&lt;/a&gt; にも解説があるので興味がある方がいましたらご覧くださいませ。&lt;/p&gt;
-
-&lt;p&gt;以上です。&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;先週の火曜日の話になりますが &lt;a href=&#34;http://made.livesense.co.jp/blogs/431&#34;&gt;Livesense TechNight&lt;/a&gt; というイベントで &amp;ldquo;SmartNews&amp;rsquo;s Journey into Microservices&amp;rdquo; という LT をしてきました。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -744,56 +110,7 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
       <pubDate>Tue, 15 Sep 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2015/09/15/fluent-plugin-dynamodb-streams/</guid>
-      <description>
-
-&lt;p&gt;Amazon DynamoDB Streams のレコードを Fluentd で扱いたい要件があり、ググっても見当たらなかったのでプラグインを実装してみました。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/takus/fluent-plugin-dynamodb-streams&#34;&gt;takus/fluent-plugin-dynamodb-streams&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;使い方&#34;&gt;使い方&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/takus/fluent-plugin-dynamodb-streams/blob/master/README.md&#34;&gt;README&lt;/a&gt; に書いてある通りですが、こんな設定でお使いいただけます。他の Fluentd のプラグインと組み合わせることで、&lt;a href=&#34;https://aws.amazon.com/jp/blogs/aws/new-logstash-plugin-search-dynamodb-content-using-elasticsearch/&#34;&gt;AWS Official Blog&lt;/a&gt; にある、Logstash + Elasticsearch のような用途にもお使いいただけるのではないかと思います。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;source&amp;gt;
-  type dynamodb_streams
-  stream_arn YOUR_DDB_STREAMS_ARN
-  pos_file /var/lib/fluent/dynamodb_streams_table_name
-  fetch_interval 1
-  fetch_size 100
-&amp;lt;/source&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;また、&lt;a href=&#34;https://github.com/takus/fluent-plugin-dynamodb-streams/blob/master/example/fluentd.conf&#34;&gt;example&lt;/a&gt; にあるように、
-&lt;a href=&#34;https://github.com/winebarrel/fluent-plugin-filter-jq&#34;&gt;fluent-plugin-filter-jq&lt;/a&gt; と組み合わせると特定の条件で、特定のフィールドだけ取得するみたいなこともできるかと思います。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-apache&#34;&gt;&amp;lt;source&amp;gt;
-  type dynamodb_streams
-  tag stream
-  aws_region ddblocal
-  stream_arn &amp;quot;#{ENV[&#39;STREAM_ARN&#39;]}&amp;quot;
-&amp;lt;/source&amp;gt;
-
-# Only pass MODIFY event
-&amp;lt;filter stream&amp;gt;
-  type grep
-  regexp1 event_name MODIFY
-&amp;lt;/filter&amp;gt;
-
-# Only keep new_image
-&amp;lt;filter stream&amp;gt;
-  type jq
-  jq &#39;.dynamodb|{new_image:.new_image}&#39;
-&amp;lt;/filter&amp;gt;
-
-&amp;lt;match stream&amp;gt;
-  type stdout
-&amp;lt;/match&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;そのほか&#34;&gt;そのほか&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://docs.aws.amazon.com/ja_jp/kinesis/latest/dev/developing-consumers-with-kcl.html&#34;&gt;Amazon KCL (Kinesis Client Library)&lt;/a&gt; では、DynamoDB に Checkpoint を保持して耐障害性をあげていたり、ワーカーが並列にレコードを取得することで性能を稼いでいたりしますが、とりあえず自分の要件を満たすのには不要なので実装しておらず、若干不十分なところもありますのでご注意くださいませ。Issue / PR もお待ちしております。&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;Amazon DynamoDB Streams のレコードを Fluentd で扱いたい要件があり、ググっても見当たらなかったのでプラグインを実装してみました。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -802,50 +119,8 @@ conf.d/nginx.conf で、&lt;code&gt;nginx_proto&lt;/code&gt; や &lt;code&gt;ngi
       <pubDate>Thu, 26 Feb 2015 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2015/02/26/dd-sushi/</guid>
-      <description>
-
-&lt;p&gt;こんにちは。スマートニュースの &lt;a href=&#34;https://twitter.com/takus&#34;&gt;@takus&lt;/a&gt; です。
-&lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;24&lt;/sub&gt; に Datadog ユーザの集まり &lt;a href=&#34;https://twitter.com/search?q=%23dd_sushi&#34;&gt;#dd_sushi&lt;/a&gt; というイベントを開催しましたので、この場を借りて簡単にレポートさせていただきます。&lt;/p&gt;
-
-&lt;p&gt;このイベントは &lt;a href=&#34;http://eventdots.jp/event/276987&#34;&gt;Presto Meetup&lt;/a&gt; で、
-Treasure Data の &lt;a href=&#34;https://twitter.com/repeatedly&#34;&gt;@repeatedly&lt;/a&gt; さんと話をしているときに 「スマートニュースの新オフィスに遊びに行きたい！」という話が出て、
-Treasure Data も最近 Datadog を使い始めたというところから、
-せっかくなので Datadog について話をするイベントにしてみようという経緯で、開催に至りました。
-Datadog を代表して &lt;a href=&#34;https://twitter.com/jhotta&#34;&gt;@jhotta&lt;/a&gt; さんに 2015 年のロードマップについて話をしていただいたり、
-Datadog を利用している様々な会社から導入経緯、利用方法、便利ツールなどの発表をしていただき、
-とても有意義な時間になりました。&lt;/p&gt;
-
-&lt;h2 id=&#34;発表資料-発表順&#34;&gt;発表資料(発表順)&lt;/h2&gt;
-
-&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;af1e6ad4f24148c89d5886a3be4b0cc0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;cb1435fedb304357b9f1526f1b9839b0&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;d6dc9de74fa6411f9cf7e7bd5884bf71&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;パブリックなイベントではなかったので公開されてない方もいますが、ひとまず公開されてる資料だけまとめておきます。&lt;/p&gt;
-
-&lt;h2 id=&#34;当日の様子&#34;&gt;当日の様子&lt;/h2&gt;
-
-&lt;p&gt;弊社の &lt;a href=&#34;https://twitter.com/just_do_neet&#34;&gt;@just_do_neet&lt;/a&gt; さんが、
-&lt;a href=&#34;http://togetter.com/li/787532&#34;&gt;togetter のまとめ&lt;/a&gt; を作ってくれたので、
-雰囲気は togetter を見て感じ取ってくださればと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm9.staticflickr.com/8573/16464500850_f826114d3b_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm9.staticflickr.com/8628/16625959386_4513e6f105_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm9.staticflickr.com/8566/16625959426_1e640c61c1_z.jpg&#34;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;ここ 1 年くらいの動向として、海外では &lt;a href=&#34;https://www.datadoghq.com/2015/02/datadog-acquires-mortar-data/&#34;&gt;Datadog が Mortar Data を買収したり&lt;/a&gt;、&lt;a href=&#34;http://techcrunch.com/2014/05/07/google-acquires-cloud-monitoring-service-stackdriver/&#34;&gt;Google が Stackdriver を買収したり&lt;/a&gt; と盛り上がってる一方で、日本でも &lt;a href=&#34;https://mackerel.io&#34;&gt;Mackerel&lt;/a&gt; が流行ってきていて、Monitoring as a Service も注目すべき分野になりつつあるように感じるので、個人的には Monitoring as a Service 現状確認会みたいなイベントもゆくゆくはできたらいいなと思っています。&lt;/p&gt;
-
-&lt;h2 id=&#34;各種イベントへの会場提供について&#34;&gt;各種イベントへの会場提供について&lt;/h2&gt;
-
-&lt;p&gt;最後は告知になりますが、スマートニュースは各種イベントへの会場提供を積極的に行っております。2/21 (土) に開催された &lt;a href=&#34;http://nulab-inc.com/ja/blog/nulab/jissenscala/&#34;&gt;実戦での Scala 〜 6つの事例から知る Scala の勘所〜&lt;/a&gt; や、3/6 (金) に行われる &lt;a href=&#34;http://www.zusaar.com/event/12857005&#34;&gt;第9回若手Webエンジニア交流会&lt;/a&gt; のような 100~200 名程度の大きめの会場から、~10 名規模の会場まで、様々な規模の勉強会への会場提供をお手伝いいたします。ご入用の際はお気軽に &lt;a href=&#34;https://twitter.com/takus&#34;&gt;@takus&lt;/a&gt;、または他の弊社メンバーまで連絡くださいませ。(※ 会場の空き状況やイベントの内容などによって利用可否の判断がございますので、その点はご了承いただければ幸いです。)&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;こんにちは。スマートニュースの &lt;a href=&#34;https://twitter.com/takus&#34;&gt;@takus&lt;/a&gt; です。
+&lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;24&lt;/sub&gt; に Datadog ユーザの集まり &lt;a href=&#34;https://twitter.com/search?q=%23dd_sushi&#34;&gt;#dd_sushi&lt;/a&gt; というイベントを開催しましたので、この場を借りて簡単にレポートさせていただきます。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -854,54 +129,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
       <pubDate>Wed, 12 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2014/11/12/reinvent-2014-day1/</guid>
-      <description>
-
-&lt;p&gt;AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。&lt;code&gt;@suzu_v&lt;/code&gt; 先生が&lt;a href=&#34;http://suzuken.hatenablog.jp/entry/2014/11/13/112730&#34;&gt;メモ書き&lt;/a&gt;をしていたので、自分も簡単ながらメモを残しておこうと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7545/15782079551_8690d5ac80_z.jpg&#34;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;keynote&#34;&gt;Keynote&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2014/11/highly-scalable-mysql-compat-rds-db-engine.html&#34;&gt;Amazon Aurora&lt;/a&gt; は 話を聞く限りはかなりイケイケな様子で早く試したいってのと、やっぱり既存のものをクラウドに持ってくだけじゃ不十分ってことで、クラウドだからできることは何かを真剣に考えていくことでこういうものが生まれてくるのでしょう。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2014/11/new-aws-tools-for-code-management-and-deployment.html&#34;&gt;AWS CodeDeploy, AWS CodeCommit, AWS CodePipeline&lt;/a&gt; あたりは、ちょうどこの辺を整備しようかと思っていたので最高のタイミングで登場してくれて、若干手間がかかるところやってくれるのは非常にありがたいと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://aws.typepad.com/aws_japan/2014/11/track-aws-with-config.html&#34;&gt;AWS Config&lt;/a&gt; は、簡単に説明すると AWS のリソース変更履歴を残してくれるもので、ウワサに聞くと任意のタイミングにロールバックなどもできる（ようになる？）だとかで、Route53 あたりも対応してくれるとかなり助かる感じなのではないかと。&lt;/p&gt;
-
-&lt;h2 id=&#34;how-dropbox-scales-massive-workloads-using-amazon-sqs&#34;&gt;How Dropbox Scales Massive Workloads Using Amazon SQS&lt;/h2&gt;
-
-&lt;p&gt;ファイルの更新をフックに、そのファイルに関する様々な処理を行うフレームワークについて紹介するセッション。Livefill と呼ばれる非同期処理パイプラインをマネージするフレームワークを SQS を利用して実装していて、開発者は YAML で input/output するキューと処理を記述するだけで非同期処理を追加していけるようになっていてクール。当たり前ですが、パイプラインの可視化がかなり重要で、コードのバグや書き込み先の詰まりなどで容易にパイプラインが詰まることがあるので、この手のものには、可視化することで早期に発見して対策していける仕組みが不可欠ですね。&lt;/p&gt;
-
-&lt;h2 id=&#34;infrastructure-as-code&#34;&gt;Infrastructure as Code&lt;/h2&gt;
-
-&lt;p&gt;CloudFormation の話な感じだったが、やっぱりJSON はツラい気がした。&lt;a href=&#34;https://www.simple.com/&#34;&gt;Simple&lt;/a&gt; の事例では Python のスクリプトで JSON 生成してるようだったが、もし使うならなんらかのラッパーが必要そうだなという印象。&lt;/p&gt;
-
-&lt;h2 id=&#34;netflix-s-next-generation-big-data-platform&#34;&gt;Netflix&amp;rsquo;s Next Generation Big Data Platform&lt;/h2&gt;
-
-&lt;p&gt;Netflix がいわゆるビッグデータ周りをどのように運用しているかについて、利用しているツール、それを選んだ理由、既存手法とのベンチマーク比較、導入する上での OSS への貢献などについて話をしていました。やはり 2000 台の EMR クラスタみたいな話があったり、規模感が相変わらずすごいです。&lt;/p&gt;
-
-&lt;p&gt;最近は社内でも &lt;a href=&#34;http://prestodb.io/docs/current/connector/mysql.html&#34;&gt;Presto の MySQL connector&lt;/a&gt; を利用して、S3 に置いてあるログと RDS にあるマスタを JOIN できるような環境が整いつつありますが、Presto や Parquet FF の話は大変参考になりました。(&lt;a href=&#34;http://techblog.netflix.com/2014/10/using-presto-in-our-big-data-platform.html&#34;&gt;関連ブログ&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;話を聞いていて、アプリケーションとストレージをできるだけ分離しておくことはかなり大切で、例えば Netflix のように基本的にデータを S3 に置くような運用していると、Hadoop v1 と v2 を並行稼働みたいなことが実現できて、バージョンアップ対応とか再起動祭りへの対応負荷がかなり下がりそうなので、この辺りは心がけていきたいですね。&lt;/p&gt;
-
-&lt;h2 id=&#34;aws-re-invent-central&#34;&gt;AWS re:Invent Central&lt;/h2&gt;
-
-&lt;p&gt;スポンサー企業がブースを出展していて、普段使ってるサービスの開発者やサポートの人と直接会えたり、色々な企業のノベルティ貰えたりととても楽しい場所でした。&lt;/p&gt;
-
-&lt;h3 id=&#34;datadog&#34;&gt;Datadog&lt;/h3&gt;
-
-&lt;p&gt;1 年半前に &lt;a href=&#34;http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/&#34;&gt;Velocity Conference に参加したとき&lt;/a&gt;は、会場の隅に小さいブースを持ってるだけだったのですが、この 1 年半で大きく成長したようで、入り口近くにかなり大きなブースを構えるようになっていて、3 年くらい前から密かに Datadog ファンをしていた自分としては嬉しかったです。また、ブースで話をしていたら、&amp;rdquo;Are you Takumi? Coincidence!!&amp;rdquo; みたいなノリでいつもメールでサポート対応してくれてる人と出会えて話ができたのもとても有意義でした。&lt;/p&gt;
-
-&lt;p&gt;せっかくなので色々とディスカッションしてましたが、エージェントがメモリ使いすぎ問題について聞いたら、Golang でエージェント書いてるみたいな答えが返ってくるなど、こちらの課題感と同じ感覚をちゃんと持ってくれていて、この辺りが 1 年間ですごく成長してる理由の 1 つなのかなと勝手に思ってました。&lt;/p&gt;
-
-&lt;h3 id=&#34;chef&#34;&gt;Chef&lt;/h3&gt;
-
-&lt;p&gt;「昔、Chef のベストプラクティスで、コミュニティクックブックをラップしろみたいなのがあったけど、あれは本気か」って聞いてみたところ、コミュニティクックブックはテンプレートとして使うのがいいよと中の人が言っていたので、スッキリしました。&lt;/p&gt;
-
-&lt;h2 id=&#34;おわり&#34;&gt;おわり&lt;/h2&gt;
-
-&lt;p&gt;ということで、2 日目がそろそろ終わるタイミングでの 1 日目のメモでした。&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;AWS が主催する re:Invent 2014 に参加するためにラスベガスに来ております。&lt;code&gt;@suzu_v&lt;/code&gt; 先生が&lt;a href=&#34;http://suzuken.hatenablog.jp/entry/2014/11/13/112730&#34;&gt;メモ書き&lt;/a&gt;をしていたので、自分も簡単ながらメモを残しておこうと思います。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -910,18 +138,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2014/08/31/yapc-asia-2014/</guid>
-      <description>&lt;p&gt;ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。&lt;/p&gt;
-
-&lt;p&gt;初めて&lt;a href=&#34;http://yapcasia.org/2014/individual_sponsors/&#34;&gt;個人スポンサー&lt;/a&gt;として参加させていただきましたが、
-10000 円という価格は 2 日間 HUB が貸し切りとか考えたらかなりリーズナブルなんじゃないかという印象です。
-(HUB は個人スポンサーじゃなくても入れますが&amp;hellip;)&lt;/p&gt;
-
-&lt;p&gt;セッションの中で印象に残ったのは @yanbe さんの &amp;ldquo;&lt;a href=&#34;http://yapcasia.org/2014/talk/show/2718b8f2-0331-11e4-9357-07b16aeab6a4&#34;&gt;最近のウェブサービスの検索機能やその先の話&lt;/a&gt;&amp;rdquo; と @tagomoris さんの &amp;ldquo;&lt;a href=&#34;http://yapcasia.org/2014/talk/show/d5049940-ebb2-11e3-bd6d-c7a06aeab6a4&#34;&gt;そんなにビッグでもないデータ処理手法の話&lt;/a&gt;&amp;rdquo; と @typester さんの&amp;rdquo;&lt;a href=&#34;http://yapcasia.org/2014/member/show/02387faa-ebb1-11e3-bd6d-c7a06aeab6a4&#34;&gt;キーノート&lt;/a&gt;&amp;rdquo; あたりなんですが、今回はトーク以上に懇親会とか会場で色んな人と喋ってるのがとても楽しくて刺激になって、いつも以上に楽しめました。&lt;/p&gt;
-
-&lt;p&gt;後は、前職を辞めてから初めての YAPC だったわけですが、会場で会ったときに「いつ戻ってくるの？」、「あれ？スマートなんとかの人だw」みたいなハートフル (?) な絡みをしてくれる人が多くてよかったです(笑)&lt;/p&gt;
-
-&lt;p&gt;運営の皆様、関係者の皆様、本当にありがとうございました。来年はどうなるか分からない感じだったけど、また開催されたらいいなと思ってるので、もし開催されるなら何らかの形で貢献できたらなと思ってます！&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;ブログを書くまでが YAPC::Asia ということなので簡単に書いておきます。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -930,16 +147,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
       <pubDate>Fri, 01 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2014/08/01/join-smartnews/</guid>
-      <description>&lt;p&gt;様々な大物な方々の人事ニュースが飛び交う中で恐縮ですが、スマートニュース株式会社にジョインしたことをこの場を借りて報告させていただきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://blog.takus.me/images/smartnews.png&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;会社は、同じタイミングで入社することになった &lt;code&gt;@komiya_atsushi&lt;/code&gt; さんの&lt;a href=&#34;http://life.k11i.biz/post/93450605375&#34;&gt;入社エントリ&lt;/a&gt;や &lt;a href=&#34;http://blog.kushii.net/archives/1869405.html&#34;&gt;941::blog の行ってきたシリーズ&lt;/a&gt;で詳しく紹介されていますが、働くメンバー、オフィス環境、福利厚生のどれも素晴らしく、よいプロダクトを作ることに集中できる素晴らしい環境が整っている一方で、&lt;a href=&#34;https://www.youtube.com/watch?v=b2ukMvyDlRQ&#34;&gt;すもうとにゅーす&lt;/a&gt; の CM が &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1&lt;/sub&gt; から始まったり、&lt;a href=&#34;https://www.youtube.com/watch?v=b2ukMvyDlRQ&#34;&gt;北米版のリリース&lt;/a&gt;が控えていたり、会社としても非常に面白いフェーズで、今のタイミングでジョインして色々なことに携わっていくことに大きな魅力を感じたことが入社理由の 1 つです。&lt;/p&gt;
-
-&lt;p&gt;まだスマートニュースのアプリをダウンロードしていない方がいましたらぜひこの機会に&lt;a href=&#34;http://www.smartnews.be/&#34;&gt;ダウンロード&lt;/a&gt;していただけたら嬉しいです。アプリへの要望・不満なども気軽にお問い合わせください！&lt;/p&gt;
-
-&lt;p&gt;また、そろそろ現状確認がしたい方もいるようですので、ぜひ気軽にオフィスに遊びに来て頂ければと思います。今後ともよろしくお願いいたします！&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;様々な大物な方々の人事ニュースが飛び交う中で恐縮ですが、スマートニュース株式会社にジョインしたことをこの場を借りて報告させていただきます。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -948,22 +156,7 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
       <pubDate>Thu, 31 Jul 2014 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2014/07/31/got-married-and-leave-dena/</guid>
-      <description>&lt;p&gt;一部の方には既に報告させていただいてますが &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;22&lt;/sub&gt; に入籍しました。&lt;/p&gt;
-
-&lt;p&gt;ちなみに &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;22&lt;/sub&gt; は 天赦日 (てんしゃび) といって、日本の暦の上で最上の吉日とされているそうです (&lt;a href=&#34;https://www.richerie.jp/blog/best-marriage-day-2014/&#34;&gt;参考&lt;/a&gt;)。嫁さんとは高校時代から 8 年以上の付き合いで、すでに何年も一緒に住んでる上に、挙式もこれからのため、あまり実感が湧いてきてない状態ではありますが、よい家庭を築けるように二人でがんばっていきたいと思います。&lt;/p&gt;
-
-&lt;p&gt;さらに、こちらも社内の方や社外の一部の方にしか話をしていませんでしたが、7/31 をもって DeNA を退職します。かなり悩んで、色んな人に相談にのってもらったりしましたが、新たな場所で新たなチャレンジをしたいという思いが強かったため、退職を決めました。&lt;/p&gt;
-
-&lt;p&gt;2 年前に新卒として入社して、希望通りにインフラの部署に配属してもらい、&lt;a href=&#34;http://mbga.jp/&#34;&gt;mobage&lt;/a&gt; や &lt;a href=&#34;https://co-mm.com/&#34;&gt;comm&lt;/a&gt; といった数百万〜数千万ユーザ規模のサービスの運用を中心に、海外向けのソーシャルゲームでは AWS の運用に携わったり、海外の子会社や協力会社の方々への技術コンサルをさせていただいたり、短い在籍期間ながら実に様々な経験をすることができました。&lt;/p&gt;
-
-&lt;p&gt;また、上記のような仕事に加えて、国際学会派遣制度で Velocity Conference に参加させていただいたり (&lt;a href=&#34;http://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/&#34;&gt;Velocity 2013 に参加 &amp;amp; LT してきました！！&lt;/a&gt;)、JAWS DAYS 2014 で話をする機会をいただいたり (&lt;a href=&#34;http://blog.takus.me/2014/03/17/jawsdays-2014/&#34;&gt;#jawsdays の #最強のAWS で「ぜんぶ AWS でやらないワケ」という話をしてきた&lt;/a&gt;)、若手エンジニア交流会をやりたいとお願いしたらお寿司を提供してくれたり(&lt;a href=&#34;http://engineer.dena.jp/2012/07/web.html&#34;&gt;「Web若手エンジニアの会」を開催しました&lt;/a&gt;)、課外活動でも様々な機会を与えてくださった DeNA という会社やお世話になった皆様にはただただ感謝するばかりです。&lt;/p&gt;
-
-&lt;p&gt;じゃあ、なんで辞めるのかというと、今これをやりたいと思うことに会社の外で出会ったことが大きいです。ある人に「もっと経験を積んでからでも遅くない」といった内容のアドバイスをいただいたときに、DeNA という素晴らしい環境の中で得られる経験は間違いなく自分のキャリアにとってプラスになることは間違いないとは思ったものの、そういう機会を逸してでもやってみたいという気持ちが抑えきれず、&lt;a href=&#34;http://anond.hatelabo.jp/20110128031409&#34;&gt;やらないことで後悔する&lt;/a&gt;という最悪な選択をしてしまうのがどうしても嫌だったので、こういう決断に至りました。(たぶんこれは昔の経験が大きく影響してるんですが、長々と自分語りしてもアレなので割愛します)&lt;/p&gt;
-
-&lt;p&gt;人間としてもエンジニアとしてもまだまだ未熟なことは重々承知ですが、この決断がよいものであったと周りの人に思ってもらえるように努力していきたいと思うので、どうぞ温かい目で見守っていただけますと幸いです。今まで本当に本当にありがとうございました。そして、今後ともどうぞよろしくお願いいたします。&lt;/p&gt;
-
-&lt;p&gt;P.S. せっかくの機会なので恒例の&lt;a href=&#34;http://www.amazon.co.jp/gp/registry/wishlist/2D5WTNTDJ7K4A/ref=cm_wl_huc_view&#34;&gt;ウィッシュリスト&lt;/a&gt;も貼らせていただきます。もしお祝いしてあげてもいいよという神様みたいな方がいましたらよろしくお願いいたします:D&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;一部の方には既に報告させていただいてますが &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;22&lt;/sub&gt; に入籍しました。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -972,97 +165,510 @@ Datadog を利用している様々な会社から導入経緯、利用方法、
       <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
       
       <guid>https://blog.takus.me/2014/05/16/travel-to-barcelona/</guid>
-      <description>
-
-&lt;p&gt;去年の「&lt;a href=&#34;http://blog.takus.me/2013/05/11/travel-to-los-angeles/&#34;&gt;Los Angeles に行ってきた&lt;/a&gt;」と
+      <description>&lt;p&gt;去年の「&lt;a href=&#34;http://blog.takus.me/2013/05/11/travel-to-los-angeles/&#34;&gt;Los Angeles に行ってきた&lt;/a&gt;」と
 「&lt;a href=&#34;http://blog.takus.me/2013/05/12/travel-to-new-york/&#34;&gt;New York に行ってきた&lt;/a&gt;」に引き続き、
-今年はバルセロナにいってきましたが、かなりいい場所だったのでカンタンにまとめです。&lt;/p&gt;
+今年はバルセロナにいってきましたが、かなりいい場所だったのでカンタンにまとめです。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>バルセロナでプリペイド SIM カードを購入する</title>
+      <link>https://blog.takus.me/2014/05/05/barcelona-prepaid-sim/</link>
+      <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/05/05/barcelona-prepaid-sim/</guid>
+      <description>&lt;p&gt;休暇でバルセロナに来てるわけですが、今回は現地でプリペイド SIM カードを買ってみたので買い方などをまとめておきます。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>『グーグル ネット覇者の真実』を読んだ</title>
+      <link>https://blog.takus.me/2014/04/16/google-in-the-plex/</link>
+      <pubDate>Wed, 16 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/04/16/google-in-the-plex/</guid>
+      <description>&lt;p&gt;ある人にオススメされたので『&lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B009LFBL4Y/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B009LFBL4Y&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;グーグル ネット覇者の真実&lt;/a&gt;
+』を読んでみたらかなり面白い本でした。検索連動型広告という金脈を見つけて急成長していく序盤のワクワクする感じから、上場して今のような大企業になるにつれていわゆる大企業病が蔓延して色々と悩みが増えてくる様子などがかなり生々しく書かれていて、色々と考えさせられる内容が多かったです。その中でもいくつか印象に残ったことなどをメモっておきます。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>『アルゴリズムが世界を支配する』を読んだ</title>
+      <link>https://blog.takus.me/2014/04/05/automate-this/</link>
+      <pubDate>Sat, 05 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/04/05/automate-this/</guid>
+      <description>&lt;p&gt;&lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B00FMI2XIW/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00FMI2XIW&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;アルゴリズムが世界を支配する&lt;/a&gt;
+を読んでみました。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>『Think Simple』 は学びが多い本でした</title>
+      <link>https://blog.takus.me/2014/03/29/think-simple/</link>
+      <pubDate>Sat, 29 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/03/29/think-simple/</guid>
+      <description>&lt;p&gt;Macbook や iPhone のデザインはシンプルでクールで最高だろ、みたいな本かと思って敬遠してましたが、&lt;a href=&#34;http://blog.kenjiskywalker.org/blog/2013/11/16/think-simple/&#34;&gt;@kenjiskywalker さんのブログ&lt;/a&gt; みて面白そうだったので、&lt;a rel=&#34;nofollow&#34; href=&#34;http://www.amazon.co.jp/gp/product/B008YOHMCS/ref=as_li_tf_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B008YOHMCS&amp;linkCode=as2&amp;tag=takus-22&#34;&gt;Think Simple - アップルを生みだす熱狂的哲学&lt;/a&gt;
+ 読んでみたら、予想以上に学びが多くて、イイ本でした。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>#jawsdays の #最強のAWS で「ぜんぶ AWS でやらないワケ」という話をしてきた</title>
+      <link>https://blog.takus.me/2014/03/17/jawsdays-2014/</link>
+      <pubDate>Mon, 17 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/03/17/jawsdays-2014/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://twitter.com/hirose31&#34;&gt;@hirose31&lt;/a&gt; さん経由で &lt;a href=&#34;https://twitter.com/con_mame&#34;&gt;@con_mame&lt;/a&gt; さんからお話をいただき、
+&lt;a href=&#34;http://jawsdays2014.jaws-ug.jp/&#34;&gt;JAWSDAYS 2014&lt;/a&gt; の「&lt;a href=&#34;http://jawsdays2014.jaws-ug.jp/sessions/track7/&#34;&gt;これで最強AWSに&lt;/a&gt;」というセッションで話をしてきました。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>EC2 に SSH できない時の対処法、あるいは Marketplace の AMI を気軽に選ぶべきでない理由</title>
+      <link>https://blog.takus.me/2014/03/04/ec2-ssh/</link>
+      <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/03/04/ec2-ssh/</guid>
+      <description>&lt;p&gt;前半の部分をまとめようと思ったら、大切なことは全て&lt;a href=&#34;https://gist.github.com/j3tm0t0/5560892&#34;&gt; @j3tm0t0 さんの gist &lt;/a&gt;に書いてあったので、SSH でログインできなくなった時はまず上記の gist に書いてあることを確認するといいと思います。&lt;/p&gt;
 
-&lt;h2 id=&#34;バルセロナがオススメな理由&#34;&gt;バルセロナがオススメな理由&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;カンプノウやサグラダ・ファミリアなど見所が満載&lt;/li&gt;
-&lt;li&gt;魚介を中心として料理がメチャクチャ美味しい&lt;/li&gt;
-&lt;li&gt;比較的どこでも英語が通じて治安も悪くない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;見所満載のバルセロナ&#34;&gt;見所満載のバルセロナ&lt;/h2&gt;
-
-&lt;h3 id=&#34;camp-nou&#34;&gt;Camp Nou&lt;/h3&gt;
-
-&lt;p&gt;バルセロナに行く一番の目的といえば、サクラダファミリアかカンプノウの 2 つは外せないでしょう。
-ということで、ちょうどリーガエスパニョーラのヘタフェ戦がやっていたので見に行きました。
-チケットはクラシコのようなビッグマッチでない限り、&lt;a href=&#34;http://www.fcbarcelona.com/&#34;&gt;FC バルセロナのオフィシャルサイト&lt;/a&gt; の Tickets から辿っていけば好きな席を買えます。
-今回は 2F の最前列の席を取ったために 2 枚で 240 ユーロとかなりお高い感じでしたが、UEFA も認めるスタジアムだけあって、試合観戦のしやすさには衝撃をうけました。
-日本のスタジアムと比べて 2F の席であんなに選手が近くに感じられるスタジアムはないんじゃないかなという印象です。
-観戦チップスとしては、2F がせり出してる分、1F の最後列はかなり見づらそうな雰囲気だったので避けた方がいいのと、
-デイゲームでバックスタンド側にいると直射日光がハンパないので、お金のある人はメインスタンドのがベターなんじゃないかと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm6.staticflickr.com/5481/14193032595_2d08bc2919_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm6.staticflickr.com/5506/14193105695_9885011f88_z.jpg&#34;&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;la-sagrada-família&#34;&gt;La Sagrada Família&lt;/h3&gt;
-
-&lt;p&gt;いつまでも完成しなくて、作ってる間にもメンテナンスが必要なところが Web サービスっぽいことでお馴染みサグラダ・ファミリア教会。
-&lt;a href=&#34;http://www.sagradafamilia.cat/&#34;&gt;公式サイト&lt;/a&gt;で予約して指定時間に行けばすぐに入れるので予約をオススメします。
-夜にいくのもだいぶオススメで 23:00 頃に行きましたがそれなりに人もいて、全く危険な気配はない雰囲気でした。
-それまでにカサ・バトリョやカサ・ミラ、グエル公園などに行って(建築素人から見ても)ガウディの建築物はすごいなと思ってましたが、こいつは別格ですね。
-2026 年くらいに完成予定？みたいなので、完成したらもう一度行きたいなって思ってます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm3.staticflickr.com/2919/14170054646_b549c68842_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7373/14006576829_731498804e_z.jpg&#34;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;museu-nacional-d-art-de-catalunya&#34;&gt;Museu Nacional d&amp;rsquo;Art de Catalunya&lt;/h2&gt;
-
-&lt;p&gt;カンプノウとサグラダ・ファミリアは別格として、もう一個オススメするならカタルーニャ美術館です。
-19:00 くらいからはじまる噴水ショーはもちろん、下から見上げる美術館が偉大なのと、
-上から見る眺めもステキで、新婚旅行でいくとロマンチックな雰囲気を楽しめるんじゃないでしょうかね。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm8.staticflickr.com/7423/14006634478_a8f819be2a_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7451/14193308825_1865eccee3_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7337/14006652870_94f6ed898f_z.jpg&#34;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;メシについて&#34;&gt;メシについて&lt;/h2&gt;
-
-&lt;p&gt;どこに行ってもかなり美味しくて大変満足度が高かったです。
-サングリアも 4 ユーロくらいで大量に飲めたりして、普段あまりお酒飲まないタイプですが、ついつい連日飲んでしまった感じでした。
-とはいえ、レストランいくと 1 食で 10 ~ 15 ユーロかかって、1 ユーロ 145 円くらいだったのでなかなかお金はかかりました。
-印象深かったのは &lt;a href=&#34;https://www.facebook.com/ObsessionsDelRaval&#34;&gt;Obsessions del Raval&lt;/a&gt; というこじんまりしたお店で、Trip Adviser みたらレートがよさそうだったので入ってみたら、バケットにリコッタチーズと生ハムが載った料理が激ウマだったので、かなりオススメです。
-おそらく地元の人しか来ないようなお店のためかメニューがスペイン語とカタルーニャ語しかないですが、
-店のおばちゃんが全メニュー英語で説明してくれたので空いてる時に行けばなんとかなるんじゃないかと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://farm6.staticflickr.com/5593/14190085591_2beb81d2c2_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm3.staticflickr.com/2922/14190822342_4fa1835ca0_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7450/14190085401_7c3e597797_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm6.staticflickr.com/5475/14006706039_ffa4c9ffb7_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7340/14190822002_4c41068bdb_z.jpg&#34;&gt;
-&lt;img src=&#34;https://farm8.staticflickr.com/7368/14193318744_4e8ec0dbae_z.jpg&#34;&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;英語と治安について&#34;&gt;英語と治安について&lt;/h2&gt;
-
-&lt;p&gt;さすがにオリンピックもやるような国際都市は違うなという感じで、あと数年で東京がこのレベルに達するのかというと、
-なかなか厳しそうだなという印象ですが、日本人として日本にいると気づかないだけで、観光名所やその周辺の飯処は英語が通じたりするんでしょうかね？&lt;/p&gt;
-
-&lt;p&gt;またスペインってかなり失業率が高いと聞いていて、治安が悪い印象があったんですが、ほとんど危険を感じるようなことなありませんでした。
-日が沈むのが遅いので、20:00 くらいまでは明るいのに加え、23:00 くらいになっても子連れで歩く家族がいたり、
-お子様を連れて行くのも比較的難易度が低いのではないかなと思います。&lt;/p&gt;
-
-&lt;h2 id=&#34;そのほか&#34;&gt;そのほか&lt;/h2&gt;
-
-&lt;p&gt;モバイル事情もそんなに悪くなく、「&lt;a href=&#34;http://blog.takus.me/2014/05/05/barcelona-prepaid-sim/&#34;&gt;バルセロナでプリペイド SIM カードを購入する&lt;/a&gt;」で紹介したように現地でプリペイド SIM を買ってネットしていましたが、
-下りで 6Mbps くらいは出ていて、地下鉄でも比較的電波が入るところが多く、不便を感じることはありませんでした。
-ただ、そういうインフラがある割に、電車の中でスマホ弄ってる人は圧倒的に少なくて、
-自分がチラチラみる限りは WhatsApp してるか Candy Crush Saga やってるかみたいな雰囲気でした。&lt;/p&gt;
-
-&lt;p&gt;あと、今回かかった旅費ですが、2 人で 7 泊 9 日の日程で 48 万くらいかかってしまいました。
-航空券が 24 万で、宿泊費が 8 万くらいなので、現地でもかなりお金を使ってしまった印象ですが、一人旅じゃないので仕方なしといったところでしょうか。&lt;/p&gt;
-
-&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
-
-&lt;p&gt;今回、紹介した場所はもちろん、その他にもバルセロナ市街を一望できるモンジュイックや、
-ピカソやミロを中心とした美術館、地中海をクルージングできるバルセロナ港など、
-とにかく見所満載でオススメな場所なので、夏休みに行ってみるのはいかがでしょうか？ということで終わりです。&lt;/p&gt;
-</description>
+&lt;p&gt;で、今回の話は、snapshot を取得して 新たに volume を作成して、他のインスタンスにアタッチ＆マウントしてエラーが出ていないかを確認しようとした時に下記のエラーでマウントできなかった件に関するお話です。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Octopress で はてなブックマーク数 を表示する</title>
+      <link>https://blog.takus.me/2014/03/01/octopress-hatena-bookmark/</link>
+      <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/03/01/octopress-hatena-bookmark/</guid>
+      <description>https://github.com/takus/takus.github.com/commit/0cf6d223e4f2512c63652b8bc0147956b9d77722
+こちらからは以上です。</description>
+    </item>
+    
+    <item>
+      <title>Docker/Drone を CentOS 6.5 で動かして Github Enterprise のリポジトリをテストする</title>
+      <link>https://blog.takus.me/2014/02/25/drone-on-centos/</link>
+      <pubDate>Tue, 25 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/02/25/drone-on-centos/</guid>
+      <description>&lt;p&gt;&amp;ldquo;Docker 使うなら Ubuntu だろ jk&amp;rdquo; とか言われそうですが CentOS 6.5 で使いたかったので試してみました。&lt;a href=&#34;https://www.docker.io/gettingstarted/&#34;&gt;Docker の公式サイトには &amp;ldquo;Our recommended installation path is for Ubuntu linux, because we develop Docker on Ubuntu and our installation package will do most of the work for you.&amp;rdquo; と書いてあったり&lt;/a&gt;、&lt;a href=&#34;https://github.com/drone/drone&#34;&gt;Drone は Ubuntu 用のパッケージしかなかったり&lt;/a&gt;するので、深淵な理由がなければ Ubuntu 使うのがいいんじゃないかと思います。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>自分が撮影した写真をドイツの出版社に買ってもらった話</title>
+      <link>https://blog.takus.me/2014/02/25/money/</link>
+      <pubDate>Tue, 25 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/02/25/money/</guid>
+      <description>&lt;p&gt;ある日、ドイツの出版社から Flickr で共有した御柱の写真を買いたいというオファーがあり、色々調べながら無事に取引できたので、取引の流れをまとめておきます。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Immutable Infrastructure Hackathon :D で docker をさわってみた</title>
+      <link>https://blog.takus.me/2014/02/23/docker/</link>
+      <pubDate>Sun, 23 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/02/23/docker/</guid>
+      <description>&lt;p&gt;Immutable Infrastructure Hackathon :D で &lt;a href=&#34;https://www.docker.io/&#34;&gt;Docker&lt;/a&gt; を触ってみただけという、ゆるふわなメモです。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Nagios のアラートに CloudForecast へのリンクをつける</title>
+      <link>https://blog.takus.me/2014/01/28/nagios-resource-graph/</link>
+      <pubDate>Tue, 28 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/01/28/nagios-resource-graph/</guid>
+      <description>&lt;p&gt;といっても、単に &lt;code&gt;Graph: http://cf.example.com/server?address=$HOSTADDRESS$\n&lt;/code&gt; みたいな記述を &lt;code&gt;command.cfg&lt;/code&gt; に追加してあげるだけの話です。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>fluent-plugin-ec2-metadata という fluentd プラグインを書いてみた</title>
+      <link>https://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/</link>
+      <pubDate>Sat, 18 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/01/18/fluent-plugin-ec2-metadata/</guid>
+      <description>&lt;p&gt;前々から fluentd のプラグインを書いてみようと思っていたので、ec2 の metadata をレコードに追加するようなプラグインを書いてみました。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>サイドバックの生存戦略</title>
+      <link>https://blog.takus.me/2014/01/05/survival-strategy/</link>
+      <pubDate>Sun, 05 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2014/01/05/survival-strategy/</guid>
+      <description>&lt;p&gt;単純にサッカーが好きなこともありますが、サッカー選手が書いている本を昔からよく読んでいる方だと思います。サッカー選手とは置かれてる状況が全然違うものの、時には共感することや実践したいと思うようなことに巡り会うことがあります。
+で、正月に Amazon を徘徊してたら、
+内田篤人の「&lt;a href=&#34;http://www.amazon.co.jp/exec/obidos/ASIN/B00E3OZRIO/takus-22/ref=nosim&#34;&gt;僕は自分が見たことしか信じない&lt;/a&gt;」が期間限定セールで 299 円になってたので読んでみたところ、引っかかったことがあったので書いてみたいと思います。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>さよなら 2013 年</title>
+      <link>https://blog.takus.me/2013/12/31/2013-to-2014/</link>
+      <pubDate>Tue, 31 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/12/31/2013-to-2014/</guid>
+      <description>年の瀬ということで今年を振り返ってみます。
+仕事のこと 一言でいうならすごく仕事の守備範囲が広がった一年だった印象です。サッカーで例えると今まで FW 1 本でやってきた選手が、MF もやるようになってプレーの幅が広がったような感じでしょうか(適当)。運用に関わる範囲が増えただけでなく、オペミスしたら甚大な被害が出そうな作業も「任せておけばイイカンジになりますか？」と上司に振られるようになったり、新しい仕組みの導入なども積極的にやらせてもらえる (勝手にやってるともいえるが&amp;hellip;) ようになったり、色々とやらせてもらえるようになった結果としてエンジニアとしての幅が広がったのではないかと思います！
+また、海外拠点の人とやり取りする機会が増えた結果、最近はメールや IRC も半分くらいは英語で書くような生活をするようになったり、日によっては 1 日中英語喋ってるようなときもあり、コミュニケーションという面でも出来ることの幅は広がっていった一年でした。
+一方で、人に教えるようになるにつれて「自分でやった方が早い病」 みたいに思うことがあったり、人に教えるとかマネジメントするとか難しいなとか思いながら、その辺はモヤモヤしながら試行錯誤してた気がします。
+プライベートなこと アメリカ初上陸 &amp;amp; 海外カンファレンス初参戦 5 月にロサンゼルスとニューヨーク、6 月にサンフランシスコと、はじめてアメリカに行きました。特に 6 月のサンフランシスコでは、Velocity Conference という Web operation や Web performance に関するカンファレンスに参加できたのはすごく印象深い思い出です。初めての海外カンファレンスなのに一人で参加したこともあり、最初はぼっち感がハンパなかったですが、初日に LT したことも助けになり、最終的には色んな人と喋れたので、とてもいい経験になりました。
+Velocity 2013 に参加 &amp;amp; LT してきました！！
+若手 Web エンジニア交流会 今年は@クックパッド、@mixi、@Google と 3 回も開催させていだだきました。いつもオフィスを貸していただいたり、準備を手伝ってくれてる皆様、本当にありがとうございます。募集ページに &amp;ldquo;基本的に新卒 3 年目前後のウェブエンジニアを対象としています&amp;rdquo; って書いてあり、そろそろ若手も名乗れなくなってくるので、今後の方向性については模索している段階です(笑
+(個人的) 電子書籍元年 Kindle が上陸したのは 去年な気がしますが、今年になってからすごく読む機会が増えました。都会の家は狭くてたくさん本が置けるような本棚も置けないので物理的な本を買うのはすごく億劫なのと、そもそもいつも Mac やガジェット持ち歩いているために本を入れるスペースがないこともあって、読みたい本があってもスルーする機会が多かったですが、Kindle ストアや O&amp;rsquo;Reilly のオンラインストアで気軽に本を買って読めるようになったのは自分にとっては非常に大きかったです。例えば &amp;ldquo;実践ハイパフォーマンスMySQL&amp;rdquo; という MySQL の名著は 864 ページもあって、人を殺せるくらい分厚い本ですが、電子書籍なら物理的なスペースゼロなので、気軽に買って読むことができました。紙に比べて不便な部分もないわけではないですが、自分にとってはそれ以上のメリットがあるので、来年も電子書籍にはお世話になっていくことでしょう。
+価格面でも、5000 円くらいする &amp;ldquo;実践ハイパフォーマンスMySQL&amp;rdquo; が、オライリーのセール時に買うとわずか $19.</description>
+    </item>
+    
+    <item>
+      <title>innodb_stats_on_metadata に要注意</title>
+      <link>https://blog.takus.me/2013/12/21/innodb-stats-on-metadata/</link>
+      <pubDate>Sat, 21 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/12/21/innodb-stats-on-metadata/</guid>
+      <description>一日に数回 MySQL が詰まるような現象があったので原因を調べたところ、そのサーバだけ innodb_stats_on_metadata=1 になっていたのが原因だったという話デス。
+innodb_stats_on_metadata は、テーブルのメタデータにアクセスしたときに InnoDB の統計情報を更新するかどうかのフラグで、今回問題が起こっていたサーバのようにデータ量が多いサーバなどでは無効にしておく必要があります。例えば、公式ドキュメント の innodb_stats_on_metadata の部分にはこのように書いてあります。
+ この変数が有効 (この変数が作成される前からのデフォルト) な場合、SHOW TABLE STATUS や SHOW INDEX などのメタデータステートメントの実行時や、INFORMATION_SCHEMA テーブル TABLES または STATISTICS へのアクセス時に、InnoDB は統計情報を更新します。(これらの更新は、ANALYZE TABLE で行われるものに似ている。) 無効な場合、InnoDB はそれらの処理中に統計情報を更新しません。この変数を無効にすると、テーブルやインデックスを多数含むスキーマへのアクセス速度が改善される可能性があります。またその場合、InnoDB テーブルが関係するクエリーの実行計画の安定性も高まる可能性があります。
+ 他にも MySQL Performance Blog の Solving INFORMATION_SCHEMA slowness という記事や、High Performance MySQL 3rd Edition の 5 章にもこのオプションに関する言及がありました。
+性能に影響与えるようなオプションであればデフォルトで無効にしておいてくれればいいのにと思っていたら、MySQL 5.6 からデフォルトで無効になるようです。</description>
+    </item>
+    
+    <item>
+      <title>Roadworker - The Best Way to Manage Your Amazon Route53 Records</title>
+      <link>https://blog.takus.me/2013/11/10/roadworker/</link>
+      <pubDate>Sun, 10 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/11/10/roadworker/</guid>
+      <description>What is Roadworker? According to @sgwr_dts (the author of roadworker), Roadworker is a tool to manage Amazon Route53. It defines the state of Route53 using DSL, and updates Route53 according to DSL.
+Why we should avoid using Route53&amp;rsquo;s web console? Definitely, Amazon Route53 is one of the best DNS hosting service.
+ Highly Available  SLA 100%!!  Cost-Effective  basically $0.50 per hosted zone / $0.500 per million queries  Simple  You can start to use within minutes   But Managing Route53 via its web console is slightly painful.</description>
+    </item>
+    
+    <item>
+      <title>daemontools の setuidgid が supplementary groups 権限をつけてくれない件</title>
+      <link>https://blog.takus.me/2013/11/02/daemontools-setuidgid/</link>
+      <pubDate>Sat, 02 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/11/02/daemontools-setuidgid/</guid>
+      <description>『daemontools の setuidgid』や 『補助グループ権限もつけてくれるsetuidgidのようなもの』のところに書いてある話なんですが、daemontools の setuidgid は 補助グループ権限をつけてくれません。
+どういうことかというと、sysadmin グループに属する admin ユーザがいて、下記のような設定になってるときに、
+$ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin),2501(sysadmin) $ ls -l /home/admin/password.pl -rw-r----- 1 root sysadmin 584 Jul 24 22:47 /home/admin/password.pl  下記のような run ファイルで daemon を起動したところ、password.pl が読めないというエラーが出ました。
+#!/bin/sh exec 2&amp;gt;&amp;amp;1 exec setuidgid admin /path/to/oreno_daemon  一見すると、admin ユーザは sysadmin ユーザに含まれているため権限は問題ないように思えて、実際にコンソールから実行すると読むことができるのですが、前述の通り setuidgid は補助グループ権限をつけてくれないため、setuidgid で指定した admin ユーザは下記のようなユーザとみなされ、password.pl を読むことができないというオチでした。
+$ id admin uid=2500(admin) gid=2500(admin) groups=2500(admin)  解決策は、『補助グループ権限もつけてくれるsetuidgidのようなもの』にまとまってますが、この辺りを使うのがいいのではないかと思ってる次第です。</description>
+    </item>
+    
+    <item>
+      <title>#yapcasia と #devopsday と #wakateweb の話</title>
+      <link>https://blog.takus.me/2013/10/18/yapc-devopsday-wakateweb/</link>
+      <pubDate>Fri, 18 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/10/18/yapc-devopsday-wakateweb/</guid>
+      <description>9 月後半から 10 月前半にかけて、#yapcasia と #depopsday と #wakateweb といったイベントに参加させていただきましたが、全くブログに書いてなかったので簡単にまとめておきます。
+YAPC::ASIA 2013 今回の YAPC も最高に楽しい 3 日間でした。会場が日吉ということで、なんだか学生時代に戻ったような気分で参加していた気がします。
+Rubyの良いところ語ってください 〜そんなPerlで大丈夫か？〜 Perl が盛大に dis られる座談会なのかと思っていましたがそんなこともなく、卜部さんのブログに書いてあること が全てな印象でした。流行りと廃りはどんな言語・技術にもあるもので、トレンドの変化が起きた時に移行すべきなのにできないというように、何かに固執する (固執せざるを得なくなる) のがほんとのリスクじゃないでしょうか。
+フルテストも50msで終わらせたい 〜FreakOutの取り組み〜 このトークで印象に残ってるのが、「テストを爆速にした結果、手元でやるより push したほうが速くて、みんな push しだした」という部分で、これによって他の人の開発アクティビティが見えやすくなったとおっしゃっていましたが、まさしくツールで文化を変えていくような例でスバラシイと思いました。組織で何かに取り組もうとしたときに、こうしましょうって決めても、人によって温度感がバラバラでなかなか浸透しなかったりなんてことはよくあるので、気持ちよく走れるレールを敷いてあげて、自然にいい方向に持ってけれるような仕事の仕方をしていけるといいですね！
+さいごに 1 日目の夜に Facebook で @nekokak さんが「喋りたくなったから喋る」みたいなこと書いてるの見て、そういえば去年の YAPC のブログでも次は発表したいとか書いてたなって思い出して、LT に応募して喋ってきました。時間ないから 3 分でと言われて早口で喋ってたのでだいぶ微妙な感じでしたが、やらないよりはやって失敗して学んでいくタイプなので次回にご期待ください&amp;hellip;。
+最後に、今回の YAPC を最後に櫛井さんと牧さんが運営から離れるとのことでしたが、今まで本当にお疲れさまでした。自分が参加させていただいた 3 回の YAPC はどれもほんとに楽しくて、勉強になって、素晴らしい時間を過ごすことができました。この場を借りて、お礼を言わせていただきたいです。本当にありがとうございました！！！
+DevOpsDay Tokyo 2013 Github の @johndbritton さんが Ops for Everyone の中で、「Hubot は全員のターミナルをシェアするみたいな考え方で、オペレーションの可視化を実現している」といったことを言っていて、うんうんって思いながら聞いていました。新しく入ってきた人はそれ見ながらどういう操作すればいいか勉強できるし、いま各々がどういうことやっているかも把握しやすくなりそうだし、Hubot を中心にしたオペレーションはかなりアリなんじゃないかと思います。
+余談ですが、/graph me でグラフ出せる機能を拡張して、/graph me 呼んだときに GrowthForecast(RRD) のグラフを 社内 Gyazo とかにあげて、そのリンクを IRC にポストしてくれたりすると、後で IRC のログ振り返るときにそのとき見てたグラフが表示できて捗りそうかなーとか思いました。(RRD は後で見ようと思っても丸められてしまうので）</description>
+    </item>
+    
+    <item>
+      <title>mysql_secure_installation の中身</title>
+      <link>https://blog.takus.me/2013/08/11/mysql_secure_installation/</link>
+      <pubDate>Sun, 11 Aug 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/08/11/mysql_secure_installation/</guid>
+      <description> 単純に気になったので。5.1 系のソース眺めただけです。
+root ユーザのパスワード文字列を設定 # Set the root password UPDATE mysql.user SET Password=PASSWORD(&#39;password&#39;) WHERE User=&#39;root&#39;;  anonymous ユーザを削除 # Remove anonymous users DELETE FROM mysql.user WHERE User=&#39;&#39;;  リモートからの root ログインを禁止する # Disallow remote root login DELETE FROM mysql.user WHERE User=&#39;root&#39; AND Host NOT IN (&#39;localhost&#39;, &#39;127.0.0.1&#39;, &#39;::1&#39;);  test データベースを削除する # Remove test database DROP DATABASE test; DELETE FROM mysql.db WHERE Db=&#39;test&#39; OR Db=&#39;test\\_%&#39;;  権限を再読み出しする # Reload privilege tables FLUSH PRIVILEGES;`  </description>
+    </item>
+    
+    <item>
+      <title>nagira という Nagios RESTful API が便利そうな件</title>
+      <link>https://blog.takus.me/2013/08/06/nagira-nagios-restful-api/</link>
+      <pubDate>Tue, 06 Aug 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/08/06/nagira-nagios-restful-api/</guid>
+      <description>&lt;p&gt;オートスケーリングみたいなことをしようとする場合、サービスインする前に監視が全て OK になっているかチェック
+しておきたいみたいな需要がありますが、みんな大好き Nagios でこれをやろうとするとちょっと面倒だったりします。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Velocity 2013 に参加 &amp; LT してきました！！</title>
+      <link>https://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/</link>
+      <pubDate>Fri, 21 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/06/21/velocity-conference-santa-clara-2013/</guid>
+      <description>6&amp;frasl;18 ~ 6&amp;frasl;20 に Santa Clara で開催された Velocity 2013 に参加して来ました。Velocity は Web Performance や Web Operation などが主なテーマで、Google、Facebook、Twitter、Amazon、Yahoo! などをはじめとした様々な企業から 1,000 人以上が参加する大規模なカンファレンスです。いまやよく耳にする DevOps というキーワードも 10+ Deploys Per Day: Dev and Ops Cooperation at Flickr という Velocity 2009 のトークで有名になった言葉ですね。
+参加するにあたって、@xaicron さんの 勝手に YAPC::NA 2013 に行ってきた！！ と同じく、会社が渡航費、宿泊費、参加費等の全ての費用を負担してくれました！！新卒入社 2 年目の自分をこのような素晴らしいカンファレンスに快く派遣してくれた DeNA++ です。
+My Ignite Talk &amp;ldquo;不格好経営&amp;rdquo;にも載ってる DeNA の創業者である南場さんの言葉に、&amp;ldquo;これから会社がどんなに長生きしようとも、地球や宇宙の時間のなかでほんの瞬間の存在になる。けれどもなにか宇宙に引っ掻きキズみたいな証を残したい。&amp;rdquo; というものがあります。そこで、Velocity への参加が決まってから、DeNA 社員として何か引っ掻きキズを残せないか考えていたところ、Ignite Velocity という LT のセッションを見つけたので、abstract 書いて応募したところ accept されたので LT してきました。
+ご存知ない方のために紹介しておくと Ignite は 20 枚のスライドを 15 秒づつ流して、5 分間のプレゼンをするというプレゼン形式で、Velocity 2012 では DevOps に関する話 等が Youtube にあがってます。</description>
+    </item>
+    
+    <item>
+      <title>Code Simplicity</title>
+      <link>https://blog.takus.me/2013/06/06/code-simplicity/</link>
+      <pubDate>Thu, 06 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/06/06/code-simplicity/</guid>
+      <description>This blog post reminds me of the book I read six months ago.
+Code Simplicity
+Altough I don&amp;rsquo;t remember the exact sentences in the book, the author wrote something like that:
+ The ultimate goal of software is to help people, and great software is a software that will continue to help people. However, continuing to help people is really difficult because the environment around our software is going to change.</description>
+    </item>
+    
+    <item>
+      <title>rsync が &#39;ssh_exchange_identification: Connection closed by remote host&#39; で失敗するときの対処法</title>
+      <link>https://blog.takus.me/2013/06/03/rsync-ssh-maxstartups/</link>
+      <pubDate>Mon, 03 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/06/03/rsync-ssh-maxstartups/</guid>
+      <description>rsync したときに下記のようなエラーでファイル転送が失敗する事案があったので、 /etc/sshd_config の LogLevel を DEBUG 2 に変更して再実行したところ、drop connection されていました。
+$ deploy-tool . . . err:host0001:65280 ssh_exchange_identification: Connection closed by remote host rsync: connection unexpectedly closed (0 bytes received so far) [sender] rsync error: unexplained error (code 255) at io.c(600) [sender=3.0.6]  $ sudo tail -f /var/log/secure | grep &#39;drop connection&#39; Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10 Jun 1 02:20:40 host0001 sshd[21747]: debug1: drop connection #10  man を見ると /etc/sshd_config の MaxStartUps が作用してそうだったので MaxStartups を大きな値にして回避しました。 外部から攻撃される可能性がないサーバなら大きな値にしておくとよさそうです。</description>
+    </item>
+    
+    <item>
+      <title>CentOS 6 に /dev/sdf としてアタッチした EBS ボリュームが /dev/xvdj として認識される件</title>
+      <link>https://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj/</link>
+      <pubDate>Thu, 23 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/05/23/ebs-dev-sdf-dev-xvdj/</guid>
+      <description>インスタンスガチャなのかなんなのか、同じくらいの負荷与えてる EBS ボリュームのうち 1 台だけ性能劣化することがあって、ひとまず EC2 の問題なのか EBS の問題なのか切り分けるために EBS ボリュームを作って、AWS のマネジメントコンソールから CentOS 6 のサーバに /dev/sdf としてアタッチしたのに一向にデバイス認識されず、おかしいなと思って調べていたらアタッチしたボリュームと同じサイズのデバイスがあって、ググったら RHEL 6 や CentOS 6 でデバイス名がズレてしまうバグが存在するというオチでした。
+# fdisk -l . . . Disk /dev/xvdj: 429.5 GB, 429496729600 bytes 255 heads, 63 sectors/track, 52216 cylinders Units = cylinders of 16065 * 512 = 8225280 bytes Sector size (logical/physical): 512 bytes / 512 bytes I/O size (minimum/optimal): 512 bytes / 512 bytes Disk identifier: 0x00000000 Disk /dev/xvdj doesn&#39;t contain a valid partition table  参考リンク  CentOS6.</description>
+    </item>
+    
+    <item>
+      <title>New York に行ってきた</title>
+      <link>https://blog.takus.me/2013/05/12/travel-to-new-york/</link>
+      <pubDate>Sun, 12 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/05/12/travel-to-new-york/</guid>
+      <description>前回の&amp;rdquo;Los Angeles に行ってきた&amp;ldquo;の続きです。New York 編。
+Tips Unlimited Ride MetroCard
+市内であれば、ほとんどの場所に地下鉄で行けるので地下鉄の乗り放題パスを買うと捗ります。7 日間乗り放題で $30 と無駄に期間が長くて使い切れないですが、すぐに元取れます。
+NEW YORK CityPASS
+とりあえず初めて NY 行く人はこれを買っておくといいと思います。エンパイアステートビル展望台、メトロポリタン美術館、アメリカ自然史博物館、トップオブザロック展望台、近代美術館、自由の女神周辺のフェリー観光ができて、$106 は個別にチケットを買うよりはかなりお得です。旅行行く前にオンラインで支払って、バーコード入りのチケットを印刷して持って行けば OK です。
+Statue of Liverty フェリーで自由の女神からブルックリン橋まで Manhattan 島の南部を全体的に回ってくれてだいぶ満足できるツアーになってます。
+911 Memorial すでに One World Trade Center と呼ばれる新しいビルが天空高くそびえ立っていましたが、こんなビルが跡形もなく崩れ去るなんてとても想像できないわけで、自分の中での 9&amp;frasl;11 に対する見方が変わって、遠い国の出来事から急にすごくリアルな出来事に思えるようになりました。
+Brooklyn Bridge 全長 2km くらいなので歩いて渡ると楽しめます。Manhattan 側から歩いていき、Brooklyn 側の公園でアイスを食べながら一休みして地下鉄で帰りました。
+Yankee Stadium せっかくなのでメジャーリーグも見てきました。オンラインでチケット買ってくこともできますが、人気カードでない限り当日スタジアム行って買えば問題ないです。$50 くらいのチケット買いましたが、球場内の移動が割と自由で写真のように内野席の後ろとか入れて立ち見できるので、一番安いチケット買って歩き回るのがベストなんじゃないかと思います。
+Top of The Rock &amp;amp; Empire State Buinding New York の町を一望できる場所として、この 2 箇所がありますが、夜景を楽しむなら Empire State Building のライトアップを見れる Top of The Rock に行くのが正解です。</description>
+    </item>
+    
+    <item>
+      <title>Provisioning Frameworks Casual Talks vol.1 に行ってきた #pfcasual</title>
+      <link>https://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/</link>
+      <pubDate>Sun, 12 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/05/12/provisioning-frameworks-casual-talks-001/</guid>
+      <description>金曜日にヒカリエで開催された Provisioning Frameworks Casual Talks vol.1 に参加 &amp;amp; 少しだけお手伝いしてきたのでまとめ。@zabbiozabbio さんと一緒に 27F のエレベーターホールで待ち受けていたのが自分です。
+serverspec の話 chef + puppet の話というよりも chef 使うにしても、puppet 使うにしても、(Touryo 使うにしても)、serverspec 使って構成管理ツールとは別にサーバの構成をテストすべきだよねという話が印象に残っていて、どの構成管理ツール使うか検討している間に、まずは serverspec でテストするようにしておくのがよさそうかなと思いました。
+  で、attribute(config) の管理方法の話   serverspec 自体は出たときからよさそうだなとは思っていたものの、attribute に入れた内容が設定ファイルに反映されているかみたいなテストをしようとすると上記のような疑問にぶち当たって、serverspec が構成管理ツールに依存するのイケてないなーとか思っていましたが、家に帰って twitter 眺めてたら @riywo 先生がボソっといいことつぶやいてました。
+  弊社でいえば、たとえば admintool 的なツールが attribute 持っていて、provision と test の両方から参照できるみたいになっていれば、なんとなく上記の問題も解決できそうで、chef-solo -j URL で URL 指定して json 取ってこれると言ってた気がするので、なんかこの辺りうまくやれるツールがあるとよさそうですね:D
+2013/05/12 23:34 追記 serverspec でホスト固有の属性値を扱う方法 で参考になりそうな仕組みが提案されてたので参考にしたいところです。
+自動更新の話 @sonots さんのブログ にまとまってる話。自分は自動更新は怖い派ですが、実現できないか考える余地は色々とありそうだと思いました。話に出ていた staging はもちろん @sethvargo 先生がお話していた、environments を使えば production の一部のサーバだけ更新するみたいなこともできそうで、staging → production の一部 →production 全部 (or ブルー・グルーン・デプロイで新しいクラスタにだけ) といったように反映しつつテスト回せば、取り返しがつかなくなる前に気づくことも可能なのかもしれないとか思いました。(話聞いた印象なだけで裏取ったりはしてないですが&amp;hellip;）</description>
+    </item>
+    
+    <item>
+      <title>Los Angeles に行ってきた</title>
+      <link>https://blog.takus.me/2013/05/11/travel-to-los-angeles/</link>
+      <pubDate>Sat, 11 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/05/11/travel-to-los-angeles/</guid>
+      <description>帰ってきてから 1 週間ぐらいたってしまいましたが、ゴールデンウィークを利用して Los Angeles と New York に行ってきたのでまとめ。ひとまず Los Angeles 編。
+We Need a Car ヨーロッパ旅行の感覚で現地に着いてから色々考えようとか思ってましたが、公共交通機関で移動すると時間かかりすぎなのが非常に辛い町でした。ロサンゼルス国際空港の近くのホテルに宿泊していましたが、ビーチで有名な Santa Monica まではバスで 40 分程度、Hollywood までは 1 時間はかかってしまいます。逆にタクシーだとそれぞれ 30 分程度で着いてしまうので、レンタカー借りて移動するのが正解でした&amp;hellip;。
+Disney Resort California の Disney Resort は LAX から南に車で 40 分ほどの Anaheim にあります。LAX からは有料のシャトルバスが出ていて、&amp;rdquo;Long Distance Vans&amp;rdquo; と書かれた緑色の案内版の下で待ってると &amp;ldquo;Disney Resort&amp;rdquo; と書かれたバスが通るので合図して停車してもらって乗ります。片道 $20 程度。「帰りも乗ってくか？」と聞かれたので、「09:00 からショーがあってそれを見たいから 10:00 に迎えに来てくれて、ホテルまで送ってくれるなら」と交渉したところ、「ノープロブレム」とのことだったのでお願いしました。
+日本におけるディズニーランドとディズニーシーのように、Disney Park と Disney California Park の 2 つがあったので、1 日でどちらにも出入りが自由な Park Hopper Ticket を $125 で購入。日本のディズニーランドが 6200 円なので大体同じくらいの感覚なんじゃないかと思います。</description>
+    </item>
+    
+    <item>
+      <title>crontab で date コマンド使う場合の注意</title>
+      <link>https://blog.takus.me/2013/05/01/crontab-date/</link>
+      <pubDate>Wed, 01 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/05/01/crontab-date/</guid>
+      <description>crontab で定期的にを実行したときに出力されたものをログとして書き出すときに、ファイル名のサフィックスとして日時をつけることでログローテーションさせたいというケースはあると思います。ですが、以下のような記述はうまくいきません。
+0 0 * * * /home/takus/bin/oreno_script.pl &amp;gt; /tmp/log.`date -d &#39;1 days ago&#39; +%Y%m%d` 2&amp;gt;&amp;amp;1  これは % が crontab では特別な意味を持つ文字であるのが原因で、下記のように % はバックスラッシュでエスケープしておく必要があります。
+0 0 * * * /home/takus/bin/oreno_script.pl &amp;gt; /tmp/log.`date -d &#39;1 days ago&#39; +\%Y\%m\%d` 2&amp;gt;&amp;amp;1  crontab は man を読んで正しく使いましょう。
+参考 詳細は man 5 crontab で確認できます。</description>
+    </item>
+    
+    <item>
+      <title>ブラウザから tail -f log | grep keyword できるツール supergrep</title>
+      <link>https://blog.takus.me/2013/04/25/supergrep/</link>
+      <pubDate>Thu, 25 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/04/25/supergrep/</guid>
+      <description>エンジニアならサーバにログインしてコマンド打てば済む話ですが、世の中には非エンジニアでも tail -f log | grep keyword みたいにログを見れるようにしたいという案件がたまにあるみたいです。自分で書いてもよかったのですが、supergrep というツールがあったので使ってみました。
+ Is It A Bird? Is It A Plane? No, It’s Supergrep! esty/supergrep  インストール supergrep は node.js で書かれているので、node のインストールから。node の作法はよく知らないので適当です。
+git clone https://github.com/creationix/nvm.git ~/nvm . ~/nvm/nvm.sh nvm install v0.10.5 nvm alias default v0.10.5 node -v  続いて supergrep をインストールして起動します。これだけ。起動時に &amp;lsquo;Warning: express.createServer() is deprecated, express&amp;rsquo; が出るのはご愛敬。
+git clone https://github.com/etsy/supergrep.git cd supergrep npm install ./runlocal  http://hostname:3000 にブラウザからアクセスするとログが見れる状態になりました。
+設定 デフォルトでは /var/log/httpd/{info.log,php.log} を見るようになっていますが、他のログもみたい場合は localConfig.</description>
+    </item>
+    
+    <item>
+      <title>CentOS に Riak をインストール &amp; Data::Riak::Fast で操作してみる</title>
+      <link>https://blog.takus.me/2013/03/28/riak-install/</link>
+      <pubDate>Thu, 28 Mar 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/03/28/riak-install/</guid>
+      <description>最近、社内 TechTalk で何か話せという依頼があり、ちょうど Riak Serious Talk もあるので、Riak についてアーキテクチャから利用例まで調べて話してみました。その課程で Riak のインストール等したので適当にブログっておきます。
+インストール Vagrantbox.es から CentOS 6.4 x86_64 Minimal を持ってきてテストサーバを用意。起動後にひとまず iptables だけ停止。Vagrant の操作などは割愛します。
+依存パッケージ導入 Erlang をインストールするのに必要なパッケージをインストールします。
+sudo yum groupinstall “Development tools” sudo yum install git sudo yum install libwx unixODBC.x86_64 unixODBC-devel.x86_6 wxBase.x86_64 wxGTK.x86_64 wxGTK-gl wget https://elearning.erlang-solutions.com/couchdb//rbingen_adapter//package_R15B01_centos664_1333462308/esl-erlang-R15B01-1.x86_64.rpm sudo rpm -ivh esl-erlang-R15B01-1.x86_64.rpm  Riak をインストール とりあえず make まで。ソースは Basho のサイトから入手できます。
+wget http://downloads.basho.com.s3-website-us-east-1.amazonaws.com/riak/1.3/1.3.0/riak-1.3.0.tar.gz tar zxvf riak-1.3.0.tar.gz cd riak-1.3.0 make devrel  Riak を起動してみる 4 ノードを起動。ulimit しているのはなしだと警告が出るので一応。</description>
+    </item>
+    
+    <item>
+      <title>Test::Fake::HTTPD で Web API クライアントをテスト</title>
+      <link>https://blog.takus.me/2013/03/22/test-web-api-client/</link>
+      <pubDate>Fri, 22 Mar 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/03/22/test-web-api-client/</guid>
+      <description>ある社内向け Web API のクライアントのテスト書く時にどうすべきかなと小一時間調べてみて、Test::Fake::HTTPD がよさそうなので使ってみたメモ。思うがままにレスポンス返せるし、実際に本番サーバ叩いたりしなくてもいいし、オフラインでもテストできて、だいぶテストが捗りそうです。
+#!/usr/bin/env perl use warnings; use strict; use Test::More; use Test::Fake::HTTPD; use JSON::XS; use Furl::HTTP; subtest api =&amp;gt; sub { my $response = { &#39;/1/statuses/user_timeline/takus.json?count=1&#39; =&amp;gt; [ { &#39;created_at&#39; =&amp;gt; &#39;Thu Mar 21 07:22:25 +0000 2013&#39;, &#39;text&#39; =&amp;gt; &#39;Hello, world&#39;, &#39;user&#39; =&amp;gt; { &#39;screen_name&#39; =&amp;gt; &#39;takus&#39;, &#39;lang&#39; =&amp;gt; &#39;en&#39;, &#39;location&#39; =&amp;gt; &#39;Tokyo, Japan&#39;, }, &#39;id&#39; =&amp;gt; &#39;314638108048097280&#39;, } ], }; my $httpd = run_http_server { my $req = shift; if ( $response-&amp;gt;{ $req-&amp;gt;uri } ) { return HTTP::Response-&amp;gt;new( 200, &#39;ok&#39;, [ &#39;Content-Type&#39; =&amp;gt; &#39;text/html&#39; ], encode_json $response-&amp;gt;{ $req-&amp;gt;uri } ); } return HTTP::Response-&amp;gt;new( 404, $req-&amp;gt;uri .</description>
+    </item>
+    
+    <item>
+      <title>2012 年を振り返って</title>
+      <link>https://blog.takus.me/2013/01/01/2012-to-2013/</link>
+      <pubDate>Tue, 01 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2013/01/01/2012-to-2013/</guid>
+      <description>あけましておめでとうございます。年越し前に書こうと思っていましたが、あけおめ砲に備えて色々準備してるうちにいつの間にか年越ししてしまっていたので、今さらながら 2012 年を振り返ってみます。
+卒業 今となっては大学院を卒業したのが遠い昔のように思いますが、2012 年の出来事だったんですよね。当時、インフラを担当してた My365 が順調に伸びつつあったので、成長に合わせてスケールするように色々と試行錯誤しながら、修士論文＋国際会議用の論文を書いていたので、両方とも中途半端な感じになってしまったことは自分としては非常に残念でした。結果的に My365 はその頃のシステムをベースに今も動き続けいて、論文は Short Paper として IEEE CLOUD 2012 という会議に採録されたわけで、全て失敗したというわけでもないのですが、振り返ってみればどちらよくできる部分があったんじゃなかという反省ばかりです&amp;hellip;。
+就職 仕事は無事に希望通りの部署に配属されて、大規模 Web サービスのインフラの面倒をみるようなお仕事をしています。システムの規模もそれに関わる人の数も、今まで少人数で見てたサービスとは桁違いで、最初は戸惑う部分も多かったですが、10 ヶ月も経つとできることも増えてきて、毎日楽しく働けています。
+課外活動 仕事以外でも モヒカン揃いの Monitoring casual #1 で発表 してみたり、@shun0102 と&amp;ldquo;Web若手エンジニアの会&amp;rdquo; を立ち上げたり、YAPC::ASIA 2012 のボランティア をやってみたりと振り返れば色々なイベントに参加した 1 年でした。
+特に、カジュアルに始めた &amp;ldquo;Web若手エンジニアの会&amp;rdquo; が気がつけば 3 回もやった上に、前回は 50 人規模になるような大きなイベントになってビックリしていますが、オモシロイ人もたくさん来てくれるようになっていいイベントになりつつあり、会場提供してくれてる会社の方々や、興味深い発表をしてくれるスピーカーの方々にはただただ感謝するばかりです。
+プライベート 2012 年はヨーロッパ、グアム、台北など色々な所に旅行に行きました。中でも 3 月のクロアチア〜スロベニア〜イタリア 1 人旅 は、ほんとに一日一日が刺激的で「*旅は麻薬みたいなものだ*」と言ってる人の気持ちがようやく分かったような気がします。
+まとめ 技術に関するエントリが出てこないこの振り返りエントリに象徴されるように、アウトプットが少ないのは大きな反省点で、2013 年はもっとアウトプットを意識しながら過ごしていきたいと思っています。
+というわけで、今年もよろしくお願いいたします。</description>
+    </item>
+    
+    <item>
+      <title>Macbook で外部ディスプレイ接続時にウィンドウをイイカンジに並べる</title>
+      <link>https://blog.takus.me/2012/12/20/mac-forget-me-not/</link>
+      <pubDate>Thu, 20 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2012/12/20/mac-forget-me-not/</guid>
+      <description> By Theis Kofoed Hjorth
+Macbook で外部ディスプレイを利用してる人なら「このウィンドウはここに配置しておきたい！」みたいなのがあるかと思います。自分の場合は、MacbookAir のディスプレイにブラウザと Twitter、メインディスプレイに作業用のターミナル、サブディスプレイにサービスのダッシュボードやエラーログを tail するターミナルなんかを並べていて、各ウィンドウごとにポジションを決めて使っています。
+しかし、Mac では会議などのために外部ディスプレイを外してしまうとせっかく好みの位置に並べたウィンドウが元の位置に戻ってしまいます。で、また会議から戻ってくると、自分好みの位置にチマチマ並べ直すわけですが、毎回こんな作業やるなんて面倒ですよね。
+そこで自分は forget-me-not というソフトを使っています。このアプリは外部ディスプレイを接続した時のウィンドウ配置を記憶しておいてくれて、再接続時に自動で復元してくれるので、上にあげたような悩みをズバリ解決してくれてます。おまけに無料です！
+自分は forget-me-not で十分なのでほかのソフトは調べてませんが、他にも有料のより高機能なソフトがあったり、@hirose31 さんのように AppleScript で好みの配置に並べるという手もあるようなので、参考までに並べておきます。自分も興味あるので、使ってみた感想とかあれば教えていただけると嬉しいです。
+追記 2012/12/21 モロ被りなタイミングで @kenjiskywalker さんが Stay の紹介記事を書いてらっしゃったので参考リンクに追加させていただきます。forget-me-not が環境によってはうまく動かなかったりすることもあるみたいなので、そんな方は Stay を試してみるといいかもしれません。買ってみようと思った方はぜひあちらのブログのリンクを踏んで買っていただければと思います！
+参考リンク  forget-me-not StayさえあればもうMBAをサブディスプレイに繋げるのは怖くない - kenjiskywalker no memo ウィンドウをキッチリカッチリ配置したい - (ひ)メモ breeze stay divvy  </description>
+    </item>
+    
+    <item>
+      <title>YAPC::ASIA 2012 に行ってきた</title>
+      <link>https://blog.takus.me/2012/10/06/32974165602/</link>
+      <pubDate>Sat, 06 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2012/10/06/32974165602/</guid>
+      <description>ブログを書くまでが YAPC ということで，遅ればせながらブログを書こうと思います．ブログが数ヶ月ぶりの更新ですね…orz
+事実を積み上げて判断。古典的でも地道にやる @myfinder さんの「平均レスポンスタイム50msをPerlで捌く中規模サービスの実装/運用」の中で，キーワード的に何度も出てきていたこの言葉がすごく印象に残りました．常に正しい判断をするために地道に努力している姿勢は見習うべきものだなーと感心して，自分もそういうエンジニアでありたいなと改めて思いました．
+ボランティアスタッフとして 今回はボランティアスタッフとして YAPC に携わらせていただきました。平日じゃありえないくらい早起きしたり，一般で参加するよりは大変でしたが，このような素晴らしいカンファレンスにスタッフとして携われたのはすごくいい経験になったと思います．また，去年の YAPC で最後にスタッフが壇上に上がっていて羨ましいなと思ったのですが，今年は自分がそこにいられてすごく嬉しかったです．
+反省 去年の感想エントリに「何か発表したいなー」と書いておきながら，何も喋らなかったのが残念すぎでした．自分のくだらない話してもしょうがないなーという思いがどっかにありましたが，talk を聞いていると同じようなことやってたり考えてる人は結構いるわけで，とりあえず「my365 インフラ成長の軌跡と反省点」みたいな内容で喋ってみればよかった･･･．ひとまず今後は申し込みドリブンでネタ考えて発表するみたいなことをもっとやっていかないといけないと思いました．
+まとめ というわけで，スタッフのみなさん，スピーカーのみなさん，参加者のみなさんお疲れ様でした．また来年もよろしくお願いいたします．</description>
+    </item>
+    
+    <item>
+      <title>会社のブログを書きました</title>
+      <link>https://blog.takus.me/2012/07/24/28199469096/</link>
+      <pubDate>Tue, 24 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2012/07/24/28199469096/</guid>
+      <description>「Web若手エンジニアの会」を開催しました - Technology of DeNA</description>
+    </item>
+    
+    <item>
+      <title>Monitoring Casual Talk に行ってきた</title>
+      <link>https://blog.takus.me/2012/06/18/28199466903/</link>
+      <pubDate>Mon, 18 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2012/06/18/28199466903/</guid>
+      <description> サーバ・リソース監視に関するお話をする Monitoring Casual Talk #1 という勉強会に行って、ちょっとだけ喋らせてもらってきました。
+自分の発表について すたじおなんとかさんがブログで「まわりには運用モンスターばかりで、小動物のようにボクは終始((((；ﾟДﾟ))))ｶﾞｸｶﾞｸﾌﾞﾙﾌﾞﾙでした。」と書かれていましたが、 僕も最初に参加者リスト見たときに「全然カジュアルじゃねぇ((((；ﾟДﾟ))))ｶﾞｸｶﾞｸﾌﾞﾙﾌﾞﾙ」と思い、ちょっと参加を躊躇いました。
+でも、監視については自分で試行錯誤しながら色々やってきたので、他の人の監視の話を聞いて学びたいという好奇心の方が強くなってしまい、 なんか自分の持ちネタで話せそうなことないかなとあれこれ考えて、「多すぎるアラートをなんとかしたい」みたいな内容の話をしてきました。
+内容は「依存関係とかちゃんと定義しましょうね」みたいな当たり前のこと過ぎて、 参加者の皆さんの参考になったとはいえないかもしれませんが、 若気の至りということで今回は大目にみていただけたらと思います。 次回はもっと面白いネタを仕入れて挑みますので&amp;hellip;。
+ほかのひとの発表を聞いた感想 あまり触ったことがない Zabbix や Cacti の話をはじめ、全体的に勉強になることが多くて、参加してほんとによかったです。
+特に @lamanotrama さんの『Nagios運用例(on AWS)』は、自分も前職で同じようなことをやっていたので、すごく参考になり、半年前にこれ見たかったというのが正直な感想です。 コンフィグの自動生成スクリプトなんかは同じようなもの を昔作ってましたが、Diff 取ったり、AWS のコンソールから監視除外にできたりで、やっぱペパポさんのツール方がイケてますね…。
+他にも話を聞いてると、どこの会社でも同じようなところで悩んでることが多くあるような印象を受けて、 こういう勉強会を通じて情報交換しながら、サービス監視してるエンジニアがみんなハッピーになっていけばいいし、 そこに自分が貢献していければなーとか思ったので、がんばっていきたいと思いマス。
+参考リンク  Monitoring Casual Talks #1 を開催してきた話 当日の様子 on toggeter  </description>
+    </item>
+    
+    <item>
+      <title>How to Set Up New Macbook Air</title>
+      <link>https://blog.takus.me/2012/05/17/23170067016/</link>
+      <pubDate>Thu, 17 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2012/05/17/23170067016/</guid>
+      <description>I love the Macbook Air. This is by far the best computer I&amp;rsquo;ve ever used. Recently, I got new Macbook Air and set up it for development. This is a memo I used for set up.
+System Preferences Some default preferences are not useful. I hope that these preferences become default on the next MacOSX. You should change some of them. The followings are examples:
+ Keybord &amp;gt; Keyboard  Check &amp;ldquo;Use all F1, F2, etc&amp;hellip;&amp;rdquo; Modifier Keys -&amp;gt; Bind Caps Lock Key as Control Key  Keyboard &amp;gt; User Dictionary  Uncheck smart quotes  Security &amp;gt; Privacy  Check &amp;ldquo;Require password immediately after sleep or screen saver begins&amp;rdquo;  Displays  Check &amp;ldquo;Show displays in menu bar&amp;rdquo;  Dock  Check &amp;ldquo;Automatically hide and show the Dock&amp;rdquo;  Date and Time  Time Zone -&amp;gt; Check &amp;ldquo;Set time zone automatically using current location&amp;rdquo; Clock -&amp;gt; Check &amp;ldquo;Show date&amp;rdquo;  Sharing  Edit &amp;ldquo;Computer Name&amp;rdquo; you like   Install Desktop Applications  AppStore  Xcode YoruFukurou (Twitter Client) Day One (Personal Diary) Evernote Skitch Reeder (RSS Reader) Growl SourceTree  Others  Command Line Tools for Xcode iTerm2 Chrome Firefox LimeChat Skype&amp;lt; Dropbox KeePassX (Password Manager) Mendeley (Paper Management Tool) mi (Text Editor) smcFanControl (Fan Controller)   Install Terminal Applications Homebrew is a famous package manager for MacOSX.</description>
+    </item>
+    
+    <item>
+      <title>クロアチア〜スロベニア〜イタリアに行ってきた</title>
+      <link>https://blog.takus.me/2012/03/24/28199464257/</link>
+      <pubDate>Sat, 24 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2012/03/24/28199464257/</guid>
+      <description>1 人でクロアチア〜スロベニア〜イタリアあたりに約 10 日間滞在してきた記録のまとめ。旅の準備、現地での生活、撮影した写真、かかったお金など。誰かの参考になればと思ってまとめてみました。
+準備 とりあえずクロアチアとイタリアあたりに行きたいなと思っていたので、クロアチア南部から北上してイタリア入って、ミラノあたりから帰ればいいかなという大雑把な計画を立てました。（もはや計画と言えなそうですが^^;)
+航空券はもちろんskygateで検索（笑）ステマとか言われかねないですが、正直なところ色々な航空券サイトの中で一番使いやすいんじゃないかと思います。最初は東京からドゥブロヴニクで探していましたが、あまり安い航空券がヒットしなかったので、方針を変更。ドゥブロヴニクへの便があるフランクフルト空港までの航空券を探したらうまくいきました。結局、お値段の安さとスターアライアンス系のマイルが貯まるということで、中華国際航空に決定。
+ 中華国際航空  往路　東京→北京→フランクフルト 復路　ミラノ→上海→東京 78,000 yen（燃油サーチャージ込）   さらにフランクフルトから、クロアチアへの航空券を予約するために、skyscanner を利用しました。これは格安航空券の比較サイトで、世界中の格安航空券を探せる超便利サイトです。スカイゲートと比較するために利用してみましたが、こちらは問い合わせなどを英語で行う必要があるので、スカイゲートより若干敷居が高いのかなと思いました。（問い合わせしないなら関係ありませんが）
+ クロアチア航空  フランクフルト→ドゥブロヴニク 216 euro （燃油サーチャージ込）   カバンは karrimor の airport pro 40R を選びました。これは国際線で機内に持ち込めるサイズな上に、キャリーとしてもバックパックとしても使え、さらに着脱式のデイパックも付いているので、本体をホテルに置いて、デイパックで出かけることができて、役立ちました。
+衣服はダウンジャケット、セーター、シャツ、ジーンズを毎日着て、その下に着ているヒートテックとパンツ、靴下を洗濯しながら過ごしていました。あまり綺麗とは言えないですが、冬で汗もあまりかかないので気になることはありませんでした。 荷物の大半はガジェット類。MacbookAir はもちろんバックアップ用の HDD、モバイルブースター、一眼レフ＋レンズ 2 本+三脚など、フル装備。海外で利用できる WiFi ルータの MiFi もレンタルしていきました。ヨーロッパであればヨーロッパ周遊プランがあり、対応国ならどこでも定額で使えて非常に便利でした。値段はソフトバンクの海外パケ放題と同じ程度でした。
+海外旅行に一人で行くの初めてだったので、最初は様子見で 40 euro くらいのビジネスホテルに宿泊していましたが、途中から方針を変えて ~20 euro くらいのドミトリーに泊まるようにしました。危ないと感じることもなかったし、ベッドに入ると5分くらいで寝れる特技を持ってるので、ほかの人が気になることもなく、かなり快適に過ごすことができました。
+泊まる場所の探し方ですが、自分にとっては WiFi が利用できるかどうかがかなり死活問題だったので、information desk などで紹介してもらうのでなく、hostelworld や booking.com で WiFi が使える宿泊場所を安い順に見ていき、レビューが悪くなければそこに決めるという方針で、宿泊する前日や当日に予約していました。その結果、一度もハズレを引くことはなかったので、この方法は結構オススメです。
+食事についてはドミトリーの受付やターミナルの辺りにいる客引きみたいな地元人にオススメのレストランを聞いて、そこに行くようにしていました。前にローマ行ったときに適当にレストラン選んでたら大失敗したのですが、さすがに地元の人に聞くと失敗することはありませんでした。
+言葉については、クロアチアでもイタリアでも英語が通じたので旅行中に困ることはほとんどありませんでした。ラングリッチと Gaba のレッスンの効果があったのか、前に海外旅行に行った時より遥かに英会話ができるようになっていて、自分でもビックリしました。ホテルに電話して部屋が空いてるか聞いたり、受付に誰もいないので電話で呼び出すみたいなこともやってみれば案外余裕でした。ただ、旅先で仲良くなった人ともうちょっと深い話しようとすると、単語が出て来なかったり、聞き取れてないところがあったりして、「もうちょっと喋れれば、もっと仲良くなれるんだろうな」と思う場面が何度もあって、もっと本腰入れて英語やらねばと思う機会は多かったです。
+行ったところ 羽田、北京、フランクフルト、ドゥブロヴニクと飛行機を乗り継いてクロアチアに入国。ドゥブロヴニクからスプリット、プリトヴィツェ、ザグレブとクロアチアをバスで北上し、ザグレブから電車でスロベニアに入国して首都のリュブリャナへ。リュブリャナからは電車でオーストリアのフィラハに行き、そこからバスでイタリアへ入国してベネツィアに1泊。ベネツィアからは電車でミラノへ行き、ミラノに数日滞在。最後はミラノのマルペンサ空港から上海経由で成田に帰国というルートでした。</description>
+    </item>
+    
+    <item>
+      <title>2011 年の振り返りと 2012 年の目標</title>
+      <link>https://blog.takus.me/2012/01/06/28199462010/</link>
+      <pubDate>Fri, 06 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2012/01/06/28199462010/</guid>
+      <description>2012 年もすでに何日か経ってしまいましたが、2011 年を振り返りつつ、2012 年の目標でも書いておこうかと思います。 やっぱり 1 年を振り返って、次の目標を立てるのは大事ですよね。(宣言すると努力せざるを得ないという点でも&amp;hellip;)
+2011 年の出来事 3 月 震災の日 ちょうど内定先の面接を受け終わって、オフィスを出た直後に被災しました。電車は止まってどうしようもないので、新宿から横浜の自宅まで徒歩で帰宅。 あの状況の中で、一人で長時間歩いて帰るのは正直辛かったですが、twitter で色んな人が励ましてくれて、非常に助かりました。 そんな中で思ったことがこんなことでした。
+  この時に「*落ちないサービスを作る*」ということの重要さを実感して、自分の方向性をそっちにシフトしていきました。 あとから振り返ると、この経験が、この後の内定承諾や My365 チームへのジョインにつながっていったんじゃないかと思います。
+4 月 内定承諾 色々と悩むところもありましたが、3 月の終わり頃に就職先を決めました。 自分のやりたいことって何だろうと考えたときに、一番それができそうだと思ったのが就職先の会社でした。 あとは中で働いてる人の優秀さで決めました。
+6 月 内定先でインターン 働いてる人で内定先を選んでほんとに正解だったと思いました。 いきなり MySQL でおなじみの松信さんがいきなりメンターになっていただいたり、 その後も HandlerSocket を開発した樋口さんがメンターとしてお世話してくれたり、 会社設立時からインフラエンジニアとして働いてる方々から色々な苦労話を聞くことができたり、非常に貴重な経験ができました。
+8 月 松田直樹の死 スティーブ・ジョブズの訃報と同じくらい、松田直樹の訃報にもショックを受けました。
+  ジョブズもスタンフォードでのスピーチで If today were the last day of my life, would I want to do what I am about to do today? と言っています。 今やってることはほんとに心から自分が取り組みたいことなのか今まで以上に真剣に考えて生きなければいけないと、二人の偉大な人物の死から学びました。</description>
+    </item>
+    
+    <item>
+      <title>s3fs を使って Amazon S3 を Linux にマウントする</title>
+      <link>https://blog.takus.me/2011/11/19/28199459336/</link>
+      <pubDate>Sat, 19 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2011/11/19/28199459336/</guid>
+      <description> 最近，My365 という iPhone アプリのサーバサイドを担当することになり，全然使ったことのなかった Amazon Web Service をほげほげしてるので，その辺のネタの一部を紹介. さくら VPS から Amazon EC2 への移行話もそのうちまとめたいと思います.
+s3fs とは？  FUSE-based file system backed by Amazon S3. Mount a bucket as a local file system read/write. Store files/folders natively and transparently. ―s3fs
+ というわけで，S3 の bucket をファイルシステムとしてマウントできてしまう便利なツールです. EC2 のインスタンスをターミネートすると基本的に全てのデータが失われてしまうので，全てのサーバが起動時に S3 の bucket をマウントしておくようにし，アプリケーションのログなどは日次で S3 に mv しておき，ターミネートする前にログを S3 に待避するようにしておくと幸せになれます. ((他にいいログ管理ソリューションがあれば教えてください))
+インストール こんな感じのスクリプトを使ってあげれば，サクッとインストールできるんじゃないかと思います. エラーチェック等はしてないですのであしからず. インストール後に書き込みを行うと，S3 へファイルが作成されていることが確認できます.
+ ほかにも，ローカルキャッシュを使って転送量を減らすこともできるみたいですね．
+s3fs まとめ  s3fs を使えば，Linux 上に S3 の bucket をマウントできる インストールが簡単 ローカルキャッシュみたいな便利な機能も実装されてる  </description>
+    </item>
+    
+    <item>
+      <title>YAPC::ASIA 2011 に行ってきた</title>
+      <link>https://blog.takus.me/2011/10/17/28199456070/</link>
+      <pubDate>Mon, 17 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2011/10/17/28199456070/</guid>
+      <description>年に 1 度の perl の祭典、YAPC::ASIA 2011 に行ってきました。「家に帰ってブログを書くまでが YAPC です」とアナウンスされていたので書いてみました。
+はじめてのYAPC::ASIA 2011 今回が初めての YAPC 参加。perl は書き始めて半年くらいで知識も浅い状態でしたが、perl という言語自体の話だけでなく、「perl を使って hogehoge した」みたいなトークが多く、perl 初心者でも充分に楽しめました。
+印象に残ったセッション  Carton: CPAN dependencies manager by @miyagawa さん  Carton という Ruby における Bundler のようなモジュールのお話 プレゼンテーションの流れが非常にロジカルで分かりやすい。参考にしたい。 デモもお洒落でカッコよかった。これも真似したい。  Perlで構築された中規模サイトのDC引っ越し記録 by @fujiwara さん  KAYACが運営している こえ部 を別の DC に引っ越したというお話 とにかく話にリアリティがあって面白かった コンポーネント毎に検証しながら少しづつ移行、すごく丁寧 ベストスピーカー賞も納得（もちろん自分も投票しました）  運用しやすいWebアプリケーションの構築方法 by @kazeburo さん  Log、DB、Cache、Metrics に使える各種モジュールの紹介 単にモジュールの機能の紹介だけでなく、なぜそのような機能が必要なのかまで深掘りして説明していた 説明が丁寧なため、すごくそのモジュールを使ってみたい気分にさせる  Managing A Band Of Hackers by @higek さん  マネジメントについてすごく真面目ないいお話 その一方で、@hidek さんをいじる TL が横で流れていて面白かった 「1+1 が 2 なら、マネージャーをやる意味はないんです」という言葉が印象的 Being Geek をオススメしてたので読んでみようと思います   感想など 学生無料のありがたさ ほんとに助かりました。学生料金を負担していただいたスポンサーの方々本当にありがとうございます。 来年は今年の分のお返しができるようにがんばって稼ぎたいと思います（笑）</description>
+    </item>
+    
+    <item>
+      <title>MacPorts から Homebrew への移行メモ</title>
+      <link>https://blog.takus.me/2011/03/28/28409424679/</link>
+      <pubDate>Mon, 28 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.takus.me/2011/03/28/28409424679/</guid>
+      <description> MacOSX向けのパッケージマネージャーといえば MacPorts が有名ですが、Mac に元々入っているプログラムもご丁寧に再コンパイルしてくれたりで、ビルドに時間がかかったりして、なかなか使い勝手が悪いです。ということで、Mac に元々入っているプログラムをそのまま活かせると巷で（？）評判のいい Homebrew に移行してみることにしました。
+ FinkでもMacPortsでもないパッケージ環境「Homebrew」 MacPortsからHomebrewに移行しつつある  Homebrewのインストール  参考リンク  Installation - GitHub Macのパッケージ管理をMacPortsからhomebrewへ Macで環境を整えるための環境-homebrewとrvmとrubygems-  </description>
     </item>
     
   </channel>
